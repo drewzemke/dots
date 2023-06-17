@@ -1,0 +1,7 @@
+[init]
+	defaultBranch = main
+[user]
+	email = {{email}}
+	name = Drew Zemke
+[core]
+	editor = {{editor}}

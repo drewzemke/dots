@@ -7,6 +7,7 @@ fish = "~/.config/fish"
 gitui = "~/.config/gitui"
 helix = "~/.config/helix"
 zellij = "~/.config/zellij"
+"git/gitconfig" = "~/.gitconfig"
 
 # macos only
 [mac.files]
