@@ -4,6 +4,10 @@ fish_add_path -p /usr/local/sbin /usr/local/bin /usr/bin ~/.cargo/bin
 # set env variable for XDG_CONFIG_HOME
 set -gx XDG_CONFIG_HOME ~/.config/
 
+# set editor and visual env variables
+set -gx EDITOR {{editor}}
+set -gx VISUAL {{editor}}
+
 # initialize zoxide
 zoxide init fish | source
 
