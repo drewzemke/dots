@@ -1,0 +1,9 @@
+[helpers]
+
+[default]
+depends = []
+
+[default.files]
+"helix/drewcula.toml" = "~/.config/helix/themes/drewcula.toml"
+
+[default.variables]

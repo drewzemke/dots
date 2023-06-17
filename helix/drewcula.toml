@@ -1,0 +1,42 @@
+# Based on the 'dracula_at_night' theme, which is in turn based on classic 'dracula'
+inherits = "dracula_at_night"
+
+"variable" = { fg = "purple" }
+"variable.other" = { fg = "orange" }
+"variable.other.member" = { fg = "foreground" }
+
+# "function.method" = { fg = "orange" }
+"constructor" = { fg = "pink" }
+
+"diagnostic.error" = { bg = "background_red" }
+"diagnostic.warning" = { bg = "background_orange" }
+"diagnostic.info" = { fg = "yellow", modifiers = ["underlined"] }
+"diagnostic.hint" = { bg = "background_orange" }
+
+"markup.raw.inline" = { fg = "green" }
+
+"ui.selection.primary" = { bg = "selection" }
+"ui.selection" = { bg = "selection" }
+
+"ui.linenr.selected" = { fg = "foreground", modifiers = ["bold"]}
+
+"ui.virtual.inlay-hint" = { fg = "comment", bg = "background" }
+"ui.virtual.indent-guide" = { fg = "comment" }
+
+[palette]
+# background = "#0e1419"
+background_dark = "#21222c"
+background_red = "#6E2E31"
+background_orange = "#6E563A"
+selection = "#44475A"
+# foreground = "#f8f8f2"
+# comment = "#6272a4"
+# red = "#ff5555"
+# orange = "#ffb86c"
+# yellow = "#f1fa8c"
+# green = "#50fa7b"
+# purple = "#bd93f9"
+# cyan = "#8be9fd"
+# pink = "#ff79c6"
+
+# test comment! (remove later)
