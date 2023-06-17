@@ -18,6 +18,7 @@ spotify-tui = "~/.config/spotify-tui"
 [arch.files]
 "alacritty/config-arch.yml" = "~/.config/alacritty/alacritty.yml"
 leftwm = "~/.config/leftwm"
+xorg = "~"
 
 # alacritty
 [alacritty.files]
