@@ -1,0 +1,67 @@
+theme = "drewcula"
+
+[editor]
+line-number = "relative"
+bufferline = "multiple" 
+color-modes = true
+cursorline = true
+true-color = true
+
+[editor.cursor-shape]
+insert="bar"
+normal="block"
+
+[editor.statusline]
+left = ["mode", "spinner", "version-control", "file-name"]
+right = ["selections", "position", "separator", "spacer", "diagnostics", "workspace-diagnostics", "version-control"]
+
+[editor.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+'`' = '`'
+'<' = '>'
+"'" = "'"
+
+[editor.indent-guides]
+render = true
+
+[editor.lsp]
+display-messages = true
+display-inlay-hints = true
+
+[keys.insert]
+C-space = "code_action"
+
+[keys.normal]
+# move lines up/down
+A-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]
+A-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+
+# copy lines up/down
+A-J = ["extend_to_line_bounds", "yank", "paste_after"]
+A-K = ["extend_to_line_bounds", "yank", "paste_before"]  
+
+# move selection left/right
+A-l = ["delete_selection", "paste_after"]
+A-h = ["delete_selection", "move_char_left", "paste_before"]
+
+# copy selection left/right
+A-L = ["yank", "paste_after"]
+A-H = ["yank", "move_char_left", "paste_before"]
+
+# close the current buffer
+C-w = ":buffer-close"
+
+# move between windows
+C-l = "jump_view_right"
+C-h = "jump_view_left"
+
+# move between buffers
+L = "goto_next_buffer"
+H = "goto_previous_buffer"
+
+[keys.normal." "]
+i = ":toggle lsp.display-inlay-hints"
+L = ":lsp-restart"

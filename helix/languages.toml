@@ -1,0 +1,30 @@
+[[language]]
+name = "rust"
+auto-format = true
+
+[language.config.check]
+command = "clippy"
+
+[[language]]
+name = "json"
+auto-format = true
+config = { "provideFormatter" = true }
+
+[[language]]
+name = "javascript"
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+auto-format = true
+
+[[language]]
+name = "typescript"
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+auto-format = true
+
+[[language]]
+name = "tsx"
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+auto-format = true
+
+[language-server.yaml-language-server.config.yaml]
+format = { enable = true }
+validation = true

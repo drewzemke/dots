@@ -1,7 +1,19 @@
-[helpers]
+# [helpers]
 
-[default.files]
-"helix/drewcula.toml" = "~/.config/helix/themes/drewcula.toml"
-"zellij" = "~/.config/zellij"
+[base.files]
+broot = "~/.config/broot"
+gitui = "~/.config/gitui"
+helix = "~/.config/helix"
+zellij = "~/.config/zellij"
 
-[default.variables]
+[mac.files]
+karabiner = "~/.config/karabiner"
+spotify-tui = "~/.config/spotify-tui"
+
+[arch.files]
+leftwm = "~/.config/leftwm"
+
+[work.files]
+k9s = "~/.config/k9s"
+
+# TODO: (in .config) alacritty, fish
