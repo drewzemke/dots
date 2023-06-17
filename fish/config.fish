@@ -1,3 +1,5 @@
+# CAREFUL! Make sure you're editing this file '.dots', not in its usual folder
+
 # path setup
 fish_add_path -p /usr/local/sbin /usr/local/bin /usr/bin ~/.cargo/bin
 
