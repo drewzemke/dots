@@ -1,9 +1,7 @@
 [helpers]
 
-[default]
-depends = []
-
 [default.files]
 "helix/drewcula.toml" = "~/.config/helix/themes/drewcula.toml"
+"zellij" = "~/.config/zellij"
 
 [default.variables]
