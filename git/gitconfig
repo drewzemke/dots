@@ -5,3 +5,6 @@
 	name = Drew Zemke
 [core]
 	editor = {{editor}}
+[pull]
+	rebase = true
+	autoStash = true
