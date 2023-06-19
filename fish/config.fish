@@ -21,10 +21,19 @@ abbr -a -- cat  'bat'
 abbr -a -- rst  'source ~/.config/fish/config.fish'
 
 # helix abbreviations
-abbr -a -- hx {{editor}};
+abbr -a -- hx   {{editor}};
 
 # git abbreviations
+abbr -a -- g    'git'
 abbr -a -- gs   'git status'
+abbr -a -- gl   'git lg'
+abbr -a -- ga   'git add'
+abbr -a -- gad  'git add .'
+abbr -a -- gc   'git commit'
+abbr -a -- gcm  'git commit -m'
+abbr -a -- gca  'git commit --amend'
+abbr -a -- gp   'git pull'
+abbr -a -- gP   'git push'
 
 # zellij abbreviations
 abbr -a -- zdev 'zellij action new-tab --layout dev'
