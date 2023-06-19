@@ -14,9 +14,10 @@ set -gx VISUAL {{editor}};
 zoxide init fish | source
 
 # file system abbreviations
-abbr -a -- ls   'exa -1 --color=auto --icons --group-directories-first'
-abbr -a -- lst  'exa -1 --color=auto --icons --group-directories-first -T --git-ignore'
-abbr -a -- cat  bat
+alias      ls   'exa -1 --color=auto --icons --group-directories-first'
+alias      lsa  'exa -1 --color=auto --icons --group-directories-first -la'
+alias      lst  'exa -1 --color=auto --icons --group-directories-first -T --git-ignore'
+abbr -a -- cat  'bat'
 abbr -a -- rst  'source ~/.config/fish/config.fish'
 
 # helix abbreviations
