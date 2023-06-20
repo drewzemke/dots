@@ -7,6 +7,7 @@
 	editor = {{editor}}
 [pull]
 	rebase = true
+[rebase]
 	autoStash = true
  [alias]
     lg = lg1
