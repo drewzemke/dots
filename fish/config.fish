@@ -2,6 +2,7 @@
 
 # path setup
 fish_add_path -p /usr/local/sbin /usr/local/bin /usr/bin ~/.cargo/bin
+{{#if dotter.packages.mac}}fish_add_path -p /opt/homebrew/bin{{/if}};
 
 # set env variable for XDG_CONFIG_HOME
 set -gx XDG_CONFIG_HOME ~/.config/
