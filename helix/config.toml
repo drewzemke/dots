@@ -5,6 +5,7 @@ line-number = "relative"
 bufferline = "multiple" 
 color-modes = true
 cursorline = true
+idle-timeout = 200
 true-color = true
 
 [editor.cursor-shape]
