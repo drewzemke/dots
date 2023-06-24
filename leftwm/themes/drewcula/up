@@ -1,8 +1,6 @@
 #!/bin/sh
 export SCRIPTPATH="$( cd "$(dirname "$0")" || exit; pwd -P )"
 
-echo "HELLO"
-
 # Down the last running theme
 if [ -f "/tmp/leftwm-theme-down" ]; then
     /tmp/leftwm-theme-down
@@ -11,13 +9,13 @@ fi
 ln -s "$SCRIPTPATH"/down /tmp/leftwm-theme-down
 
 # load polybar
-polybar
+polybar &
 
 # Boot picom or compton if it exists
 # picom --experimental-backends > /dev/null &
 
 # Set the theme.toml config
-leftwm command "LoadTheme $SCRIPTPATH/theme.toml"
+leftwm command "LoadTheme $SCRIPTPATH/theme.ron"
 
 # Set background
 feh --bg-fill "$SCRIPTPATH"/background.jpg
