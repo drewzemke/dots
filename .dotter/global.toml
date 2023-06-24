@@ -19,8 +19,9 @@ spotify-tui = "~/.config/spotify-tui"
 [arch.files]
 "alacritty/config-arch.yml" = "~/.config/alacritty/alacritty.yml"
 leftwm = "~/.config/leftwm"
-polybar = "~/.config/polybar"
 picom = "~/.config/picom"
+polybar = "~/.config/polybar"
+rofi = "~/.config/rofi"
 xorg = "~"
 
 # alacritty
