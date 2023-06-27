@@ -36,5 +36,10 @@ abbr -a -- gca  'git commit --amend'
 abbr -a -- gp   'git pull'
 abbr -a -- gP   'git push'
 
+# jest abbreviations
+abbr -a -- jw   'jest --watchAll --testPathPattern'
+
 # zellij abbreviations
 abbr -a -- zdev 'zellij action new-tab --layout dev'
+
+source /Users/drewzee/.docker/init-fish.sh || true # Added by Docker Desktop
