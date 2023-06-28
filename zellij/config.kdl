@@ -158,6 +158,12 @@ keybinds clear-defaults=true {
 
         bind "[" { PreviousSwapLayout; }
         bind "]" { NextSwapLayout; }
+
+        bind "Space" {
+            LaunchOrFocusPlugin "file:~/.config/zellij/plugins/monocle.wasm" {
+                floating true
+            }
+        }
     }
     shared_except "locked" {
         bind "Ctrl b" { SwitchToMode "Locked"; }
@@ -248,33 +254,13 @@ plugins {
 //
 // auto_layout true
 
-// Define color themes for Zellij
-// For more examples, see: https://github.com/zellij-org/zellij/tree/main/example/themes
-// Once these themes are defined, one of them should to be selected in the "theme" section of this file
-
-// themes {
-//    drew-monochrome {
-//         fg 248 248 242 // bg for the big hint chips at the bottom
-//         bg 40 42 54 // inactive tab bg keyboard hints at the bottom
-//         black 0 0 0
-//         red 255 85 85 // hotkeys
-//         green 37 190 106 // shows what's selected (tab, pane)
-//         yellow 241 250 140
-//         blue 98 114 164
-//         magenta 255 121 198
-//         cyan 139 233 253
-//         white 255 255 255 // the title and "Ctrl+" at the bottom
-//         orange 255 184 108 // highlights in selecting modes
-//     }
-// }
-
 // Choose the theme that is specified in the themes section.
 theme "dracula"
 
 // The name of the default layout to load on startup
 // Default: "default"
 //
-// default_layout "compact"
+default_layout "default"
 
 // Choose the mode that zellij uses when starting up.
 // Default: normal
