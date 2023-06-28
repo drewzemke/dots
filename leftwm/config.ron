@@ -27,9 +27,9 @@
     layouts: [
         MainAndVertStack,
         LeftWiderRightStack,
+        Monocle,
         CenterMain,
         GridHorizontal,
-        Monocle,
         // Fibonacci,
         // MainAndHorizontalStack,
         // MainAndDeck,
