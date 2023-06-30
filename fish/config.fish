@@ -35,6 +35,8 @@ abbr -a -- gcm  'git commit -m'
 abbr -a -- gca  'git commit --amend'
 abbr -a -- gp   'git pull'
 abbr -a -- gP   'git push'
+abbr -a -- gri  'git rebase --interactive'
+abbr -a -- grc  'git rebase --continue'
 
 # jest abbreviations
 abbr -a -- jw   'jest --watchAll --testPathPattern'
