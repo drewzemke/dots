@@ -42,4 +42,6 @@ abbr -a -- jw   'jest --watchAll --testPathPattern'
 # zellij abbreviations
 abbr -a -- zdev 'zellij action new-tab --layout dev'
 
+{{#if dotter.packages.work}}
 source /Users/drewzee/.docker/init-fish.sh || true # Added by Docker Desktop
+{{/if}};
