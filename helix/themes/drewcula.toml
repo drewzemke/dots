@@ -13,6 +13,11 @@ inherits = "dracula_at_night"
 "diagnostic.info" = { fg = "yellow", modifiers = ["underlined"] }
 "diagnostic.hint" = { bg = "background_orange" }
 
+"info" = "cyan"
+"hint" = "cyan"
+"warning" = "orange"
+"error" = "red"
+
 "markup.raw.inline" = { fg = "green" }
 
 "ui.selection.primary" = { bg = "selection" }
