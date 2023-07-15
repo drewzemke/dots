@@ -28,3 +28,7 @@ auto-format = true
 [language-server.yaml-language-server.config.yaml]
 format = { enable = true }
 validation = true
+
+[[language]]
+name = "wgsl"
+auto-format = true
