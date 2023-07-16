@@ -44,6 +44,12 @@ abbr -a -- jw   'jest --watchAll --testPathPattern'
 # zellij abbreviations
 abbr -a -- zdev 'zellij action new-tab --layout dev'
 
+# cargo abbreviations
+abbr -a -- cb   'cargo build'
+abbr -a -- cbr  'cargo build --release'
+abbr -a -- ct   'cargo test'
+abbr -a -- cr   'cargo run'
+
 {{#if dotter.packages.work}}
 source /Users/drewzee/.docker/init-fish.sh || true # Added by Docker Desktop
 {{/if}};
