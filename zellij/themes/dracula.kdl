@@ -1,15 +1,45 @@
 themes {
     dracula {
+        // original "dracula" theme colors, for reference
+        // fg 248 248 242
+        // bg 40 42 54
+        // black 0 0 0
+        // red 255 85 85
+        // green 80 250 123
+        // yellow 241 250 140
+        // blue 98 114 164
+        // magenta 255 121 198
+        // cyan 139 233 253
+        // white 255 255 255
+        // orange 255 184 108
+
+        // foreground
         fg 248 248 242
+
+        // background
         bg 40 42 54
-        black 0 0 0
-        red 255 85 85
-        green 80 250 123
-        yellow 241 250 140
+        
+        // pink in place of green
+        // (as the primary selection color)
+        green 255 121 198
+
+        // purple instead of range
+        // (as the secondary selection color)
+        orange 189 147 249
+
+        // comment
         blue 98 114 164
+
+        // pink
         magenta 255 121 198
-        cyan 139 233 253
+
+        // bg-dark
+        black 14 20 25
+
+        // are these used?
         white 255 255 255
-        orange 255 184 108
+        cyan 139 233 253
+        red 255 85 85
+        yellow 241 250 140
     }
 }
