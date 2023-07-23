@@ -30,7 +30,7 @@ inherits = "dracula_at_night"
 
 [palette]
 # background = "#0e1419"
-background_dark = "#21222c"
+background_dark = "#282a36"
 background_red = "#6E2E31"
 background_orange = "#6E563A"
 selection = "#44475A"
