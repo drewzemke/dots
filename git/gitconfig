@@ -5,11 +5,12 @@
 	name = Drew Zemke
 [core]
 	editor = {{editor}}
+	excludesFile = .git/.user_gitignore
 [pull]
 	rebase = true
 [rebase]
 	autoStash = true
- [alias]
+[alias]
     lg = lg1
     lg1 = lg1-specific 
     lg2 = lg2-specific 
