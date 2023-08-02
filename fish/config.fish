@@ -11,6 +11,9 @@ set -gx XDG_CONFIG_HOME ~/.config/
 set -gx EDITOR {{editor}};
 set -gx VISUAL {{editor}};
 
+# set a theme for bat
+set -gx BAT_THEME "Dracula";
+
 # initialize zoxide
 zoxide init fish | source
 
