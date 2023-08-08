@@ -5,6 +5,7 @@
 broot = "~/.config/broot"
 fish = "~/.config/fish"
 gitui = "~/.config/gitui"
+kmonad = "~/.config/kmonad"
 helix = "~/.config/helix"
 zellij = "~/.config/zellij"
 "git/gitconfig" = "~/.gitconfig"
