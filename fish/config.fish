@@ -56,3 +56,7 @@ abbr -a -- cr   'cargo run'
 {{#if dotter.packages.work}}
 source /Users/drewzee/.docker/init-fish.sh || true # Added by Docker Desktop
 {{/if}};
+
+{{#if dotter.packages.arch}}
+source ~/.xprofile
+{{/if}};
