@@ -64,9 +64,13 @@ L = "goto_next_buffer"
 H = "goto_previous_buffer"
 
 [keys.normal.space]
-i = ":toggle lsp.display-inlay-hints"
 L = ":lsp-restart"
-C-r = ":reload-all"
+C-r = ":reload-all" 
+
+[keys.normal.space.t]
+g = ":toggle file-picker.git-ignore"
+h = ":toggle file-picker.hidden"
+i = ":toggle lsp.display-inlay-hints"
 
 [keys.normal.backspace]
 g = ":run-shell-command zellij run -fc -- gitui"
