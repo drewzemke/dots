@@ -32,18 +32,21 @@
 
 ;; escape when tapped, control when held
 (defalias 
-  eac (tap-hold-next 200 esc (layer-toggle nav))
+  ;; nav escape
+  nve (tap-hold-next 200 esc (layer-toggle nav))
+  ;; nav space
+  nvs (tap-hold-next 200 spc (layer-toggle nav))
 )
 
 ;; home row mods
 (defalias
     hrA (tap-hold-next-release 200 a lalt)
-    hrS (tap-hold-next-release 200 s lmet)
-    hrD (tap-hold-next-release 200 d lsft)
+    hrS (tap-hold-next-release 200 s lsft)
+    hrD (tap-hold-next-release 200 d lmet)
     hrF (tap-hold-next-release 200 f lctl)
     hrJ (tap-hold-next-release 200 j rctl)
-    hrK (tap-hold-next-release 200 k rsft)
-    hrL (tap-hold-next-release 200 l lmet)
+    hrK (tap-hold-next-release 200 k rmet)
+    hrL (tap-hold-next-release 200 l rsft)
     hr; (tap-hold-next-release 200 ; ralt)
 )
 
@@ -51,7 +54,7 @@
 (deflayer drew
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-  @eac @hrA @hrS @hrD @hrF g    h    @hrJ @hrK @hrL @hr; '    ret
+  @nve @hrA @hrS @hrD @hrF g    h    @hrJ @hrK @hrL @hr; '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    j
   lctl lalt lmet           spc                 rmet lalt lctl
 )
@@ -59,7 +62,7 @@
 (deflayer nav
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    left down up   rght _    _    _    
+  @nve _    _    _    _    _    left down up   rght _    _    _    
   _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _              _                   _    _    _
 )
