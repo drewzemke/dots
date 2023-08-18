@@ -10,6 +10,7 @@ set -gx XDG_CONFIG_HOME ~/.config/
 # set editor and visual env variables
 set -gx EDITOR {{editor}};
 set -gx VISUAL {{editor}};
+set -gx HELIX_RUNTIME /usr/local/lib/helix/runtime
 
 # set a theme for bat
 set -gx BAT_THEME "Dracula";
@@ -55,8 +56,7 @@ abbr -a -- cr   'cargo run'
 
 {{#if dotter.packages.work}}
 source /Users/drewzee/.docker/init-fish.sh || true # Added by Docker Desktop
-{{/if}};
-
+{{/if}}
 {{#if dotter.packages.arch}}
 source ~/.xprofile
-{{/if}};
+{{/if}}
