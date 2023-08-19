@@ -10,7 +10,6 @@ set -gx XDG_CONFIG_HOME ~/.config/
 # set editor and visual env variables
 set -gx EDITOR {{editor}};
 set -gx VISUAL {{editor}};
-set -gx HELIX_RUNTIME /usr/local/lib/helix/runtime
 
 # set a theme for bat
 set -gx BAT_THEME "Dracula";
