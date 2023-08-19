@@ -14,7 +14,6 @@ zellij = "~/.config/zellij"
 # macos only
 [mac.files]
 "alacritty/config-mac.yml" = "~/.config/alacritty/alacritty.yml"
-karabiner = "~/.config/karabiner"
 spotify-tui = "~/.config/spotify-tui"
 
 # arch linux only
