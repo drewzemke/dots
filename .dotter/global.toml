@@ -32,4 +32,3 @@ xorg = "~"
 
 # work only 
 [work.files]
-k9s = "~/.config/k9s"
