@@ -53,12 +53,20 @@ auto-format = true
 [[language]]
 name = "html"
 formatter = { command = 'npx', args = ["prettier", "--parser", "html"] }
-language-servers = [ "vscode-html-language-server", "tailwindcss-react"] 
+language-servers = [ "vscode-html-language-server"] 
 
 [[language]]
 name = "css"
 formatter = { command = 'npx', args = ["prettier", "--parser", "css"] }
-language-servers = [ "vscode-css-language-server", "tailwindcss-react"]
+language-servers = [ "vscode-css-language-server"]
+
+[[language]]
+name = "graphql"
+language-servers = [ "graphql" ]
+
+[language-server.graphql]
+command = "graphql-lsp"
+args = ["server", "-m", "stream"]
 
 [language-server.eslint]
 args = ["--stdio"]
