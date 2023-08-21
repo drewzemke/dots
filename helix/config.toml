@@ -22,7 +22,6 @@ right = ["selections", "position", "separator", "spacer", "diagnostics", "worksp
 '[' = ']'
 '"' = '"'
 '`' = '`'
-'<' = '>'
 "'" = "'"
 
 [editor.indent-guides]
