@@ -53,10 +53,11 @@
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    bksl
   @nve @hrA @hrS @hrD @hrF g    h    @hrJ @hrK @hrL @hr; '    ret
-  lsft z    x    c    v    b    n    m    ,    .    /    j
+  @sft z    x    c    v    b    n    m    ,    .    /    @sft
   lctl lalt lmet           spc                 rmet lalt lctl
 )
 
+;; navigation with h/j/k/l
 (deflayer nav
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
@@ -64,3 +65,17 @@
   _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _              _                   _    _    _
 )
+;; tap (either) shift --
+;; numbers on top letter row
+;; braces on homerow
+(deflayer shift-tap
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    1    2    3    4    5    6    7    8    9    0    _    _    _
+  _    _    [    {    @lp  _    _    @rp  }    ]    _    _    _    
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _              _                   _    _    _
+)
+(defalias sft (around-next (layer-toggle shift-tap)))
+
+(defalias lp \()
+(defalias rp \))
