@@ -14,6 +14,14 @@ validation = true
 name = "toml"
 auto-format = true
 
+# NOTE: This is entirely to support kmonad config ('.kbd') files
+# I guess if I ever start using lisp, I'll have to change this
+[[language]]
+name = "common-lisp"
+roots = []
+file-types = ["kbd"]
+comment-token = ";;"
+
 [[language]]
 name = "wgsl"
 auto-format = true
@@ -99,3 +107,4 @@ workingDirectory = { mode = "auto" }
 [language-server.typescript-language-server.config]
 documentFormatting = false
 hostInfo = "helix"
+

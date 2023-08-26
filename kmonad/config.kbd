@@ -4,16 +4,14 @@
   -------------------------------------------------------------------------- |#
 
 (defcfg
-  {{#if dotter.packages.arch}}
-  ;; For Linux
+  ;; {{#if dotter.packages.arch}}
   input  (device-file "/dev/input/by-id/usb-Apple__Inc_Apple_Keyboard-event-kbd")
   output (uinput-sink "kmonad input")
-  {{/if}}
-  {{#if dotter.packages.mac}}
-  ;; For MacOS
+  ;; {{/if}}
+  ;; {{#if dotter.packages.mac}}
   input  (iokit-name "")
   output (kext)
-  {{/if}}
+  ;; {{/if}}
 
   ;; Comment this if you want unhandled events not to be emitted
   fallthrough true
@@ -24,7 +22,7 @@
 
 (defsrc
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    bksl
   caps a    s    d    f    g    h    j    k    l    ;    '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft
   lctl lalt lmet           spc            rmet ralt rctl
@@ -53,7 +51,7 @@
 ;; basic layer with homerow mods
 (deflayer drew
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    bksl
   @nve @hrA @hrS @hrD @hrF g    h    @hrJ @hrK @hrL @hr; '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    j
   lctl lalt lmet           spc                 rmet lalt lctl
