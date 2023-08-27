@@ -53,8 +53,8 @@
 ;; number keys are disabled to encourage use of the `shift` layer,
 ;; we'll see how that goes...
 (deflayer drew
-  grv  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   -    =    bspc
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    bksl
+  grv  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   -    =    XX
+  tab  q    w    e    r    t    y    u    i    o    p    bspc XX    bksl
   @nve @hrA @hrS @hrD @hrF g    h    @hrJ @hrK @hrL @hr; '    ret
   @lsf z    x    c    v    b    n    m    ,    .    /    @rsf
   lctl lalt lmet           spc                 rmet lalt lctl
