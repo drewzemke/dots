@@ -56,7 +56,7 @@
   grv  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   -    =    bspc
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    bksl
   @nve @hrA @hrS @hrD @hrF g    h    @hrJ @hrK @hrL @hr; '    ret
-  @sft z    x    c    v    b    n    m    ,    .    /    @sft
+  @lsf z    x    c    v    b    n    m    ,    .    /    @rsf
   lctl lalt lmet           spc                 rmet lalt lctl
 )
 
@@ -68,17 +68,33 @@
   _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _              _                   _    _    _
 )
-;; tap (either) shift --
 ;; numbers on top letter row
-;; braces on homerow
-(deflayer shift-tap
+(deflayer nums
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
   _    1    2    3    4    5    6    7    8    9    0    _    _    _
-  _    _    [    {    @lp  _    _    @rp  }    ]    _    _    _    
-  lsft    _    _    _    _    _    _    _    _    _    _    rsft
+  _    _    _    _    _    _    _    _    _    _    _    _    _    
+  _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _              _                   _    _    _
 )
-(defalias sft (layer-toggle shift-tap))
 
+;; braces on homerow
+(deflayer homerow-braces
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    [    {    @lp  _    _    @rp  }    ]    @und _    _    
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _              _                   _    _    _
+)
+
+;; I might want to switch these...
+;; left shift => enable numbers and HR braces
+(defalias lsf (around (layer-toggle nums) (layer-toggle homerow-braces)))
+;; right shift => enable symbols and HR braces
+(defalias rsf (around (around lsft (layer-toggle nums)) (layer-toggle homerow-braces)))
+
+;; since character definitions
+(defalias pls (around lsft =))
+(defalias min -)
+(defalias und (around lsft -))
 (defalias lp \()
 (defalias rp \))
