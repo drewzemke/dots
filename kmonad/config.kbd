@@ -4,6 +4,7 @@
   -------------------------------------------------------------------------- |#
 
 (defcfg
+  ;; TODO: just use --input and --output flags when you run the things?
   ;; {{#if dotter.packages.arch}}
   input  (device-file "/dev/input/by-id/usb-Apple__Inc_Apple_Keyboard-event-kbd")
   output (uinput-sink "kmonad input")
@@ -49,8 +50,10 @@
 )
 
 ;; basic layer with homerow mods
+;; number keys are disabled to encourage use of the `shift` layer,
+;; we'll see how that goes...
 (deflayer drew
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  grv  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   -    =    bspc
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    bksl
   @nve @hrA @hrS @hrD @hrF g    h    @hrJ @hrK @hrL @hr; '    ret
   @sft z    x    c    v    b    n    m    ,    .    /    @sft
@@ -72,10 +75,10 @@
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
   _    1    2    3    4    5    6    7    8    9    0    _    _    _
   _    _    [    {    @lp  _    _    @rp  }    ]    _    _    _    
-  _    _    _    _    _    _    _    _    _    _    _    _
+  lsft    _    _    _    _    _    _    _    _    _    _    rsft
   _    _    _              _                   _    _    _
 )
-(defalias sft (around-next (layer-toggle shift-tap)))
+(defalias sft (layer-toggle shift-tap))
 
 (defalias lp \()
 (defalias rp \))
