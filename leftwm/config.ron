@@ -56,7 +56,7 @@
     auto_derive_workspaces: true,
     keybind: [
         (command: Execute, value: "rofi -show drun", modifier: ["modkey"], key: "space"),
-        (command: Execute, value: "~/.config/rofi/powermenu.sh", modifier: ["modkey"], key: "Delete"),
+        (command: Execute, value: "~/.config/rofi/powermenu.sh", modifier: ["modkey"], key: "BackSpace"),
         (command: Execute, value: "alacritty", modifier: ["modkey", "Shift"], key: "Return"),
         (command: CloseWindow, value: "", modifier: ["modkey"], key: "q"),
         (command: SoftReload, value: "", modifier: ["modkey", "Shift"], key: "r"),
