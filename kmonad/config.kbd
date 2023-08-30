@@ -53,11 +53,11 @@
 ;; number keys are disabled to encourage use of the `shift` layer,
 ;; we'll see how that goes...
 (deflayer drew
-  grv  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   -    =    XX
-  tab  q    w    e    r    t    y    u    i    o    p    bspc XX    bksl
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX    XX
+  tab  q    w    e    r    t    y    u    i    o    p    bspc XX    XX
   @nve @hrA @hrS @hrD @hrF g    h    @hrJ @hrK @hrL @hr; '    ret
   @lsf z    x    c    v    b    n    m    ,    .    /    @rsf
-  lctl lalt lmet           spc                 rmet lalt lctl
+  lctl lalt @und           spc                 @eq lalt lctl
 )
 
 ;; navigation with h/j/k/l
@@ -81,20 +81,21 @@
 (deflayer homerow-braces
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    [    {    @lp  _    _    @rp  }    ]    @und _    _    
+  _    grv  [    {    @lp  @min @pls @rp  }    ]    @und bksl _    
   _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _              _                   _    _    _
 )
 
-;; I might want to switch these...
 ;; left shift => enable numbers and HR braces
 (defalias lsf (around (layer-toggle nums) (layer-toggle homerow-braces)))
+
 ;; right shift => enable symbols and HR braces
 (defalias rsf (around (around lsft (layer-toggle nums)) (layer-toggle homerow-braces)))
 
 ;; since character definitions
 (defalias pls (around lsft =))
 (defalias min -)
+(defalias eq =)
 (defalias und (around lsft -))
 (defalias lp \()
 (defalias rp \))
