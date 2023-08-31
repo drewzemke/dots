@@ -57,7 +57,7 @@
   tab  q    w    e    r    t    y    u    i    o    p    bspc XX    XX
   @nve @hrA @hrS @hrD @hrF g    h    @hrJ @hrK @hrL @hr; '    ret
   @lsf z    x    c    v    b    n    m    ,    .    /    @rsf
-  lctl lalt @und           spc                 @eq lalt lctl
+  lctl @ccp @und           spc                 @eq lalt lctl
 )
 
 ;; navigation with h/j/k/l
@@ -68,6 +68,7 @@
   _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _              _                   _    _    _
 )
+
 ;; numbers on top letter row
 (deflayer nums
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
@@ -86,11 +87,37 @@
   _    _    _              _                   _    _    _
 )
 
+;; cut, copy, and paste easily with one hand
+(deflayer cut-copy-paste
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    
+  _    _    @cut @cpy @pst _    _    _    _    _    _    _
+  _    _    _              _                   _    _    _
+)
+
 ;; left shift => enable numbers and HR braces
 (defalias lsf (around (layer-toggle nums) (layer-toggle homerow-braces)))
 
 ;; right shift => enable symbols and HR braces
 (defalias rsf (around (around lsft (layer-toggle nums)) (layer-toggle homerow-braces)))
+
+;; left alt => cut copy paste layer
+(defalias ccp (layer-toggle cut-copy-paste))
+
+;; alias for which modifier keys are associated with cut/copy/paste, for cross-platform reasons
+;; {{#if dotter.packages.arch}}
+(defalias lmk lctl)
+(defalias rmk rctl)
+;; {{/if}}
+;; {{#if dotter.packages.mac}}
+(defalias lmk lmet)
+(defalias rmk rmet)
+;; {{/if}}
+
+(defalias cut (around @lmk x))
+(defalias cpy (around @lmk c))
+(defalias pst (around @lmk v))
 
 ;; since character definitions
 (defalias pls (around lsft =))
