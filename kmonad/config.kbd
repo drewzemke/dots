@@ -57,7 +57,7 @@
   tab  q    w    e    r    t    y    u    i    o    p    bspc XX    XX
   @nve @hrA @hrS @hrD @hrF g    h    @hrJ @hrK @hrL @hr; '    ret
   @lsf z    x    c    v    b    n    m    ,    .    /    @rsf
-  lctl @ccp @und           spc                 @eq lalt lctl
+  lctl @ccp @min           spc                 @eq lalt lctl
 )
 
 ;; navigation with h/j/k/l
@@ -82,7 +82,7 @@
 (deflayer homerow-braces
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    grv  [    {    @lp  @min @pls @rp  }    ]    @und bksl _    
+  _    grv  [    {    @lp  _    _    @rp  }    ]    @und bksl _    
   _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _              _                   _    _    _
 )
