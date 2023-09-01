@@ -882,7 +882,7 @@ key_bindings:
   #- { key: W,              mods: Command,                    action: Quit                  }
   #- { key: N,              mods: Command,                    action: CreateNewWindow       }
   #- { key: F,              mods: Command|Control,            action: ToggleFullscreen      }
-  #- { key: F,              mods: Command, mode: ~Search,     action: SearchForward         }
+  - { key: F,              mods: Command, mode: ~Search,     action: ReceiveChar         }
   - { key: M,              mods: Command|Control|alt,        action: ToggleMaximized }
   #- { key: B,              mods: Command, mode: ~Search,     action: SearchBackward        }
 
