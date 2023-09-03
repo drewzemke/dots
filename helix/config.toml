@@ -7,7 +7,7 @@ color-modes = true
 cursorline = true
 idle-timeout = 200
 true-color = true
-shell = ["fish", "-c"]
+# shell = ["fish", "-c"]
 
 [editor.cursor-shape]
 insert="bar"
