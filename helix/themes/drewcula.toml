@@ -5,18 +5,19 @@ inherits = "dracula_at_night"
 "variable.other" = { fg = "orange" }
 "variable.other.member" = { fg = "foreground" }
 
-# "function.method" = { fg = "orange" }
 "constructor" = { fg = "pink" }
+
+"comment" = { fg = "comment", modifiers = ["italic"] }
 
 "diagnostic.error" = { bg = "background_red" }
 "diagnostic.warning" = { bg = "background_orange" }
 "diagnostic.info" = { fg = "yellow", modifiers = ["underlined"] }
 "diagnostic.hint" = { bg = "background_orange" }
 
-"info" = "cyan"
-"hint" = "cyan"
-"warning" = "orange"
-"error" = "red"
+"info" = { fg = "cyan", modifiers = ["bold"] }
+"hint" = { fg = "cyan", modifiers = ["bold"] }
+"warning" = { fg = "orange", modifiers = ["bold"] }
+"error" = { fg = "red", modifiers = ["bold"] }
 
 "markup.raw.inline" = { fg = "green" }
 
