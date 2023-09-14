@@ -4,7 +4,7 @@ auto-format = true
 
 [language-server.rust-analyzer.config]
 checkOnSave = { command = "clippy" }
-diagnostics = { experimental = { enable = true } }
+diagnostics = { enable = true, experimental = { enable = true } }
 
 [language-server.yaml-language-server.config.yaml]
 format = { enable = true }
