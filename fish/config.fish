@@ -40,6 +40,7 @@ abbr -a -- gp   'git pull'
 abbr -a -- gP   'git push'
 abbr -a -- gri  'git rebase --interactive'
 abbr -a -- grc  'git rebase --continue'
+abbr -a -- gco   'git checkout'
 
 # jest abbreviations
 abbr -a -- jw   'jest --watchAll --testPathPattern'
