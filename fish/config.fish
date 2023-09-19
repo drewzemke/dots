@@ -54,6 +54,9 @@ abbr -a -- cbr  'cargo build --release'
 abbr -a -- ct   'cargo test'
 abbr -a -- cr   'cargo run'
 
+# training my self to use `rip` instead of `rm`
+abbr -a -- rm   'echo Nope, use `rip` instead.'
+
 {{#if dotter.packages.work}}
 source /Users/drewzee/.docker/init-fish.sh || true # Added by Docker Desktop
 {{/if}}
