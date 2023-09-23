@@ -43,7 +43,7 @@ abbr -a -- grc  'git rebase --continue'
 abbr -a -- gco   'git checkout'
 
 # jest abbreviations
-abbr -a -- jw   'jest --watchAll --testPathPattern'
+abbr -a -- jw   'pnpm jest --watchAll --testPathPattern'
 
 # zellij abbreviations
 abbr -a -- zdev 'zellij action new-tab --layout dev'
