@@ -15,7 +15,7 @@ normal="block"
 
 [editor.statusline]
 left = ["mode", "spinner", "version-control", "file-name"]
-right = ["selections", "position", "separator", "spacer", "diagnostics", "workspace-diagnostics", "version-control"]
+right = ["selections", "position", "separator", "spacer", "diagnostics", "workspace-diagnostics"]
 
 [editor.auto-pairs]
 '(' = ')'
