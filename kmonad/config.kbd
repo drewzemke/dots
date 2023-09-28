@@ -53,11 +53,11 @@
 ;; number keys are disabled to encourage use of the `shift` layer,
 ;; we'll see how that goes...
 (deflayer drew
-  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX    XX
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX    bspc
   tab  q    w    e    r    t    y    u    i    o    p    bspc XX    XX
   @nve @hrA @hrS @hrD @hrF g    h    @hrJ @hrK @hrL @hr; '    ret
   @lsf z    x    c    v    b    n    m    ,    .    /    @rsf
-  lctl @lmk @min           spc                 @eq lalt lctl
+  lctl @lmk @min           spc                 @eq @rop lctl
 )
 
 ;; navigation with h/j/k/l
@@ -110,6 +110,9 @@
 
 ;; right shift => enable symbols and HR braces
 (defalias rsf (around (layer-toggle shift-nums) (layer-toggle homerow-braces-right)))
+
+;; left option => command and shift and enable number layer
+(defalias rop (around rmet (layer-toggle nums)))
 
 ;; alias for which modifier keys are associated with cut/copy/paste/etc, for cross-platform reasons
 ;; {{#if dotter.packages.arch}}
