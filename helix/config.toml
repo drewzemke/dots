@@ -78,3 +78,6 @@ e = ":run-shell-command zellij run -fc -- broot"
 b = ":run-shell-command zellij run -f -- just build"
 r = ":run-shell-command zellij run -f -- just run"
 t = ":run-shell-command zellij run -f -- just test"
+
+[keys.normal.g]
+D = ["vsplit", "goto_definition"]
