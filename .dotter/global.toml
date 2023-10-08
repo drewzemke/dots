@@ -5,8 +5,9 @@
 broot = "~/.config/broot"
 fish = "~/.config/fish"
 gitui = "~/.config/gitui"
-kmonad = "~/.config/kmonad"
 helix = "~/.config/helix"
+kmonad = "~/.config/kmonad"
+wezterm = "~/.config/wezterm"
 zellij = "~/.config/zellij"
 "zellij/plugins/monocle.wasm" = { target = "~/.config/zellij/plugins/monocle.wasm", type = "symbolic" }
 "git/gitconfig" = "~/.gitconfig"
