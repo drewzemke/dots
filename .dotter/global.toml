@@ -6,6 +6,7 @@ broot = "~/.config/broot"
 fish = "~/.config/fish"
 gitui = "~/.config/gitui"
 helix = "~/.config/helix"
+"config/helix-ignore" = "~/.config/.ignore"
 kmonad = "~/.config/kmonad"
 wezterm = "~/.config/wezterm"
 zellij = "~/.config/zellij"
@@ -29,7 +30,7 @@ xorg = "~"
 
 # alacritty
 [alacritty.files]
-"alacritty/themes"= "~/.config/alacritty/themes"
+"alacritty/themes" = "~/.config/alacritty/themes"
 
 # work only 
 [work.files]
