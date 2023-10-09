@@ -59,6 +59,7 @@ config.keys = {
 
 -- transparent bg 
 config.window_background_opacity = 0.92
+config.macos_window_background_blur = 15
 
 -- pump that framerate babyyy
 config.max_fps = 144
