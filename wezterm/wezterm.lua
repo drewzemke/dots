@@ -54,7 +54,22 @@ config.keys = {
     action = wezterm.action.SendKey { key = 'ϵ' }
   },
 
-  -- TODO: turn off some things (at least for mac)
+  -- turn off some keybindings for mac
+  {
+    key = 'f',
+    mods = 'CMD',
+    action = wezterm.action.DisableDefaultAssignment,
+  },
+  {
+    key = 'q',
+    mods = 'CMD',
+    action = wezterm.action.DisableDefaultAssignment,
+  },
+  {
+    key = 'w',
+    mods = 'CMD',
+    action = wezterm.action.DisableDefaultAssignment,
+  },
 }
 
 -- transparent bg 
