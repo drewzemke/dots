@@ -53,24 +53,10 @@ config.keys = {
     mods = 'CMD|CTRL',
     action = wezterm.action.SendKey { key = 'ϵ' }
   },
-
-  -- turn off some keybindings for mac
-  {
-    key = 'f',
-    mods = 'CMD',
-    action = wezterm.action.DisableDefaultAssignment,
-  },
-  {
-    key = 'q',
-    mods = 'CMD',
-    action = wezterm.action.DisableDefaultAssignment,
-  },
-  {
-    key = 'w',
-    mods = 'CMD',
-    action = wezterm.action.DisableDefaultAssignment,
-  },
 }
+
+config.disable_default_key_bindings = true
+
 
 -- transparent bg 
 config.window_background_opacity = 0.92
