@@ -71,6 +71,7 @@ language-servers = [ "vscode-css-language-server"]
 [[language]]
 name = "graphql"
 language-servers = [ "graphql" ]
+comment-token = "#"
 
 [language-server.graphql]
 command = "graphql-lsp"
