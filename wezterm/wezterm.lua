@@ -25,34 +25,41 @@ config.hide_tab_bar_if_only_one_tab = true
 config.window_decorations = 'RESIZE'
 
 -- keybindings
+local act = wezterm.action
 config.keys = {
 
   -- zellij pane movement rebindings
   {
     key = 'h',
     mods = 'CMD|CTRL',
-    action = wezterm.action.SendKey { key = 'α' }
+    action = act.SendKey { key = 'α' }
   },
   {
     key = 'j',
     mods = 'CMD|CTRL',
-    action = wezterm.action.SendKey { key = 'β' }
+    action = act.SendKey { key = 'β' }
   },
   {
     key = 'k',
     mods = 'CMD|CTRL',
-    action = wezterm.action.SendKey { key = 'γ' }
+    action = act.SendKey { key = 'γ' }
   },
   {
     key = 'l',
     mods = 'CMD|CTRL',
-    action = wezterm.action.SendKey { key = 'δ' }
+    action = act.SendKey { key = 'δ' }
   },
   {
     key = '\'',
     mods = 'CMD|CTRL',
-    action = wezterm.action.SendKey { key = 'ϵ' }
+    action = act.SendKey { key = 'ϵ' }
   },
+
+  {
+    key = 'v',
+    mods = 'CMD',
+    action = act.PasteFrom 'Clipboard'
+  }
 }
 
 config.disable_default_key_bindings = true
