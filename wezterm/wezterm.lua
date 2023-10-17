@@ -59,7 +59,17 @@ config.keys = {
     key = 'v',
     mods = 'CMD',
     action = act.PasteFrom 'Clipboard'
-  }
+  },
+  {
+    key = '-',
+    mods = 'CMD',
+    action = act.DecreaseFontSize
+  },
+  {
+    key = '=',
+    mods = 'CMD',
+    action = act.IncreaseFontSize
+  },
 }
 
 config.disable_default_key_bindings = true
