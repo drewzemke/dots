@@ -66,6 +66,7 @@ H = "goto_previous_buffer"
 [keys.normal.space]
 L = ":lsp-restart"
 C-r = ":reload-all" 
+C-f = ["search_selection", "global_search"]
 
 [keys.normal.space.t]
 g = ":toggle file-picker.git-ignore"
