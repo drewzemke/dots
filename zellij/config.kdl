@@ -166,7 +166,6 @@ keybinds clear-defaults=true {
         }
     }
     shared_except "locked" {
-        bind "Ctrl b" { SwitchToMode "Locked"; }
         // bind "Ctrl q" { Detach; }
         // bind "Alt n" { NewPane; }
 
