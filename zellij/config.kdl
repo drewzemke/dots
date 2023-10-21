@@ -234,11 +234,6 @@ plugins {
 //
 // simplified_ui true
 
-// Choose the path to the default shell that zellij will use for opening new panes
-// Default: $SHELL
-//
-// default_shell "fish"
-
 // Toggle between having pane frames around the panes
 // Options:
 //   - true (default)
@@ -261,11 +256,6 @@ theme "dracula"
 //
 default_layout "default"
 
-// Choose the mode that zellij uses when starting up.
-// Default: normal
-//
-// default_mode "locked"
-
 // Toggle enabling the mouse mode.
 // On certain configurations, or terminals this could
 // potentially interfere with copying text.
@@ -283,34 +273,11 @@ default_layout "default"
 //
 // scroll_buffer_size 10000
 
-// Provide a command to execute when copying text. The text will be piped to
-// the stdin of the program to perform the copy. This can be used with
-// terminal emulators which do not support the OSC 52 ANSI control sequence
-// that will be used by default if this option is not set.
-// Examples:
-//
-// copy_command "xclip -selection clipboard" // x11
-// copy_command "wl-copy"                    // wayland
-// copy_command "pbcopy"                     // osx
-
-// Choose the destination for copied text
-// Allows using the primary selection buffer (on x11/wayland) instead of the system clipboard.
-// Does not apply when using copy_command.
-// Options:
-//   - system (default)
-//   - primary
-//
-// copy_clipboard "primary"
-
 // Enable or disable automatic copy (and clear) of selection when releasing mouse
 // Default: true
 //
 // copy_on_select false
 
-// Path to the default editor to use to edit pane scrollbuffer
-// Default: $EDITOR or $VISUAL
-//
-// scrollback_editor "/usr/bin/vim"
 
 // When attaching to an existing session with other users,
 // should the session be mirrored (true)
@@ -319,10 +286,10 @@ default_layout "default"
 //
 // mirror_session true
 
-// The folder in which Zellij will look for layouts
-//
-// layout_dir "/path/to/my/layout_dir"
-
-// The folder in which Zellij will look for themes
-//
-// theme_dir "/path/to/my/theme_dir"
+// stop showing the session name 
+ui {
+    pane_frames {
+        hide_session_name true 
+        rounded_corners true
+    }
+}
