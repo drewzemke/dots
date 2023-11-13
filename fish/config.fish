@@ -32,6 +32,7 @@ abbr -a -- hx   {{editor}};
 # git abbreviations
 abbr -a -- g    'git'
 abbr -a -- gs   'git status'
+abbr -a -- gss  'git status -s'
 abbr -a -- gl   'git lg'
 abbr -a -- ga   'git add'
 abbr -a -- gad  'git add .'
@@ -42,7 +43,8 @@ abbr -a -- gp   'git pull'
 abbr -a -- gP   'git push'
 abbr -a -- gri  'git rebase --interactive'
 abbr -a -- grc  'git rebase --continue'
-abbr -a -- gco   'git checkout'
+abbr -a -- gra  'git rebase --abort'
+abbr -a -- gco  'git checkout'
 
 # jest abbreviations
 abbr -a -- jw   'pnpm jest --watchAll --testPathPattern'
