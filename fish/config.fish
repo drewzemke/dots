@@ -2,7 +2,9 @@
 
 # path setup
 fish_add_path -p /usr/local/sbin /usr/local/bin /usr/bin ~/.cargo/bin
-{{#if dotter.packages.mac}}fish_add_path -p /opt/homebrew/bin{{/if}};
+# {{#if dotter.packages.mac}}
+fish_add_path -p /opt/homebrew/bin
+# {{/if}};
 
 # set env variable for XDG_CONFIG_HOME
 set -gx XDG_CONFIG_HOME ~/.config/
@@ -57,9 +59,13 @@ abbr -a -- cr   'cargo run'
 # training my self to use `rip` instead of `rm`
 abbr -a -- rm   'echo Nope, use `rip` instead.'
 
-{{#if dotter.packages.work}}
+# {{#if dotter.packages.work}}
 source /Users/drewzee/.docker/init-fish.sh || true # Added by Docker Desktop
-{{/if}}
-{{#if dotter.packages.arch}}
+
+ # set url for the `borat` cli
+set -gx BORAT_URL "http://172.16.4.100";
+# {{/if}}
+
+# {{#if dotter.packages.arch}}
 source ~/.xprofile
-{{/if}}
+# {{/if}}
