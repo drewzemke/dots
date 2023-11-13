@@ -6,6 +6,7 @@
 [core]
 	editor = {{editor}}
 	excludesFile = .git/.user_gitignore
+	pager = delta
 [pull]
 	rebase = true
 [push]
