@@ -82,6 +82,8 @@ config.macos_window_background_blur = 15
 -- pump that framerate babyyy
 config.max_fps = 144
 
+-- yes I just want to quit, thank you
+config.window_close_confirmation = "NeverPrompt"
 
 -- and finally, return the configuration to wezterm
 return config
