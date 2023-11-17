@@ -31,8 +31,8 @@ abbr -a -- hx   {{editor}};
 
 # git abbreviations
 abbr -a -- g    'git'
-abbr -a -- gs   'git status'
-abbr -a -- gss  'git status -s'
+abbr -a -- gs   'git status -s'
+abbr -a -- gsv  'git status'
 abbr -a -- gl   'git lg'
 abbr -a -- ga   'git add'
 abbr -a -- gad  'git add .'
