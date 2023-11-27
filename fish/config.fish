@@ -1,7 +1,7 @@
 # CAREFUL! Make sure you're editing this file '.dots', not in its usual folder
 
 # path setup
-fish_add_path -p /usr/local/sbin /usr/local/bin /usr/bin ~/.cargo/bin
+fish_add_path -p /usr/local/sbin /usr/local/bin /usr/bin ~/.cargo/bin ~/go/bin
 # {{#if dotter.packages.mac}}
 fish_add_path -p /opt/homebrew/bin
 # {{/if}};
@@ -64,7 +64,7 @@ abbr -a -- rm   'echo Nope, use `rip` instead.'
 # {{#if dotter.packages.work}}
 source /Users/drewzee/.docker/init-fish.sh || true # Added by Docker Desktop
 
- # set url for the `borat` cli
+# set url for the `borat` cli
 set -gx BORAT_URL "http://172.16.4.100";
 # {{/if}}
 
