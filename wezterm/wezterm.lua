@@ -77,6 +77,12 @@ config.keys = {
     mods = 'CMD',
     action = act.IncreaseFontSize
   },
+
+  {
+    key = 'm',
+    mods = 'CMD|CTRL|ALT',
+    action = act.ToggleFullScreen
+  },
 }
 
 config.disable_default_key_bindings = true
