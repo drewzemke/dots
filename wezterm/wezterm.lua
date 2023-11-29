@@ -1,7 +1,14 @@
 -- Pull in the wezterm API
 local wezterm = require 'wezterm'
 
--- This table will hold the configuration.
+-- Open maximized
+wezterm.on("gui-startup", function(cmd)
+	local tab, pane, window = wezterm.mux.spawn_window(cmd or {})
+	window:gui_window():maximize()
+end)
+
+
+-- This table will hold the rest of the configuration.
 local config = {}
 
 -- In newer versions of wezterm, use the config_builder which will
