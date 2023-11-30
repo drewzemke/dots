@@ -67,6 +67,8 @@ H = "goto_previous_buffer"
 tab = "smart_tab"
 
 [keys.normal.space]
+F = "file_picker"
+f = "file_picker_in_current_directory"
 L = ":lsp-restart"
 C-r = ":reload-all" 
 C-f = ["search_selection", "global_search"]
