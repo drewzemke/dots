@@ -25,6 +25,9 @@ config.color_scheme = 'Dracula'
 config.font_size = 10.0
 config.cell_width = 1.0 -- this is the default; bump up to 1.1?
 
+-- anti-aliasing config: seems better on work displays but not sure about in general
+config.freetype_load_target = 'HorizontalLcd'
+
 -- hide the tab bar
 config.hide_tab_bar_if_only_one_tab = true
 
