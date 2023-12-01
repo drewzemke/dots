@@ -47,7 +47,7 @@ configuration {
     background-color:               @transparent;
     padding:                        0px;
     columns:                        1;
-    lines:                          5;
+    lines:                          3;
     spacing:                        5px;
     cycle:                          true;
     dynamic:                        true;

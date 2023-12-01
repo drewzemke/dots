@@ -12,7 +12,7 @@ suspend="Suspend"
 logout="Logout"
 
 # Variable passed to rofi
-options="$lock\n$suspend\n$logout\n$reboot\n$shutdown"
+options="$suspend\n$reboot\n$shutdown"
 
 chosen="$(echo -e "$options" | $rofi_command -dmenu -selected-row 0)"
 case $chosen in
