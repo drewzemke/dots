@@ -1,18 +1,33 @@
 [init]
 	defaultBranch = main
+
 [user]
 	email = {{email}}
 	name = Drew Zemke
+
 [core]
 	editor = {{editor}}
 	excludesFile = .git/.user_gitignore
 	pager = delta
+
+[delta]
+	side-by-side = true 
+    minus-emph-style = syntax "#874447"
+    minus-style = syntax "#44313b"
+    line-numbers-minus-style = "#874447"
+    plus-emph-style = syntax "#538e5c"
+    plus-style = syntax "#344840"
+    line-numbers-plus-style = "#538e5c"
+
 [pull]
 	rebase = true
+
 [push]
 	autoSetupRemote = true
+
 [rebase]
 	autoStash = true
+
 [alias]
     lg = log --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
     lgg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
