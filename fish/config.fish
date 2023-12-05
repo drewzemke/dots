@@ -1,7 +1,7 @@
 # CAREFUL! Make sure you're editing this file '.dots', not in its usual folder
 
 # path setup
-fish_add_path -p /usr/local/sbin /usr/local/bin /usr/bin ~/.cargo/bin ~/go/bin
+fish_add_path -p /usr/local/sbin /usr/local/bin /usr/bin ~/.cargo/bin ~/go/bin /usr/local/go/bin
 # {{#if dotter.packages.mac}}
 fish_add_path -p /opt/homebrew/bin
 # {{/if}};
