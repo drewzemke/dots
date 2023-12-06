@@ -35,8 +35,12 @@ name = "wgsl"
 auto-format = true
 
 [[language]]
+name = "markdown"
+language-servers = ["marksman"]
+
+[[language]]
 name = "typescript"
-language-servers = [  "typescript-language-server", "eslint"]
+language-servers = ["typescript-language-server", "eslint"]
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 auto-format = true
 
@@ -117,3 +121,7 @@ workingDirectory = { mode = "auto" }
 documentFormatting = false
 hostInfo = "helix"
 
+
+[language-server.cspell]
+command = "cspell-lsp"
+args = ["--stdio"]
