@@ -1,0 +1,9 @@
+# TS/JS
+**/dist
+node_modules
+
+# Rust
+target
+
+# generic
+.DS_Store

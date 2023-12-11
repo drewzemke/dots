@@ -17,6 +17,11 @@ normal="block"
 left = ["mode", "spinner", "version-control", "file-name"]
 right = ["selections", "position", "separator", "spacer", "diagnostics", "workspace-diagnostics"]
 
+
+[editor.file-picker]
+hidden = false
+git-ignore = false
+
 [editor.auto-pairs]
 '(' = ')'
 '{' = '}'
