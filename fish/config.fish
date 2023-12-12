@@ -45,6 +45,7 @@ abbr -a -- gri  'git rebase --interactive'
 abbr -a -- grc  'git rebase --continue'
 abbr -a -- gra  'git rebase --abort'
 abbr -a -- gco  'git checkout'
+abbr -a -- g..  'git checkout -'
 
 # jest abbreviations
 abbr -a -- jw   'pnpm jest --watchAll --testPathPattern'
