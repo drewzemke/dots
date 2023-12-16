@@ -46,7 +46,7 @@
     hrJ (tap-hold-next-release 200 j rctl)
     hrK (tap-hold-next-release 200 k rmet)
     hrL (tap-hold-next-release 200 l rsft)
-    hr; (tap-hold-next-release 200 ; ralt)
+    hr; (tap-hold-next-release 200 ; lalt)
 )
 
 ;; basic layer with homerow mods
