@@ -82,6 +82,7 @@ C-f = ["search_selection", "global_search"]
 g = ":toggle file-picker.git-ignore"
 h = ":toggle file-picker.hidden"
 i = ":toggle lsp.display-inlay-hints"
+w = ":toggle soft-wrap.enable"
 
 [keys.normal.backspace]
 g = ":run-shell-command zellij run -fc -- gitui"
