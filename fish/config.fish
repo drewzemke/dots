@@ -25,6 +25,7 @@ alias      lsa  'exa -1 --color=auto --icons --group-directories-first -la'
 alias      lst  'exa -1 --color=auto --icons --group-directories-first -T --git-ignore'
 abbr -a -- cat  'bat'
 abbr -a -- rst  'source ~/.config/fish/config.fish'
+abbr -a -- z..  'z -'
 
 # helix abbreviations
 abbr -a -- hx   {{editor}};
