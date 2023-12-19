@@ -22,7 +22,11 @@ end
 config.color_scheme = 'Dracula'
 
 -- set font size and tracking
+-- {{#if dotter.packages.mac}}
+config.font_size = 14.0
+-- {{else}}
 config.font_size = 10.0
+-- {{/if}}
 config.cell_width = 1.0 -- this is the default; bump up to 1.1?
 
 -- anti-aliasing config: seems better on work displays but not sure about in general
