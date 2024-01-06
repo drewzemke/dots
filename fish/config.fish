@@ -62,7 +62,13 @@ abbr -a -- ct   'cargo test'
 abbr -a -- cr   'cargo run'
 
 # training my self to use `rip` instead of `rm`
-abbr -a -- rm   'echo Nope, use `rip` instead.'
+abbr -a -- rm   '"Nope, use `rip` instead."'
+
+# enable starting zellij with a keyboard shortcut.
+# loads a previous session if one is available,
+# otherwise just starts a new session
+# (only works outside of zellij, fortunately)
+bind \cz 'zellij a || zellij; commandline -f repaint'
 
 # {{#if dotter.packages.work}}
 source /Users/drewzee/.docker/init-fish.sh || true # Added by Docker Desktop
