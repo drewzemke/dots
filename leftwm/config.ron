@@ -25,21 +25,33 @@
     ],
     layouts: [
         "MainAndVertStack",
-        "LeftWiderRightStack",
+        "MainWider",
         "Monocle",
-        "CenterMain",
-        "GridHorizontal",
-        // "Fibonacci",
-        // "MainAndHorizontalStack",
-        // "MainAndDeck",
-        // "EvenHorizontal",
-        // "EvenVertical",
-        // "LeftMain",
-        // "CenterMainBalanced",
-        // "CenterMainFluid",
-        // "RightWiderLeftStack",
     ],
-    layout_mode: Tag,
+    layout_definitions: [
+        (name: "MainWider", 
+            flip: None, 
+            rotate: North, 
+            reserve: None, 
+            columns: (
+                flip: None, 
+                rotate: North, 
+                main: (
+                    count: 1, 
+                    size: 0.7,
+                    flip: None,
+                    rotate: North,
+                    split: None
+                ),
+                stack: (
+                    flip: None,
+                    rotate: North,
+                    split: Horizontal
+                ),
+                second_stack: None
+            )
+        ), 
+    ],   
     insert_behavior: Bottom,
     scratchpad: [
         (name: "Alacritty", value: "alacritty", x: 860, y: 390, height: 300, width: 200),
