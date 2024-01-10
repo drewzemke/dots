@@ -56,8 +56,8 @@
   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX    bspc
   tab  q    w    e    r    t    y    u    i    o    p    bspc XX    XX
   @nve @hrA @hrS @hrD @hrF g    h    @hrJ @hrK @hrL @hr; '    ret
-  @lsf z    x    c    v    b    n    m    ,    .    /    @rsf
-  lctl @lmk @min           spc                 @eq @rop lctl
+  @min z    x    c    v    b    n    m    ,    .    /    @eq
+  lctl @lmk @lsf           spc                 @rsf @rop lctl
 )
 
 ;; navigation with h/j/k/l
