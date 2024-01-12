@@ -1,33 +1,26 @@
 # Based on the 'dracula_at_night' theme, which is in turn based on classic 'dracula'
 inherits = "dracula_at_night"
 
-"variable" = { fg = "purple" }
-"variable.other" = { fg = "orange" }
-"variable.other.member" = { fg = "foreground" }
-
-"constructor" = { fg = "pink" }
-
-"comment" = { fg = "comment", modifiers = ["italic"] }
-
-"diagnostic.info" = { underline = { style = "curl", color = "cyan" } }
-"diagnostic.hint" = { underline = { style = "curl", color = "cyan" } }
-"diagnostic.warning" = { underline = { style = "curl", color = "orange" } }
-"diagnostic.error" = { underline = { style = "curl", color = "red" } }
-
-"info" = { fg = "cyan", modifiers = ["bold"] }
-"hint" = { fg = "cyan", modifiers = ["bold"] }
-"warning" = { fg = "orange", modifiers = ["bold"] }
-"error" = { fg = "red", modifiers = ["bold"] }
-
-"markup.raw.inline" = { fg = "green" }
-
-"ui.selection.primary" = { bg = "selection" }
-"ui.selection" = { bg = "selection" }
-
-"ui.linenr.selected" = { fg = "foreground", modifiers = ["bold"]}
-
-"ui.virtual.inlay-hint" = { fg = "comment", bg = "background" }
-"ui.virtual.indent-guide" = { fg = "comment" }
+"comment"                   = { fg = "comment",                            modifiers = ["italic"]                           }
+"constructor"               = { fg = "pink"                                                                                 }
+"diagnostic.error"          = {                                            underline = { style = "curl", color = "red" }    }
+"diagnostic.hint"           = {                                            underline = { style = "curl", color = "cyan" }   }
+"diagnostic.info"           = {                                            underline = { style = "curl", color = "cyan" }   }
+"diagnostic.warning"        = {                                            underline = { style = "curl", color = "orange" } }
+"error"                     = { fg = "red",                                modifiers = ["bold"]                             }
+"hint"                      = { fg = "cyan",                               modifiers = ["bold"]                             }
+"info"                      = { fg = "cyan",                               modifiers = ["bold"]                             }
+"markup.raw.inline"         = { fg = "green"                                                                                }
+"special"                   = { fg = "pink"                                                                                 }
+"ui.linenr.selected"        = { fg = "foreground",                         modifiers = ["bold"]                             }
+"ui.selection"              = { bg = "selection"                                                                            }
+"ui.selection.primary"      = { bg = "selection"                                                                            }
+"ui.virtual.indent-guide"   = { fg = "comment"                                                                              }
+"ui.virtual.inlay-hint"     = { fg = "comment",       bg = "background"                                                     }
+"variable"                  = { fg = "purple"                                                                               }
+"variable.other"            = { fg = "orange"                                                                               }
+"variable.other.member"     = { fg = "foreground"                                                                           }
+"warning"                   = { fg = "orange",                             modifiers = ["bold"]                             }
 
 [palette]
 # background = "#0e1419"
