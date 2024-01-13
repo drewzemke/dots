@@ -21,6 +21,15 @@ verbs: [
         leave_broot: false
     }
 
+    # Remove a file using `rip`
+    {
+        name: rip
+        invocation: rip
+        apply_to: file
+        execution: "rip {file}"
+        leave_broot: false
+    }
+
     # A standard recommended command for editing files, that you
     # can customize.
     {
@@ -50,6 +59,13 @@ verbs: [
     {
         key: ctrl-l
         internal: ":panel_right"
+        leave_broot: false
+    }
+
+    # Rebind stage to '=' instead of '+'
+    {
+        key: =
+        internal: ":stage"
         leave_broot: false
     }
 
