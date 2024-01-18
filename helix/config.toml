@@ -95,4 +95,4 @@ r = ":run-shell-command zellij run -f -- just run"
 t = ":run-shell-command zellij run -f -- just test"
 
 [keys.normal.g]
-D = ["vsplit", "goto_definition"]
+D = ["wonly", "vsplit", "goto_definition"]
