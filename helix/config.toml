@@ -70,6 +70,9 @@ H = "goto_previous_buffer"
 
 # smart tab
 tab = "smart_tab"
+        
+# chat gpt!
+C-e = ":pipe ~/.config/fish/functions/chat-gpt-code-helper.fish"
 
 [keys.normal.space]
 F = "file_picker"
