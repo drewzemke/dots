@@ -69,6 +69,7 @@
         (command: Execute, value: "rofi -show drun", modifier: ["modkey"], key: "space"),
         (command: Execute, value: "~/.config/rofi/powermenu.sh", modifier: ["modkey"], key: "BackSpace"),
         (command: Execute, value: "wezterm", modifier: ["modkey", "Shift"], key: "Return"),
+        (command: Execute, value: "firefox", modifier: ["modkey", "Shift"], key: "space"),
         (command: CloseWindow, value: "", modifier: ["modkey"], key: "q"),
         (command: SoftReload, value: "", modifier: ["modkey", "Shift"], key: "r"),
         (command: Execute, value: "loginctl kill-session $XDG_SESSION_ID", modifier: ["modkey", "Shift"], key: "x"),
