@@ -72,7 +72,7 @@ H = "goto_previous_buffer"
 tab = "smart_tab"
         
 # chat gpt!
-C-e = ":pipe ~/.config/fish/functions/chat-gpt-code-helper.fish"
+C-e = ":pipe ~/.config/fish/scripts/chat-gpt-code-helper.fish"
 
 [keys.normal.space]
 F = "file_picker"
@@ -93,6 +93,7 @@ e = ":run-shell-command zellij run -fc -- broot"
 b = ":run-shell-command zellij run -f -- just build"
 r = ":run-shell-command zellij run -f -- just run"
 t = ":run-shell-command zellij run -f -- just test"
+s = ":run-shell-command ~/.config/fish/scripts/hx-open-spec-file.fish"
 
 [keys.normal.g]
 D = ["wonly", "vsplit", "goto_definition"]
