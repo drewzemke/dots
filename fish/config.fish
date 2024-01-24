@@ -75,9 +75,6 @@ source /Users/drewzee/.docker/init-fish.sh || true # Added by Docker Desktop
 
 # initiate fnm (used to manage node installs)
 fnm env | source
-
-# set url for the `borat` cli
-set -gx BORAT_URL "http://172.16.4.100";
 # {{/if}}
 
 # {{#if dotter.packages.arch}}
