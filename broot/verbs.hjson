@@ -48,6 +48,24 @@ verbs: [
         leave_broot: false
     }
 
+    # Open a file in a zellij pane to the right of the current one
+    {
+        invocation: edit
+        key: Right
+        apply_to: file
+        execution: "~/.config/fish/scripts/br-open-in-hx-right.fish {file}"
+        leave_broot: false
+    }
+
+    # Open file in the pane underneath this one (assuming this is in a floating pane)
+    {
+        invocation: edit
+        key: alt-Enter
+        apply_to: file
+        execution: "~/.config/fish/scripts/br-open-in-hx-under.fish {file}"
+        leave_broot: false
+    }
+
     # Move between panels with vim-like bindings
     {
         key: ctrl-h
