@@ -16,7 +16,8 @@ sleep 0.2
 # TODO: if there's already `.spec` in the name, remove it
 set new_filename (pbpaste | sed -r 's/\.([^\.]*)$/.spec.\1/g')
 
-# open the new file
+# open the new file in a new window split
+zellij action write-chars " wo wv"
 zellij action write-chars ":open $new_filename"
 zellij action write 13 # enter key  
 
