@@ -1,18 +1,7 @@
-#|
-This minimal config changes Caps Lock to act as Caps Lock on quick tap, but
-if held, it will act as Left Ctrl. It also changes the backtick/grave key to
-act as backtick/grave on quick tap, but change ijkl keys to arrow keys on hold.
-
-This text between the two pipe+octothorpe sequences is a multi-line comment.
-|#
-
-;; Text after double-semicolons are single-line comments.
-
-#|
-One defcfg entry may be added, which is used for configuration key-pairs. These
-configurations change kanata's behaviour at a more global level than the other
-configuration entries.
-|#
+#| --------------------------------------------------------------------------
+                           DREW'S KANATA CONFIG
+  (note! this make sure you're editing the version of this file in '.dots'!)
+  -------------------------------------------------------------------------- |#
 
 (defcfg
   #|
@@ -27,23 +16,120 @@ configuration entries.
 )
 
 (defsrc
-  caps          
-              h    j    k    l  
-  lsft rsft
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    bksl
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lalt lmet           spc            rmet ralt rctl
 )
 
-(deflayer default
-  @cap         
-              _    _    _    _
-  _    _
-)
-
-(deflayer arrows
-  _               
-              left down up rght
-  _    _
-)
-
+;; escape when tapped, control when held
 (defalias
-  cap (tap-hold-press 200 200 esc (layer-toggle arrows))
+  nve (tap-hold 200 200 esc (layer-toggle nav))
 )
+
+;; home row mods
+(defalias
+    hrA (tap-hold-press 200 200 a lalt)
+    hrS (tap-hold-press 200 200 s lsft)
+    hrD (tap-hold-press 200 200 d lmet)
+    hrF (tap-hold-press 200 200 f lctl)
+    hrJ (tap-hold-press 200 200 j rctl)
+    hrK (tap-hold-press 200 200 k rmet)
+    hrL (tap-hold-press 200 200 l rsft)
+    hr; (tap-hold-press 200 200 ; lalt)
+)
+
+ ;; basic layer with homerow mods
+;; number keys are disabled to encourage use of the `shift` layer,
+;; we'll see how that goes...
+(deflayer drew
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    bspc XX    XX
+  @nve @hrA @hrS @hrD @hrF g    h    @hrJ @hrK @hrL @hr; '    ret
+  @min z    x    c    v    b    n    m    ,    .    /    @eq
+  lctl @lmk @lsf           spc                 @rsf @rop lctl
+)
+
+;; navigation with h/j/k/l
+(deflayer nav
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  @nve _    _    _    _    _    left down up   rght _    _    _    
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _              _                   _    _    _
+)
+
+;; numbers on top letter row
+(deflayer nums
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    1    2    3    4    5    6    7    8    9    0    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _              _                   _    _    _
+)
+
+;; shift+num symbols
+(deflayer shift-nums
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    @exc @at  @hsh @dlr @pct @crt @amp @ast _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _              _                   _    _    _
+)
+
+;; braces on homerow (left shift)
+(deflayer homerow-braces-left 
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    1    2    3    4    5    6    7    8    9    0    _    _    _
+  _    grv  [    {    @lp  _    _    @rp  }    ]    @bar bksl _    
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _              _                   _    _    _
+)
+
+;; braces on homerow (right shift)
+(deflayer homerow-braces-right
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    @exc @at  @hsh @dlr @pct @crt @amp @ast _    _    _    _    _
+  _    @tld [    {    @lp  _    _    @rp  }    ]    @bar bksl _    
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _              _                   _    _    _
+)
+
+;; left shift => enable numbers and HR braces
+(defalias lsf (multi (layer-toggle nums) (layer-toggle homerow-braces-left)))
+
+;; right shift => enable symbols and HR braces
+(defalias rsf (multi (layer-toggle shift-nums) (layer-toggle homerow-braces-right)))
+
+;; left option => command and shift and enable number layer
+(defalias rop (multi rmet (layer-toggle nums)))
+ 
+;; alias for which modifier keys are associated with cut/copy/paste/etc, for cross-platform reasons
+;; TODO: restore dynamic-ness based on os
+(defalias lmk lmet)
+(defalias rmk rmet)
+
+(defalias cut (multi @lmk x))
+(defalias cpy (multi @lmk c))
+(defalias pst (multi @lmk v))
+
+;; single character definitions
+(defalias exc (multi lsft 1))
+(defalias at  (multi lsft 2))
+(defalias hsh (multi lsft 3))
+(defalias dlr (multi lsft 4))
+(defalias pct (multi lsft 5))
+(defalias crt (multi lsft 6))
+(defalias amp (multi lsft 7))
+(defalias ast (multi lsft 8))
+
+(defalias tld (multi lsft grv))
+(defalias bar (multi lsft bksl))
+(defalias pls (multi lsft =))
+(defalias min -)
+(defalias eq  =)
+(defalias und (multi lsft -))
+(defalias lp (multi lsft 9))
+(defalias rp (multi lsft 0))
+
