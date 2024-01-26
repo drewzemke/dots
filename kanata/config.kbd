@@ -106,9 +106,14 @@
 (defalias rop (multi rmet (layer-toggle nums)))
  
 ;; alias for which modifier keys are associated with cut/copy/paste/etc, for cross-platform reasons
-;; TODO: restore dynamic-ness based on os
+;; {{#if dotter.packages.arch}}
+(defalias lmk lctl)
+(defalias rmk rctl)
+;; {{/if}}
+;; {{#if dotter.packages.mac}}
 (defalias lmk lmet)
 (defalias rmk rmet)
+;; {{/if}}
 
 (defalias cut (multi @lmk x))
 (defalias cpy (multi @lmk c))
