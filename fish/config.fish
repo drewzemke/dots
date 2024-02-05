@@ -49,6 +49,8 @@ abbr -a -- gco  'git checkout'
 abbr -a -- g..  'git checkout -'
 abbr -a -- gn   'git new'
 abbr -a -- gsu  'git submodule update --init --recursive'
+abbr -a -- prc  'gh pr create -B'
+abbr -a -- prv  'gh pr view -w'
 
 # jest abbreviations
 abbr -a -- jw   'pnpm jest --watchAll --testPathPattern'
