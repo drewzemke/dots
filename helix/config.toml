@@ -68,7 +68,10 @@ C-h = "jump_view_left"
 L = "goto_next_buffer"
 H = "goto_previous_buffer"
 
-# smart tab
+# select previous line (opposite of 'x')
+X = "extend_line_above"
+
+# smart tab?
 tab = "smart_tab"
         
 # chat gpt!
