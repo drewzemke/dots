@@ -67,6 +67,9 @@ abbr -a -- cr   'cargo run'
 # training my self to use `rip` instead of `rm`
 abbr -a -- rm   '"Nope, use `rip` instead."'
 
+# using an abbreviation for my own app, is that weird?
+abbr -a -- tod  'todoist-tui'
+
 # enable starting zellij with a keyboard shortcut.
 # loads a previous session if one is available,
 # otherwise just starts a new session
