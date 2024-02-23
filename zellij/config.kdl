@@ -45,6 +45,7 @@ keybinds clear-defaults=true {
         bind "j" "Down" { MovePane "Down"; }
         bind "k" "Up" { MovePane "Up"; }
         bind "l" "Right" { MovePane "Right"; }
+        bind "f" { TogglePaneEmbedOrFloating; }
     }
     tab {
         // bind "Ctrl t" { SwitchToMode "Normal"; }
