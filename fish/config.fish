@@ -81,6 +81,9 @@ source /Users/drewzee/.docker/init-fish.sh || true # Added by Docker Desktop
 
 # initiate fnm (used to manage node installs)
 fnm env | source
+
+# transfer gh token from file to env
+export GITHUB_TOKEN=(cat ~/.github_token)
 # {{/if}}
 
 # {{#if dotter.packages.arch}}
