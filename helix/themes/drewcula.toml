@@ -19,8 +19,13 @@ inherits = "dracula_at_night"
 "ui.virtual.inlay-hint"     = { fg = "comment",       bg = "background"                                                     }
 "variable"                  = { fg = "purple"                                                                               }
 "variable.other"            = { fg = "orange"                                                                               }
-"variable.other.member"     = { fg = "magenta"                                                                           }
+"variable.other.member"     = { fg = "magenta"                                                                              }
 "warning"                   = { fg = "orange",                             modifiers = ["bold"]                             }
+
+# custom tree-sitter scopes
+"jsx_brackets"              = { fg = "foreground"                                                                           }
+"jsx_attribute"             = { fg = "purple"                                                                               }
+
 
 [palette]
 # background = "#0e1419"
