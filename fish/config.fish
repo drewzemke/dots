@@ -58,6 +58,9 @@ abbr -a -- jw   'pnpm jest --watchAll --testPathPattern'
 # zellij abbreviations
 abbr -a -- zdev 'zellij action new-tab --layout dev'
 
+# gitui abbreviations
+abbr -a -- G    'gitui'
+
 # cargo abbreviations
 abbr -a -- cb   'cargo build'
 abbr -a -- cbr  'cargo build --release'
@@ -75,7 +78,7 @@ abbr -a -- tod  'todoist-tui'
 # otherwise just starts a new session
 # (only works outside of zellij, fortunately)
 bind \cz 'zellij a || zellij; commandline -f repaint'
-
+  
 # {{#if dotter.packages.work}}
 source /Users/drewzee/.docker/init-fish.sh || true # Added by Docker Desktop
 
@@ -84,6 +87,11 @@ fnm env | source
 
 # transfer gh token from file to env
 export GITHUB_TOKEN=(cat ~/.github_token)
+
+# docker-related abbreviations
+abbr -a -- dcu  'docker-compose -p t3 up'
+abbr -a -- dcd  'docker-compose down' 
+abbr -a -- D    'lazydocker' 
 # {{/if}}
 
 # {{#if dotter.packages.arch}}
