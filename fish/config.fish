@@ -85,8 +85,9 @@ source /Users/drewzee/.docker/init-fish.sh || true # Added by Docker Desktop
 # initiate fnm (used to manage node installs)
 fnm env | source
 
-# transfer gh token from file to env
+# transfer gh and jira tokens from file to env
 export GITHUB_TOKEN=(cat ~/.github_token)
+export JIRA_API_TOKEN=(cat ~/.jira_token)
 
 # docker-related abbreviations
 abbr -a -- dcu  'docker-compose -p t3 up'
