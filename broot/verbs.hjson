@@ -25,7 +25,7 @@ verbs: [
     {
         name: rip
         invocation: rip
-        apply_to: file
+        apply_to: any
         execution: "rip {file}"
         leave_broot: false
     }
