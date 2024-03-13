@@ -1,6 +1,7 @@
 # TS/JS
 **/dist
 node_modules
+playwright
 
 # Rust
 target
