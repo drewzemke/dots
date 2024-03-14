@@ -93,6 +93,9 @@ export JIRA_API_TOKEN=(cat ~/.jira_token)
 abbr -a -- dcu  'docker-compose -p t3 up'
 abbr -a -- dcd  'docker-compose down' 
 abbr -a -- D    'lazydocker' 
+
+# set up atuin (work only for now)
+atuin init fish --disable-up-arrow | source
 # {{/if}}
 
 # {{#if dotter.packages.arch}}
