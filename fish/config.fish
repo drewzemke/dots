@@ -96,6 +96,11 @@ abbr -a -- D    'lazydocker'
 
 # set up atuin (work only for now)
 atuin init fish --disable-up-arrow | source
+
+# zellij bindings for project workspaces
+abbr -a -- asmt  'zellij action new-tab --layout dev --name "asmt" --cwd ~/RSS/assessment'
+abbr -a -- fb    'zellij action new-tab --layout dev --name "fb" --cwd ~/RSS/form-builder'
+abbr -a -- sched 'zellij action new-tab --layout dev --name "sched" --cwd ~/RSS/scheduler'
 # {{/if}}
 
 # {{#if dotter.packages.arch}}
