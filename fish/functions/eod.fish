@@ -17,11 +17,11 @@ function eod
 
 	echo
 	log cyan false "Pushing dots..."
-	if test (git -C ~/.dots status --porcelain | wc -l) -gt 0
+	if test (git -C ~/dots status --porcelain | wc -l) -gt 0
 		log red true "Error: uncommited changes in dots. Please review and commit."
 		return 1
 	else
-		git -C ~/.dots push
+		git -C ~/dots push
 	end
 
 	echo

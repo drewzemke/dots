@@ -2,7 +2,7 @@
 #
 # open editor in the .dots directory
 function dots
-    cd ~/.dots
+    cd ~/dots
     $EDITOR .
     cd -
 end

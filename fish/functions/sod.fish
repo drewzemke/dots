@@ -13,10 +13,10 @@ function sod
 	git -C ~/notes pull
 
 	log cyan false "Pulling dots..."
-	git -C ~/.dots pull
+	git -C ~/dots pull
 
 	log cyan false "Deploying dots..."
-	fish -c 'cd ~/.dots ; exec dotter'
+	fish -c 'cd ~/dots ; exec dotter'
 
 	log magenta true "Have a nice day!"
 end
