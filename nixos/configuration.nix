@@ -85,6 +85,7 @@
     firefox
     fish
     gcc
+    gh
     git
     gnumake
     helix
