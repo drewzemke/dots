@@ -9,7 +9,7 @@ fi
 ln -s "$SCRIPTPATH"/down /tmp/leftwm-theme-down
 
 # load polybar and picom
-polybar &
+polybar --reload &
 # picom &
 
 # Boot picom or compton if it exists
