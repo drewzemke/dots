@@ -10,4 +10,5 @@ xinput set-prop 'Logitech Gaming Mouse G502' 'libinput Accel Speed' -0.5
 # xcape -e 'Caps_Lock=Escape'
 
 # gets the mouse cursor out of the way
-unclutter &
+# TODO: find a different way to run this
+# unclutter &
