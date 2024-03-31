@@ -1,39 +1,40 @@
 # Based on the 'dracula_at_night' theme, which is in turn based on classic 'dracula'
 inherits = "dracula_at_night"
 
-"comment"                   = { fg = "comment",                            modifiers = ["italic"]                           }
-"constructor"               = { fg = "pink"                                                                                 }
-"diagnostic.error"          = {                                            underline = { style = "curl", color = "red" }    }
-"diagnostic.hint"           = {                                            underline = { style = "curl", color = "cyan" }   }
-"diagnostic.info"           = {                                            underline = { style = "curl", color = "cyan" }   }
-"diagnostic.warning"        = {                                            underline = { style = "curl", color = "orange" } }
-"error"                     = { fg = "red",                                modifiers = ["bold"]                             }
-"hint"                      = { fg = "cyan",                               modifiers = ["bold"]                             }
-"info"                      = { fg = "cyan",                               modifiers = ["bold"]                             }
-"markup.raw.inline"         = { fg = "green"                                                                                }
-"markup.heading"            = { fg = "comment"                                                                              }
-"markup.heading.1"          = { fg = "purple",                             modifiers = ["bold"]                             }
-"markup.heading.2"          = { fg = "magenta",                            modifiers = ["bold"]                             }
-"markup.heading.3"          = { fg = "orange",                             modifiers = ["bold"]                             }
-"markup.heading.4"          = { fg = "yellow",                             modifiers = ["bold"]                             }
-"markup.heading.5"          = { fg = "green",                              modifiers = ["bold"]                             }
-"markup.heading.6"          = { fg = "cyan",                               modifiers = ["bold"]                             }
-"markup.link.text"          = { fg = "yellow",                             modifiers = ["bold"]                             }
-"markup.link.url"           = { fg = "cyan"                                                                                 }
-"special"                   = { fg = "pink"                                                                                 }
-"ui.linenr.selected"        = { fg = "foreground",                         modifiers = ["bold"]                             }
-"ui.selection"              = { bg = "selection"                                                                            }
-"ui.selection.primary"      = { bg = "selection"                                                                            }
-"ui.virtual.indent-guide"   = { fg = "comment"                                                                              }
-"ui.virtual.inlay-hint"     = { fg = "comment",       bg = "background"                                                     }
-"variable"                  = { fg = "purple"                                                                               }
-"variable.other"            = { fg = "orange"                                                                               }
-"variable.other.member"     = { fg = "magenta"                                                                              }
-"warning"                   = { fg = "orange",                             modifiers = ["bold"]                             }
+"comment"                   = { fg = "comment",     modifiers = ["italic"]                               }
+"constructor"               = { fg = "pink"                                                              }
+"diagnostic.error"          = {                     underline = { style = "curl", color = "red" }        }
+"diagnostic.hint"           = {                     underline = { style = "curl", color = "cyan" }       }
+"diagnostic.info"           = {                     underline = { style = "curl", color = "cyan" }       }
+"diagnostic.warning"        = {                     underline = { style = "curl", color = "orange" }     }
+"error"                     = { fg = "red",         modifiers = ["bold"]                                 }
+"hint"                      = { fg = "cyan",        modifiers = ["bold"]                                 }
+"info"                      = { fg = "cyan",        modifiers = ["bold"]                                 }
+"markup.raw.inline"         = { fg = "green"                                                             }
+"markup.heading"            = { fg = "comment"                                                           }
+"markup.heading.1"          = { fg = "purple",      modifiers = ["bold"]                                 }
+"markup.heading.2"          = { fg = "magenta",     modifiers = ["bold"]                                 }
+"markup.heading.3"          = { fg = "orange",      modifiers = ["bold"]                                 }
+"markup.heading.4"          = { fg = "yellow",      modifiers = ["bold"]                                 }
+"markup.heading.5"          = { fg = "green",       modifiers = ["bold"]                                 }
+"markup.heading.6"          = { fg = "cyan",        modifiers = ["bold"]                                 }
+"markup.link.text"          = { fg = "yellow",      modifiers = ["bold"]                                 }
+"markup.link.url"           = { fg = "cyan"                                                              }
+"special"                   = { fg = "pink"                                                              }
+"ui.linenr.selected"        = { fg = "foreground",  modifiers = ["bold"]                                 }
+"ui.selection"              = { bg = "selection"                                                         }
+"ui.selection.primary"      = { bg = "selection"                                                         }
+"ui.virtual.indent-guide"   = { fg = "comment"                                                           }
+"ui.virtual.inlay-hint"     = { fg = "comment",     bg = "background"                                    }
+"ui.virtual.jump-label"     = {                     underline = { style = "line", color = "foreground" } }
+"variable"                  = { fg = "purple"                                                            }
+"variable.other"            = { fg = "orange"                                                            }
+"variable.other.member"     = { fg = "magenta"                                                           }
+"warning"                   = { fg = "orange",      modifiers = ["bold"]                                 }
 
 # custom tree-sitter scopes
-"jsx_brackets"              = { fg = "foreground"                                                                           }
-"jsx_attribute"             = { fg = "purple"                                                                               }
+"jsx_brackets"              = { fg = "foreground"                                                        }
+"jsx_attribute"             = { fg = "purple"                                                            }
 
 
 [palette]

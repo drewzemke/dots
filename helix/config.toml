@@ -8,6 +8,7 @@ cursorline = true
 idle-timeout = 200
 true-color = true
 # shell = ["fish", "-c"]
+popup-border = "all"
 
 [editor.cursor-shape]
 insert="bar"
@@ -76,6 +77,9 @@ tab = "smart_tab"
         
 # chat gpt!
 C-e = ":pipe ~/.config/fish/scripts/chat-gpt-code-helper.fish"
+
+# slighty faster keybinding for jup
+A-g = "goto_word"
 
 [keys.normal.space]
 F = "file_picker"
