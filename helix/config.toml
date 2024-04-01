@@ -78,8 +78,9 @@ tab = "smart_tab"
 # chat gpt!
 C-e = ":pipe ~/.config/fish/scripts/chat-gpt-code-helper.fish"
 
-# slighty faster keybinding for jup
-A-g = "goto_word"
+# faster keybinding for jumpmode
+"'"   = "goto_word"
+"A-'" = "extend_to_word"
 
 [keys.normal.space]
 F = "file_picker"
@@ -104,3 +105,7 @@ s = ":run-shell-command ~/.config/fish/scripts/hx-open-spec-file.fish"
 
 [keys.normal.g]
 D = ["wonly", "vsplit", "goto_definition"]
+
+[keys.select]
+"'"   = "extend_to_word"
+"A-'" = "extend_to_word"
