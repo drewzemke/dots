@@ -82,6 +82,14 @@ C-e = ":pipe ~/.config/fish/scripts/chat-gpt-code-helper.fish"
 "'"   = "goto_word"
 "A-'" = "extend_to_word"
 
+# alt+motion to extend selections  
+"A-w" = "extend_next_word_start"
+"A-W" = "extend_next_long_word_start"
+"A-e" = "extend_next_word_end"
+"A-E" = "extend_next_long_word_end"
+"A-b" = "extend_prev_word_start"
+"A-B" = "extend_prev_long_word_start"
+
 [keys.normal.space]
 F = "file_picker"
 f = "file_picker_in_current_directory"
@@ -105,6 +113,7 @@ s = ":run-shell-command ~/.config/fish/scripts/hx-open-spec-file.fish"
 
 [keys.normal.g]
 D = ["wonly", "vsplit", "goto_definition"]
+
 
 [keys.select]
 "'"   = "extend_to_word"
