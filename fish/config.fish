@@ -99,7 +99,7 @@ atuin init fish --disable-up-arrow | source
 
 # zellij bindings for project workspaces
 abbr -a -- asmt  'zellij action new-tab --layout dev --name "asmt" --cwd ~/RSS/assessment'
-abbr -a -- fb    'zellij action new-tab --layout dev --name "fb" --cwd ~/RSS/form-builder'
+abbr -a -- forms 'zellij action new-tab --layout dev --name "forms" --cwd ~/RSS/forms'
 abbr -a -- sched 'zellij action new-tab --layout dev --name "sched" --cwd ~/RSS/scheduler'
 # {{/if}}
 
