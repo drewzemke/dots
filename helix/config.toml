@@ -89,6 +89,8 @@ C-e = ":pipe ~/.config/fish/scripts/chat-gpt-code-helper.fish"
 "A-E" = "extend_next_long_word_end"
 "A-b" = "extend_prev_word_start"
 "A-B" = "extend_prev_long_word_start"
+"A-f" = "extend_next_char"
+"A-t" = "extend_till_char"
 
 [keys.normal.space]
 F = "file_picker"
