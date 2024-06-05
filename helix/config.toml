@@ -95,9 +95,10 @@ C-e = ":pipe ~/.config/fish/scripts/chat-gpt-code-helper.fish"
 [keys.normal.space]
 F = "file_picker"
 f = "file_picker_in_current_directory"
+H = ["search_selection", "select_all", "select_regex"]
 L = ":lsp-restart"
-C-r = ":reload-all" 
 C-f = ["search_selection", "global_search"]
+C-r = ":reload-all" 
 
 [keys.normal.space.t]
 g = ":toggle file-picker.git-ignore"
