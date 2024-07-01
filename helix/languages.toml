@@ -100,8 +100,15 @@ command = "emmet-language-server"
 args = ["--stdio"]
 
 [language-server.vscode-json-language-server.config]
-json = { validate = { enable = true }, format = { enable = true } }
 provideFormatter = true
+
+[language-server.vscode-json-language-server.config.json]
+validate = { enable = true }
+format = { enable = true }
+
+[[language-server.vscode-json-language-server.config.json.schemas]]
+fileMatch = ["package.json"]
+url = "https://json.schemastore.org/package.json"
 
 [language-server.vscode-css-language-server.config]
 css = { validate = { enable = true } }
