@@ -52,9 +52,6 @@ abbr -a -- gsu  'git submodule update --init --recursive'
 abbr -a -- prc  'gh pr create -B'
 abbr -a -- prv  'gh pr view -w'
 
-# jest abbreviations
-abbr -a -- jw   'pnpm jest --watchAll --testPathPattern'
-
 # zellij abbreviations
 abbr -a -- zdev 'zellij action new-tab --layout dev'
 
