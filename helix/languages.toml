@@ -24,6 +24,10 @@ formatter = { command = "goimports" }
 name = "toml"
 auto-format = true
 
+[[language]]
+name = "fish"
+auto-format = false
+
 # NOTE: This is entirely to support kmonad config ('.kbd') files
 # I guess if I ever start using lisp, I'll have to change this
 [[language]]
