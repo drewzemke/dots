@@ -3,6 +3,11 @@ function fish_prompt
         echo -n (set_color brred)"$USER"(set_color white)'@'(set_color yellow)(prompt_hostname)' '
     end
 
+    if test -n "$IN_NIX_SHELL"
+        # nix icon followed by a space (in unicode)
+        echo -n (set_color white)\uf313" "\u0020
+    end
+
     echo -n (set_color blue)(prompt_pwd)' '
 
     set_color -o

@@ -64,6 +64,9 @@ abbr -a -- cbr  'cargo build --release'
 abbr -a -- ct   'cargo test'
 abbr -a -- cr   'cargo run'
 
+# run nix-shell using fish
+abbr -a -- ns   'nix-shell --run fish'
+
 # training my self to use `rip` instead of `rm`
 abbr -a -- rm   '"Nope, use `rip` instead."'
 
