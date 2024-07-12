@@ -42,7 +42,7 @@ keybinds clear-defaults=true {
         bind "r" { SwitchToMode "RenameTab"; TabNameInput 0; }
         bind "h" "Left" "Up" "k" { GoToPreviousTab; }
         bind "l" "Right" "Down" "j" { GoToNextTab; }
-        bind "n" { NewTab; SwitchToMode "RenameTab"; TabNameInput 0; }
+        bind "N" { NewTab; SwitchToMode "RenameTab"; TabNameInput 0; }
         bind "x" { CloseTab; SwitchToMode "Normal"; }
         bind "s" { ToggleActiveSyncTab; SwitchToMode "Normal"; }
         bind "1" { GoToTab 1; SwitchToMode "Normal"; }
@@ -55,6 +55,18 @@ keybinds clear-defaults=true {
         bind "8" { GoToTab 8; SwitchToMode "Normal"; }
         bind "9" { GoToTab 9; SwitchToMode "Normal"; }
         bind "Tab" { ToggleTab; }
+        bind "n" {
+            Run "sh" "-c" "~/.config/fish/scripts/zellij-new-tab.fish" {
+                name "New Tab"
+                floating true
+                height "3"
+                width "20%"
+                x "40%"
+                y "50%"
+                close_on_exit true
+            };
+            SwitchToMode "Normal";
+        }    
     }
     scroll {
         bind "e" { EditScrollback; SwitchToMode "Normal"; }
