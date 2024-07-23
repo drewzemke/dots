@@ -10,7 +10,7 @@ helix = "~/.config/helix"
 kanata = "~/.config/kanata"
 wezterm = "~/.config/wezterm"
 zellij = "~/.config/zellij"
-"zellij/plugins/monocle.wasm" = { target = "~/.config/zellij/plugins/monocle.wasm", type = "symbolic" }
+"zellij/plugins/zjstatus.wasm" = { target = "~/.config/zellij/plugins/zjstatus.wasm", type = "symbolic" }
 "git/gitconfig" = "~/.gitconfig"
 
 # macos only

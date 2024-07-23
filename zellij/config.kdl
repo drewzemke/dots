@@ -148,12 +148,6 @@ keybinds clear-defaults=true {
 
         bind "[" { PreviousSwapLayout; }
         bind "]" { NextSwapLayout; }
-
-        bind "Space" {
-            LaunchOrFocusPlugin "file:~/.config/zellij/plugins/monocle.wasm" {
-                floating true
-            }
-        }
     }
     shared_except "locked" {
         // These are remapped to Control+Command+H/J/K/L/' by terminal emulator
