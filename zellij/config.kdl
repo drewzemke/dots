@@ -71,20 +71,23 @@ keybinds clear-defaults=true {
     scroll {
         bind "e" { EditScrollback; SwitchToMode "Normal"; }
         bind "s" { SwitchToMode "EnterSearch"; SearchInput 0; }
-        bind "Ctrl c" { ScrollToBottom; SwitchToMode "Normal"; }
+        bind "g" { ScrollToTop; SwitchToMode "Normal"; }
+        bind "G" { ScrollToBottom; SwitchToMode "Normal"; }
         bind "j" "Down" { ScrollDown; }
         bind "k" "Up" { ScrollUp; }
-        bind "Ctrl f" "PageDown" "Right" "l" { PageScrollDown; }
-        bind "Ctrl b" "PageUp" "Left" "h" { PageScrollUp; }
+        bind "PageDown" "Right" "l" { PageScrollDown; }
+        bind "PageUp" "Left" "h" { PageScrollUp; }
         bind "d" { HalfPageScrollDown; }
         bind "u" { HalfPageScrollUp; }
+        bind "e" { EditScrollback; SwitchToMode "Normal"; }
     }
     search {
         bind "Ctrl c" { ScrollToBottom; SwitchToMode "Normal"; }
         bind "j" "Down" { ScrollDown; }
         bind "k" "Up" { ScrollUp; }
-        bind "Ctrl f" "PageDown" "Right" "l" { PageScrollDown; }
-        bind "Ctrl b" "PageUp" "Left" "h" { PageScrollUp; }
+        bind "PageDown" "Right" "l" { PageScrollDown; }
+        bind "PageUp" "Left" "h" { PageScrollUp; }
+        bind "e" { EditScrollback; SwitchToMode "Normal"; }
         bind "d" { HalfPageScrollDown; }
         bind "u" { HalfPageScrollUp; }
         bind "n" { Search "down"; }
@@ -125,7 +128,8 @@ keybinds clear-defaults=true {
         bind "x" { CloseFocus; SwitchToMode "Normal"; }
 
         bind "p" { SwitchToMode "Pane"; }
-        bind "s" { SwitchToMode "Search"; }
+        bind "s" { SwitchToMode "Scroll"; }
+        bind "/" { SwitchToMode "EnterSearch"; }
         bind "t" { SwitchToMode "Tab"; }
         bind "m" { SwitchToMode "Move"; }
         bind "d" { NewPane "Down"; SwitchToMode "Normal"; }
