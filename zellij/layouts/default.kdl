@@ -13,8 +13,13 @@ layout {
             
             hide_frame_for_single_pane "false"
 
-            mode_normal  "#[bg=blue] "
-            mode_tmux    "#[bg=magenta] "
+            mode_normal  "#[bg=magenta] "
+            mode_tmux    "#[bg=blue] "
+            mode_pane    "#[bg=yellow] "
+            mode_tab     "#[bg=yellow] "
+            mode_scroll  "#[bg=cyan] "
+            mode_search  "#[bg=cyan] "
+            mode_move    "#[bg=green] "
 
             tab_normal   "#[fg=#6272a4] {name} "
             tab_active   "#[fg=magenta,bold,italic] {name} "
