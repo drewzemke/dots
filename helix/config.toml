@@ -56,7 +56,7 @@ A-h = ["delete_selection", "move_char_left", "paste_before"]
 
 # copy selection left/right
 A-L = ["yank", "paste_after"]
-A-H = ["yank", "move_char_left", "paste_before"]
+A-H = ["yank", "paste_before"]
 
 # close the current buffer
 C-w = ":buffer-close"
@@ -121,3 +121,19 @@ D = ["wonly", "vsplit", "goto_definition"]
 [keys.select]
 "'"   = "extend_to_word"
 "A-'" = "extend_to_word"
+
+# move lines up/down
+A-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]
+A-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+
+# copy lines up/down
+A-J = ["extend_to_line_bounds", "yank", "paste_after"]
+A-K = ["extend_to_line_bounds", "yank", "paste_before"]  
+
+# move selection left/right
+A-l = ["delete_selection", "paste_after"]
+A-h = ["delete_selection", "move_char_left", "paste_before"]
+
+# copy selection left/right
+A-L = ["yank", "paste_after"]
+A-H = ["yank", "paste_before"]
