@@ -1,4 +1,4 @@
 (
-    command_fg: Some(Black),
-    selection_fg: Some(Black),
+    command_fg: Some("Black"),
+    selection_fg: Some("Black"),
 )
