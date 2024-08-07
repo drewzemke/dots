@@ -116,7 +116,7 @@ s = ":run-shell-command ~/.config/fish/scripts/hx-open-spec-file.fish"
 
 [keys.normal.g]
 D = ["wonly", "vsplit", "goto_definition"]
-
+C = ["wonly", "vsplit", ":open chat.md"]
 
 [keys.select]
 "'"   = "extend_to_word"

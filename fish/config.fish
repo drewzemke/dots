@@ -92,6 +92,7 @@ fnm env | source
 # transfer gh and jira tokens from file to env
 export GITHUB_TOKEN=(cat ~/.github_token)
 export JIRA_API_TOKEN=(cat ~/.jira_token)
+export OPENAI_API_TOKEN=(cat ~/.openai)
 
 # docker-related abbreviations
 abbr -a -- dcu  'docker compose up -d'
