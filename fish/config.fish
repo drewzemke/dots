@@ -82,6 +82,8 @@ abbr -a -- tod  'todoist-tui'
 # otherwise just starts a new session
 # (only works outside of zellij, fortunately)
 bind \cz 'zellij a || zellij; commandline -f repaint'
+
+export OPENAI_API_TOKEN=(cat ~/.openai)
   
 # {{#if dotter.packages.work}}
 source /Users/drewzee/.docker/init-fish.sh || true # Added by Docker Desktop
@@ -92,7 +94,6 @@ fnm env | source
 # transfer gh and jira tokens from file to env
 export GITHUB_TOKEN=(cat ~/.github_token)
 export JIRA_API_TOKEN=(cat ~/.jira_token)
-export OPENAI_API_TOKEN=(cat ~/.openai)
 
 # docker-related abbreviations
 abbr -a -- dcu  'docker compose up -d'

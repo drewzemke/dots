@@ -113,10 +113,10 @@ b = ":run-shell-command zellij run -f -- just build"
 r = ":run-shell-command zellij run -f -- just run"
 t = ":run-shell-command zellij run -f -- just test"
 s = ":run-shell-command ~/.config/fish/scripts/hx-open-spec-file.fish"
+c = ["wonly", "vsplit", ":open chat.md"]
 
 [keys.normal.g]
 D = ["wonly", "vsplit", "goto_definition"]
-C = ["wonly", "vsplit", ":open chat.md"]
 
 [keys.select]
 "'"   = "extend_to_word"
