@@ -76,7 +76,7 @@ X = "extend_line_above"
 tab = "smart_tab"
         
 # chat gpt!
-C-e = ":pipe ~/.config/fish/scripts/chat-gpt-code-helper.fish"
+C-e = ":pipe chat-gpt-code-helper"
 
 # faster keybinding for jumpmode
 "'"   = "goto_word"
