@@ -83,7 +83,10 @@ abbr -a -- tod  'todoist-tui'
 # (only works outside of zellij, fortunately)
 bind \cz 'zellij a || zellij; commandline -f repaint'
 
+# mac-only for now
+# {{#if dotter.packages.mac}}
 export OPENAI_API_TOKEN=(cat ~/.openai)
+# {{/if}}
   
 # {{#if dotter.packages.work}}
 source /Users/drewzee/.docker/init-fish.sh || true # Added by Docker Desktop
@@ -110,6 +113,6 @@ abbr -a -- forms 'zellij action new-tab --layout dev --name "forms" --cwd ~/RSS/
 abbr -a -- sched 'zellij action new-tab --layout dev --name "sched" --cwd ~/RSS/scheduler'
 # {{/if}}
 
-# {{#if dotter.packages.arch}}
+# {{#if dotter.packages.linux}}
 source ~/.xprofile
 # {{/if}}

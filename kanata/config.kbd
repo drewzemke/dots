@@ -106,7 +106,7 @@
 (defalias rop (multi rmet (layer-toggle nums)))
  
 ;; alias for which modifier keys are associated with cut/copy/paste/etc, for cross-platform reasons
-;; {{#if dotter.packages.arch}}
+;; {{#if dotter.packages.linux}}
 (defalias lmk lctl)
 (defalias rmk rctl)
 ;; {{/if}}

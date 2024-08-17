@@ -16,8 +16,8 @@ zellij = "~/.config/zellij"
 # macos only
 [mac.files]
 
-# arch linux only
-[arch.files]
+# linux only
+[linux.files]
 leftwm = "~/.config/leftwm"
 "leftwm/themes/drewcula/background.jpg" = { target = "~/.config/leftwm/themes/drewcula/background.jpg", type = "symbolic" }
 picom = "~/.config/picom"
