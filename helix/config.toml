@@ -118,6 +118,10 @@ c = ["wonly", "vsplit", ":open chat.md"]
 [keys.normal.g]
 D = ["wonly", "vsplit", "goto_definition"]
 
+# git commands
+[keys.normal.G]
+r = ":reset-diff-change"
+
 [keys.select]
 "'"   = "extend_to_word"
 "A-'" = "extend_to_word"
