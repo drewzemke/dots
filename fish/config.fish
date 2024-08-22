@@ -83,10 +83,8 @@ abbr -a -- tod  'todoist-tui'
 # (only works outside of zellij, fortunately)
 bind \cz 'zellij a || zellij; commandline -f repaint'
 
-# mac-only for now
-# {{#if dotter.packages.mac}}
+# put openai API key into env
 export OPENAI_API_TOKEN=(cat ~/.openai)
-# {{/if}}
   
 # {{#if dotter.packages.work}}
 source /Users/drewzee/.docker/init-fish.sh || true # Added by Docker Desktop
