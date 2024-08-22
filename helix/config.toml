@@ -7,7 +7,7 @@ color-modes = true
 cursorline = true
 idle-timeout = 200
 true-color = true
-# shell = ["fish", "-c"]
+shell = ["fish", "-c"]
 popup-border = "all"
 
 [editor.cursor-shape]
@@ -114,13 +114,19 @@ w = ":toggle soft-wrap.enable"
 
 [keys.normal.backspace]
 b = ":run-shell-command zellij run -f -- just build"
-c = ["wonly", "vsplit", ":open chat.md"]
+r = ":run-shell-command zellij run -f -- just run"
+t = ":run-shell-command zellij run -f -- just test"
 e = ":run-shell-command zellij run -fc -- broot"
 g = ":run-shell-command zellij run -fc -- gitui"
 h = ":pipe chat-gpt-code-helper"
-r = ":run-shell-command zellij run -f -- just run"
-s = ":run-shell-command ~/.config/fish/scripts/hx-open-spec-file.fish"
-t = ":run-shell-command zellij run -f -- just test"
+c = ["wonly", "vsplit", ":open chat.md"]
+# opens .spec file for currently-focused file:
+#  - paste the current file name, 
+#  - append working directory 
+#  - use utility to map to spec file name, 
+#  - open in other split,
+#  - undo to clean up
+s = "@] j\"%P<A-;>!pwd<ret>a/<esc>x:pipe map_spec_name<ret> wo wF<C-h>5u"
 
 [keys.normal.g]
 D = ["wonly", "vsplit", "goto_definition"]
