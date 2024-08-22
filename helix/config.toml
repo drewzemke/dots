@@ -18,6 +18,9 @@ normal="block"
 left = ["mode", "spinner", "version-control", "file-name"]
 right = ["selections", "position", "separator", "spacer", "diagnostics", "workspace-diagnostics"]
 
+[editor.inline-diagnostics]
+cursor-line = "hint"
+# other-lines = "hint"
 
 [editor.file-picker]
 hidden = false
@@ -75,14 +78,11 @@ X = "extend_line_above"
 # smart tab?
 tab = "smart_tab"
         
-# chat gpt!
-C-e = ":pipe chat-gpt-code-helper"
-
 # faster keybinding for jumpmode
 "'"   = "goto_word"
 "A-'" = "extend_to_word"
 
-# alt+motion to extend selections  
+ # alt+motion to extend selections  
 "A-w" = "extend_next_word_start"
 "A-W" = "extend_next_long_word_start"
 "A-e" = "extend_next_word_end"
@@ -91,6 +91,12 @@ C-e = ":pipe chat-gpt-code-helper"
 "A-B" = "extend_prev_long_word_start"
 "A-f" = "extend_next_char"
 "A-t" = "extend_till_char"
+
+# move by subwords
+"C-e" = "move_next_sub_word_end"
+"C-b" = "move_prev_sub_word_start"
+"A-C-e" = "extend_next_sub_word_end"
+"A-C-b" = "extend_prev_sub_word_start"
 
 [keys.normal.space]
 F = "file_picker"
@@ -107,13 +113,14 @@ i = ":toggle lsp.display-inlay-hints"
 w = ":toggle soft-wrap.enable"
 
 [keys.normal.backspace]
-g = ":run-shell-command zellij run -fc -- gitui"
-e = ":run-shell-command zellij run -fc -- broot"
 b = ":run-shell-command zellij run -f -- just build"
-r = ":run-shell-command zellij run -f -- just run"
-t = ":run-shell-command zellij run -f -- just test"
-s = ":run-shell-command ~/.config/fish/scripts/hx-open-spec-file.fish"
 c = ["wonly", "vsplit", ":open chat.md"]
+e = ":run-shell-command zellij run -fc -- broot"
+g = ":run-shell-command zellij run -fc -- gitui"
+h = ":pipe chat-gpt-code-helper"
+r = ":run-shell-command zellij run -f -- just run"
+s = ":run-shell-command ~/.config/fish/scripts/hx-open-spec-file.fish"
+t = ":run-shell-command zellij run -f -- just test"
 
 [keys.normal.g]
 D = ["wonly", "vsplit", "goto_definition"]
