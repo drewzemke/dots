@@ -22,6 +22,8 @@ inherits = "dracula_at_night"
 "markup.link.url"           = { fg = "cyan"                                                              }
 "special"                   = { fg = "pink"                                                              }
 "ui.linenr.selected"        = { fg = "foreground",  modifiers = ["bold"]                                 }
+"ui.picker.header.column"   = { underline = { style = "line", color = "comment" } }
+"ui.picker.header.column.active" = { fg = "purple", underline = { style = "line", color = "comment" }, modifiers = ["bold"] }
 "ui.selection"              = { bg = "selection"                                                         }
 "ui.selection.primary"      = { bg = "selection"                                                         }
 "ui.virtual.indent-guide"   = { fg = "comment"                                                           }
