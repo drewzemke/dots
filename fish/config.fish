@@ -83,8 +83,9 @@ abbr -a -- tod  'todoist-tui'
 # (only works outside of zellij, fortunately)
 bind \cz 'zellij a || zellij; commandline -f repaint'
 
-# put openai API key into env
+# put openai and anthropic API keys into env
 export OPENAI_API_TOKEN=(cat ~/.openai)
+export ANTHROPIC_API_TOKEN=(cat ~/.anthropic)
   
 # {{#if dotter.packages.work}}
 source /Users/drewzee/.docker/init-fish.sh || true # Added by Docker Desktop
