@@ -291,7 +291,7 @@ extractor = "(?s)<answer>(.*?)</answer>"
 
 
 [[language-server.lsp-ai-code.config.actions]]
-action_display_name = "Add Documentation"
+action_display_name = "Generate Docs"
 model = "model2"
 
 [language-server.lsp-ai-code.config.actions.parameters]
@@ -304,7 +304,7 @@ Follow these steps:\n\n
 1. Analyze the code context and structure.\n
 2. Determine the purpose of the defined types or functions based on context, usage, and naming.\n
 3. Add documentation in the form of comments.\n
-4. Return the code snippet with only the comments added. Do not alter the code or any existing comments.\n\n
+4. Return only the code snippet with the comments added. Do not alter the code or any existing comments. Do not return any text except for the updated code.\n\n
 """
 
 [[language-server.lsp-ai-code.config.actions.parameters.messages]]
