@@ -64,6 +64,9 @@ A-H = ["yank", "paste_before"]
 # close the current buffer
 C-w = ":buffer-close"
 
+# close the current buffer
+C-s = ":write"
+
 # move between windows
 C-l = "jump_view_right"
 C-h = "jump_view_left"
