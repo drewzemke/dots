@@ -1,4 +1,6 @@
 # CAREFUL! Make sure you're editing this file '.dots', not in its usual folder
+#
+# TODO: split this config into `/conf.d/git.fish` `/conf.d/exa.fish`, etc
 
 # path setup
 fish_add_path -p /usr/local/sbin /usr/local/bin /usr/bin ~/.cargo/bin ~/go/bin /usr/local/go/bin
