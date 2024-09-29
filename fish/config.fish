@@ -90,7 +90,17 @@ bind \cz 'zellij a || zellij; commandline -f repaint'
 export OPENAI_API_TOKEN=(cat ~/.openai)
 export ANTHROPIC_API_TOKEN=(cat ~/.anthropic)
   
+# docker-related abbreviations
+abbr -a -- dcu  'docker compose up -d'
+abbr -a -- dcd  'docker compose down' 
+abbr -a -- dcp  'docker compose pull' 
+abbr -a -- D    'lazydocker' 
+
+
 # {{#if dotter.packages.work}}
+# ----------------------------
+#  WORK STUFF
+# ----------------------------
 source /Users/drewzee/.docker/init-fish.sh || true # Added by Docker Desktop
 
 # initiate fnm (used to manage node installs)
@@ -99,12 +109,6 @@ fnm env | source
 # transfer gh and jira tokens from file to env
 export GITHUB_TOKEN=(cat ~/.github_token)
 export JIRA_API_TOKEN=(cat ~/.jira_token)
-
-# docker-related abbreviations
-abbr -a -- dcu  'docker compose up -d'
-abbr -a -- dcd  'docker compose down' 
-abbr -a -- dcp  'docker compose pull' 
-abbr -a -- D    'lazydocker' 
 
 # work kubernetes-related abbrevs
 abbr -a -- kdev  'k9s --context=aws-dev'
