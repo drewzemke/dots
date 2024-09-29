@@ -96,6 +96,8 @@ abbr -a -- dcd  'docker compose down'
 abbr -a -- dcp  'docker compose pull' 
 abbr -a -- D    'lazydocker' 
 
+# atuin
+atuin init fish --disable-up-arrow | source
 
 # {{#if dotter.packages.work}}
 # ----------------------------
@@ -114,9 +116,6 @@ export JIRA_API_TOKEN=(cat ~/.jira_token)
 abbr -a -- kdev  'k9s --context=aws-dev'
 abbr -a -- kqa   'k9s --context=aws-qa'
 abbr -a -- kprod 'k9s --context=aws-prod'
-
-# set up atuin (work only for now)
-atuin init fish --disable-up-arrow | source
 # {{/if}}
 
 # {{#if dotter.packages.linux}}
