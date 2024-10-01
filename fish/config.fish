@@ -87,8 +87,8 @@ abbr -a -- tod  'todoist-tui'
 bind \cz 'zellij a || zellij; commandline -f repaint'
 
 # put openai and anthropic API keys into env
-export OPENAI_API_TOKEN=(cat ~/.openai)
-export ANTHROPIC_API_TOKEN=(cat ~/.anthropic)
+set -gx OPENAI_API_TOKEN (cat ~/.openai)
+set -gx ANTHROPIC_API_TOKEN (cat ~/.anthropic)
   
 # docker-related abbreviations
 abbr -a -- dcu  'docker compose up -d'
@@ -109,8 +109,8 @@ source /Users/drewzee/.docker/init-fish.sh || true # Added by Docker Desktop
 fnm env | source
 
 # transfer gh and jira tokens from file to env
-export GITHUB_TOKEN=(cat ~/.github_token)
-export JIRA_API_TOKEN=(cat ~/.jira_token)
+set -gx GITHUB_TOKEN (cat ~/.github_token)
+set -gx JIRA_API_TOKEN (cat ~/.jira_token)
 
 # work kubernetes-related abbrevs
 abbr -a -- kdev  'k9s --context=aws-dev'
