@@ -82,8 +82,8 @@
     nameservers = [ "8.8.8.8" ];
     extraHosts =
     ''
-      127.0.0.1 pihole.rafael.local
-      127.0.0.1 hass.rafael.local
+      192.168.0.101 pihole.rafael.local
+      192.168.0.101 hass.rafael.local
     '';
   };
 
@@ -115,13 +115,13 @@
 
     virtualHosts = {
       "pihole.rafael.local" = {
-        locations."/pihole" = {
+        locations."/" = {
           proxyPass = "http://localhost:8080/admin";
           proxyWebsockets = true;
         };
       };
       "hass.rafael.local" = {
-        locations."/hass" = {
+        locations."/" = {
           proxyPass = "http://localhost:8123";
           proxyWebsockets = true;
         };
