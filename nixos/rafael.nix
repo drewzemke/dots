@@ -117,13 +117,11 @@
       "pihole.rafael.local" = {
         locations."/" = {
           proxyPass = "http://localhost:8080/admin";
-          proxyWebsockets = true;
         };
       };
       "hass.rafael.local" = {
         locations."/" = {
           proxyPass = "http://localhost:8123";
-          proxyWebsockets = true;
         };
       };
     };
