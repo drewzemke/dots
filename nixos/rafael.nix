@@ -115,13 +115,13 @@
 
     virtualHosts = {
       "pihole.rafael.local" = {
-        locations."/" = {
+        locations."/pihole" = {
           proxyPass = "http://localhost:8080/admin";
           proxyWebsockets = true;
         };
       };
       "hass.rafael.local" = {
-        locations."/" = {
+        locations."/hass" = {
           proxyPass = "http://localhost:8123";
           proxyWebsockets = true;
         };
