@@ -114,17 +114,27 @@
     statusPage = true;
 
     virtualHosts = {
-      "pihole.rafael.local" = {
-        locations."/" = {
+      "rafael.local" = {
+        locations."/pihole" = {
           proxyPass = "http://localhost:8080/admin";
         };
-      };
-      "hass.rafael.local" = {
-        locations."/" = {
+        locations."/hass" = {
           proxyPass = "http://localhost:8123";
         };
       };
     };
+    # virtualHosts = {
+    #   "pihole.rafael.local" = {
+    #     locations."/" = {
+    #       proxyPass = "http://localhost:8080/admin";
+    #     };
+    #   };
+    #   "hass.rafael.local" = {
+    #     locations."/" = {
+    #       proxyPass = "http://localhost:8123";
+    #     };
+    #   };
+    # };
   };
 
   # docker-compose
