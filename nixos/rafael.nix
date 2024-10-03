@@ -66,7 +66,7 @@
     hostName = "rafael";
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 22 53 80 443 ];
+      allowedTCPPorts = [ 22 53 80 443 8080 8123 ];
       allowedUDPPorts = [ 53 ];
 
     };
