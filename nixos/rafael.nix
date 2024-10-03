@@ -66,7 +66,7 @@
     hostName = "rafael";
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 22 53 80 443 ];
+      allowedTCPPorts = [ 22 53 80 443 8123 ];
       allowedUDPPorts = [ 53 ];
 
     };
@@ -134,6 +134,10 @@ services.nginx = {
           proxy_set_header X-Real-IP $remote_addr;
           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
           proxy_set_header X-Forwarded-Proto $scheme;
+          proxy_set_header Upgrade $http_upgrade;
+          proxy_set_header Connection "upgrade";
+          proxy_buffering off;
+
         '';
       };
 
