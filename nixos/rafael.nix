@@ -115,6 +115,15 @@ services.nginx = {
           proxy_set_header X-Real-IP $remote_addr;
           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
           proxy_set_header X-Forwarded-Proto $scheme;
+
+          proxy_redirect http://localhost:8080/admin/ /pihole/;
+          proxy_redirect /admin/ /pihole/;
+          sub_filter_once off;
+          sub_filter_types text/html;
+          sub_filter '/admin/' '/pihole/';
+          sub_filter 'src="/admin/' 'src="/pihole/';
+          sub_filter 'href="/admin/' 'href="/pihole/';
+
         '';
       };
       locations."/hass/" = {
