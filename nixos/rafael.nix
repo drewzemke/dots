@@ -127,7 +127,7 @@ services.nginx = {
         '';
       };
       locations."/hass/" = {
-        proxyPass = "http://172.19.0.2:8123/";
+        proxyPass = "http://localhost:8123/";
         proxyWebsockets = true;
         extraConfig = ''
           proxy_set_header Host $host;
