@@ -90,6 +90,7 @@
   services.avahi = {
     enable = true;
     nssmdns4 = true;
+    interfaces = [ "eno1" ];
     publish = {
       enable = true;
       addresses = true;
