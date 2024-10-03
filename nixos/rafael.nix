@@ -95,6 +95,34 @@
     };
   };
 
+  environment.etc = {
+    "avahi/services/pihole.service".text = ''
+      <?xml version="1.0" standalone='no'?>
+      <!DOCTYPE service-group SYSTEM "avahi-service.dtd">
+      <service-group>
+        <name replace-wildcards="yes">Pi-hole on %h</name>
+        <service>
+          <type>_http._tcp</type>
+          <port>8080</port>
+          <host-name>pihole.local</host-name>
+        </service>
+      </service-group>
+    '';
+
+    "avahi/services/hass.service".text = ''
+      <?xml version="1.0" standalone='no'?>
+      <!DOCTYPE service-group SYSTEM "avahi-service.dtd">
+      <service-group>
+        <name replace-wildcards="yes">Home Assistant on %h</name>
+        <service>
+          <type>_http._tcp</type>
+          <port>8123</port>
+          <host-name>hass.local</host-name>
+        </service>
+      </service-group>
+    '';
+  };
+
   # FIXME
   # services.ddclient = {
   #   enable = true;
@@ -106,8 +134,8 @@ services.nginx = {
   enable = true;
   statusPage = true;
   virtualHosts = {
-    "rafael.local" = {
-      locations."/pihole/" = {
+    "pihole.local" = {
+      locations."/" = {
         proxyPass = "http://localhost:8080/admin/";
         proxyWebsockets = true;
         extraConfig = ''
@@ -115,18 +143,12 @@ services.nginx = {
           proxy_set_header X-Real-IP $remote_addr;
           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
           proxy_set_header X-Forwarded-Proto $scheme;
-
-          proxy_redirect http://localhost:8080/admin/ /pihole/;
-          proxy_redirect /admin/ /pihole/;
-          sub_filter_once off;
-          sub_filter_types text/html;
-          sub_filter '/admin/' '/pihole/';
-          sub_filter 'src="/admin/' 'src="/pihole/';
-          sub_filter 'href="/admin/' 'href="/pihole/';
-
         '';
       };
-      locations."/hass/" = {
+    };
+
+    "hass.local" = {
+      locations."/" = {
         proxyPass = "http://localhost:8123/";
         proxyWebsockets = true;
         extraConfig = ''
@@ -143,14 +165,6 @@ services.nginx = {
           add_header X-Debug-Message "Proxying to Home Assistant" always;
           error_log /var/log/nginx/hass_debug.log debug;
         '';
-      };
-
-      # add trailing slashes
-      locations."/pihole" = {
-        return = "301 $scheme://$host$request_uri/";
-      };
-      locations."/hass" = {
-        return = "301 $scheme://$host$request_uri/";
       };
     };
   };
