@@ -80,6 +80,11 @@
     };
     defaultGateway = "192.168.0.1";
     nameservers = [ "8.8.8.8" ];
+    extraHosts = 
+    ''
+      192.168.0.101 pihole.local
+      192.168.0.101 hass.local
+    '';
   };
 
   services.avahi = {
