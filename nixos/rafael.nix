@@ -107,26 +107,34 @@
   # };
 
   # nginx
-  services.nginx = {
-    enable = true;
-    
-    # Recommended: Enable nginx status page
-     statusPage = true;
-     virtualHosts = {
-       "pihole.rafael.local" = {
-         locations."/" = {
-           proxyPass = "http://localhost:8080/admin";
-           proxyWebsockets = true;
-         };
-       };
-       "hass.rafael.local" = {
-         locations."/" = {
-           proxyPass = "http://localhost:8123";  
-           proxyWebsockets = true;
-         };
-       };
-     };
+services.nginx = {
+  enable = true;
+  statusPage = true;
+  virtualHosts = {
+    "rafael.local" = {
+      locations."/pihole/" = {
+        proxyPass = "http://localhost:8080/admin/";
+        proxyWebsockets = true;
+        extraConfig = ''
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Proto $scheme;
+        '';
+      };
+      locations."/hass/" = {
+        proxyPass = "http://localhost:8123/";
+        proxyWebsockets = true;
+        extraConfig = ''
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Proto $scheme;
+        '';
+      };
+    };
   };
+};
 
   # docker-compose
   systemd.services.docker-compose = {
