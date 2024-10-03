@@ -127,7 +127,7 @@ services.nginx = {
         '';
       };
       locations."/hass/" = {
-        proxyPass = "http://localhost:8123";
+        proxyPass = "http://172.19.0.2:8123/";
         proxyWebsockets = true;
         extraConfig = ''
           proxy_set_header Host $host;
@@ -138,6 +138,8 @@ services.nginx = {
           proxy_set_header Connection "upgrade";
           proxy_buffering off;
 
+          add_header X-Debug-Message "Proxying to Home Assistant" always;
+          error_log /var/log/nginx/hass_debug.log debug;
         '';
       };
 
