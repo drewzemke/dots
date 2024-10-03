@@ -140,6 +140,21 @@ services.nginx = {
 
           add_header X-Debug-Message "Proxying to Home Assistant" always;
           error_log /var/log/nginx/hass_debug.log debug;
+
+          # Add these lines for URL rewriting
+          sub_filter_once off;
+          sub_filter_types *;
+          sub_filter 'href="/' 'href="/hass/';
+          sub_filter 'src="/' 'src="/hass/';
+          sub_filter 'action="/' 'action="/hass/';
+          sub_filter 'url(/' 'url(/hass/';
+          sub_filter '"/' '"/hass/';
+
+          # Redirect root to /hass/
+          if ($request_uri = '/') {
+            return 301 $scheme://$host/hass/;
+          }
+
         '';
       };
 
