@@ -66,7 +66,7 @@
     hostName = "rafael";
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 22 53 80 443 8080 8123 ];
+      allowedTCPPorts = [ 22 53 80 443 ];
       allowedUDPPorts = [ 53 ];
 
     };
@@ -109,7 +109,7 @@ services.nginx = {
     "rafael.local" = {
       locations."/pihole/" = {
         proxyPass = "http://localhost:8080/admin/";
-        # proxyWebsockets = true;
+        proxyWebsockets = true;
         extraConfig = ''
           proxy_set_header Host $host;
           proxy_set_header X-Real-IP $remote_addr;
@@ -118,14 +118,22 @@ services.nginx = {
         '';
       };
       locations."/hass/" = {
-        proxyPass = "http://localhost:8123/";
-        # proxyWebsockets = true;
+        proxyPass = "http://localhost:8123";
+        proxyWebsockets = true;
         extraConfig = ''
           proxy_set_header Host $host;
           proxy_set_header X-Real-IP $remote_addr;
           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
           proxy_set_header X-Forwarded-Proto $scheme;
         '';
+      };
+
+      # add trailing slashes
+      locations."/pihole" = {
+        return = "301 $scheme://$host$request_uri/";
+      };
+      locations."/hass" = {
+        return = "301 $scheme://$host$request_uri/";
       };
     };
   };
