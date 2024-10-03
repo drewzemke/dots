@@ -80,11 +80,6 @@
     };
     defaultGateway = "192.168.0.1";
     nameservers = [ "8.8.8.8" ];
-    extraHosts =
-    ''
-      192.168.0.101 pihole.rafael.local
-      192.168.0.101 hass.rafael.local
-    '';
   };
 
   services.avahi = {
@@ -114,7 +109,7 @@ services.nginx = {
     "rafael.local" = {
       locations."/pihole/" = {
         proxyPass = "http://localhost:8080/admin/";
-        proxyWebsockets = true;
+        # proxyWebsockets = true;
         extraConfig = ''
           proxy_set_header Host $host;
           proxy_set_header X-Real-IP $remote_addr;
@@ -124,7 +119,7 @@ services.nginx = {
       };
       locations."/hass/" = {
         proxyPass = "http://localhost:8123/";
-        proxyWebsockets = true;
+        # proxyWebsockets = true;
         extraConfig = ''
           proxy_set_header Host $host;
           proxy_set_header X-Real-IP $remote_addr;
