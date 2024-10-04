@@ -83,6 +83,10 @@
           address = "192.168.0.101"; 
           prefixLength = 24;
         } ];
+        ipv6.addresses = [ {
+          address = "2601:204:F100:9C50:BF13:4159:F902:6C43";
+          prefixLength = 64;
+        } ];
       };
     };
     defaultGateway = "192.168.0.1";
