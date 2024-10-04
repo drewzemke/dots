@@ -66,7 +66,14 @@
     hostName = "rafael";
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 22 53 80 443 8123 ];
+      allowedTCPPorts = [ 
+        22    # ssh 
+        53    # dns
+        80    # http
+        443   # https 
+        8080  # pihole web interface
+        8123  # hass
+      ];
       allowedUDPPorts = [ 53 ];
 
     };
@@ -80,11 +87,6 @@
     };
     defaultGateway = "192.168.0.1";
     nameservers = [ "8.8.8.8" ];
-    extraHosts = 
-    ''
-      192.168.0.101 pihole.local
-      192.168.0.101 hass.local
-    '';
   };
 
   services.avahi = {
@@ -101,81 +103,6 @@
     };
   };
 
-  environment.etc = {
-    "avahi/services/pihole.service".text = ''
-      <?xml version="1.0" standalone='no'?>
-      <!DOCTYPE service-group SYSTEM "avahi-service.dtd">
-      <service-group>
-        <name replace-wildcards="yes">Pi-hole on %h</name>
-        <service>
-          <type>_http._tcp</type>
-          <port>8080</port>
-          <host-name>pihole.local</host-name>
-        </service>
-      </service-group>
-    '';
-
-    "avahi/services/hass.service".text = ''
-      <?xml version="1.0" standalone='no'?>
-      <!DOCTYPE service-group SYSTEM "avahi-service.dtd">
-      <service-group>
-        <name replace-wildcards="yes">Home Assistant on %h</name>
-        <service>
-          <type>_http._tcp</type>
-          <port>8123</port>
-          <host-name>hass.local</host-name>
-        </service>
-      </service-group>
-    '';
-  };
-
-  # FIXME
-  # services.ddclient = {
-  #   enable = true;
-  #   configFile = "/etc/ddclient.conf";
-  # };
-
-  # nginx
-services.nginx = {
-  enable = true;
-  statusPage = true;
-  virtualHosts = {
-    "pihole.local" = {
-      locations."/" = {
-        proxyPass = "http://localhost:8080/admin/";
-        proxyWebsockets = true;
-        extraConfig = ''
-          proxy_set_header Host $host;
-          proxy_set_header X-Real-IP $remote_addr;
-          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-          proxy_set_header X-Forwarded-Proto $scheme;
-        '';
-      };
-    };
-
-    "hass.local" = {
-      locations."/" = {
-        proxyPass = "http://localhost:8123/";
-        proxyWebsockets = true;
-        extraConfig = ''
-          rewrite ^/hass/(.*) /$1 break;
-
-          proxy_set_header Host $host;
-          proxy_set_header X-Real-IP $remote_addr;
-          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-          proxy_set_header X-Forwarded-Proto $scheme;
-          proxy_set_header Upgrade $http_upgrade;
-          proxy_set_header Connection "upgrade";
-          proxy_buffering off;
-
-          add_header X-Debug-Message "Proxying to Home Assistant" always;
-          error_log /var/log/nginx/hass_debug.log debug;
-        '';
-      };
-    };
-  };
-};
-
   # docker-compose
   systemd.services.docker-compose = {
     description = "Docker Compose Services";
@@ -190,8 +117,6 @@ services.nginx = {
       ExecStop = "${pkgs.docker-compose}/bin/docker-compose down";
     };
   };
-
-
 
   # Enable automatic system upgrades
   system.autoUpgrade.enable = true;
