@@ -122,15 +122,6 @@
     };
   };
 
-  # jenkins
-   services.jenkins = {
-     enable = true;
-     package = pkgs.jenkins;
-     port = 5555;
-     user = "jenkins";
-   };
-   users.users.jenkins.extraGroups = [ "docker" ];
-
   # Enable automatic system upgrades
   system.autoUpgrade.enable = true;
 
