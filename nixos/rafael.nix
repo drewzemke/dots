@@ -122,6 +122,15 @@
     };
   };
 
+  # cron
+  services.cron = {
+    enable = true;
+    systemCronJobs = [
+      "*/2 * * * *  drew  /home/drew/dev/rust-baby-server/scripts/deploy.fish >> /home/drew/dev/rust-baby-server/scripts/deploy.log 2>&1"
+    ];
+  };
+
+
   # Enable automatic system upgrades
   system.autoUpgrade.enable = true;
 
