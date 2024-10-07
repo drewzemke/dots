@@ -134,8 +134,6 @@
   # nginx
   services.nginx = {
     enable = true;
-    
-    # Add the following proxy configuration
     virtualHosts."rafael.local" = {
       locations."/baby" = {
         proxyPass = "http://localhost:3000";
