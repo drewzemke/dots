@@ -136,9 +136,9 @@
     enable = true;
     virtualHosts."rafael.local" = {
       locations."/baby" = {
-        proxyPass = "http://localhost:3000";
+        proxyPass = "http://localhost:3000/";
         extraConfig = ''
-            rewrite ^/baby(.*)$ $1;
+            rewrite ^/baby(.*)$ $1 break;
           '';     
       };
     };
