@@ -96,7 +96,7 @@
   services.avahi = {
     enable = true;
     nssmdns4 = true;
-    interfaces = [ "eno1" ];
+    allowInterfaces = [ "eno1" ];
     publish = {
       enable = true;
       addresses = true;
@@ -130,6 +130,18 @@
     ];
   };
 
+
+  # nginx
+  services.nginx = {
+    enable = true;
+    
+    # Add the following proxy configuration
+    virtualHosts."rafael.local" = {
+      locations."/baby" = {
+        proxyPass = "http://localhost:3000";
+      };
+    };
+  };
 
   # Enable automatic system upgrades
   system.autoUpgrade.enable = true;
