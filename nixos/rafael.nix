@@ -135,8 +135,11 @@
   services.nginx = {
     enable = true;
     virtualHosts."rafael.local" = {
-      locations."/" = {
+      locations."/baby" = {
         proxyPass = "http://localhost:3000";
+        extraConfig = ''
+            rewrite ^/baby(.*)$ $1;
+          '';     
       };
     };
   };
