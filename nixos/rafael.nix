@@ -138,6 +138,7 @@
       locations."/baby" = {
         proxyPass = "http://localhost:3000/";
         extraConfig = ''
+            rewrite ^/baby$ / break;
             rewrite ^/baby(.*)$ $1 break;
           '';     
       };
