@@ -86,6 +86,10 @@ abbr -a -- tod  'todoist-tui'
 # (only works outside of zellij, fortunately)
 bind \cz 'zellij a || zellij; commandline -f repaint'
 
+# bindings for navigating word-by-word
+bind \eh backward-word
+bind \el forward-word
+
 # put openai and anthropic API keys into env
 set -gx OPENAI_API_TOKEN (cat ~/.openai)
 set -gx ANTHROPIC_API_TOKEN (cat ~/.anthropic)
