@@ -7,7 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      /etc/nixos/hardware-configuration.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -18,7 +18,7 @@
   boot.loader.grub.useOSProber = true;
   boot.supportedFilesystems = [ "ntfs" ];
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "ceres"; # Define your hostname.
 
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -71,14 +71,16 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.drew = {
+    uid = 1000;
     isNormalUser = true;
-    extraGroups = [ "wheel" "uinput" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "uinput" "docker" ]; # Enable ‘sudo’ for the user.
     description = "Drew Zemke";
   };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    atuin
     darktable
     discord
     feh
@@ -88,7 +90,8 @@
     gh
     git
     gnumake
-    helix
+    just
+    lazydocker
     openssl
     pavucontrol
     picom
@@ -99,6 +102,7 @@
     vim
     wezterm
     wget
+    xclip
   ];
 
   programs.steam.enable = true; 
@@ -114,6 +118,8 @@
   
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
+
+  virtualisation.docker.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
