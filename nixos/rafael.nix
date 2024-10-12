@@ -143,25 +143,25 @@
   # };
 
   # nginx
-  services.nginx = {
-    enable = true;
-    virtualHosts."rafael.local" = {
-      # forceSSL = true;
-      # sslCertificate = "/var/lib/acme/rafael.local/fullchain.pem";
-      # sslCertificateKey = "/var/lib/acme/rafael.local/key.pem";
+  # services.nginx = {
+  #   enable = true;
+  #   virtualHosts."rafael.local" = {
+  #     # forceSSL = true;
+  #     # sslCertificate = "/var/lib/acme/rafael.local/fullchain.pem";
+  #     # sslCertificateKey = "/var/lib/acme/rafael.local/key.pem";
 
-      locations."/baby" = {
-        proxyPass = "http://localhost:3000/";
-        extraConfig = ''
-            rewrite ^/baby$ / break;
-            rewrite ^/baby(.*)$ $1 break;
-          '';     
-      };
-    };
+  #     locations."/baby" = {
+  #       proxyPass = "http://localhost:3000/";
+  #       extraConfig = ''
+  #           rewrite ^/baby$ / break;
+  #           rewrite ^/baby(.*)$ $1 break;
+  #         '';     
+  #     };
+  #   };
 
-    # recommendedTlsSettings = true;
-    recommendedProxySettings = true;
-  };
+  #   # recommendedTlsSettings = true;
+  #   recommendedProxySettings = true;
+  # };
 
   # Enable automatic system upgrades
   system.autoUpgrade.enable = true;
