@@ -130,11 +130,26 @@
     ];
   };
 
+  # # ssl
+  # security.acme = {
+  #   acceptTerms = true;
+  #   defaults.email = "drew.zemke@gmail.com";
+  # };
+
+  # security.acme.certs."rafael.local" = {
+  #   webroot = "/var/lib/acme/acme-challenge";
+  #   extraDomainNames = [ "rafael.local" ];
+  #   postRun = "systemctl reload nginx.service";
+  # };
 
   # nginx
   services.nginx = {
     enable = true;
     virtualHosts."rafael.local" = {
+      # forceSSL = true;
+      # sslCertificate = "/var/lib/acme/rafael.local/fullchain.pem";
+      # sslCertificateKey = "/var/lib/acme/rafael.local/key.pem";
+
       locations."/baby" = {
         proxyPass = "http://localhost:3000/";
         extraConfig = ''
@@ -143,6 +158,9 @@
           '';     
       };
     };
+
+    # recommendedTlsSettings = true;
+    recommendedProxySettings = true;
   };
 
   # Enable automatic system upgrades
