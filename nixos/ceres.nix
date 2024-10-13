@@ -19,9 +19,11 @@
   services.xserver = {
     enable = true; 
     displayManager.lightdm.enable = true;
-    displayManager.autoLogin.enable = true;
-    displayManager.autoLogin.user = "drew";
     windowManager.leftwm.enable = true;
+  };
+  services.displayManager.autoLogin = {
+    enable = true;
+    user = "drew";
   };
 
   # kanata
