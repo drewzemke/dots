@@ -101,6 +101,9 @@ tab = "smart_tab"
 "A-C-e" = "extend_next_sub_word_end"
 "A-C-b" = "extend_prev_sub_word_start"
 
+# puts cursors at the beginning and end of every selection block
+"A-S" = "@msξsξ<ret>d"
+
 [keys.normal.space]
 F = "file_picker"
 f = "file_picker_in_current_directory"
