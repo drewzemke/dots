@@ -64,6 +64,7 @@
     feh
     firefox
     fish
+    fzf
     gcc
     gh
     git
@@ -82,6 +83,10 @@
     wget
     xclip
   ];
+
+  environment.variables = {
+    PKG_CONFIG_PATH="${pkgs.openssl.dev}/lib/pkgconfig";
+  };
 
   programs.steam.enable = true; 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
