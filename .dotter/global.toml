@@ -10,6 +10,7 @@ helix = "~/.config/helix"
 kanata = "~/.config/kanata"
 wezterm = "~/.config/wezterm"
 zellij = "~/.config/zellij"
+smartcat = "~/.config/smartcat"
 "zellij/plugins/zjstatus.wasm" = { target = "~/.config/zellij/plugins/zjstatus.wasm", type = "symbolic" }
 "git/gitconfig" = "~/.gitconfig"
 
