@@ -51,6 +51,7 @@
     gnumake
     lazydocker
     openssl
+    openssl.dev
     pkg-config
     protobuf
     rustup
