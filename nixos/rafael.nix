@@ -58,6 +58,10 @@
     vim
   ];
 
+  environment.sessionVariables = {
+    PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
+  };
+
   # Fish!
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
