@@ -58,9 +58,19 @@
     vim
   ];
 
+  # FIXME: this doesn't work the way it's supposed to. 
   environment.variables = {
     PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
   };
+  # stuck with OpenSSL beefing a cargo install? try this:
+  # 
+  # # change directory to the install of openssl
+  # /nix/store/*openssl*/lib/pkgconfig
+  #
+  # # export to the pkg-config path
+  # export PKG_CONFIG_PATH=(pwd)
+  #
+  # then try installing again
 
   # Fish!
   programs.fish.enable = true;
