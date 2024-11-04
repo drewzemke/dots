@@ -93,6 +93,7 @@ bind \el forward-word
 # put openai and anthropic API keys into env
 set -gx OPENAI_API_TOKEN (cat ~/.openai)
 set -gx ANTHROPIC_API_TOKEN (cat ~/.anthropic)
+set -gx COPILOT_API_KEY (cat ~/.copilot)
   
 # docker-related abbreviations
 abbr -a -- dcu  'docker compose up -d'

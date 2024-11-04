@@ -54,13 +54,13 @@ language-servers = ["marksman", "lsp-ai-chat"]
 
 [[language]]
 name = "typescript"
-language-servers = ["typescript-language-server", "eslint", "lsp-ai-code"]
+language-servers = ["typescript-language-server", "eslint", "gpt"]
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 auto-format = true
 
 [[language]]
 name = "tsx"
-language-servers = [ "typescript-language-server", "eslint", "emmet-lsp", "lsp-ai-code"]
+language-servers = [ "typescript-language-server", "eslint", "emmet-lsp", "gpt"]
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 auto-format = true
 
@@ -146,11 +146,14 @@ workingDirectory = { mode = "auto" }
 documentFormatting = false
 hostInfo = "helix"
 
-
 [language-server.cspell]
 command = "cspell-lsp"
 args = ["--stdio"]
 
+[language-server.gpt]
+command = "helix-gpt"
+config = {}
+args = ["--handler", "copilot"]
 
 #####################################
 ### Configuration for lsp-ai-chat ###
@@ -316,4 +319,5 @@ Follow these steps:\n\n
 [[language-server.lsp-ai-code.config.actions.parameters.messages]]
 role = "user"
 content = "{SELECTED_TEXT}"
+
 
