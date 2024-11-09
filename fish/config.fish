@@ -93,7 +93,6 @@ bind \el forward-word
 # put openai and anthropic API keys into env
 set -gx OPENAI_API_TOKEN (cat ~/.openai)
 set -gx ANTHROPIC_API_TOKEN (cat ~/.anthropic)
-set -gx COPILOT_API_KEY (cat ~/.copilot)
   
 # docker-related abbreviations
 abbr -a -- dcu  'docker compose up -d'
@@ -116,6 +115,7 @@ fnm env | source
 # transfer gh and jira tokens from file to env
 set -gx GITHUB_TOKEN (cat ~/.github_token)
 set -gx JIRA_API_TOKEN (cat ~/.jira_token)
+set -gx COPILOT_API_KEY (cat ~/.copilot)
 
 # work kubernetes-related abbrevs
 abbr -a -- kdev  'k9s --context=aws-dev'
