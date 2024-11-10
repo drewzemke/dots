@@ -155,6 +155,10 @@ command = "helix-gpt"
 config = {}
 args = ["--handler", "copilot"]
 
+[language-server.deno]
+command = "deno"
+args = ["lsp"]
+
 #####################################
 ### Configuration for lsp-ai-chat ###
 #####################################
