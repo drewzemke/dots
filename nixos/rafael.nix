@@ -42,6 +42,7 @@
 
   # Basic system packages
   environment.systemPackages = with pkgs; [
+    deno
     docker-compose
     fish
     fzf
