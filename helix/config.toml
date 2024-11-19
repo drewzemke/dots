@@ -124,7 +124,6 @@ r = ":run-shell-command zellij run -f -- just run"
 t = ":run-shell-command zellij run -f -- just test"
 e = ":run-shell-command zellij run -fc -- broot"
 g = ":run-shell-command zellij run -fc -- gitui"
-h = ":pipe chat-gpt-code-helper"
 c = ["wonly", "vsplit", ":open chat.md"]
 # opens .spec file for currently-focused file:
 #  - paste the current file name, 
