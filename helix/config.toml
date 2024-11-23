@@ -131,7 +131,7 @@ c = ["wonly", "vsplit", ":open chat.md"]
 #  - use utility to map to spec file name, 
 #  - open in other split,
 #  - undo to clean up
-s = "@] j\"%P<A-;>!pwd<ret>a/<esc>x:pipe map_spec_name<ret> wo wF<C-h>5u"
+s = "@,] j\"%P<A-;>!pwd<ret>a/<esc>x:pipe map_spec_name<ret> wo wF<C-h>5u<C-l>"
 
 [keys.normal.g]
 D = ["wonly", "vsplit", "goto_definition"]
