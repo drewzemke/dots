@@ -54,13 +54,13 @@ language-servers = ["marksman", "lsp-ai-chat"]
 
 [[language]]
 name = "typescript"
-language-servers = ["typescript-language-server", "eslint", "gpt"]
+language-servers = ["typescript-language-server", "eslint" ]
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 auto-format = true
 
 [[language]]
 name = "tsx"
-language-servers = [ "typescript-language-server", "eslint", "emmet-lsp", "gpt"]
+language-servers = [ "typescript-language-server", "eslint", "emmet-lsp", ]
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 auto-format = true
 
