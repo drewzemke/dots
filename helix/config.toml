@@ -9,6 +9,7 @@ idle-timeout = 200
 true-color = true
 shell = ["fish", "-c"]
 popup-border = "all"
+end-of-line-diagnostics = "hint" 
 
 [editor.cursor-shape]
 insert="bar"
