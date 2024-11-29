@@ -3,7 +3,8 @@
 # TODO: split this config into `/conf.d/git.fish` `/conf.d/exa.fish`, etc
 
 # path setup
-fish_add_path -p /usr/local/sbin /usr/local/bin /usr/bin ~/.cargo/bin ~/.deno/bin ~/go/bin /usr/local/go/bin
+fish_add_path -p /usr/local/sbin /usr/local/bin /usr/bin ~/.cargo/bin ~/.deno/bin /usr/local/go/bin
+
 # {{#if dotter.packages.mac}}
 eval (/opt/homebrew/bin/brew shellenv)
 # {{/if}}
