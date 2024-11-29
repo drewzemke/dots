@@ -14,13 +14,6 @@ set -gx XDG_CONFIG_HOME ~/.config/
 set -gx EDITOR {{editor}};
 set -gx VISUAL {{editor}};
 
-
-# file system abbreviations
-alias      ls   'exa -1 --color=auto --icons --group-directories-first'
-alias      lsa  'exa -1 --color=auto --icons --group-directories-first -la'
-alias      lst  'exa -1 --color=auto --icons --group-directories-first -T --git-ignore'
-abbr -a -- rst  'source ~/.config/fish/config.fish'
-
 # app abbreviations
 abbr -a -- hx   {{editor}};
 abbr -a -- G    'gitui'
