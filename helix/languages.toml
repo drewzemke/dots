@@ -1,4 +1,4 @@
-# npm i -g @olrtg/emmet-language-server vscode-langservers-extracted typescript-language-server
+# npm i -g @olrtg/emmet-language-server vscode-langservers-extracted typescript-language-server @tailwindcss/language-server
 # cargo install lsp-ai
 
 [[language]]
@@ -60,20 +60,20 @@ auto-format = true
 
 [[language]]
 name = "tsx"
-language-servers = [ "typescript-language-server", "eslint", "emmet-lsp", ]
-formatter = { command = 'prettier', args = ["--parser", "typescript"] }
-auto-format = true
-
-[[language]]
-name = "jsx"
-language-servers = [ "typescript-language-server", "eslint", "emmet-lsp"]
-grammar = "javascript"
+language-servers = [ "typescript-language-server", "eslint", "tailwind"]
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 auto-format = true
 
 [[language]]
 name = "javascript"
 language-servers = [ "typescript-language-server", "eslint"]
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+auto-format = true
+
+[[language]]
+name = "jsx"
+language-servers = [ "typescript-language-server", "eslint", "tailwind"]
+grammar = "javascript"
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 auto-format = true
 
@@ -105,6 +105,10 @@ args = ["server", "-m", "stream"]
 
 [language-server.eslint]
 command = "vscode-eslint-language-server"
+args = ["--stdio"]
+
+[language-server.tailwind]
+command = "tailwindcss-language-server"
 args = ["--stdio"]
 
 [language-server.emmet-lsp]
