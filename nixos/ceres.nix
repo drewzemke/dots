@@ -60,6 +60,7 @@
   environment.systemPackages = with pkgs; [
     atuin
     darktable
+    deno
     discord
     feh
     firefox
@@ -82,6 +83,7 @@
     wezterm
     wget
     xclip
+    yq
   ];
 
   environment.variables = {
