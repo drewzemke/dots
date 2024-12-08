@@ -1,6 +1,10 @@
 { config, lib, pkgs, ... }:
 
-{
+let 
+  unstable = import <nixos-unstable-small> {
+    config = config.nixpkgs.config;
+  };
+in {
   imports = [ /etc/nixos/hardware-configuration.nix ];
 
   # boot loader
@@ -60,7 +64,7 @@
   environment.systemPackages = with pkgs; [
     atuin
     darktable
-    deno
+    unstable.deno
     discord
     feh
     firefox
@@ -83,7 +87,7 @@
     wezterm
     wget
     xclip
-    yq
+    yq-go
   ];
 
   environment.variables = {
