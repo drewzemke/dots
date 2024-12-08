@@ -1,10 +1,11 @@
 { config, lib, pkgs, ... }:
 
-{
-  imports =
-    [ # Include the results of the hardware scan.
-      /etc/nixos/hardware-configuration.nix
-    ];
+let 
+  unstable = import <nixos-unstable-small> {
+    config = config.nixpkgs.config;
+  };
+in {
+  imports = [ /etc/nixos/hardware-configuration.nix ];
 
   # grub as bootloader
   boot.loader.grub = {
@@ -42,7 +43,7 @@
 
   # Basic system packages
   environment.systemPackages = with pkgs; [
-    deno
+    unstable.deno
     docker-compose
     fish
     fzf
