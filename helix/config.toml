@@ -1,15 +1,16 @@
 theme = "drewcula"
 
 [editor]
-line-number = "relative"
 bufferline = "multiple" 
 color-modes = true
 cursorline = true
-idle-timeout = 200
-true-color = true
-shell = ["fish", "-c"]
-popup-border = "all"
 end-of-line-diagnostics = "hint" 
+idle-timeout = 200
+jump-label-alphabet = "jfkdlsahgmvznbyturieowpq"
+line-number = "relative"
+popup-border = "all"
+shell = ["fish", "-c"]
+true-color = true
 
 [editor.cursor-shape]
 insert="bar"
