@@ -40,9 +40,7 @@
     hr; (tap-hold-release 200 200 ; lalt)
 )
 
- ;; basic layer with homerow mods
-;; number keys are disabled to encourage use of the `shift` layer,
-;; we'll see how that goes...
+;; basic layer with homerow mods
 (deflayer drew
   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX    bspc
   tab  q    w    e    r    t    y    u    i    o    p    bspc XX    XX
@@ -51,12 +49,21 @@
   lctl @lmk @lsf           spc                 @rsf @rop lctl
 )
 
+;; layer with homerow mods disabled for gaming
+(deflayer games
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    bspc XX    XX
+  @nve a    s    d    f    g    h    j    k    l    ;    '    ret
+  @min z    x    c    v    b    n    m    ,    .    /    @eq
+  lctl @lmk spc            spc                 ret  @rop lctl
+)
+
 ;; navigation with h/j/k/l
 (deflayer nav
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
   lrld _    _    _    _    _    _    _    _    _    _    _    _    _
   @nve _    _    _    _    _    left down up   rght _    _    _    
-  _    _    _    _    _    _    _    _    _    _    _    _
+  _    @gup @gdn _    _    _    _    _    _    _    _    _
   _    _    _              _                   _    _    _
 )
 
@@ -104,6 +111,10 @@
 
 ;; left option => command and shift and enable number layer
 (defalias rop (multi rmet (layer-toggle nums)))
+
+;; toggles gaming layer
+(defalias gup (layer-switch games))
+(defalias gdn (layer-switch drew))
  
 ;; alias for which modifier keys are associated with cut/copy/paste/etc, for cross-platform reasons
 ;; {{#if dotter.packages.linux}}
