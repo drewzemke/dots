@@ -2,17 +2,18 @@
 
 # all platforms
 [base.files]
+atuin = "~/.config/atuin"
 broot = "~/.config/broot"
 fish = "~/.config/fish"
 gitui = "~/.config/gitui"
+"git/gitconfig" = "~/.gitconfig"
 helix = "~/.config/helix"
 "config/helix-ignore" = "~/.config/.ignore"
 kanata = "~/.config/kanata"
+smartcat = "~/.config/smartcat"
 wezterm = "~/.config/wezterm"
 zellij = "~/.config/zellij"
-smartcat = "~/.config/smartcat"
 "zellij/plugins/zjstatus.wasm" = { target = "~/.config/zellij/plugins/zjstatus.wasm", type = "symbolic" }
-"git/gitconfig" = "~/.gitconfig"
 
 # macos only
 [mac.files]
