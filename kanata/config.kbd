@@ -28,7 +28,7 @@
   nve (tap-hold 200 200 esc (layer-toggle nav))
 )
 
-;; home row mods
+;; homerow mods (normal)
 (defalias
     hrA (tap-hold-release 200 200 a lalt)
     hrS (tap-hold-release 200 200 s lsft)
@@ -40,13 +40,25 @@
     hr; (tap-hold-release 200 200 ; lalt)
 )
 
+;; homerow mods (colmak)
+(defalias
+    hcA (tap-hold-release 200 200 a lalt)
+    hcR (tap-hold-release 200 200 r lsft)
+    hcS (tap-hold-release 200 200 s lmet)
+    hcT (tap-hold-release 200 200 t lctl)
+    hcN (tap-hold-release 200 200 n rctl)
+    hcE (tap-hold-release 200 200 e rmet)
+    hcI (tap-hold-release 200 200 i rsft)
+    hcO (tap-hold-release 200 200 o lalt)
+)
+
 ;; basic layer with homerow mods
 (deflayer drew
   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX    bspc
   tab  q    w    e    r    t    y    u    i    o    p    bspc XX    XX
   @nve @hrA @hrS @hrD @hrF g    h    @hrJ @hrK @hrL @hr; '    ret
   @min z    x    c    v    b    n    m    ,    .    /    @eq
-  lctl @lmk @lsf           spc                 @rsf @rop lctl
+  lctl lmet @lsf           spc                 @rsf rmet lctl
 )
 
 ;; layer with homerow mods disabled for gaming
@@ -55,7 +67,16 @@
   tab  q    w    e    r    t    y    u    i    o    p    bspc XX    XX
   @nve a    s    d    f    g    h    j    k    l    ;    '    ret
   @min z    x    c    v    b    n    m    ,    .    /    @eq
-  lctl @lmk spc            spc                 ret  @rop lctl
+  lctl lmet spc            spc                 ret  rmet lctl
+)
+
+;; trying COLMAK because I hate muscle memory
+(deflayer colmak
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX    bspc
+  tab  q    w    f    p    g    j    l    u    y    ;    bspc XX    XX
+  @nve @hcA @hcR @hcS @hcT d    h    @hcN @hcE @hcI @hcO '    ret
+  @min z    x    c    v    b    k    n    ,    .    /    @eq
+  lctl lmet @lsf           spc                 @rsf rmet lctl
 )
 
 ;; navigation with h/j/k/l
@@ -63,7 +84,7 @@
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
   lrld _    _    _    _    _    _    _    _    _    _    _    _    _
   @nve _    _    _    _    _    left down up   rght _    _    _    
-  _    @gup @gdn _    _    _    _    _    _    _    _    _
+  _    @dre @gam @col _    _    _    _    _    _    _    _
   _    _    _              _                   _    _    _
 )
 
@@ -109,26 +130,10 @@
 ;; right shift => enable symbols and HR braces
 (defalias rsf (multi (layer-toggle shift-nums) (layer-toggle homerow-braces-right)))
 
-;; left option => command and shift and enable number layer
-(defalias rop (multi rmet (layer-toggle nums)))
-
 ;; toggles gaming layer
-(defalias gup (layer-switch games))
-(defalias gdn (layer-switch drew))
- 
-;; alias for which modifier keys are associated with cut/copy/paste/etc, for cross-platform reasons
-;; {{#if dotter.packages.linux}}
-(defalias lmk lctl)
-(defalias rmk rctl)
-;; {{/if}}
-;; {{#if dotter.packages.mac}}
-(defalias lmk lmet)
-(defalias rmk rmet)
-;; {{/if}}
-
-(defalias cut (multi @lmk x))
-(defalias cpy (multi @lmk c))
-(defalias pst (multi @lmk v))
+(defalias gam (layer-switch games))
+(defalias dre (layer-switch drew))
+(defalias col (layer-switch colmak))
 
 ;; single character definitions
 (defalias exc (multi lsft 1))
