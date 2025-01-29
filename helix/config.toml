@@ -185,3 +185,11 @@ r = "@ms<lt>iResult<esc><A-o>d3uR"
 #  - add a comma then paste the thing again as the second arg to log
 #  - yank, undo everything, then paste again so that this is easily undoable
 l = "@\"uyoconsole.log('✨✨✨ <esc>\"uPa:<esc>la, <esc>\"upxy5up"
+
+# language-specfic utilities -- markdown
+[keys.normal.space.u.m]
+# replace all selected instances of `- [ ]` with `- [.]`
+#  - select `[ ]`
+#  - select the space
+#  - replace it with a dot
+d = "@s\\[ \\]<ret>s <ret>r."
