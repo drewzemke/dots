@@ -54,14 +54,16 @@ language-servers = ["marksman", "lsp-ai-chat"]
 
 [[language]]
 name = "typescript"
-language-servers = ["typescript-language-server", "eslint"]
+language-servers = ["typescript-language-server", "deno-lsp", "eslint"]
+roots = ["deno.json", "deno.jsonc", "package.json", "tsconfig.json"]
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 auto-format = true
 
 [[language]]
 name = "tsx"
-language-servers = ["typescript-language-server", "eslint", "tailwind"]
+language-servers = ["typescript-language-server", "deno-lsp", "eslint", "tailwind"]
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+roots = ["deno.json", "deno.jsonc", "package.json", "tsconfig.json"]
 auto-format = true
 
 [[language]]
@@ -146,6 +148,9 @@ experimental = {}
 problems = { shortenToSingleLine = false }
 workingDirectory = { mode = "auto" }
 
+[language-server.typescript-language-server]
+required-root-patterns = ["package.json"]
+
 [language-server.typescript-language-server.config]
 documentFormatting = false
 hostInfo = "helix"
@@ -159,9 +164,10 @@ command = "helix-gpt"
 config = {}
 args = ["--handler", "copilot"]
 
-[language-server.deno]
+[language-server.deno-lsp]
 command = "deno"
 args = ["lsp"]
+required-root-patterns = ["deno.json"]
 
 #####################################
 ### Configuration for lsp-ai-chat ###
