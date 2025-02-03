@@ -110,6 +110,11 @@ tab = "smart_tab"
 # puts cursors at the beginning and end of every selection block
 "A-S" = "@msξsξ<ret>d"
 
+# pipes the selected text to fish
+# the first replaces the selection and the second prints output underneath
+"A-r" = "@|fish<ret>"
+"A-R" = "@<A-J>|fish<ret>\"uy2u\"up"
+
 [keys.normal.space]
 F = "file_picker"
 f = "file_picker_in_current_directory"
