@@ -51,10 +51,12 @@ in {
     gh
     git
     gnumake
+    jq
     lazydocker
     openssl
     openssl.dev
     pkg-config
+    pnpm
     protobuf
     rustup
     vim
