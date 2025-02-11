@@ -13,3 +13,19 @@ content = "You are an extremely skilled programmer with a keen eye for detail an
 api = "anthropic"
 messages = []
 char_limit = 50000
+
+[grammar]
+api = "anthropic"
+char_limit = 50000
+
+[[grammar.messages]]
+role = "system"
+content = "You are a precise grammar and spelling correction tool. Your task is to analyze text input and provide the corrected version with proper grammar and accurate spelling. Do not change the meaning, tone, or intent of the text. Do not add explanations, suggestions, or any commentary. Do not change sentence structure unless necessary for grammatical correctness. Do not expand or reduce the content. Simply return the input text with proper grammar and spelling."
+
+[local]
+api = "ollama"
+messages = []
+char_limit = 50000
+
+
+
