@@ -12,8 +12,7 @@ default_model = "claude-3-5-sonnet-latest"
 api_key_command = "cat ~/.anthropic"
 version = "2023-06-01"
 
-[ollama] 
+[ollama]
 url = "http://localhost:11434/api/chat"
 default_model = "llama3.2"
 timeout_seconds = 180
-
