@@ -1,10 +1,10 @@
 theme = "drewcula"
 
 [editor]
-bufferline = "multiple" 
+bufferline = "multiple"
 color-modes = true
 cursorline = true
-end-of-line-diagnostics = "hint" 
+end-of-line-diagnostics = "hint"
 idle-timeout = 200
 jump-label-alphabet = "jfkdlsahgmvznbyturieowpq"
 line-number = "relative"
@@ -13,12 +13,19 @@ shell = ["fish", "-c"]
 true-color = true
 
 [editor.cursor-shape]
-insert="bar"
-normal="block"
+insert = "bar"
+normal = "block"
 
 [editor.statusline]
 left = ["mode", "spinner", "version-control", "file-name"]
-right = ["selections", "position", "separator", "spacer", "diagnostics", "workspace-diagnostics"]
+right = [
+  "selections",
+  "position",
+  "separator",
+  "spacer",
+  "diagnostics",
+  "workspace-diagnostics",
+]
 
 [editor.inline-diagnostics]
 cursor-line = "hint"
@@ -53,11 +60,16 @@ C-space = "code_action"
 [keys.normal]
 # move lines up/down
 A-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]
-A-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+A-k = [
+  "extend_to_line_bounds",
+  "delete_selection",
+  "move_line_up",
+  "paste_before",
+]
 
 # copy lines up/down
 A-J = ["extend_to_line_bounds", "yank", "paste_after"]
-A-K = ["extend_to_line_bounds", "yank", "paste_before"]  
+A-K = ["extend_to_line_bounds", "yank", "paste_before"]
 
 # move selection left/right
 A-l = ["delete_selection", "paste_after"]
@@ -86,9 +98,9 @@ X = "extend_line_above"
 
 # smart tab?
 tab = "smart_tab"
-        
+
 # faster keybinding for jumpmode
-"'"   = "goto_word"
+"'" = "goto_word"
 "A-'" = "extend_to_word"
 
 # alt+motion to extend selections  
@@ -120,8 +132,9 @@ F = "file_picker"
 f = "file_picker_in_current_directory"
 H = ["search_selection", "select_all", "select_regex"]
 L = ":lsp-restart"
+l = "@:lsp-workspace-command "
 C-f = ["search_selection", "global_search"]
-C-r = ":reload-all" 
+C-r = ":reload-all"
 
 [keys.normal.space.t]
 g = ":toggle file-picker.git-ignore"
@@ -153,16 +166,21 @@ r = ":reset-diff-change"
 
 # jump commands
 [keys.select]
-"'"   = "extend_to_word"
+"'" = "extend_to_word"
 "A-'" = "extend_to_word"
 
 # move lines up/down
 A-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]
-A-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+A-k = [
+  "extend_to_line_bounds",
+  "delete_selection",
+  "move_line_up",
+  "paste_before",
+]
 
 # copy lines up/down
 A-J = ["extend_to_line_bounds", "yank", "paste_after"]
-A-K = ["extend_to_line_bounds", "yank", "paste_before"]  
+A-K = ["extend_to_line_bounds", "yank", "paste_before"]
 
 # move selection left/right
 A-l = ["delete_selection", "paste_after"]
