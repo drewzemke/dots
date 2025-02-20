@@ -50,7 +50,8 @@ auto-format = true
 
 [[language]]
 name = "markdown"
-language-servers = ["marksman", "lsp-ai-chat"]
+language-servers = ["markdown-oxide", "lsp-ai-chat"]
+auto-format = true
 
 [[language]]
 name = "typescript"
