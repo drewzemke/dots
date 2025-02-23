@@ -76,6 +76,7 @@ in {
     gnumake
     just
     lazydocker
+    mongosh
     openssl
     pavucontrol
     picom
