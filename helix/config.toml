@@ -158,6 +158,7 @@ D = ["wonly", "vsplit", "goto_definition"]
 [keys.normal.G]
 r = ":reset-diff-change"
 b = ":sh git line-info %{cursor_line} %{buffer_name}"
+u = ":sh git url %{buffer_name} %{cursor_line} | pbcopy"
 
 # jump commands
 [keys.select]

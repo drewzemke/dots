@@ -48,3 +48,16 @@
             echo \"Message: '$(git log -n 1 --pretty=format:%s $SHA)'\"; \
         fi \
     }; f"
+
+    url = "!f() { \
+        remote_url=$(git config --get remote.origin.url); \
+        branch=$(git rev-parse --abbrev-ref HEAD); \
+        file_path=$1; \
+        line_num=$2; \
+        repo_path=$(echo $remote_url | sed -E 's/.*[:\\/]([^\\/]+\\/[^\\/]+)\\.git/\\1/'); \
+        github_url=\"https://github.com/${repo_path}/blob/${branch}/${file_path}\"; \
+        if [ ! -z \"$line_num\" ]; then \
+            github_url=\"${github_url}#L${line_num}\"; \
+        fi; \
+        echo $github_url; \
+    }; f"
