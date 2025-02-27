@@ -36,3 +36,15 @@
 [credential "https://github.com"]
 	helper = !gh auth git-credential
 
+[alias]
+    line-info = "!f() { \
+        SHA=$(git blame -L \"$1\",\"$1\" \"$2\" | cut -d \" \" -f 1); \
+        if [ \"$SHA\" = \"00000000\" ] || [ -z \"$SHA\" ]; then \
+            echo \"Not yet committed.\"; \
+        else \
+            echo \" Commit: $SHA\"; \
+            echo \" Author: $(git log -n 1 --pretty=format:%an $SHA)\"; \
+            echo \"   Date: $(git log -n 1 --pretty=format:%ad --date=format:'%a, %b %d %Y, %H:%M' $SHA)\"; \
+            echo \"Message: '$(git log -n 1 --pretty=format:%s $SHA)'\"; \
+        fi \
+    }; f"

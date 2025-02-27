@@ -157,6 +157,7 @@ D = ["wonly", "vsplit", "goto_definition"]
 # git commands
 [keys.normal.G]
 r = ":reset-diff-change"
+b = ":sh git line-info %{cursor_line} %{buffer_name}"
 
 # jump commands
 [keys.select]
