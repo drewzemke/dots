@@ -149,13 +149,7 @@ t = ":run-shell-command zellij run -f -- just test"
 e = ":run-shell-command zellij run -fc -- broot"
 g = ":run-shell-command zellij run -fc -- gitui"
 c = ["wonly", "vsplit", ":open chat.md"]
-# opens .spec file for currently-focused file:
-#  - paste the current file name, 
-#  - append working directory 
-#  - use utility to map to spec file name, 
-#  - open in other split,
-#  - undo to clean up
-s = "@,] j\"%P<A-;>!pwd<ret>a/<esc>x:pipe map_spec_name<ret> wo wF<C-h>5u<C-l>"
+s = ["wonly", "vsplit", ":open %sh{map_spec_name %{buffer_name}}"]
 
 [keys.normal.g]
 D = ["wonly", "vsplit", "goto_definition"]

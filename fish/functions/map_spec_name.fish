@@ -6,7 +6,11 @@
 #  prints the corresponding .{ext} filename
 
 function map_spec_name
-    read input
+    if test -n "$argv[1]"
+        set input "$argv[1]"
+    else
+        read input
+    end
 
     set regex 's/\.spec\.([^\.]*)$/.\1/g'
     if not string match -r '\.spec\.' $input > /dev/null
