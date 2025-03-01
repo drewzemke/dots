@@ -120,6 +120,14 @@ in {
   # enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  # cron
+  services.cron = {
+    enable = true;
+    systemCronJobs = [
+      "*/5 * * * *  drew  cd /home/drew/notes && /home/drew/notes/scripts/update.sh"
+    ];
+  };
+
   # font things
   fonts.packages = with pkgs; [
     nerdfonts 
