@@ -212,6 +212,8 @@ l = "@\"uyoconsole.log('✨✨✨ <esc>\"uPa:<esc>la, <esc>\"upxy5up"
 #  - select the space
 #  - replace it with a dot
 d = "@s\\[ \\]<ret>s <ret>r."
+# does the same as above but puts an 'x' instead of a dot
+x = "@s\\[ \\]<ret>s <ret>rx"
 # insert the title of the file as a markdown header
 t = "@gg:insert-output echo %{buffer_name} | sed 's/.*\\///; s/\\..*//'<ret>i# <esc>x"
 
