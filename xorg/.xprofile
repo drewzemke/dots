@@ -4,6 +4,9 @@ if test -n "$DISPLAY"
   # first number is delay, second is rate
   xset r rate 300 80
 
+  # stop screen from sleeping
+  xset s off -dpms
+
   # mouse acceleration
   xinput set-prop 'Logitech Gaming Mouse G502' 'libinput Accel Speed' -0.5
 
