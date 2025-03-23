@@ -1,0 +1,41 @@
+# inspired by the "Night Owl" VSCode theme by Sarah Drasner
+
+[ui]
+fg = "base-foreground"
+focused_panel_bg = "base-background"
+focused_panel_border = "accent-orange"
+selection_bg = "selection"
+selection_fg = "base-foreground"
+unfocused_panel_bg = "tab-inactive"
+unfocused_panel_border = "border"
+
+[documents]
+boolean = "accent-red"
+date = "accent-cyan"
+key = "base-foreground"
+note = "comment"
+number = "accent-orange"
+object_id = "accent-cyan"
+search = "accent-blue"
+string = "accent-green"
+
+
+[palette]
+# Main Colors:
+base-background = "#011627" # (Dark navy blue, primary editor background)
+base-foreground = "#d6deeb" # (Light blue-grey, primary text color)
+selection = "#1d3b53"       # (Muted blue, text selection)
+accent-purple = "#c792ea"   # (Purple, used for keywords and control flow)
+accent-green = "#c5e478"    # (Light green, used for strings and attributes)
+accent-blue = "#82AAFF"     # (Light blue, used for functions and class names)
+accent-orange = "#ffcb8b"   # (Light orange, used for classes and types)
+accent-red = "#EF5350"      # (Red, used for errors and deletions)
+accent-cyan = "#7fdbca"     # (Cyan, used for tags and operators)
+comment = "#637777"
+
+# UI Elements:
+border = "#122d42"              # (Dark blue, used for focus and contrast borders)
+input-background = "#0b253a"    # (Dark blue, form inputs)
+badge-background = "#5f7e97"    # (Muted blue-grey)
+tab-active = "#0b2942"          # (Dark blue, active tab)
+tab-inactive = "#01111d"        # (Darker blue, inactive tabs)

@@ -12,6 +12,7 @@ helix = "~/.config/helix"
 kanata = "~/.config/kanata"
 markdown-oxide = "~/.config/moxide"
 smartcat = "~/.config/smartcat"
+tongo = "~/.config/tongo"
 wezterm = "~/.config/wezterm"
 zellij = "~/.config/zellij"
 "zellij/plugins/zjstatus.wasm" = { target = "~/.config/zellij/plugins/zjstatus.wasm", type = "symbolic" }
