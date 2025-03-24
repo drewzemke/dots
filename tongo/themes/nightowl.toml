@@ -1,23 +1,43 @@
 # inspired by the "Night Owl" VSCode theme by Sarah Drasner
 
 [ui]
-fg = "base-foreground"
-focused_panel_bg = "base-background"
-focused_panel_border = "accent-orange"
-selection_bg = "selection"
-selection_fg = "base-foreground"
-unfocused_panel_bg = "tab-inactive"
-unfocused_panel_border = "border"
+fg-primary = "base-foreground"
+fg-secondary = "comment"
+selection-bg = "selection"
+selection-fg = "base-foreground"
+indicator-success = "accent-green"
+indicator-error = "accent-red"
+indicator-info = "accent-purple"
+app-name = "accent-purple"
 
-[documents]
+[panel]
+active-bg = "base-background"
+active-border = "accent-orange"
+inactive-bg = "tab-inactive"
+inactive-border = "badge-background"
+active-input-border = "accent-cyan"
+
+[popup]
+border = "accent-cyan"
+bg = "base-background"
+
+[tab]
+active = "accent-orange"
+inactive = "comment"
+
+[data]
 boolean = "accent-red"
 date = "accent-cyan"
 key = "base-foreground"
-note = "comment"
 number = "accent-orange"
-object_id = "accent-cyan"
-search = "accent-blue"
+object-id = "accent-cyan"
 string = "accent-green"
+punctuation = "comment"
+mongo-operator = "accent-cyan"
+
+[documents]
+note = "comment"
+search = "accent-blue"
 
 
 [palette]
