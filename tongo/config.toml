@@ -4,6 +4,9 @@
 
 # TODO: explainers for all of these :)
 
+page-size = 3
+
+[keys]
 # nav_up = "up"
 # nav_down = "down"
 # nav_left = "left"
@@ -19,7 +22,7 @@
 # confirm = "enter"
 # reset = "R"
 # refresh = "r"
-expand_collapse = "spce"
+# expand_collapse = "space"
 
 # next_page = "n"
 # previous_page = "p"
