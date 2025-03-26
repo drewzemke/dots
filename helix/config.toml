@@ -56,6 +56,9 @@ display-inlay-hints = true
 
 [keys.insert]
 C-space = "code_action"
+"A->" = "indent"
+"A-<" = "unindent"
+"A-p" = "paste_before"
 
 [keys.normal]
 # move lines up/down
