@@ -56,40 +56,54 @@ comment-tokens = ["-", "- [ ]", ">"]
 
 [[language]]
 name = "typescript"
-language-servers = ["typescript-language-server", "deno-lsp", "eslint"]
+language-servers = [
+  { name = "typescript-language-server", except-features = [
+    "format",
+  ] },
+  "deno-lsp",
+  "biome",
+]
 roots = ["deno.json", "deno.jsonc", "package.json", "tsconfig.json"]
-formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 auto-format = true
 
 [[language]]
 name = "tsx"
 language-servers = [
-  "typescript-language-server",
+  { name = "typescript-language-server", except-features = [
+    "format",
+  ] },
   "deno-lsp",
-  "eslint",
+  "biome",
   "tailwind",
 ]
-formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 roots = ["deno.json", "deno.jsonc", "package.json", "tsconfig.json"]
 auto-format = true
 
 [[language]]
 name = "javascript"
-language-servers = ["typescript-language-server", "eslint"]
-formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+language-servers = [
+  { name = "typescript-language-server", except-features = [
+    "format",
+  ] },
+  "biome",
+]
 auto-format = true
 
 [[language]]
 name = "jsx"
-language-servers = ["typescript-language-server", "eslint", "tailwind"]
+language-servers = [
+  { name = "typescript-language-server", except-features = [
+    "format",
+  ] },
+  "biome",
+  "tailwind",
+]
 grammar = "javascript"
-formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 auto-format = true
 
 [[language]]
 name = "json"
-language-servers = ["vscode-json-language-server"]
-formatter = { command = 'npx', args = ["prettier", "--parser", "json"] }
+language-servers = ["biome"]
 indent = { tab-width = 4, unit = "\t" }
 auto-format = true
 
@@ -105,8 +119,9 @@ language-servers = ["vscode-css-language-server"]
 
 [[language]]
 name = "graphql"
-language-servers = ["graphql"]
+language-servers = ["graphql", "biome"]
 comment-token = "#"
+auto-format = true
 
 [language-server.graphql]
 command = "graphql-lsp"
@@ -340,3 +355,7 @@ Follow these steps:\n\n
 [[language-server.lsp-ai-code.config.actions.parameters.messages]]
 role = "user"
 content = "{SELECTED_TEXT}"
+
+
+[language-server]
+biome = { command = "biome", args = ["lsp-proxy"] }
