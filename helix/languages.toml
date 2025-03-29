@@ -1,9 +1,135 @@
-# npm i -g @olrtg/emmet-language-server vscode-langservers-extracted typescript-language-server @tailwindcss/language-server
-# cargo install lsp-ai
+# npm i -g vscode-langservers-extracted typescript-language-server @tailwindcss/language-server
+# cargo install lsp-ai markdown-oxide
+# cargo install taplo -F lsp
+# brew install biome
+
+###########
+### CSS ###
+###########
 
 [[language]]
-language-servers = ["rust-analyzer"]
+name = "css"
+formatter = { command = 'npx', args = ["prettier", "--parser", "css"] }
+language-servers = ["vscode-css-language-server"]
+
+[language-server.vscode-css-language-server.config]
+css = { validate = { enable = true } }
+scss = { validate = { enable = true } }
+less = { validate = { enable = true } }
+provideFormatter = true
+
+
+############
+### Fish ###
+############
+
+[[language]]
+name = "fish"
+auto-format = false
+
+
+##########
+### Go ###
+##########
+
+[[language]]
+name = "go"
+auto-format = true
+formatter = { command = "goimports" }
+
+
+###############
+### GraphQL ###
+###############
+
+[[language]]
+name = "graphql"
+language-servers = ["graphql-lsp", "biome"]
+comment-token = "#"
+auto-format = true
+
+[language-server.graphql-lsp]
+command = "graphql-lsp"
+args = ["server", "-m", "stream"]
+
+
+############
+### HTML ###
+############
+
+[[language]]
+name = "html"
+formatter = { command = 'npx', args = ["prettier", "--parser", "html"] }
+language-servers = ["vscode-html-language-server"]
+
+
+############
+### JSON ###
+############
+
+[[language]]
+name = "json"
+language-servers = ["biome"]
+auto-format = true
+
+
+############################
+### Kanata (Common Lisp) ###
+############################
+
+# NOTE: This is entirely to support kanata config ('.kbd') files
+# I guess if I ever start using lisp, I'll have to change this
+[[language]]
+name = "common-lisp"
+roots = []
+file-types = ["kbd"]
+comment-token = ";;"
+
+
+################
+### Markdown ###
+################
+
+[[language]]
+name = "markdown"
+language-servers = ["markdown-oxide", "lsp-ai-chat"]
+auto-format = true
+comment-tokens = ["-", "- [ ]", ">"]
+
+[language-server.lsp-ai-chat]
+command = "lsp-ai"
+
+[language-server.lsp-ai-chat.config.memory]
+file_store = {}
+
+[language-server.lsp-ai-chat.config.models.model1]
+type = "anthropic"
+chat_endpoint = "https://api.anthropic.com/v1/messages"
+model = "claude-3-5-sonnet-20240620"
+auth_token_env_var_name = "ANTHROPIC_API_TOKEN"
+
+[[language-server.lsp-ai-chat.config.chat]]
+trigger = "!C"
+action_display_name = "Chat"
+model = "model1"
+
+[language-server.lsp-ai-chat.config.chat.parameters]
+max_context = 4096
+max_tokens = 1024
+system = """
+You are a code assistant chatbot. 
+The user will ask you for assistance coding and you will do your best to answer succinctly and accurately. 
+You will also format your responses using markdown where appropriate.
+"""
+
+
+############
+### Rust ###
+############
+
+[[language]]
 name = "rust"
+language-servers = ["rust-analyzer"]
 auto-format = true
 
 [language-server.rust-analyzer.config]
@@ -16,43 +142,18 @@ procMacro = { ignored = { leptos_macro = [
 ] } }
 
 
-[language-server.yaml-language-server.config.yaml]
-format = { enable = true }
-validation = true
-
-[language-server.yaml-language-server.config.yaml.schemas]
-"https://json.schemastore.org/github-workflow.json" = ".github/workflows/*.{yml,yaml}"
-
-[[languages]]
-name = "go"
-auto-format = true
-formatter = { command = "goimports" }
+############
+### TOML ###
+############
 
 [[language]]
 name = "toml"
 auto-format = true
 
-[[language]]
-name = "fish"
-auto-format = false
 
-# NOTE: This is entirely to support kmonad config ('.kbd') files
-# I guess if I ever start using lisp, I'll have to change this
-[[language]]
-name = "common-lisp"
-roots = []
-file-types = ["kbd"]
-comment-token = ";;"
-
-[[language]]
-name = "wgsl"
-auto-format = true
-
-[[language]]
-name = "markdown"
-language-servers = ["markdown-oxide", "lsp-ai-chat"]
-auto-format = true
-comment-tokens = ["-", "- [ ]", ">"]
+#############################
+### TypeScript/JavaScript ###
+#############################
 
 [[language]]
 name = "typescript"
@@ -81,12 +182,7 @@ auto-format = true
 
 [[language]]
 name = "javascript"
-language-servers = [
-  { name = "typescript-language-server", except-features = [
-    "format",
-  ] },
-  "biome",
-]
+language-servers = [{ name = "typescript-language-server", except-features = ["format"] }, "biome"]
 auto-format = true
 
 [[language]]
@@ -101,75 +197,6 @@ language-servers = [
 grammar = "javascript"
 auto-format = true
 
-[[language]]
-name = "json"
-language-servers = ["biome"]
-indent = { tab-width = 4, unit = "\t" }
-auto-format = true
-
-[[language]]
-name = "html"
-formatter = { command = 'npx', args = ["prettier", "--parser", "html"] }
-language-servers = ["vscode-html-language-server", "emmet-lsp"]
-
-[[language]]
-name = "css"
-formatter = { command = 'npx', args = ["prettier", "--parser", "css"] }
-language-servers = ["vscode-css-language-server"]
-
-[[language]]
-name = "graphql"
-language-servers = ["graphql", "biome"]
-comment-token = "#"
-auto-format = true
-
-[language-server.graphql]
-command = "graphql-lsp"
-args = ["server", "-m", "stream"]
-
-[language-server.eslint]
-command = "vscode-eslint-language-server"
-args = ["--stdio"]
-
-[language-server.tailwind]
-command = "tailwindcss-language-server"
-args = ["--stdio"]
-
-[language-server.emmet-lsp]
-command = "emmet-language-server"
-args = ["--stdio"]
-
-[language-server.vscode-json-language-server.config]
-provideFormatter = true
-
-[language-server.vscode-json-language-server.config.json]
-validate = { enable = true }
-format = { enable = true }
-
-[[language-server.vscode-json-language-server.config.json.schemas]]
-fileMatch = ["package.json"]
-url = "https://json.schemastore.org/package.json"
-
-[language-server.vscode-css-language-server.config]
-css = { validate = { enable = true } }
-scss = { validate = { enable = true } }
-less = { validate = { enable = true } }
-provideFormatter = true
-
-[language-server.eslint.config]
-format = true
-nodePath = ""
-onIgnoredFiles = "off"
-quiet = false
-rulesCustomizations = []
-run = "onType"
-useESLintClass = false
-validate = "on"
-codeAction = { disableRuleComment = { enable = true, location = "separateLine" }, showDocumentation = { enable = true } }
-experimental = {}
-problems = { shortenToSingleLine = false }
-workingDirectory = { mode = "auto" }
-
 [language-server.typescript-language-server]
 required-root-patterns = ["package.json"]
 
@@ -177,49 +204,36 @@ required-root-patterns = ["package.json"]
 documentFormatting = false
 hostInfo = "helix"
 
-[language-server.cspell]
-command = "cspell-lsp"
-args = ["--stdio"]
-
-[language-server.gpt]
-command = "helix-gpt"
-config = {}
-args = ["--handler", "copilot"]
+[language-server.biome]
+command = "biome"
+args = ["lsp-proxy"]
 
 [language-server.deno-lsp]
 command = "deno"
 args = ["lsp"]
 required-root-patterns = ["deno.json"]
 
-#####################################
-### Configuration for lsp-ai-chat ###
-#####################################
+[language-server.tailwind]
+command = "tailwindcss-language-server"
+args = ["--stdio"]
 
-[language-server.lsp-ai-chat]
-command = "lsp-ai"
 
-[language-server.lsp-ai-chat.config.memory]
-file_store = {}
+############
+### WGSL ###
+############
 
-[language-server.lsp-ai-chat.config.models.model1]
-type = "anthropic"
-chat_endpoint = "https://api.anthropic.com/v1/messages"
-model = "claude-3-5-sonnet-20240620"
-auth_token_env_var_name = "ANTHROPIC_API_TOKEN"
+[[language]]
+name = "wgsl"
+auto-format = true
 
-[[language-server.lsp-ai-chat.config.chat]]
-trigger = "!C"
-action_display_name = "Chat"
-model = "model1"
 
-[language-server.lsp-ai-chat.config.chat.parameters]
-max_context = 4096
-max_tokens = 1024
-system = """
-You are a code assistant chatbot. 
-The user will ask you for assistance coding and you will do your best to answer succinctly and accurately. 
-You will also format your responses using markdown where appropriate.
-"""
+############
+### YAML ###
+############
 
-[language-server]
-biome = { command = "biome", args = ["lsp-proxy"] }
+[language-server.yaml-language-server.config.yaml]
+format = { enable = true }
+validation = true
+
+[language-server.yaml-language-server.config.yaml.schemas]
+"https://json.schemastore.org/github-workflow.json" = ".github/workflows/*.{yml,yaml}"
