@@ -16,3 +16,6 @@ version = "2023-06-01"
 url = "http://localhost:11434/api/chat"
 default_model = "llama3.2"
 timeout_seconds = 180
+
+[bedrock]
+url = "does/not/matter"
