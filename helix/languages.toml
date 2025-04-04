@@ -94,7 +94,7 @@ comment-token = ";;"
 name = "markdown"
 language-servers = ["markdown-oxide", "lsp-ai-chat"]
 auto-format = true
-comment-tokens = ["-", "- [ ]", ">"]
+comment-tokens = ["-", "- [ ]", ">", "+", "*"]
 
 [language-server.lsp-ai-chat]
 command = "lsp-ai"
@@ -182,7 +182,12 @@ auto-format = true
 
 [[language]]
 name = "javascript"
-language-servers = [{ name = "typescript-language-server", except-features = ["format"] }, "biome"]
+language-servers = [
+  { name = "typescript-language-server", except-features = [
+    "format",
+  ] },
+  "biome",
+]
 auto-format = true
 
 [[language]]
