@@ -1,4 +1,4 @@
 # initialize zoxide
-zoxide init fish | source
+~/.cargo/bin/zoxide init fish | source
 
 abbr -a -- z..  'z -'
