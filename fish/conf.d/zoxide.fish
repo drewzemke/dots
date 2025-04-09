@@ -1,4 +1,7 @@
-# initialize zoxide
-~/.cargo/bin/zoxide init fish | source
+if not set -q ZOXIDE_VERSION; and type -q zoxide
+    ~/.cargo/bin/zoxide init fish | source &
+end
 
-abbr -a -- z..  'z -'
+if status is-interactive
+    abbr -a -- z.. 'z -'
+end
