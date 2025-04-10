@@ -41,18 +41,16 @@ load_token OPENAI_API_TOKEN ~/.openai &
 load_token ANTHROPIC_API_TOKEN ~/.anthropic &
 
 # atuin
-if not set -q ATUIN_SESSION; and type -q atuin
-    atuin init fish --disable-up-arrow | source &
-end
+atuin init fish --disable-up-arrow | source &
 
 # {{#if dotter.packages.work}}
 # ----------------------------
 #  WORK STUFF
 # ----------------------------
 # initiate fnm (used to manage node installs)
-if not set -q FNM_DIR; and type -q fnm
-    fnm env | source &
-end
+# if not set -q FNM_DIR; and type -q fnm
+#     fnm env | source &
+# end
 
 # put API keys into env 
 load_token GITHUB_TOKEN ~/.github_token &
@@ -60,11 +58,9 @@ load_token JIRA_API_TOKEN ~/.jira_token &
 load_token COPILOT_API_KEY ~/.copilot &
 
 if status is-interactive
-    # work kubernetes-related abbrevs
-    abbr -a -- k9s\
-        kdev='k9s --context=aws-dev'\
-        kqa='k9s --context=aws-qa'\
-        kprod='k9s --context=aws-prod'
+    abbr -a -- kdev  'k9s --context=aws-dev'
+    abbr -a -- kqa   'k9s --context=aws-qa'
+    abbr -a -- kprod 'k9s --context=aws-prod'
 end
 # {{/if}}
 
