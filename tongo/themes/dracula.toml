@@ -1,0 +1,54 @@
+# Dracula theme for Tongo
+
+[palette]
+background = "#282a36"
+foreground = "#f8f8f2"
+selection = "#44475A"
+comment = "#6272a4"
+red = "#ff5555"
+orange = "#ffb86c"
+yellow = "#f1fa8c"
+green = "#50fa7b"
+purple = "#bd93f9"
+cyan = "#8be9fd"
+pink = "#ff79c6"
+background_dark = "#0e1419"
+
+[ui]
+fg-primary = "foreground"
+fg-secondary = "comment"
+selection-bg = "selection"
+selection-fg = "foreground"
+indicator-success = "green"
+indicator-error = "red"
+indicator-info = "cyan"
+app-name = "pink"
+
+[panel]
+active-bg = "background"
+active-border = "purple"
+inactive-bg = "background_dark"
+inactive-border = "comment"
+active-input-border = "cyan"
+
+[popup]
+border = "pink"
+bg = "background"
+
+[tab]
+active = "orange"
+inactive = "comment"
+
+[data]
+boolean = "yellow"
+date = "cyan"
+key = "pink"
+number = "orange"
+object-id = "purple"
+string = "green"
+punctuation = "comment"
+mongo-operator = "cyan"
+
+[documents]
+note = "comment"
+search = "cyan"
