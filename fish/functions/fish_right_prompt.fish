@@ -108,7 +108,7 @@ function fish_right_prompt
         set status_unmerged 1
     end
     set -l status_untracked 0
-    if string match -qe '\?\?' $porcelain_status
+    if string match -qe '??' $porcelain_status
         set status_untracked 1
     end
 
