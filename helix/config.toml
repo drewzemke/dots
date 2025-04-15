@@ -130,6 +130,9 @@ tab = "smart_tab"
 "A-r" = "@|fish<ret>"
 "A-R" = "@<A-J>|fish<ret>\"uy2u\"up"
 
+# load external changes
+C-r = ":reload-all"
+
 [keys.normal.space]
 F = "file_picker"
 f = "file_picker_in_current_directory"
@@ -137,7 +140,6 @@ H = ["search_selection", "select_all", "select_regex"]
 L = ":lsp-restart"
 l = "@:lsp-workspace-command "
 C-f = ["search_selection", "global_search"]
-C-r = ":reload-all"
 
 [keys.normal.space.t]
 g = ":toggle file-picker.git-ignore"
@@ -219,4 +221,3 @@ d = "@s\\[ \\]<ret>s <ret>r."
 x = "@s\\[ \\]<ret>s <ret>rx"
 # insert the title of the file as a markdown header
 t = "@gg:insert-output echo %{buffer_name} | sed 's/.*\\///; s/\\..*//'<ret>i# <esc>x"
-
