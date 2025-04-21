@@ -221,3 +221,5 @@ d = "@s\\[ \\]<ret>s <ret>r."
 x = "@s\\[ \\]<ret>s <ret>rx"
 # insert the title of the file as a markdown header
 t = "@gg:insert-output echo %{buffer_name} | sed 's/.*\\///; s/\\..*//'<ret>i# <esc>x"
+# open today's note
+T = '@:o "daily/%sh{date +%%Y-%%m-%%d}.md"<ret>'
