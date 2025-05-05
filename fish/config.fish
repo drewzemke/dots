@@ -39,6 +39,7 @@ end
 # put API keys into env 
 load_token OPENAI_API_TOKEN ~/.openai &
 load_token ANTHROPIC_API_TOKEN ~/.anthropic &
+load_token ANTHROPIC_API_KEY ~/.anthropic &
 load_token OPENROUTER_API_KEY ~/.openrouter &
 
 # atuin
