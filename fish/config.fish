@@ -27,6 +27,7 @@ if status is-interactive
     abbr -a -- hx   {{editor}}
     abbr -a -- G    'gitui'
     abbr -a -- rm   '"Nope, use `rip` instead."'
+    abbr -a -- sc   '"Uhhh we use `sy` now."'
 
     # enable starting zellij with a keyboard shortcut
     bind \cz 'zellij a || zellij; commandline -f repaint'
