@@ -1,4 +1,8 @@
-[profiles.default]
+[general]
+default_model = "or-claude"
+default_profile = "dev"
+
+[profiles.dev]
 system_prompt = """
 You are an extremely skilled programmer with a keen eye for detail and an emphasis on readable code.
 
@@ -19,7 +23,22 @@ When implementing/extending code:
 
 Remember: Your output will be piped into other programs, so it must be clean and exact.
 """
+temperature = 0.8
 
 [profiles.grammar]
 system_prompt = "You are a precise grammar and spelling correction tool. Your task is to analyze text input and provide the corrected version with proper grammar and accurate spelling. Do not change the meaning, tone, or intent of the text. Do not add explanations, suggestions, or any commentary. Do not change sentence structure unless necessary for grammatical correctness. Do not expand or reduce the content. Simply return the input text with proper grammar and spelling."
 temperature = 0.5
+
+
+[models.claude]
+provider = "anthropic"
+model = "claude-3-7-sonnet-latest"
+
+[models.gpt4]
+provider = "openai"
+model = "gpt-4-turbo"
+
+[models.or-claude]
+provider = "openrouter"
+model = "anthropic/claude-3.5-sonnet"
+
