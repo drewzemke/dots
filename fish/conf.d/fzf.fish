@@ -1,6 +1,6 @@
 set -gx FZF_DEFAULT_OPTS '--height 40% --layout=reverse --border --color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4'
 
-set -gx FZF_DEFAULT_COMMAND '{{home}}/.cargo/bin/rg --files --hidden --no-ignore --ignore-file={{home}}/.config/helix/ignore --ignore-file=./.ignore'
+set -gx FZF_DEFAULT_COMMAND '{{home}}/.cargo/bin/rg --files --hidden --follow --no-ignore --ignore-file={{home}}/.config/helix/ignore --ignore-file=./.ignore'
 
 ## TODO: remove eventually
 abbr -a -- hxf '"use ctrl-t instead!"'
