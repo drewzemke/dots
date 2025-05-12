@@ -19,7 +19,7 @@ end
 
 
 -- first things first:
-config.color_scheme = 'Dracula'
+config.color_scheme = 'Dracula (Official)'
 
 -- set font size and tracking
 -- {{#if dotter.packages.mac}}
