@@ -56,6 +56,11 @@ atuin init fish --disable-up-arrow | source &
 #     fnm env | source &
 # end
 
+# set env variables for AWS
+if not set -q AWS_PROFILE
+    set -gx AWS_PROFILE dev
+end
+
 # put API keys into env 
 load_token GITHUB_TOKEN ~/.github_token &
 load_token JIRA_API_TOKEN ~/.jira_token &
