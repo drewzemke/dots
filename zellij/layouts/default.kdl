@@ -21,8 +21,9 @@ layout {
             mode_search  "#[bg=cyan] "
             mode_move    "#[bg=green] "
 
+            // NOTE: have to manually specify colors here because they look weird otherwise
             tab_normal   "#[fg=#6272a4] {name} "
-            tab_active   "#[fg=magenta,bold,italic] {name} "
+            tab_active   "#[fg=#ff79c6,bold,italic] {name} "
 
             command_git_run_status_command     "fish -c ~/.config/fish/scripts/git-run-status.fish"
             command_git_run_status_format      "{stdout}"
