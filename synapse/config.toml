@@ -1,6 +1,11 @@
 [general]
-default_model = "or-claude"
 default_profile = "dev"
+
+# {{#if dotter.packages.work}}
+default_model = "bedrock"
+# {{else}}
+default_model = "or-claude"
+# {{/if}}
 
 [profiles.dev]
 system_prompt = """
@@ -42,3 +47,7 @@ model = "gpt-4-turbo"
 provider = "openrouter"
 model = "anthropic/claude-3.5-sonnet"
 
+[models.bedrock]
+provider = "bedrock"
+model = "anthropic.claude-3-5-sonnet-20241022-v2:0"
+aws_region = "us-west-2"
