@@ -1,4 +1,7 @@
 [general]
+color = true
+stream = true
+
 default_profile = "dev"
 
 # {{#if dotter.packages.work}}
@@ -6,6 +9,10 @@ default_model = "bedrock"
 # {{else}}
 default_model = "or-claude"
 # {{/if}}
+
+[profiles.base]
+system_prompt = "You are a helpful AI assistant."
+temperature = 0.2
 
 [profiles.dev]
 system_prompt = """
