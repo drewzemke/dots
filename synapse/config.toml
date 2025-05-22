@@ -37,7 +37,7 @@ temperature = 0.5
 
 [models.claude]
 provider = "anthropic"
-model = "claude-3-7-sonnet-latest"
+model = "claude-sonnet-4-20250514"
 
 [models.gpt4]
 provider = "openai"
@@ -45,7 +45,7 @@ model = "gpt-4-turbo"
 
 [models.or-claude]
 provider = "openrouter"
-model = "anthropic/claude-3.5-sonnet"
+model = "anthropic/claude-sonnet-4"
 
 [models.bedrock]
 provider = "bedrock"
