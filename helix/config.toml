@@ -88,6 +88,9 @@ C-w = ":buffer-close"
 # save the current buffer
 C-s = ":write"
 
+# save the jumplist location
+C-j = "save_selection"
+
 # move between windows
 C-l = "jump_view_right"
 C-h = "jump_view_left"
