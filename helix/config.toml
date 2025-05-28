@@ -145,6 +145,7 @@ l = "@:lsp-workspace-command "
 C-f = ["search_selection", "global_search"]
 
 [keys.normal.space.t]
+f = ":toggle auto-format"
 g = ":toggle file-picker.git-ignore"
 h = ":toggle file-picker.hidden"
 i = ":toggle lsp.display-inlay-hints"
