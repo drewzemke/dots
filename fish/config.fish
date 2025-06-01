@@ -2,7 +2,8 @@
 
 # path setup
 if not contains -- /usr/local/sbin $PATH
-    fish_add_path -p /usr/local/sbin /usr/local/bin /usr/bin ~/.cargo/bin ~/.deno/bin /usr/local/go/bin
+    set --export BUN_INSTALL "$HOME/.bun"
+    fish_add_path -p /usr/local/sbin /usr/local/bin /usr/bin ~/.cargo/bin ~/.deno/bin /usr/local/go/bin $BUN_INSTALL/bin
 end
 
 # {{#if dotter.packages.mac}}
@@ -27,7 +28,7 @@ if status is-interactive
     abbr -a -- hx   {{editor}}
     abbr -a -- G    'gitui'
     abbr -a -- rm   '"Nope, use `rip` instead."'
-    abbr -a -- sc   '"Uhhh we use `sy` now."'
+    alias claude="/Users/drew/.claude/local/claude"
 
     # enable starting zellij with a keyboard shortcut
     bind \cz 'zellij a || zellij; commandline -f repaint'
