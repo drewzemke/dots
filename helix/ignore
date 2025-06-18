@@ -5,6 +5,8 @@
 **/dist
 node_modules
 playwright
+.turbo
+coverage
 
 # Rust
 target
