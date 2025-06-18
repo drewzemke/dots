@@ -28,7 +28,7 @@ if status is-interactive
     abbr -a -- hx   {{editor}}
     abbr -a -- G    'gitui'
     abbr -a -- rm   '"Nope, use `rip` instead."'
-    alias claude="/Users/drew/.claude/local/claude"
+    alias claude="$HOME/.claude/local/claude"
 
     # enable starting zellij with a keyboard shortcut
     bind \cz 'zellij a || zellij; commandline -f repaint'
