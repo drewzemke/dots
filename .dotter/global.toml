@@ -4,6 +4,7 @@
 [base.files]
 atuin = "~/.config/atuin"
 broot = "~/.config/broot"
+claude = "~/.config/claude"
 fish = "~/.config/fish"
 gitui = "~/.config/gitui"
 "git/.gitconfig" = "~/.gitconfig"
