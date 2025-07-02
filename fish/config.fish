@@ -32,10 +32,6 @@ if status is-interactive
 
     # enable starting zellij with a keyboard shortcut
     bind \cz 'zellij a || zellij; commandline -f repaint'
-
-    # bindings for navigating word-by-word
-    bind \eh backward-word
-    bind \el forward-word
 end
 
 # put API keys into env 
