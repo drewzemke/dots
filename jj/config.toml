@@ -1,0 +1,15 @@
+"$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json"
+
+# NOTE: MAKE SURE YOU'RE EDITING THIS FILE IN ~/dots!
+
+[user]
+name = "Drew Zemke"
+email = "{{email}}"
+
+[ui]
+default-command = "status"
+pager = ["delta", "--pager", "less -FRX"]
+diff-formatter = ":git"
+
+[revsets]
+log = '@ | ancestors(trunk()..(visible_heads() & mine()), 2) | trunk()'
