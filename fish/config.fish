@@ -29,9 +29,6 @@ if status is-interactive
     abbr -a -- G    'gitui'
     abbr -a -- rm   '"Nope, use `rip` instead."'
     alias claude="$HOME/.claude/local/claude"
-
-    # enable starting zellij with a keyboard shortcut
-    bind \cz 'zellij a || zellij; commandline -f repaint'
 end
 
 # put API keys into env 
