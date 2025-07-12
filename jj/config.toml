@@ -14,6 +14,10 @@ diff-formatter = ":git"
 [revsets]
 log = '@ | ancestors(trunk()..(visible_heads() & mine()), 2) | trunk()'
 
+[aliases]
+tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
+rebase-all = ["rebase", "-s", "all:roots(trunk()..mutable())", "-d", "trunk()"]
+
 [extra]
 # Prefixes to highlight in commit messages
 highlight-prefixes = ["WIP", "EXP", "TODO", "FIXME", "DRAFT"]
@@ -33,6 +37,16 @@ coalesce(
 )
 '''
 
+# use relative timestamps up to one day ago
+"format_timestamp(timestamp)" = '''
+if(timestamp.after("1 day ago"),
+  timestamp.ago(),
+  timestamp.format("%Y-%m-%d %H:%M")
+)
+'''
+
+"in_branch(commit)" = 'commit.contained_in("immutable_heads()..bookmarks()")'
+
 [templates]
 # formats commit messages in log by highlighting configurable prefixes
 log = '''
@@ -50,5 +64,39 @@ if(root,
       ) ++ "\n"
     )
   )
+)
+'''
+
+# shows changes in editor when editing commit description
+draft_commit_description = '''
+concat(
+  coalesce(description, default_commit_description, "\n"),
+  surround(
+    "\nJJ: This commit contains the following changes:\n", "",
+    indent("JJ:     ", diff.summary()),
+  ),
+  "\nJJ: ignore-rest\n",
+  diff.git(),
+)
+'''
+
+commit_summary = '''
+separate(" ",
+  change_id.shortest(),
+  commit_id.shortest(),
+  if(empty, label("empty", "(empty)")),
+  if(description,
+    highlight_prefixes(description.first_line()),
+    label(if(empty, "empty"), description_placeholder)
+  )
+) 
+'''
+
+# shows an empty diamond for commits that are mutable but ancestors of a bookmark
+# meaning they'll be synced by the next push
+log_node = '''
+if(self && !current_working_copy && !immutable && !conflict && in_branch(self),
+  "◇",
+  builtin_log_node
 )
 '''
