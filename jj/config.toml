@@ -7,7 +7,7 @@ name = "Drew Zemke"
 email = "{{email}}"
 
 [ui]
-default-command = "status"
+default-command = "log"
 pager = ["delta", "--pager", "less -FRX"]
 diff-formatter = ":git"
 
