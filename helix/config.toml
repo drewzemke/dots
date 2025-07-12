@@ -158,6 +158,7 @@ t = ":run-shell-command zellij run -f -- just test"
 E = ":run-shell-command zellij run -fc -- broot"
 e = ":run-shell-command zellij run -fc -- broot $(dirname %{buffer_name})"
 g = ":run-shell-command zellij run -fc -- gitui"
+j = ":run-shell-command zellij run -fc -- lazyjj"
 c = ["wonly", "vsplit", ":open chat.md"]
 s = ["wonly", "vsplit", ":open %sh{map_spec_name %{buffer_name}}"]
 
