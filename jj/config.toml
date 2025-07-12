@@ -13,3 +13,42 @@ diff-formatter = ":git"
 
 [revsets]
 log = '@ | ancestors(trunk()..(visible_heads() & mine()), 2) | trunk()'
+
+[extra]
+# Prefixes to highlight in commit messages
+highlight-prefixes = ["WIP", "EXP", "TODO", "FIXME", "DRAFT"]
+
+[template-aliases]
+# helper function to highlight specified prefixes in commit messages
+'highlight_prefixes(line)' = '''
+coalesce(
+  config("extra.highlight-prefixes").as_string_list().map(|prefix| 
+    if(line.lower().starts_with(prefix.lower() ++ ":"),
+      label("timestamp", prefix.upper() ++ ":")
+        ++ line.substr(prefix.len() + 1, line.len()),
+      ""
+    )
+  ).join(""),
+  line
+)
+'''
+
+[templates]
+# formats commit messages in log by highlighting configurable prefixes
+log = '''
+if(root,
+  format_root_commit(self),
+  label(if(current_working_copy, "working_copy"),
+    concat(
+      format_short_commit_header(self) ++ "\n",
+      separate(" ",
+        if(empty, label("empty", "(empty)")),
+        if(description,
+          highlight_prefixes(description.first_line()),
+          label(if(empty, "empty"), description_placeholder)
+        )
+      ) ++ "\n"
+    )
+  )
+)
+'''
