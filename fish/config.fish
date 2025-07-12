@@ -26,7 +26,6 @@ end
 if status is-interactive
     # app abbreviations
     abbr -a -- hx   {{editor}}
-    abbr -a -- G    'gitui'
     abbr -a -- rm   '"Nope, use `rip` instead."'
     alias claude="$HOME/.claude/local/claude"
 end

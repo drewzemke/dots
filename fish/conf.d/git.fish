@@ -26,3 +26,5 @@ abbr -a -- gsu  'git submodule update --init --recursive'
 abbr -a -- prc  'gh pr create -B'
 abbr -a -- prv  'gh pr view -w'
 abbr -a -- pry  'gh pr view --json url --jq .url | pbcopy'
+abbr -a -- G    'gitui'
+
