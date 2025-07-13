@@ -16,14 +16,14 @@ function fish_jj_prompt --description 'Write out the jj prompt'
                             description.first_line().substr(0, 23) ++ "…"
                         )
                     ),
-                    label(if(empty, "empty"), description_placeholder)
+                    label(if(empty, "empty", "author"), "(no desc)")
                 ),
                 change_id.shortest(),
                 commit_id.shortest(),
-                if(conflict, label("conflict", "(conflict)")),
-                if(empty, label("empty", "(empty)")),
-                if(divergent, "(divergent)"),
-                if(hidden, "(hidden)"),
+                if(conflict, label("conflict", "(C)")),
+                if(empty, label("empty", "(E)")),
+                if(divergent, "(D)"),
+                if(hidden, "(H)"),
             )
         )
     '
