@@ -1,4 +1,11 @@
 {
+  {{#if dotter.packages.work}}
+	"env": {
+		"CLAUDE_CODE_USE_BEDROCK": "true",
+		"ANTHROPIC_MODEL": "us.anthropic.claude-sonnet-4-20250514-v1:0",
+		"AWS_REGION": "us-west-2"
+	},
+	{{/if}}
 	"hooks": {
 		"Notification": [
 			{
