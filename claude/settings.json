@@ -1,0 +1,26 @@
+{
+	"hooks": {
+		"Notification": [
+			{
+				"matcher": "",
+				"hooks": [
+					{
+						"type": "command",
+						"command": "fish -c 'notify \"Claude is ready!\"'"
+					}
+				]
+			}
+		],
+		"Stop": [
+			{
+				"matcher": "",
+				"hooks": [
+					{
+						"type": "command",
+						"command": "jj status"
+					}
+				]
+			}
+		]
+	}
+}
