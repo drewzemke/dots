@@ -9,3 +9,6 @@ abbr -a -- jsq 'jj squash'
 abbr -a -- jr  'jj rebase'
 abbr -a -- jrs 'jj restore'
 abbr -a -- J   'lazyjj'
+
+# alt-j to run `jj log` while preserving the command line
+bind alt-j 'jj log; commandline -f repaint'
