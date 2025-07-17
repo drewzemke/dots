@@ -20,10 +20,10 @@ function fish_jj_prompt --description 'Write out the jj prompt'
                 ),
                 change_id.shortest(),
                 commit_id.shortest(),
-                if(conflict, label("conflict", "(C)")),
-                if(empty, label("empty", "(E)")),
-                if(divergent, "(D)"),
-                if(hidden, "(H)"),
+                if(conflict, label("conflict", "󰅗 ")),
+                if(empty, label("empty", "󰩳 ")),
+                if(divergent, "󰇽 "),
+                if(hidden, "󰞋 "),
             )
         )
     '
