@@ -29,5 +29,22 @@
 				]
 			}
 		]
+	},
+	
+	"permissions": {
+		"allow": [
+			"Bash(cargo add:*)",
+			"Bash(cargo build:*)",
+			"Bash(cargo check:*)",
+			"Bash(cargo clippy:*)",
+			"Bash(cargo fmt:*)",
+			"Bash(find:*)",
+  		"Bash(fish -c \"ticket add:*)",
+			"Bash(mkdir:*)",
+			"mcp__context7__get-library-docs",
+			"mcp__context7__resolve-library-id"
+		],
+		"deny": []
 	}
+
 }
