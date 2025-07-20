@@ -93,6 +93,13 @@
 function ticket
     set -l command $argv[1]
     
+    # Check for .ticket file unless running init or help
+    if test "$command" != "init" -a "$command" != "" -a ! -f .ticket
+        echo "Error: No ticket system found in this directory."
+        echo "Run 'ticket init <path>' to initialize the ticket system."
+        return 1
+    end
+    
     switch $command
         case init
             _ticket_init $argv[2..]
@@ -186,9 +193,18 @@ function _ticket_init
         return 1
     end
     
+    # Create tickets directory if it doesn't exist
     if not test -d $tickets_dir
-        echo "Error: Directory '$tickets_dir' does not exist."
-        return 1
+        mkdir -p $tickets_dir
+        echo "Created tickets directory: $tickets_dir"
+    end
+    
+    # Create subdirectories if they don't exist
+    set -l subdirs backlog todo dev done
+    for subdir in $subdirs
+        if not test -d $tickets_dir/$subdir
+            mkdir -p $tickets_dir/$subdir
+        end
     end
     
     # Find the highest existing ticket number
