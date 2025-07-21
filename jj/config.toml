@@ -25,6 +25,14 @@ push = ['git', 'push']
 # move all of the local commits that haven't been synced yet to be on top of trunk
 evolve = ["rebase", "-s", "all:roots(trunk()..mutable())", "-d", "trunk()"]
 
+# all the commits!
+all = ["log", "-r", "all()"]
+
+# commits relative to head that have not be synced with remote yet
+fresh = ["log", "-r", "bookmarks()..git_head()"]
+
+# commits are prepped and ready to be pushed 
+out = ["log", "-r", "remote_bookmarks()..bookmarks()"]
 
 [extra]
 # Prefixes to highlight in commit messages
