@@ -28,6 +28,7 @@ function fish_jj_prompt --description 'Write out the jj prompt'
 
     set empty_changes "$(jj diff)"
     set outgoing_commits "$(jj out)"
+    set incoming_commits "$(jj inc)"
     set fresh_commits "$(jj fresh)"
     
     # show a symbol if the current changes are empty
@@ -38,6 +39,9 @@ function fish_jj_prompt --description 'Write out the jj prompt'
 
     # show a symbol if there are commits ready to be pushed
     test -n "$outgoing_commits" && set symbols $symbols' '(set_color magenta)󰛃 
+
+    # show a symbol if there are commits that have just been fetched
+    test -n "$incoming_commits" && set symbols $symbols' '(set_color magenta)󰛀 
 
     # print all the symbols, plus an extra space if there were any
     # those big square symbols need extra space
