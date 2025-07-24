@@ -20,6 +20,7 @@ prep = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
 
 # get remote commit, but don't rebase them
 fetch = ['git', 'fetch', '--all-remotes']
+
 push = ['git', 'push']
 
 # move all of the local commits that haven't been synced yet to be on top of trunk
@@ -33,6 +34,9 @@ fresh = ["log", "-r", "bookmarks()..git_head()"]
 
 # commits are prepped and ready to be pushed 
 out = ["log", "-r", "remote_bookmarks()..bookmarks()"]
+
+# commits have just been fetched but not rebased
+inc = ["log", "-r", "git_head()..bookmarks()"]
 
 [extra]
 # Prefixes to highlight in commit messages
