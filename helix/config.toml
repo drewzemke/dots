@@ -11,6 +11,7 @@ line-number = "relative"
 popup-border = "all"
 shell = ["fish", "-c"]
 true-color = true
+rainbow-brackets = true
 
 [editor.cursor-shape]
 insert = "bar"

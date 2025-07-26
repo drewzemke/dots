@@ -39,6 +39,8 @@ inherits = "dracula_at_night"
 "jsx_brackets"              = { fg = "foreground"                                                        }
 "jsx_attribute"             = { fg = "purple"                                                            }
 
+# rainbow brackets
+"rainbow" = ["foreground", "cyan", "green", "yellow", "magenta"]
 
 [palette]
 # background = "#0e1419"
