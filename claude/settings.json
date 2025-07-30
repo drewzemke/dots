@@ -1,11 +1,4 @@
 {
-  {{#if dotter.packages.work}}
-	"env": {
-		"CLAUDE_CODE_USE_BEDROCK": "true",
-		"ANTHROPIC_MODEL": "us.anthropic.claude-sonnet-4-20250514-v1:0",
-		"AWS_REGION": "us-west-2"
-	},
-	{{/if}}
 	"hooks": {
 		"Notification": [
 			{
@@ -30,7 +23,7 @@
 			}
 		]
 	},
-	
+
 	"permissions": {
 		"allow": [
 			"Bash(cargo add:*)",
@@ -39,12 +32,11 @@
 			"Bash(cargo clippy:*)",
 			"Bash(cargo fmt:*)",
 			"Bash(find:*)",
-  		"Bash(fish -c \"ticket add:*)",
+			"Bash(fish -c \"ticket add:*)",
 			"Bash(mkdir:*)",
 			"mcp__context7__get-library-docs",
 			"mcp__context7__resolve-library-id"
 		],
 		"deny": []
 	}
-
 }
