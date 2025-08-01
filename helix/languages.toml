@@ -175,7 +175,6 @@ language-servers = [
   ] },
   "deno-lsp",
   "biome",
-  "tailwind",
 ]
 roots = ["deno.json", "deno.jsonc", "package.json", "tsconfig.json"]
 auto-format = true
@@ -197,7 +196,6 @@ language-servers = [
     "format",
   ] },
   "biome",
-  "tailwind",
 ]
 grammar = "javascript"
 auto-format = true
