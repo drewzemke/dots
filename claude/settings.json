@@ -1,44 +1,45 @@
 {
-	"permissions": {
-		"allow": [
-			"Bash(cargo add:*)",
-			"Bash(cargo build:*)",
-			"Bash(cargo check:*)",
-			"Bash(cargo clippy:*)",
-			"Bash(cargo fmt:*)",
-			"Bash(find:*)",
-			"Bash(fish -c \"ticket add:*)",
-			"Bash(mkdir:*)",
-			"mcp__context7__get-library-docs",
-			"mcp__context7__resolve-library-id"
-		],
-		"deny": []
-	},
-	"hooks": {
-		"Notification": [
-			{
-				"matcher": "",
-				"hooks": [
-					{
-						"type": "command",
-						"command": "fish -c 'notify \"Claude is ready!\"'"
-					}
-				]
-			}
-		],
-		"Stop": [
-			{
-				"matcher": "",
-				"hooks": [
-					{
-						"type": "command",
-						"command": "sh -c 'test -d .jj && jj status || exit 0'"
-					}
-				]
-			}
-		]
-	},
-	"feedbackSurveyState": {
-		"lastShownTime": 1753918220615
-	}
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(cargo add:*)",
+      "Bash(cargo build:*)",
+      "Bash(cargo check:*)",
+      "Bash(cargo clippy:*)",
+      "Bash(cargo fmt:*)",
+      "Bash(find:*)",
+      "Bash(fish -c \"ticket add:*)",
+      "Bash(mkdir:*)",
+      "mcp__context7__get-library-docs",
+      "mcp__context7__resolve-library-id"
+    ],
+    "deny": []
+  },
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "fish -c 'notify \"Claude is ready!\"'"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh -c 'test -d .jj && jj status || exit 0'"
+          }
+        ]
+      }
+    ]
+  },
+  "feedbackSurveyState": {
+    "lastShownTime": 1754080118645
+  }
 }
