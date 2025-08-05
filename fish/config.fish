@@ -51,7 +51,7 @@ atuin init fish --disable-up-arrow | source &
 
 # set env variables for AWS
 if not set -q AWS_PROFILE
-    set -gx AWS_PROFILE dev
+    set -gx AWS_PROFILE qa
 end
 
 # put API keys into env 
