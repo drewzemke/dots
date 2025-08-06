@@ -21,7 +21,7 @@ abbr -a -- jsh 'jj show'
 abbr -a -- jsp 'jj split'
 abbr -a -- jsq 'jj squash'
 abbr -a -- ju  'jj undo'
-abbr -a -- J   'lazyjj'
+abbr -a -- J   'jjui'
 
 # alt-j to run `jj log` while preserving the command line
 bind alt-j 'jj log; commandline -f repaint'
