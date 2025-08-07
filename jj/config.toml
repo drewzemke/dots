@@ -8,7 +8,7 @@ email = "{{email}}"
 
 [ui]
 default-command = "log"
-pager = ["delta", "--pager", "less -FRX"]
+pager = ["delta", "--pager", "less -FRX", "--side-by-side"]
 diff-formatter = ":git"
 
 [git]

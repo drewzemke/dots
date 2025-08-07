@@ -3,3 +3,43 @@ auto_refresh_interval = 3
 
 [ui.colors]
 selected = { bg = "#44475A" }
+
+[keys.inline_describe]
+accept = ["ctrl+d"]
+
+[preview]
+oplog_command = [
+  "util",
+  "exec",
+  "--",
+  "bash",
+  "-c",
+  """jj op show $operation_id --color=always""",
+]
+
+revision_command = [
+  "util",
+  "exec",
+  "--",
+  "bash",
+  "-c",
+  """jj diff -r $change_id --color=always | delta --pager 'less -R' --line-numbers""",
+]
+file_command = [
+  "util",
+  "exec",
+  "--",
+  "bash",
+  "-c",
+  """jj diff -r $change_id $file --color=always | delta --pager 'less -R' --line-numbers""",
+]
+
+[custom_commands]
+"delta" = { args = [
+  "util",
+  "exec",
+  "--",
+  "bash",
+  "-c",
+  """jj show -r $change_id --summary --git --color=always | delta --pager 'less -R' --side-by-side""",
+], show = "interactive" }

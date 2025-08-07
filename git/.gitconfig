@@ -11,7 +11,6 @@
 	pager = delta
 
 [delta]
-	side-by-side = true 
     minus-emph-style = syntax "#874447"
     minus-style = syntax "#44313b"
     line-numbers-minus-style = "#874447"
