@@ -1,0 +1,5 @@
+[ui]
+auto_refresh_interval = 3
+
+[ui.colors]
+selected = { bg = "#44475A" }
