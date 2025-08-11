@@ -15,7 +15,7 @@ diff-formatter = ":git"
 push-new-bookmarks = true
 
 [revsets]
-log = '@ | ancestors(trunk()..(visible_heads() & mine()), 2) | trunk()'
+log = 'connected(@ | ancestors(trunk()..(visible_heads() & mine()), 2) | trunk())'
 
 [revset-aliases]
 # set all remote bookmarks (commits pushed to remote branches) to be immutable
@@ -34,7 +34,7 @@ fetch = ['git', 'fetch', '--all-remotes']
 push = ['git', 'push']
 
 # move all of the local commits that haven't been synced yet to be on top of trunk
-evolve = ["rebase", "-s", "all:roots(trunk()..mutable())", "-d", "trunk()"]
+evolve = ["rebase", "-s", "roots(trunk()..mutable())", "-d", "trunk()"]
 
 # all the commits!
 all = ["log", "-r", "all()"]
