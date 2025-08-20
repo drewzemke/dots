@@ -24,6 +24,15 @@ log = 'connected(@ | ancestors(trunk()..(visible_heads() & mine()), 2) | trunk()
 # branches relevant to current working context (trunk + bookmark heads in current ancestry)
 'my_branches()' = "trunk() | heads(::@- & bookmarks())"
 
+# commits relative to head that have not be synced with remote yet
+'fresh()' = "bookmarks()..git_head()"
+
+# commits are prepped and ready to be pushed 
+'out()' = "remote_bookmarks()..bookmarks()"
+
+# commits have just been fetched but not rebased
+'inc()' = "git_head()..my_branches()"
+
 [aliases]
 # move any bookmarks in ancestors forward to the previous commit
 prep = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
@@ -36,17 +45,10 @@ push = ['git', 'push']
 # move all of the local commits that haven't been synced yet to be on top of trunk
 evolve = ["rebase", "-s", "roots(trunk()..mutable())", "-d", "trunk()"]
 
-# all the commits!
 all = ["log", "-r", "all()"]
-
-# commits relative to head that have not be synced with remote yet
-fresh = ["log", "-r", "bookmarks()..git_head()"]
-
-# commits are prepped and ready to be pushed 
-out = ["log", "-r", "remote_bookmarks()..bookmarks()"]
-
-# commits have just been fetched but not rebased
-inc = ["log", "-r", "git_head()..my_branches()"]
+fresh = ["log", "-r", "fresh()"]
+out = ["log", "-r", "out()"]
+inc = ["log", "-r", "inc()"]
 
 [extra]
 # Prefixes to highlight in commit messages
