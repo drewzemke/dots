@@ -19,7 +19,7 @@ abbr -a -- jrs 'jj restore'
 abbr -a -- js  'jj status'
 abbr -a -- jsh 'jj show'
 abbr -a -- jsp 'jj split'
-abbr -a -- jsq 'jj squash'
+abbr -a -- jS  'jj squash'
 abbr -a -- ju  'jj undo'
 abbr -a -- J   'jjui'
 
