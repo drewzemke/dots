@@ -52,7 +52,7 @@ inc = ["log", "-r", "inc()"]
 
 [extra]
 # Prefixes to highlight in commit messages
-highlight-prefixes = ["WIP", "EXP", "TODO", "FIXME", "DRAFT"]
+highlight-prefixes = ["WIP", "EXP", "TODO", "FIXME", "DEBUG"]
 
 [template-aliases]
 # helper function to highlight specified prefixes in commit messages
