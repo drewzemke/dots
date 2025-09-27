@@ -228,8 +228,15 @@ d = "@s\\[ \\]<ret>s <ret>r."
 x = "@s\\[ \\]<ret>s <ret>rx"
 # insert the title of the file as a markdown header
 t = "@gg:insert-output echo %{buffer_name} | sed 's/.*\\///; s/\\..*//'<ret>i# <esc>x"
+
+# notes-specfic utilities
+[keys.normal.space.u.n]
 # open today's note
-T = ':open "daily/%sh{date +%%Y-%%m-%%d}.md"'
+t = ':open "daily/%sh{date +%%Y-%%m-%%d}.md"'
+# open tomorrow'ss note
+T = ':open "daily/%sh{date -v +1d +%%Y-%%m-%%d}.md"'
+# open next Monday's  note
+m = ':open "daily/%sh{date -v +Mon +%%Y-%%m-%%d}.md"'
 # open today's journal entry, creating it from a template if it doesn't exit
 # (this only works in the notes repo)
 J = ":open %sh{./scripts/journal.fish}"
