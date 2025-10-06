@@ -3,7 +3,7 @@ layout {
         plugin location="file:~/.config/zellij/plugins/zjstatus.wasm" {
             format_left   " {mode} {tabs}"
             format_center "{notifications}"
-            format_right  "{command_git_run_status} "
+            format_right  "{pipe_corner} "
             format_space  ""
 
 			border_enabled  "true"
@@ -25,10 +25,8 @@ layout {
             tab_normal   "#[fg=#6272a4] {name} "
             tab_active   "#[fg=#ff79c6,bold,italic] {name} "
 
-            command_git_run_status_command     "fish -c ~/.config/fish/scripts/git-run-status.fish"
-            command_git_run_status_format      "{stdout}"
-            command_git_run_status_interval    "30"
-            command_git_run_status_rendermode  "static"
+            pipe_corner_format      "{output}"
+            pipe_corner_rendermode  "static"
 
             notification_format_unread           "#[fg=cyan,bold,blink] #[fg=cyan] {message}"
             notification_show_interval           "10"        
