@@ -19,18 +19,13 @@ path add ($env.CARGO_HOME | path join 'bin')
 $env.config.show_banner = false
 $env.config.completions.algorithm = 'fuzzy'
 
-# zoxide
-if not ('~/.zoxide.nu' | path exists) { zoxide init nushell | save -f ~/.zoxide.nu }
-source ~/.zoxide.nu
-
-def load_token [token_name, file_path] {
-  if not ($env has $token_name) {
-    $env | upsert $token_name (cat $file_path)
-  }
+def load_token [token_name, file_name] {
+  let file_path = $env.HOME | path join $file_name
+  $env | upsert $token_name (cat $file_path)
 }
 
-# FIXME: doesn't work?
-# load_token ANTHROPIC_API_KEY ~/.anthropic
+load_token OPEN_ROUTER_API_KEY .openrouter
+load_token ANTHROPIC_API_KEY .anthropic
 
 # TODO: any way to modularize the abbreviations?
 let abbreviations = {
