@@ -9,18 +9,33 @@ def shorten-segment [] {
   }
 }
 
+def color-segment [seg: string, is_last: bool] {
+  let segment_text = if $is_last {
+    $seg
+  } else {
+    $seg | shorten-segment
+  }
+
+  if $is_last {
+    # last segment: bold and bright blue
+    $"(ansi blue_bold)($segment_text)(ansi reset)"
+  } else {
+    # other segments: normal blue
+    $"(ansi blue)($segment_text)(ansi reset)"
+  }
+}
+
 $env.PROMPT_COMMAND = { ||
-  pwd
-    | str replace $env.HOME ~ 
-    | split row '/'
-    # shorten all but the last segment
-    | reverse
+  let path_segments = (pwd | str replace $env.HOME ~ | split row '/')
+  let total = ($path_segments | length)
+
+  let colored_path = ($path_segments
     | enumerate
-    | each {|segment| if $segment.index == 0 { $segment.item } else { $segment.item | shorten-segment } }
-    | reverse
-    | str join '/'
-    # add deco after path
-    | append [" " (ansi cyan)❯ (ansi blue)❯ (ansi magenta)❯ " "]
+    | each { |seg| color-segment $seg.item ($seg.index == ($total - 1)) }
+    | str join $"(ansi blue)/(ansi reset)")
+
+  # add deco after path
+  [$colored_path " " (ansi red)❯ (ansi yellow)❯ (ansi green)❯ " "] | str join
 }
 
 $env.PROMPT_INDICATOR = ""
