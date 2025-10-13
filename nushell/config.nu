@@ -28,6 +28,10 @@ load-token ANTHROPIC_API_KEY   .anthropic
 $env.config.show_banner = false
 $env.config.completions.algorithm = 'fuzzy'
 
+# theme
+use ./themes/dracula.nu
+$env.config.color_config = (dracula)
+
 # TODO: move these elsewhere?
 def dots [] {
   cd ~/dots
