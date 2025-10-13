@@ -1,4 +1,39 @@
-$env.PROMPT_COMMAND_RIGHT = { || "" }
+use ../modules/jj-prompt.nu 
+use ../modules/git-prompt.nu 
+
+def vcs-prompt [] {
+  # check if jj is available and we're in a jj repo
+  if (which jj | is-not-empty) {
+    let jj_root = (do -i { jj root --quiet } | complete)
+    if $jj_root.exit_code == 0 {
+      return (jj-prompt)
+    }
+  }
+
+  # otherwise fall back to git
+  git-prompt
+}
+
+$env.PROMPT_COMMAND_RIGHT = { ||
+  mut result = ""
+
+  # Show last command status if it failed
+  let last_exit = $env.LAST_EXIT_CODE
+  if $last_exit != 0 {
+    $result = $result + $"(ansi red)✘ ($last_exit)(ansi reset)"
+  }
+
+  # Add VCS prompt
+  let vcs = (vcs-prompt)
+  if ($vcs | is-not-empty) {
+    if ($result | is-not-empty) {
+      $result = $result + " "
+    }
+    $result = $result + $vcs
+  }
+
+  $result
+}
 
 def shorten-segment [] {
   let seg = $in
