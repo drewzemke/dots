@@ -31,6 +31,7 @@ $env.config.completions.algorithm = 'fuzzy'
 # theme
 use ./themes/dracula.nu
 $env.config.color_config = (dracula)
+$env.config.menus = (dracula menus)
 
 # TODO: move these elsewhere?
 def dots [] {
