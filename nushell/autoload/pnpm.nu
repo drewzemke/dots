@@ -12,9 +12,7 @@ add-abbrev jw     'pnpm jest --watchAll --testPathPattern'
 
 # completion for `pnpm jest`
 def list-spec-files [] {
-  ls **/*
-  | where not ($it.name | str contains "node_modules") and name has '.spec.ts'
-  | get name
+  glob '**/*.spec.{ts,tsx}' --exclude [**/node_modules/** **/.git/**] | each { |f| basename $f }
 }
 
 export extern "pnpm jest" [
@@ -25,23 +23,19 @@ export extern "pnpm jest" [
 
 # completion for `pnpm test-integrated` and `pnpm e2e`
 # NOTE: expects tests to be in the `e2e` directory
-# TODO: try the above change?
 def list-e2e-test-names [] {
-  ls **/*
-  # ls e2e/**/*
-  | where not ($it.name | str contains "node_modules") and name has '.e2e.ts'
-  | get name
+  glob 'e2e/**/*.e2e.ts' --exclude [**/node_modules/** **/.git/**]
   | each { |file|
-      cat $file
+      open $file
       | lines
       | parse --regex ".*test\\('(?<name>.*)'.*"
-      | each { |item| '"' + $item.name + '"' }
+      | get name
     }
   | flatten
 }
 
 export extern "pnpm test-integrated" [
-  --grep?(-g): string@list-e2e-test-names
+  --grep(-g): string@list-e2e-test-names
   --debug
   --headed
 ]
