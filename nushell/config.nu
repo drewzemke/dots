@@ -21,7 +21,7 @@ path add ($env.CARGO_HOME | path join 'bin')
 
 # tokens and keys
 use ./modules/tokens.nu load-token
-load-token OPEN_ROUTER_API_KEY .openrouter
+load-token OPENROUTER_API_KEY .openrouter
 load-token ANTHROPIC_API_KEY   .anthropic
 
 # config
