@@ -1,13 +1,11 @@
-use ../modules/jj-prompt.nu 
-use ../modules/git-prompt.nu 
+use ../modules/jj-prompt.nu
+use ../modules/git-prompt.nu
 
 def vcs-prompt [] {
-  # check if jj is available and we're in a jj repo
-  if (which jj | is-not-empty) {
-    let jj_root = (do -i { jj root --quiet } | complete)
-    if $jj_root.exit_code == 0 {
-      return (jj-prompt)
-    }
+  # try jj first (returns empty string if not in a jj repo)
+  let jj = (jj-prompt)
+  if ($jj | is-not-empty) {
+    return $jj
   }
 
   # otherwise fall back to git

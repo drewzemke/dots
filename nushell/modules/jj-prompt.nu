@@ -1,3 +1,17 @@
+def find-jj-root [] {
+  mut current = (pwd)
+  loop {
+    if ([$current '.jj'] | path join | path exists) {
+      return true
+    }
+    let parent = ($current | path dirname)
+    if $parent == $current {
+      return false
+    }
+    $current = $parent
+  }
+}
+
 def check-empty [] {
   if (do -i { jj diff } | is-empty) {
     $"(ansi green)󱗜"
@@ -32,7 +46,7 @@ def check-inc [] {
 
 export def main [] {
   # check if we're in a jj repo
-  if (do -i { jj root --quiet } | complete | get exit_code) != 0 {
+  if not (find-jj-root) {
     return ""
   }
 
