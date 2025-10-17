@@ -1,63 +1,57 @@
+def check-empty [] {
+  if (do -i { jj diff } | is-empty) {
+    $"(ansi green)󱗜"
+  } else {
+    $"(ansi yellow)󱗜"
+  }
+}
+
+def check-fresh [] {
+  if (do -i { jj log --no-graph -r 'fresh()' --limit 1 } | is-not-empty) {
+    $"(ansi cyan)󰩳"
+  } else {
+    ""
+  }
+}
+
+def check-out [] {
+  if (do -i { jj log --no-graph -r 'out()' --limit 1 } | is-not-empty) {
+    $"(ansi magenta)󰛃"
+  } else {
+    ""
+  }
+}
+
+def check-inc [] {
+  if (do -i { jj log --no-graph -r 'inc()' --limit 1 } | is-not-empty) {
+    $"(ansi magenta)󰛀"
+  } else {
+    ""
+  }
+}
+
 export def main [] {
-  # check if jj is available and we're in a jj repo
-  if (which jj | is-empty) {
+  # check if we're in a jj repo
+  if (do -i { jj root --quiet } | complete | get exit_code) != 0 {
     return ""
   }
 
-  let jj_root = (do -i { jj root --quiet } | complete)
-  if $jj_root.exit_code != 0 {
-    return ""
+  # run all checks in parallel
+  let symbols = (["empty" "fresh" "out" "inc"]
+    | par-each { |check|
+        match $check {
+          "empty" => (check-empty)
+          "fresh" => (check-fresh)
+          "out" => (check-out)
+          "inc" => (check-inc)
+        }
+      }
+    | where { |s| $s != "" }
+    | str join " ")
+
+  if ($symbols | is-not-empty) {
+    $"(ansi reset)($symbols) (ansi reset)"
+  } else {
+    ""
   }
-
-  let jj_log = (jj log --ignore-working-copy --no-graph --color always -r @ -T '
-    separate(
-      " ",
-      bookmarks.join(", "),
-      coalesce(
-        surround(
-          "\"",
-          "\"",
-          if(
-            description.first_line().substr(0, 24).starts_with(description.first_line()),
-            description.first_line().substr(0, 24),
-            description.first_line().substr(0, 23) ++ "…"
-          )
-        ),
-        label(if(empty, "empty", "author"), "󰞋 ")
-      ),
-      change_id.shortest(),
-      commit_id.shortest(),
-      if(conflict, label("conflict", "󰅗 ")),
-    )
-  ')
-
-  mut symbols = ""
-
-  # check for empty changes
-  let empty_changes = (do -i { jj diff } | complete)
-  if ($empty_changes.stdout | str trim | is-empty) {
-    $symbols = $symbols + " " + $"(ansi green)󱗜"
-  }
-
-  # check for fresh commits
-  let fresh_commits = (do -i { jj fresh } | complete)
-  if ($fresh_commits.stdout | str trim | is-not-empty) {
-    $symbols = $symbols + " " + $"(ansi cyan)󰩳"
-  }
-
-  # check for outgoing commits
-  let outgoing_commits = (do -i { jj out } | complete)
-  if ($outgoing_commits.stdout | str trim | is-not-empty) {
-    $symbols = $symbols + " " + $"(ansi magenta)󰛃"
-  }
-
-  # check for incoming commits
-  let incoming_commits = (do -i { jj inc } | complete)
-  if ($incoming_commits.stdout | str trim | is-not-empty) {
-    $symbols = $symbols + " " + $"(ansi magenta)󰛀"
-  }
-
-  let extra_space = if ($symbols | is-not-empty) { " " } else { "" }
-
-  $"(ansi reset)($jj_log)($symbols)($extra_space)(ansi reset)"
 }
