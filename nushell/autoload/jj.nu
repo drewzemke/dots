@@ -25,3 +25,5 @@ add-abbrev jS  'jj squash'
 add-abbrev ju  'jj undo'
 add-abbrev J   'jjui'
 
+# completions
+use ../completions/jj-completions.nu *

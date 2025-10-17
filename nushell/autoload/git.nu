@@ -1,6 +1,6 @@
+# abbreviations
 use ../modules/abbrevs.nu *
 
-# git-related abbreviations
 add-abbrev g    'git'
 add-abbrev gs   'git status -s'
 add-abbrev gsv  'git status'
@@ -30,3 +30,5 @@ add-abbrev prv  'gh pr view -w'
 add-abbrev pry  'gh pr view --json url --jq .url | pbcopy'
 add-abbrev G    'gitui'
 
+# completions
+use ../completions/git-completions.nu * 

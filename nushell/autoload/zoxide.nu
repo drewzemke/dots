@@ -5,3 +5,8 @@ if not ('~/.zoxide.nu' | path exists) {
 }
 
 source ~/.zoxide.nu
+
+# abbreviations
+use ../modules/abbrevs.nu *
+
+add-abbrev z.. 'z -'

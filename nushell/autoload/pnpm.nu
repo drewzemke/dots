@@ -45,3 +45,6 @@ export extern "pnpm e2e" [
   --debug
   --headed
 ]
+
+# more completions
+use ../completions/pnpm-completions.nu *
