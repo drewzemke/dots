@@ -8,7 +8,6 @@
       "Bash(cargo clippy:*)",
       "Bash(cargo fmt:*)",
       "Bash(find:*)",
-      "Bash(fish -c \"ticket add:*)",
       "Bash(mkdir:*)",
       "mcp__context7__get-library-docs",
       "mcp__context7__resolve-library-id"
@@ -39,8 +38,8 @@
       }
     ]
   },
+  "alwaysThinkingEnabled": false,
   "feedbackSurveyState": {
     "lastShownTime": 1754080118645
-  },
-  "alwaysThinkingEnabled": true
+  }
 }
