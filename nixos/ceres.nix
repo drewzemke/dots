@@ -8,10 +8,12 @@ in {
   imports = [ /etc/nixos/hardware-configuration.nix ];
 
   # boot loader
-  boot.loader.efi.canTouchEfiVariables = true;
+  # boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.device = "nodev";
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.useOSProber = true;
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  boot.loader.grub.efiInstallAsRemovable = true;
   boot.supportedFilesystems = [ "ntfs" ];
 
   networking.hostName = "ceres"; # Define your hostname.
@@ -74,9 +76,12 @@ in {
     gh
     git
     gnumake
+    jj
+  #  unstable.jjui
     just
     lazydocker
     mongosh
+    nushell
     openssl
     pavucontrol
     picom
