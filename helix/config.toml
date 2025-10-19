@@ -61,6 +61,22 @@ C-space = "code_action"
 "A-<" = "unindent"
 "A-p" = "paste_before"
 
+# spanish characters
+"A-a" = "@á"
+"A-e" = "@é"
+"A-i" = "@í"
+"A-o" = "@ó"
+"A-g" = "@ö"
+"A-u" = "@ú"
+"A-n" = "@ñ"
+"A-A" = "@Á"
+"A-E" = "@É"
+"A-I" = "@Í"
+"A-O" = "@Ó"
+"A-G" = "@Ö"
+"A-U" = "@Ú"
+"A-N" = "@Ñ"
+
 [keys.normal]
 # move lines up/down
 A-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]
