@@ -111,8 +111,8 @@ in {
     "nvidia-persistenced"
   ]; 
   
-  programs.fish.enable = true;
-  users.defaultUserShell = pkgs.fish;
+  # programs.fish.enable = true;
+  users.defaultUserShell = pkgs.nushell;
 
   # docker
   virtualisation.docker.enable = true;
