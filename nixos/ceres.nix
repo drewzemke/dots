@@ -81,7 +81,7 @@ in {
     just
     lazydocker
     mongosh
-    nushell
+    unstable.nushell
     openssl
     pavucontrol
     picom
