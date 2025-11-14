@@ -60,6 +60,7 @@ export def jpr [
      return
    }
 
+
    # get the PR URL and title, copy URL to clipboard
    let pr_info = (gh pr view $branch --json url,title | from json)
    $pr_info.url | pbcopy
