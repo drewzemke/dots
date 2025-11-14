@@ -34,6 +34,9 @@ export def jpr [
 ] {
    let revision = if ($commit | is-empty) { "@" } else { $commit }
 
+   # get the commit ID before pushing (so we can look up the create bookmark later)
+   let commit_id = (jj log -r $revision -T 'self.commit_id().short()' --no-graph | str trim)
+
    # push the commit
    let push_output = (jj push -c $revision --color=always | complete)
 
@@ -43,9 +46,8 @@ export def jpr [
      return
    }
 
-
    # get the branch name that was created for this commit
-   let branch = (jj bookmark list -r $revision -T 'self.name()' | str trim)
+   let branch = (jj bookmark list -r $commit_id -T 'self.name()' | str trim)
    print $"✓ Pushed branch: ($branch)"
 
    # create PR with the branch
