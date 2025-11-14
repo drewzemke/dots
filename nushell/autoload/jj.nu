@@ -31,8 +31,16 @@ use ../completions/jj-completions.nu *
 # push a JJ commit and create a PR
 export def jpr [
   commit?: string@revsets  # the commit to push and create a PR for (defaults to @)
+  --target(-t): string     # target branch for the PR (defaults to repo's default branch)
 ] {
    let revision = if ($commit | is-empty) { "@" } else { $commit }
+
+   # get the target branch (use provided or detect default)
+   let target_branch = if ($target | is-empty) {
+     gh repo view --json defaultBranchRef --jq .defaultBranchRef.name | str trim
+   } else {
+     $target
+   }
 
    # get the commit ID before pushing (so we can look up the create bookmark later)
    let commit_id = (jj log -r $revision -T 'self.commit_id().short()' --no-graph | str trim)
@@ -52,7 +60,7 @@ export def jpr [
 
 
    # create PR with the branch
-   let pr_output = (gh pr create -B main --head $branch --fill-verbose | complete)
+   let pr_output = (gh pr create -B $target_branch --head $branch --fill-verbose | complete)
 
    if $pr_output.exit_code != 0 {
      print $"(ansi red)Error:(ansi reset) gh pr create failed with exit code ($pr_output.exit_code)"
@@ -66,7 +74,7 @@ export def jpr [
    $pr_info.url | pbcopy
 
    print $"(ansi green)✓(ansi reset) Created PR: (ansi yellow)($pr_info.title)(ansi reset)"
-   print $"  (ansi blue)($pr_info.url)(ansi reset)"
+   print $"    (ansi blue)($pr_info.url)(ansi reset)"
    print $"(ansi green)✓(ansi reset) URL copied to clipboard"
 }
 
