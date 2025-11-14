@@ -60,11 +60,12 @@ export def jpr [
      return
    }
 
-   # get the PR URL and copy to clipboard
-   let pr_url = (gh pr view $branch --json url --jq .url)
-   $pr_url | pbcopy
+   # get the PR URL and title, copy URL to clipboard
+   let pr_info = (gh pr view $branch --json url,title | from json)
+   $pr_info.url | pbcopy
 
-   print $"(ansi green)✓(ansi reset) Created PR: (ansi blue)($pr_url)(ansi reset)"
+   print $"(ansi green)✓(ansi reset) Created PR: (ansi yellow)($pr_info.title)(ansi reset)"
+   print $"  (ansi blue)($pr_info.url)(ansi reset)"
    print $"(ansi green)✓(ansi reset) URL copied to clipboard"
 }
 
