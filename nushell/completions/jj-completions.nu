@@ -30,7 +30,7 @@ def untracked-bookmarks [] {
   ^jj bookmark list --ignore-working-copy --all-remotes -T 'if(!self.tracked() && self.remote() && self.remote() != "git", self.name() ++ "@" ++ self.remote() ++ "\n")' | lines
 }
 
-def revsets [] {
+export def revsets [] {
   {
     options: { sort: false },
     completions: [

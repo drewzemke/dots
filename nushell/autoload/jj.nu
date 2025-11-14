@@ -27,3 +27,39 @@ add-abbrev J   'jjui'
 
 # completions
 use ../completions/jj-completions.nu *
+
+# push a JJ commit and create a PR
+export def jpr [
+  commit?: string@revsets  # the commit to push and create a PR for (defaults to @)
+] {
+   let revision = if ($commit | is-empty) { "@" } else { $commit }
+
+   # push the commit
+   let push_output = (jj push -c $revision --color=always | complete)
+
+   if $push_output.exit_code != 0 {
+     print $"Error: jj push failed with exit code ($push_output.exit_code)"
+     print -n $push_output.stderr
+     return
+   }
+
+   # get the branch name that was created for this commit
+   let branch = (jj bookmark list -r $revision -T 'self.name()' | str trim)
+
+   # create PR with the branch
+   let pr_output = (gh pr create -B main --head $branch --fill | complete)
+
+   if $pr_output.exit_code != 0 {
+     error make {msg: "Failed to create PR", label: {text: "gh pr create failed", span: (metadata $commit).span}}
+   }
+
+   # get the PR URL and copy to clipboard
+   let pr_url = (gh pr view --json url --jq .url)
+   $pr_url | pbcopy
+
+   print $"✓ Created PR: ($pr_url)"
+   print "✓ URL copied to clipboard"
+}
+
+# removes the import from global scope
+hide revsets
