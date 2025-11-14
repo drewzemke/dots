@@ -2,6 +2,7 @@
 $env.EDITOR = 'hx'
 $env.VISUAL = $env.EDITOR
 $env.CARGO_HOME = $env.HOME | path join '.cargo'
+$env.BUN_INSTALL = $env.HOME | path join '.bun'
 $env.DREW_AT_WORK = (hostname) == 'RSS-GT7XF3F95Q'
 $env.NUSHELL_ABBREVS = {}
 
