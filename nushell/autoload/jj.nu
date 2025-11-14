@@ -50,7 +50,9 @@ export def jpr [
    let pr_output = (gh pr create -B main --head $branch --fill | complete)
 
    if $pr_output.exit_code != 0 {
-     error make {msg: "Failed to create PR", label: {text: "gh pr create failed", span: (metadata $commit).span}}
+     print $"Error: gh pr create failed with exit code ($pr_output.exit_code)"
+     print -n $pr_output.stderr
+     return
    }
 
    # get the PR URL and copy to clipboard
