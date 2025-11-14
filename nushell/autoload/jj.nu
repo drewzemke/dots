@@ -51,7 +51,7 @@ export def jpr [
    print $"✓ Pushed branch: ($branch)"
 
    # create PR with the branch
-   let pr_output = (gh pr create -B main --head $branch | complete)
+   let pr_output = (gh pr create -B main --head $branch --fill-verbose | complete)
 
    if $pr_output.exit_code != 0 {
      print $"Error: gh pr create failed with exit code ($pr_output.exit_code)"
