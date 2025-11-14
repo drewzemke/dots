@@ -45,6 +45,7 @@ export def jpr [
 
    # get the branch name that was created for this commit
    let branch = (jj bookmark list -r $revision -T 'self.name()' | str trim)
+   print $"✓ Pushed branch: ($branch)"
 
    # create PR with the branch
    let pr_output = (gh pr create -B main --head $branch --fill | complete)
