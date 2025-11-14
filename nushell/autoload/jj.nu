@@ -51,7 +51,7 @@ export def jpr [
    print $"✓ Pushed branch: ($branch)"
 
    # create PR with the branch
-   let pr_output = (gh pr create -B main --head $branch --fill | complete)
+   let pr_output = (gh pr create -B main --head $branch | complete)
 
    if $pr_output.exit_code != 0 {
      print $"Error: gh pr create failed with exit code ($pr_output.exit_code)"
@@ -60,7 +60,7 @@ export def jpr [
    }
 
    # get the PR URL and copy to clipboard
-   let pr_url = (gh pr view --json url --jq .url)
+   let pr_url = (gh pr view $branch --json url --jq .url)
    $pr_url | pbcopy
 
    print $"✓ Created PR: ($pr_url)"
