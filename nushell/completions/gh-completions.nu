@@ -255,12 +255,12 @@ export extern "gh repo list" [
 ]
 
 export extern "gh repo view" [
-    org_repo: string       # <ORG/REPO> to view
-    --branch(-b):string    # View a specific branch of the repository
-    --jq(-q):string        # Filter JSON output using a jq expression
-    --json: string         # Output JSON with the specified fields
-    --template(-t):string  # Format JSON output using a Go template; see "gh help formatting"
-    --web                  # Open a repository in the browser
+    org_repo?: string       # <ORG/REPO> to view, defaults to current repo
+    --branch(-b):string     # View a specific branch of the repository
+    --jq(-q):string         # Filter JSON output using a jq expression
+    --json: string          # Output JSON with the specified fields
+    --template(-t):string   # Format JSON output using a Go template; see "gh help formatting"
+    --web                   # Open a repository in the browser
     --help                  # Show help for command
 ]
 
