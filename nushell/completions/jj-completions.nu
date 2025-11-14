@@ -18,7 +18,7 @@ def all-bookmarks [] {
   ^jj bookmark list --ignore-working-copy --all-remotes -T 'if(self.remote() != "git", self.name() ++ if(self.remote(), "@" ++ self.remote()) ++ "\n")' | lines
 }
 
-def local-bookmarks [] {
+export def local-bookmarks [] {
   ^jj bookmark list --ignore-working-copy -T 'if(!self.remote(), self.name() ++ "\n")' | lines
 }
 

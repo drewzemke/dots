@@ -30,8 +30,8 @@ use ../completions/jj-completions.nu *
 
 # push a JJ commit and create a PR
 export def jpr [
-  commit?: string@revsets  # the commit to push and create a PR for (defaults to @)
-  --target(-t): string     # target branch for the PR (defaults to repo's default branch)
+  commit?: string@revsets         # the commit to push and create a PR for (defaults to @)
+  --target(-t): string@local-bookmarks  # target branch for the PR (defaults to repo's default branch)
 ] {
    let revision = if ($commit | is-empty) { "@" } else { $commit }
 
@@ -80,3 +80,4 @@ export def jpr [
 
 # removes the import from global scope
 hide revsets
+hide local-bookmarks
