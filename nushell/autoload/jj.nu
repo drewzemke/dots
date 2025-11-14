@@ -41,21 +41,21 @@ export def jpr [
    let push_output = (jj push -c $revision --color=always | complete)
 
    if $push_output.exit_code != 0 {
-     print $"Error: jj push failed with exit code ($push_output.exit_code)"
+     print $"(ansi red)Error:(ansi reset) jj push failed with exit code ($push_output.exit_code)"
      print -n $push_output.stderr
      return
    }
 
    # get the branch name that was created for this commit
    let branch = (jj bookmark list -r $commit_id -T 'self.name()' | str trim)
-   print $"✓ Pushed branch: ($branch)"
+   print $"(ansi green)✓(ansi reset) Pushed branch: (ansi cyan)($branch)(ansi reset)"
 
 
    # create PR with the branch
    let pr_output = (gh pr create -B main --head $branch --fill-verbose | complete)
 
    if $pr_output.exit_code != 0 {
-     print $"Error: gh pr create failed with exit code ($pr_output.exit_code)"
+     print $"(ansi red)Error:(ansi reset) gh pr create failed with exit code ($pr_output.exit_code)"
      print -n $pr_output.stderr
      return
    }
@@ -64,8 +64,8 @@ export def jpr [
    let pr_url = (gh pr view $branch --json url --jq .url)
    $pr_url | pbcopy
 
-   print $"✓ Created PR: ($pr_url)"
-   print "✓ URL copied to clipboard"
+   print $"(ansi green)✓(ansi reset) Created PR: (ansi blue)($pr_url)(ansi reset)"
+   print $"(ansi green)✓(ansi reset) URL copied to clipboard"
 }
 
 # removes the import from global scope
