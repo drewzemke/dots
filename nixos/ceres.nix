@@ -59,7 +59,7 @@ in {
     uid = 1000;
     isNormalUser = true;
     extraGroups = [ "wheel" "uinput" "docker" ]; # Enable ‘sudo’ for the user.
-    description = "Drew Zemke";
+    description = "Drew Deleón-Zemke";
   };
 
   # packages
