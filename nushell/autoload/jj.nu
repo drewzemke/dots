@@ -28,46 +28,57 @@ add-abbrev J   'jjui'
 # completions
 use ../completions/jj-completions.nu *
 
+# ============================================================================
+# Helper Functions
+# ============================================================================
+
+# run a jj/gh command with consistent error handling and output
+def run-jj [command: closure, description: string] {
+  let output = (do $command | complete)
+  if $output.exit_code != 0 {
+    print $"(ansi red)Error:(ansi reset) ($description) failed with exit code ($output.exit_code)"
+    print -n $output.stderr
+    false
+  } else {
+    print -n $output.stdout
+    true
+  }
+}
+
+# get the default branch for the current repo
+def get-default-branch [] {
+  gh repo view --json defaultBranchRef --jq .defaultBranchRef.name | str trim
+}
+
+# print a colored step header
+def print-step [message: string] {
+  print $"(ansi magenta)→(ansi reset) ($message)"
+}
+
+# ============================================================================
+# Commands
+# ============================================================================
+
 # push a JJ commit and create a PR
 export def jpr [
   commit?: string@revsets               # the commit to push and create a PR for (defaults to @)
   --target(-t): string@local-bookmarks  # target branch for the PR (defaults to repo's default branch)
 ] {
    let revision = if ($commit | is-empty) { "@" } else { $commit }
+   let target_branch = if ($target | is-empty) { get-default-branch } else { $target }
 
-   # get the target branch (use provided or detect default)
-   let target_branch = if ($target | is-empty) {
-     gh repo view --json defaultBranchRef --jq .defaultBranchRef.name | str trim
-   } else {
-     $target
-   }
-
-   # get the commit ID before pushing (so we can look up the create bookmark later)
+   # get the commit ID before pushing (so we can look it up after @ moves)
    let commit_id = (jj log -r $revision -T 'self.commit_id().short()' --no-graph | str trim)
 
    # push the commit
-   let push_output = (jj push -c $revision --color=always | complete)
-
-   if $push_output.exit_code != 0 {
-     print $"(ansi red)Error:(ansi reset) jj push failed with exit code ($push_output.exit_code)"
-     print -n $push_output.stderr
-     return
-   }
+   if not (run-jj {jj push -c $revision --color=always} "jj push") { return }
 
    # get the branch name that was created for this commit
    let branch = (jj bookmark list -r $commit_id -T 'self.name()' | str trim)
    print $"(ansi green)✓(ansi reset) Pushed branch: (ansi cyan)($branch)(ansi reset)"
 
-
    # create PR with the branch
-   let pr_output = (gh pr create -B $target_branch --head $branch --fill-verbose | complete)
-
-   if $pr_output.exit_code != 0 {
-     print $"(ansi red)Error:(ansi reset) gh pr create failed with exit code ($pr_output.exit_code)"
-     print -n $pr_output.stderr
-     return
-   }
-
+   if not (run-jj {gh pr create -B $target_branch --head $branch --fill-verbose} "gh pr create") { return }
 
    # get the PR URL and title, copy URL to clipboard
    let pr_info = (gh pr view $branch --json url,title | from json)
@@ -84,27 +95,13 @@ export def jrb [
   target?: string@revsets            # the target commit to rebase onto (defaults to head of default branch)
   --push(-p)                         # push changes after rebasing
 ] {
-   # get the target commit (use provided or default branch head)
-   let target_commit = if ($target | is-empty) {
-     let default_branch = (gh repo view --json defaultBranchRef --jq .defaultBranchRef.name | str trim)
-     $default_branch
-   } else {
-     $target
-   }
+   let target_commit = if ($target | is-empty) { get-default-branch } else { $target }
 
-   print $"(ansi magenta)→(ansi reset) Duplicating commits from (ansi cyan)($branch)(ansi reset) onto (ansi cyan)($target_commit)(ansi reset)..."
+   print-step $"Duplicating commits from (ansi cyan)($branch)(ansi reset) onto (ansi cyan)($target_commit)(ansi reset)..."
 
    # duplicate all commits in the branch onto the target
    # using revset: all ancestors of branch that aren't ancestors of target
-   let duplicate_output = (jj duplicate -d $target_commit -r $"ancestors\(($branch)\) & ~ancestors\(($target_commit)\)" --color=always | complete)
-
-   if $duplicate_output.exit_code != 0 {
-     print $"(ansi red)Error:(ansi reset) jj duplicate failed with exit code ($duplicate_output.exit_code)"
-     print -n $duplicate_output.stderr
-     return
-   }
-
-   print -n $duplicate_output.stdout
+   if not (run-jj {jj duplicate -d $target_commit -r $"ancestors\(($branch)\) & ~ancestors\(($target_commit)\)" --color=always} "jj duplicate") { return }
 
    # extract the new head commit ID from the duplicate output
    # get the head of the newly duplicated commits (descendants of target that aren't reachable from the original branch)
@@ -128,51 +125,20 @@ export def jbp [
   branch: string@local-bookmarks    # the branch to push
   --destination(-d): string@revsets # where to move the bookmark (defaults to @-)
 ] {
-   # get the destination (use provided or default to @-)
    let dest = if ($destination | is-empty) { "@-" } else { $destination }
 
    # capture the old commits at the bookmark location (for cleanup later)
    # get all ancestors of the current bookmark that aren't ancestors of the destination
    let old_commits = (jj log -r $"ancestors\(($branch)\) & ~ancestors\(($dest)\)" --no-graph -T 'self.change_id().short() ++ "\n"' | lines | str trim)
 
-   print $"(ansi magenta)→(ansi reset) Moving bookmark (ansi cyan)($branch)(ansi reset) to (ansi yellow)($dest)(ansi reset)..."
+   print-step $"Moving bookmark (ansi cyan)($branch)(ansi reset) to (ansi yellow)($dest)(ansi reset)..."
+   if not (run-jj {jj bookmark set $branch -r $dest --color=always --allow-backwards} "jj bookmark set") { return }
 
-   # move the bookmark to the destination
-   let bookmark_output = (jj bookmark set $branch -r $dest --color=always --allow-backwards | complete)
+   print-step $"Pushing changes for (ansi cyan)($branch)(ansi reset)..."
+   if not (run-jj {jj push -b $branch --color=always} "jj push") { return }
 
-   if $bookmark_output.exit_code != 0 {
-     print $"(ansi red)Error:(ansi reset) jj bookmark set failed with exit code ($bookmark_output.exit_code)"
-     print -n $bookmark_output.stderr
-     return
-   }
-
-   print -n $bookmark_output.stdout
-
-   print $"(ansi magenta)→(ansi reset) Pushing changes for (ansi cyan)($branch)(ansi reset)..."
-
-   # push the branch
-   let push_output = (jj push -b $branch --color=always | complete)
-
-   if $push_output.exit_code != 0 {
-     print $"(ansi red)Error:(ansi reset) jj push failed with exit code ($push_output.exit_code)"
-     print -n $push_output.stderr
-     return
-   }
-
-   print -n $push_output.stdout
-
-   print $"(ansi magenta)→(ansi reset) Abandoning old commits..."
-
-   # abandon the old commits using the change IDs we captured earlier
-   let abandon_output = (jj abandon -r $"($old_commits | str join ' | ')" --color=always | complete)
-
-   if $abandon_output.exit_code != 0 {
-     print $"(ansi red)Error:(ansi reset) jj abandon failed with exit code ($abandon_output.exit_code)"
-     print -n $abandon_output.stderr
-     return
-   }
-
-   print -n $abandon_output.stdout
+   print-step "Abandoning old commits..."
+   if not (run-jj {jj abandon -r $"($old_commits | str join ' | ')" --color=always} "jj abandon") { return }
 
    print $"(ansi green)✓(ansi reset) Successfully pushed (ansi cyan)($branch)(ansi reset)"
 }
