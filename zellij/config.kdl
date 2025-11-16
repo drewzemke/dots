@@ -169,6 +169,13 @@ keybinds clear-defaults=true {
         bind "q" { Detach; }
         bind "s" { SwitchToMode "scroll"; }
         bind "t" { SwitchToMode "tab"; }
+        bind "Ctrl t" {
+            LaunchOrFocusPlugin "https://github.com/AlexZasorin/zellij-newtab-plus/releases/download/v0.2.1/zellij-newtab-plus.wasm" {
+                floating true
+                move_to_focused_tab true
+            };
+            SwitchToMode "normal";
+        }
     }
 }
 
