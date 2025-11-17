@@ -33,14 +33,16 @@ use ../completions/jj-completions.nu *
 # ============================================================================
 
 # run a jj/gh command with consistent error handling and output
-def run-jj [command: closure, description: string] {
+def run-jj [command: closure, description: string, no_out: bool = false] {
   let output = (do $command | complete)
   if $output.exit_code != 0 {
     print $"(ansi red)Error:(ansi reset) ($description) failed with exit code ($output.exit_code)"
     print -n $output.stderr
     false
   } else {
-    print -n $output.stdout
+    if not $no_out {
+      print -n $output.stdout
+    }
     true
   }
 }
@@ -78,7 +80,7 @@ export def jpr [
    print $"(ansi green)✓(ansi reset) Pushed branch: (ansi cyan)($branch)(ansi reset)"
 
    # create PR with the branch
-   if not (run-jj {gh pr create -B $target_branch --head $branch --fill-verbose} "gh pr create") { return }
+   if not (run-jj {gh pr create -B $target_branch --head $branch --fill-verbose} "gh pr create" true) { return }
 
    # get the PR URL and title, copy URL to clipboard
    let pr_info = (gh pr view $branch --json url,title | from json)
