@@ -11,23 +11,10 @@ keybinds clear-defaults=true {
         bind "down" { GoToNextTab; }
         bind "up" { GoToPreviousTab; }
         bind "right" { GoToNextTab; }
-        bind "N" { NewTab; SwitchToMode "renametab"; TabNameInput 0; }
         bind "h" { GoToPreviousTab; }
         bind "j" { GoToNextTab; }
         bind "k" { GoToPreviousTab; }
         bind "l" { GoToNextTab; }
-        bind "n" {
-            Run "sh" "-c" "~/.config/fish/scripts/zellij-new-tab.fish" {
-                name "New Tab"
-                floating true
-                height "3"
-                width "20%"
-                x "40%"
-                y "2"
-                close_on_exit true
-            }
-            SwitchToMode "normal"
-        }
         bind "r" { SwitchToMode "renametab"; TabNameInput 0; }
         bind "s" { ToggleActiveSyncTab; SwitchToMode "normal"; }
         bind "x" { CloseTab; SwitchToMode "normal"; }
