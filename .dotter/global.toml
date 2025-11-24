@@ -20,7 +20,6 @@ synapse = "~/.config/synapse"
 tongo = "~/.config/tongo"
 wezterm = "~/.config/wezterm"
 zellij = "~/.config/zellij"
-"zellij/plugins/zjstatus.wasm" = { target = "~/.config/zellij/plugins/zjstatus.wasm", type = "symbolic" }
 
 # macos only
 [mac.files]
