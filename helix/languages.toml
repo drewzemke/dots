@@ -235,7 +235,7 @@ auto-format = true
 ############
 
 [language-server.yaml-language-server.config.yaml]
-format = { enable = true }
+format = { enable = true, singleQuote = true }
 validation = true
 
 [language-server.yaml-language-server.config.yaml.schemas]
