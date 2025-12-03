@@ -1,0 +1,3 @@
+- I personally use jj (jujutsu) for local version control, not git. So whenever you need to examine the repo, use jj commands, falling back to git only if the jj commands fail
+- Keep code comments minimal and only add them when necessary to explain nonobvious code
+- Code comments should be short, not capitalized at the beginning, and don't need to be complete sentences
