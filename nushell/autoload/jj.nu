@@ -79,8 +79,18 @@ export def jpr [
    let branch = (jj bookmark list -r $commit_id -T 'self.name()' | str trim)
    print $"(ansi green)✓(ansi reset) Pushed branch: (ansi cyan)($branch)(ansi reset)"
 
+   # count commits between target and our revision
+   let commit_count = (jj log -r $"ancestors\(($commit_id)\) & ~ancestors\(($target_branch)\)" --no-graph -T '"x"' | str length)
+
    # create PR with the branch
-   if not (run-jj {gh pr create -B $target_branch --head $branch --fill-verbose} "gh pr create" true) { return }
+   let gh_args = if $commit_count > 1 {
+     # multiple commits - prompt for title since gh would use branch name
+     let title = (input "PR title: ")
+     [-B $target_branch --head $branch --fill-verbose --title $title]
+   } else {
+     [-B $target_branch --head $branch --fill-verbose]
+   }
+   if not (run-jj {gh pr create ...$gh_args} "gh pr create" true) { return }
 
    # get the PR URL and title, copy URL to clipboard
    let pr_info = (gh pr view $branch --json url,title | from json)
