@@ -29,6 +29,35 @@ add-abbrev J   'jjui'
 use ../completions/jj-completions.nu *
 
 # ============================================================================
+# reedline keybindings
+# ============================================================================
+
+# alt+j to pick a bookmark with fzf and insert at cursor
+$env.config.keybindings ++= [{
+    name: fzf_jj_bookmark
+    modifier: alt
+    keycode: char_j
+    mode: [emacs, vi_insert, vi_normal]
+    event: {
+        send: executehostcommand
+        cmd: "commandline edit --insert (jj bookmark list -T 'name ++ \"\\n\"' | fzf --preview 'jj log --color=always -r \"ancestors({1},4)\"' | decode utf-8 | str trim)"
+    }
+}]
+
+# ctrl+j to pick a commit with fzf and insert at cursor
+$env.config.keybindings ++= [{
+    name: fzf_jj_commit
+    modifier: control
+    keycode: char_j
+    mode: [emacs, vi_insert, vi_normal]
+    event: {
+        send: executehostcommand
+        cmd: "commandline edit --insert (jj log --no-graph -r \"all()\" -T 'change_id.shortest() ++ \" \" ++ description.first_line() ++ \"\\n\"' | fzf --preview 'jj log --color=always -r \"ancestors({1},4)\"' | decode utf-8 | split row ' ' | first)"
+    }
+}]
+
+
+# ============================================================================
 # Helper Functions
 # ============================================================================
 
