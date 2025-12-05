@@ -114,7 +114,7 @@ export def jpr [
    # create PR with the branch
    let gh_args = if $commit_count > 1 {
      # multiple commits - prompt for title since gh would use branch name
-     let title = (input "PR title: ")
+     let title = (input --reedline  $"(ansi magenta)PR title: (ansi reset)")
      [-B $target_branch --head $branch --fill-verbose --title $title]
    } else {
      [-B $target_branch --head $branch --fill-verbose]
