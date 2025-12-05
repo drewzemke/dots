@@ -184,6 +184,21 @@ export def jbp [
    print $"(ansi green)✓(ansi reset) Successfully pushed (ansi cyan)($branch)(ansi reset)"
 }
 
+# push main branch forward to a bookmark
+export def jpm [
+  bookmark: string@local-bookmarks  # the bookmark to move main to
+] {
+   let main_branch = get-default-branch
+
+   print-step $"Moving (ansi cyan)($main_branch)(ansi reset) to (ansi yellow)($bookmark)(ansi reset)..."
+   if not (run-jj {jj bookmark set $main_branch -r $bookmark --color=always} "jj bookmark set") { return }
+
+   print-step $"Pushing (ansi cyan)($main_branch)(ansi reset)..."
+   if not (run-jj {jj push -b $main_branch --color=always} "jj push") { return }
+
+   print $"(ansi green)✓(ansi reset) Successfully pushed (ansi cyan)($main_branch)(ansi reset) to (ansi yellow)($bookmark)(ansi reset)"
+}
+
 # removes the import from global scope
 hide revsets
 hide local-bookmarks
