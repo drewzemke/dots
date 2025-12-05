@@ -90,6 +90,12 @@ config.keys = {
     mods = 'CMD|CTRL|ALT',
     action = act.ToggleFullScreen
   },
+
+  {
+    key="Enter",
+    mods="SHIFT",
+    action=wezterm.action{SendString="\x1b\r"}
+  },
 }
 
 config.disable_default_key_bindings = true
