@@ -19,6 +19,7 @@ nushell = "~/.config/nushell"
 synapse = "~/.config/synapse"
 tongo = "~/.config/tongo"
 wezterm = "~/.config/wezterm"
+yazi = "~/.config/yazi"
 zellij = "~/.config/zellij"
 
 # macos only
