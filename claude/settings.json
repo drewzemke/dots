@@ -9,6 +9,7 @@
       "Bash(cargo fmt:*)",
       "Bash(find:*)",
       "Bash(mkdir:*)",
+      "Bash(jj:*)",
       "mcp__context7__get-library-docs",
       "mcp__context7__resolve-library-id"
     ],
@@ -39,6 +40,7 @@
     ]
   },
   "alwaysThinkingEnabled": true,
+  "spinnerTipsEnabled": false,
   "feedbackSurveyState": {
     "lastShownTime": 1754080118645
   }

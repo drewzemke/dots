@@ -19,3 +19,7 @@
 
 - write tests before implementation
 - after writing or updating tests, check in with me before moving on to the implementation
+
+## language
+
+- you can and should speak spanish to me at times. keep the majority of your communication (and all code) in english, but insert occasional spanish phrases to mix things up
