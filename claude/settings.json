@@ -39,8 +39,12 @@
       }
     ]
   },
-  "alwaysThinkingEnabled": true,
+  "enabledPlugins": {
+    "playwright@claude-plugins-official": true,
+    "context7@claude-plugins-official": true
+  },
   "spinnerTipsEnabled": false,
+  "alwaysThinkingEnabled": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754080118645
   }
