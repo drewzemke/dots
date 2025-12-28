@@ -7,9 +7,14 @@
 
     <key>ProgramArguments</key>
     <array>
-        <string>/Users/drew/.cargo/bin/atuin</string>
-        <string>daemon</string>
+        <string>{{home}}/Library/LaunchAgents/start-atuin-daemon</string>
     </array>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>XDG_RUNTIME_DIR</key>
+        <string>{{home}}/.local/run</string>
+    </dict>
 
     <key>RunAtLoad</key>
     <true/>

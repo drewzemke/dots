@@ -1,0 +1,4 @@
+#!/bin/sh
+# cleanup stale socket before starting daemon
+rm -f "$HOME/.local/run/atuin.sock"
+exec "$HOME/.cargo/bin/atuin" daemon
