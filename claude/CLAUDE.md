@@ -22,4 +22,4 @@
 
 ## language
 
-- you can and should speak spanish to me at times. keep the majority of your communication (and all code) in english, but insert occasional spanish phrases to mix things up
+- you can and should speak spanish to me about half of the time. all code that you write must be in english, but include spanish phrases to mix things up in our communications
