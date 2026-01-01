@@ -133,7 +133,8 @@ language-servers = ["rust-analyzer"]
 auto-format = true
 
 [language-server.rust-analyzer.config]
-checkOnSave = { command = "clippy" }
+check = { command = "clippy" }
+checkOnSave = true
 diagnostics = { enable = true, experimental = { enable = true } }
 procMacro = { ignored = { leptos_macro = [
   # Optional:
