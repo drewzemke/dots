@@ -23,13 +23,50 @@
     "deny": []
   },
   "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "nu -c 'use ~/dots/nushell/functions; functions tab-bell init'"
+          }
+        ]
+      }
+    ],
     "Notification": [
       {
         "matcher": "",
         "hooks": [
           {
             "type": "command",
-            "command": "fish -c 'notify \"Claude is ready!\"'"
+            "command": "nu -c 'use ~/dots/nushell/functions; functions tab-bell'"
+          },
+          {
+            "type": "command",
+            "command": "nu -c 'use ~/dots/nushell/functions; functions notify \"Claude is ready!\"'"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "nu -c 'use ~/dots/nushell/functions; functions tab-bell clear'"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "nu -c 'use ~/dots/nushell/functions; functions tab-bell clear'"
           }
         ]
       }
@@ -41,6 +78,17 @@
           {
             "type": "command",
             "command": "sh -c 'test -d .jj && jj status || exit 0'"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "nu -c 'use ~/dots/nushell/functions; functions tab-bell clear'"
           }
         ]
       }
