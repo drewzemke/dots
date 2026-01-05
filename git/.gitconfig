@@ -35,6 +35,9 @@
 [credential "https://github.com"]
 	helper = !gh auth git-credential
 
+[url "https://github.com/"]
+	insteadOf = git@github.com:
+
 [alias]
     line-info = "!f() { \
         SHA=$(git blame -L \"$1\",\"$1\" \"$2\" | cut -d \" \" -f 1); \
