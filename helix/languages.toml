@@ -69,7 +69,36 @@ language-servers = ["vscode-html-language-server"]
 
 [[language]]
 name = "json"
-language-servers = ["biome"]
+language-servers = [
+  { name = "vscode-json-language-server", except-features = [
+    "format",
+  ] },
+  { name = "biome", except-features = [
+    "format",
+  ] },
+]
+formatter = { command = "biome", args = [
+  "format",
+  "--stdin-file-path",
+  "file.json",
+] }
+auto-format = true
+
+[[language]]
+name = "jsonc"
+language-servers = [
+  { name = "vscode-json-language-server", except-features = [
+    "format",
+  ] },
+  { name = "biome", except-features = [
+    "format",
+  ] },
+]
+formatter = { command = "biome", args = [
+  "format",
+  "--stdin-file-path",
+  "file.json",
+] }
 auto-format = true
 
 
@@ -159,7 +188,9 @@ auto-format = true
 [[language]]
 name = "typescript"
 language-servers = [
-  { name = "tsgo", except-features = ["format"] },
+  { name = "tsgo", except-features = [
+    "format",
+  ] },
   "deno-lsp",
   "biome",
 ]
@@ -169,7 +200,9 @@ auto-format = true
 [[language]]
 name = "tsx"
 language-servers = [
-  { name = "tsgo", except-features = ["format"] },
+  { name = "tsgo", except-features = [
+    "format",
+  ] },
   "deno-lsp",
   "biome",
 ]
@@ -178,18 +211,12 @@ auto-format = true
 
 [[language]]
 name = "javascript"
-language-servers = [
-  { name = "tsgo", except-features = ["format"] },
-  "biome",
-]
+language-servers = [{ name = "tsgo", except-features = ["format"] }, "biome"]
 auto-format = true
 
 [[language]]
 name = "jsx"
-language-servers = [
-  { name = "tsgo", except-features = ["format"] },
-  "biome",
-]
+language-servers = [{ name = "tsgo", except-features = ["format"] }, "biome"]
 grammar = "javascript"
 auto-format = true
 
