@@ -157,7 +157,11 @@ export def jrb [
      # call jbp to move bookmark, push, and cleanup
      jbp $branch -d $new_head
    } else {
-     print $"\n(ansi blue)ℹ(ansi reset) Bookmark (ansi cyan)($branch)(ansi reset) still points to old commits. Run (ansi yellow)jbp ($branch)(ansi reset) when ready to push."
+     # move working copy to a fresh commit on top of the new head
+     run-jj { jj new $new_head } 'jj new' true
+     print $"\n(ansi blue)ℹ(ansi reset) Working copy is now on top of duplicated commits."
+     print $"    Bookmark (ansi cyan)($branch)(ansi reset) still points to old commits."
+     print $"    Run (ansi yellow)jbp ($branch)(ansi reset) when ready to push."
    }
 }
 
