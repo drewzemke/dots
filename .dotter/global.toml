@@ -24,7 +24,6 @@ zellij = "~/.config/zellij"
 
 # macos only
 [mac.files]
-"macos/LaunchAgents" = "~/Library/LaunchAgents"
 
 # linux only
 [linux.files]
