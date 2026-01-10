@@ -5,7 +5,6 @@
 atuin = "~/.config/atuin"
 broot = "~/.config/broot"
 claude = "~/.claude"
-fish = "~/.config/fish"
 gitui = "~/.config/gitui"
 "git/.gitconfig" = "~/.gitconfig"
 "git/.gitignore_global" = "~/.gitignore_global"
