@@ -1,4 +1,5 @@
 export use ./dots.nu
+export use ./nixedit.nu
 export use ./notes.nu
 export use ./notify.nu
 export use ./corner.nu
