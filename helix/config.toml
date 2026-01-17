@@ -189,7 +189,7 @@ y = ":run-shell-command zellij run -fc -- yazi (dirname %{current_working_direct
 g = ":run-shell-command zellij run -fc -- gitui"
 j = ":run-shell-command zellij run -fc -- jjui"
 c = ["wonly", "vsplit", ":open chat.md"]
-s = ["wonly", "vsplit", ":open %sh{map_spec_name %{buffer_name}}"]
+s = ["wonly", "vsplit", ":open %sh{nu -c \"use ~/.config/nushell/functions/map_spec_name.nu; map_spec_name '%{buffer_name}'\"}"]
 
 [keys.normal.g]
 D = ["wonly", "vsplit", "goto_definition"]
