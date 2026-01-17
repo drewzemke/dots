@@ -26,6 +26,7 @@ inherits = "dracula_at_night"
 "ui.picker.header.column.active" = { fg = "purple", underline = { style = "line", color = "comment" }, modifiers = ["bold"] }
 "ui.selection"              = { bg = "selection"                                                         }
 "ui.selection.primary"      = { bg = "selection"                                                         }
+"ui.virtual.fold-decoration" = { fg = "comment",     bg = "background"                                   }
 "ui.virtual.indent-guide"   = { fg = "comment"                                                           }
 "ui.virtual.inlay-hint"     = { fg = "comment",     bg = "background"                                    }
 "ui.virtual.jump-label"     = {                     underline = { style = "line", color = "comment" }, modifiers = ["bold"] }

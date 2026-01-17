@@ -1,7 +1,6 @@
 theme = "drewcula"
 
 [editor]
-bufferline = "multiple"
 color-modes = true
 cursorline = true
 end-of-line-diagnostics = "hint"
@@ -13,12 +12,16 @@ shell = ["nu", "-c"]
 true-color = true
 rainbow-brackets = true
 
+# NEW
+bufferline = { render-mode = 'multiple', separator = '' }
+rounded-corners = true
+
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
 
 [editor.statusline]
-left = ["mode", "spinner", "version-control", "file-name"]
+left = ["mode", "spinner", "file-name", "function-name"] # NEW
 right = [
   "selections",
   "position",
@@ -50,6 +53,65 @@ render = true
 [editor.lsp]
 display-messages = true
 display-inlay-hints = true
+
+#####################################
+# new config for helix fork
+# see https://github.com/gj1118/helix
+#####################################
+
+[editor.cmdline]
+style = "popup"
+use-full-height = true
+
+[editor.cmdline.icons]
+search = "  "    # nf-fa-search
+command = "  "    # nf-fa-cog
+shell = "  "     # nf-fa-terminal
+general = "󰅺  "   # nf-fa-comment
+
+[editor.gradient-borders]
+enable = true
+thickness = 1
+direction = "vertical"
+start-color = "#ff79c6" # pink
+end-color = "#bd93f9"   # purple
+
+[editor.auto-reload]
+focus-gained = true
+periodic.enable = true
+periodic.interval = 5000
+
+[icons.vcs]
+enabled = true
+
+# [icons.mime]
+# enabled = true
+
+[editor.notifications]
+enable = true
+style = "popup"
+position = "bottom-right" 
+max-width = 60
+max-height = 10
+default-timeout = 3000
+show-icons = true
+show-emojis = false
+padding = 0
+enable-history = true
+
+[editor.notifications.icons]
+info = " "
+warning = " "
+error = " "
+success = " "
+
+[editor.notifications.border]
+enable = true
+width = 2
+radius = 1              # corner rounding
+
+[editor.notifications.shadow]
+enable = false
 
 #########################
 # key mappings
@@ -136,8 +198,11 @@ tab = "smart_tab"
 "'" = "goto_word"
 "A-'" = "extend_to_word"
 
+# NEW: code folding
+"C-f" = "toggle_fold"
+
 # alt+motion to extend selections  
-"A-w" = "extend_next_word_start"
+# A-w"" = "extend_next_word_start"
 "A-W" = "extend_next_long_word_start"
 "A-e" = "extend_next_word_end"
 "A-E" = "extend_next_long_word_end"
@@ -168,7 +233,7 @@ F = "file_picker"
 f = "file_picker_in_current_directory"
 H = ["search_selection", "select_all", "select_regex"]
 L = ":lsp-restart"
-l = "@:lsp-workspace-command "
+# l = "@:lsp-workspace-command "
 C-f = ["search_selection", "global_search"]
 
 [keys.normal.space.t]
@@ -189,7 +254,11 @@ y = ":run-shell-command zellij run -fc -- yazi (dirname %{current_working_direct
 g = ":run-shell-command zellij run -fc -- gitui"
 j = ":run-shell-command zellij run -fc -- jjui"
 c = ["wonly", "vsplit", ":open chat.md"]
-s = ["wonly", "vsplit", ":open %sh{nu -c \"use ~/.config/nushell/functions/map_spec_name.nu; map_spec_name '%{buffer_name}'\"}"]
+s = [
+  "wonly",
+  "vsplit",
+  ":open %sh{nu -c \"use ~/.config/nushell/functions/map_spec_name.nu; map_spec_name '%{buffer_name}'\"}",
+]
 
 [keys.normal.g]
 D = ["wonly", "vsplit", "goto_definition"]
