@@ -64,10 +64,10 @@ style = "popup"
 use-full-height = true
 
 [editor.cmdline.icons]
-search = "  "    # nf-fa-search
-command = "  "    # nf-fa-cog
-shell = "  "     # nf-fa-terminal
-general = "󰅺  "   # nf-fa-comment
+search = "  "
+command = "  "
+shell = "  "
+general = "󰅺  "
 
 [editor.gradient-borders]
 enable = true
@@ -90,7 +90,7 @@ enabled = true
 [editor.notifications]
 enable = true
 style = "popup"
-position = "bottom-right" 
+position = "top-right"
 max-width = 60
 max-height = 10
 default-timeout = 3000
@@ -108,7 +108,7 @@ success = " "
 [editor.notifications.border]
 enable = true
 width = 2
-radius = 1              # corner rounding
+radius = 1    # corner rounding
 
 [editor.notifications.shadow]
 enable = false
