@@ -12,7 +12,12 @@ pager = ["delta", "--pager", "less -FRX", "--side-by-side"]
 diff-formatter = ":git"
 
 [git]
-push-new-bookmarks = true
+# won't push these
+private-commits = "description('wip:*') | description('fixme:*') "
+
+[remotes.origin]
+# matches the `git_push_bookmark` template below
+auto-track-bookmarks = "drew/*"
 
 [revsets]
 log = 'connected(@ | ancestors(trunk()..(visible_heads() & mine()), 2) | trunk())'
@@ -25,13 +30,13 @@ log = 'connected(@ | ancestors(trunk()..(visible_heads() & mine()), 2) | trunk()
 'my_branches()' = "trunk() | heads(::@- & bookmarks())"
 
 # commits relative to head that have not be synced with remote yet
-'fresh()' = "bookmarks()..git_head()"
+'fresh()' = "bookmarks()..first_parent(@)"
 
 # commits are prepped and ready to be pushed 
 'out()' = "remote_bookmarks()..bookmarks()"
 
 # commits have just been fetched but not rebased
-'inc()' = "git_head()..my_branches()"
+'inc()' = "first_parent(@)..my_branches()"
 
 [aliases]
 # move any bookmarks in ancestors forward to the previous commit
@@ -80,6 +85,8 @@ if(timestamp.after("1 day ago"),
 "in_branch(commit)" = 'commit.contained_in("immutable_heads()..bookmarks()")'
 
 [templates]
+git_push_bookmark = '"drew/push-" ++ change_id.short()'
+
 # formats commit messages in log by highlighting configurable prefixes
 log = '''
 if(root,
