@@ -11,10 +11,6 @@ default-command = "log"
 pager = ["delta", "--pager", "less -FRX", "--side-by-side"]
 diff-formatter = ":git"
 
-[git]
-# won't push these
-private-commits = "description('wip:*') | description('fixme:*') "
-
 [remotes.origin]
 # matches the `git_push_bookmark` template below
 auto-track-bookmarks = "drew/*"
@@ -55,18 +51,24 @@ fresh = ["log", "-r", "fresh()"]
 out = ["log", "-r", "out()"]
 inc = ["log", "-r", "inc()"]
 
+[colors]
+private_commit_prefix = "#ffb86c"
+
 [extra]
-# Prefixes to highlight in commit messages
-highlight-prefixes = ["WIP", "EXP", "TODO", "FIXME", "DEBUG"]
+private-prefixes = ["wip", "exp", "todo", "fixme", "xxx"]
+
+[git]
+# won't push these
+private-commits = 'description(regex:"^(wip|exp|todo|fixme|xxx):")'
 
 [template-aliases]
 # helper function to highlight specified prefixes in commit messages
+# private prefixes get an orange lock icon prepended
 'highlight_prefixes(line)' = '''
 coalesce(
-  config("extra.highlight-prefixes").as_string_list().map(|prefix| 
+  config("extra.private-prefixes").as_string_list().map(|prefix|
     if(line.lower().starts_with(prefix.lower() ++ ":"),
-      label("timestamp", prefix.upper() ++ ":")
-        ++ line.substr(prefix.len() + 1, line.len()),
+      label("private_commit_prefix", " ") ++ line,
       ""
     )
   ).join(""),
