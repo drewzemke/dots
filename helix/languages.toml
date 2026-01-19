@@ -1,5 +1,5 @@
 # npm i -g vscode-langservers-extracted typescript-language-server @tailwindcss/language-server
-# cargo install lsp-ai markdown-oxide
+# cargo install markdown-oxide
 # cargo install taplo -F lsp
 # brew install biome
 
@@ -124,33 +124,6 @@ name = "markdown"
 language-servers = ["markdown-oxide", "lsp-ai-chat"]
 auto-format = true
 comment-tokens = ["-", "- [ ]", ">", "+", "*"]
-
-[language-server.lsp-ai-chat]
-command = "lsp-ai"
-
-[language-server.lsp-ai-chat.config.memory]
-file_store = {}
-
-[language-server.lsp-ai-chat.config.models.model1]
-type = "anthropic"
-chat_endpoint = "https://api.anthropic.com/v1/messages"
-model = "claude-3-5-sonnet-20240620"
-auth_token_env_var_name = "ANTHROPIC_API_TOKEN"
-
-[[language-server.lsp-ai-chat.config.chat]]
-trigger = "!C"
-action_display_name = "Chat"
-model = "model1"
-
-[language-server.lsp-ai-chat.config.chat.parameters]
-max_context = 4096
-max_tokens = 1024
-system = """
-You are a code assistant chatbot. 
-The user will ask you for assistance coding and you will do your best to answer succinctly and accurately. 
-You will also format your responses using markdown where appropriate.
-"""
-
 
 ############
 ### Rust ###

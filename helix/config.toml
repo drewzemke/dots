@@ -253,7 +253,6 @@ Y = ":run-shell-command zellij run -fc -- yazi %{current_working_directory}"
 y = ":run-shell-command zellij run -fc -- yazi (dirname %{current_working_directory}/%{buffer_name})"
 g = ":run-shell-command zellij run -fc -- gitui"
 j = ":run-shell-command zellij run -fc -- jjui"
-c = ["wonly", "vsplit", ":open chat.md"]
 s = [
   "wonly",
   "vsplit",
