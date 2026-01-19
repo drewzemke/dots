@@ -10,4 +10,4 @@ path add '/opt/homebrew/bin'
 path add '/opt/homebrew/bin'
 path add ($env.BUN_INSTALL | path join 'bin')
 path add ($env.CARGO_HOME | path join 'bin')
-path add ($env.HOME | path join '.claude' 'local')
+path add ($env.HOME | path join '.local' 'bin')
