@@ -25,7 +25,7 @@ Address alerts in this order:
 ### For Dependabot alerts:
 1. Determine where the dependency comes from (direct vs transitive)
 2. If direct: update the version constraint
-3. If transitive: use the package manager's override/resolution mechanism
+3. If transitive: try to resolve the issue by updating a direct dependency. *As a last resort*, use the package manager's override/resolution mechanism
 4. Update the lockfile
 5. Verify the vulnerable version is no longer present
 
@@ -35,7 +35,7 @@ Address alerts in this order:
 
 ## Step 4: Verify and Commit
 
-After each fix:
+After each individual fix:
 1. Run the project's build, lint, and type-check commands to verify correctness
 2. Commit with message format: `fix(deps): <brief description of fix>` or `fix(security): <description>` for code issues
 3. Move to the next alert
