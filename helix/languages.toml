@@ -121,7 +121,7 @@ comment-token = ";;"
 
 [[language]]
 name = "markdown"
-language-servers = ["markdown-oxide", "lsp-ai-chat"]
+language-servers = ["markdown-oxide"]
 auto-format = true
 comment-tokens = ["-", "- [ ]", ">", "+", "*"]
 
