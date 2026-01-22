@@ -34,7 +34,16 @@
       "Bash(pnpm test:*)",
       "Bash(pnpm why:*)",
       "WebFetch(domain:*)",
-      "WebSearch"
+      "WebSearch",
+      "Bash(wc:*)",
+      "Write(~/notes)",
+      "Bash(cargo run:*)",
+      "Bash(just push:*)",
+      "Bash(just reset:*)",
+      "Bash(cargo test:*)",
+      "Bash(just cheat:*)",
+      "Bash(git for-each-ref:*)",
+      "Bash(git config:*)"
     ],
     "deny": [],
     "ask": [],
@@ -117,6 +126,7 @@
     "context7@claude-plugins-official": true
   },
   "spinnerTipsEnabled": false,
+  "syntaxHighlightingDisabled": false,
   "alwaysThinkingEnabled": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754080118645
