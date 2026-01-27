@@ -77,6 +77,16 @@ def commands [] {
     'bookmark set'
     'bookmark track'
     'bookmark untrack'
+    'b'
+    'b create'
+    'b delete'
+    'b forget'
+    'b list'
+    'b move'
+    'b rename'
+    'b set'
+    'b track'
+    'b untrack'
     'commit'
     'config'
     'config edit'
@@ -429,6 +439,17 @@ export extern "jj bookmark untrack" [
   --config: string                          # additional configuration options
   --config-file: path                       # additional configuration file
 ]
+
+# bookmark command aliases (jj b -> jj bookmark)
+export alias "jj b create" = jj bookmark create
+export alias "jj b delete" = jj bookmark delete
+export alias "jj b forget" = jj bookmark forget
+export alias "jj b list" = jj bookmark list
+export alias "jj b move" = jj bookmark move
+export alias "jj b rename" = jj bookmark rename
+export alias "jj b set" = jj bookmark set
+export alias "jj b track" = jj bookmark track
+export alias "jj b untrack" = jj bookmark untrack
 
 # Update the description and create a new change on top [default alias: ci]
 export extern "jj commit" [
