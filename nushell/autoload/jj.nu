@@ -32,7 +32,7 @@ use ../completions/jj-completions.nu *
 # reedline keybindings
 # ============================================================================
 
-# alt+j to pick a bookmark with fzf and insert at cursor
+# alt+j to pick a local bookmark with fzf and insert at cursor
 $env.config.keybindings ++= [{
     name: fzf_jj_bookmark
     modifier: alt
@@ -40,7 +40,19 @@ $env.config.keybindings ++= [{
     mode: [emacs, vi_insert, vi_normal]
     event: {
         send: executehostcommand
-        cmd: "commandline edit --insert (jj bookmark list -T 'name ++ \"\\n\"' | fzf --preview 'jj log --color=always -r \"ancestors({1},4)\"' | decode utf-8 | str trim)"
+        cmd: "let line = (commandline); let query = ($line | split row ' ' | last | default ''); let prefix = ($line | str replace -r '\\S*$' ''); let r = (jj bookmark list -T 'name ++ \"\\n\"' | fzf --query $query --preview 'jj log --color=always -r \"ancestors({1},4)\"' | decode utf-8 | str trim); if ($r | is-not-empty) { commandline edit --replace $\"($prefix)($r)\" }"
+    }
+}]
+
+# alt+shift+j to pick any bookmark (including remotes) with fzf and insert at cursor
+$env.config.keybindings ++= [{
+    name: fzf_jj_bookmark_all
+    modifier: alt_shift
+    keycode: char_j
+    mode: [emacs, vi_insert, vi_normal]
+    event: {
+        send: executehostcommand
+        cmd: "let line = (commandline); let query = ($line | split row ' ' | last | default ''); let prefix = ($line | str replace -r '\\S*$' ''); let r = (jj bookmark list --all-remotes -T 'if(self.remote() != \"git\", self.name() ++ if(self.remote(), \"@\" ++ self.remote()) ++ \"\\n\")' | fzf --query $query --preview 'jj log --color=always -r \"ancestors({1},4)\"' | decode utf-8 | str trim); if ($r | is-not-empty) { commandline edit --replace $\"($prefix)($r)\" }"
     }
 }]
 
@@ -52,7 +64,7 @@ $env.config.keybindings ++= [{
     mode: [emacs, vi_insert, vi_normal]
     event: {
         send: executehostcommand
-        cmd: "commandline edit --insert (jj log --no-graph -r \"all()\" -T 'change_id.shortest() ++ \" \" ++ description.first_line() ++ \"\\n\"' | fzf --preview 'jj log --color=always -r \"ancestors({1},4)\"' | decode utf-8 | split row ' ' | first)"
+        cmd: "let line = (commandline); let query = ($line | split row ' ' | last | default ''); let prefix = ($line | str replace -r '\\S*$' ''); let r = (jj log --no-graph -r \"all()\" -T 'change_id.shortest() ++ \" \" ++ description.first_line() ++ \"\\n\"' | fzf --query $query --preview 'jj log --color=always -r \"ancestors({1},4)\"' | decode utf-8 | split row ' ' | first); if ($r | is-not-empty) { commandline edit --replace $\"($prefix)($r)\" }"
     }
 }]
 
