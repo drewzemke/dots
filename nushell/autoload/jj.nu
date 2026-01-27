@@ -1,4 +1,5 @@
 use ../modules/abbrevs.nu *
+use ./fzf.nu fzf-insert
 
 # jj-related abbreviations
 add-abbrev jab 'jj abandon'
@@ -32,41 +33,29 @@ use ../completions/jj-completions.nu *
 # reedline keybindings
 # ============================================================================
 
-# alt+j to pick a local bookmark with fzf and insert at cursor
-$env.config.keybindings ++= [{
-    name: fzf_jj_bookmark
-    modifier: alt
-    keycode: char_j
-    mode: [emacs, vi_insert, vi_normal]
-    event: {
-        send: executehostcommand
-        cmd: "let line = (commandline); let query = ($line | split row ' ' | last | default ''); let prefix = ($line | str replace -r '\\S*$' ''); let r = (jj bookmark list -T 'name ++ \"\\n\"' | fzf --query $query --preview 'jj log --color=always -r \"ancestors({1},4)\"' | decode utf-8 | str trim); if ($r | is-not-empty) { commandline edit --replace $\"($prefix)($r)\" }"
-    }
-}]
+const JJ_LOG_PREVIEW = 'jj log --color=always -r "ancestors({1},4)"'
 
-# alt+shift+j to pick any bookmark (including remotes) with fzf and insert at cursor
-$env.config.keybindings ++= [{
-    name: fzf_jj_bookmark_all
-    modifier: alt_shift
-    keycode: char_j
-    mode: [emacs, vi_insert, vi_normal]
-    event: {
-        send: executehostcommand
-        cmd: "let line = (commandline); let query = ($line | split row ' ' | last | default ''); let prefix = ($line | str replace -r '\\S*$' ''); let r = (jj bookmark list --all-remotes -T 'if(self.remote() != \"git\", self.name() ++ if(self.remote(), \"@\" ++ self.remote()) ++ \"\\n\")' | fzf --query $query --preview 'jj log --color=always -r \"ancestors({1},4)\"' | decode utf-8 | str trim); if ($r | is-not-empty) { commandline edit --replace $\"($prefix)($r)\" }"
-    }
-}]
+def fzf-jj-bookmark [] {
+    fzf-insert --preview $JJ_LOG_PREVIEW --source { jj bookmark list -T 'name ++ "\n"' }
+}
 
-# ctrl+j to pick a commit with fzf and insert at cursor
-$env.config.keybindings ++= [{
-    name: fzf_jj_commit
-    modifier: control
-    keycode: char_j
-    mode: [emacs, vi_insert, vi_normal]
-    event: {
-        send: executehostcommand
-        cmd: "let line = (commandline); let query = ($line | split row ' ' | last | default ''); let prefix = ($line | str replace -r '\\S*$' ''); let r = (jj log --no-graph -r \"all()\" -T 'change_id.shortest() ++ \" \" ++ description.first_line() ++ \"\\n\"' | fzf --query $query --preview 'jj log --color=always -r \"ancestors({1},4)\"' | decode utf-8 | split row ' ' | first); if ($r | is-not-empty) { commandline edit --replace $\"($prefix)($r)\" }"
+def fzf-jj-bookmark-all [] {
+    fzf-insert --preview $JJ_LOG_PREVIEW --source {
+        jj bookmark list --all-remotes -T 'if(self.remote() != "git", self.name() ++ if(self.remote(), "@" ++ self.remote()) ++ "\n")'
     }
-}]
+}
+
+def fzf-jj-commit [] {
+    fzf-insert --preview $JJ_LOG_PREVIEW --transform {|| split row ' ' | first } --source {
+        jj log --no-graph -r "all()" -T 'change_id.shortest() ++ " " ++ description.first_line() ++ "\n"'
+    }
+}
+
+$env.config.keybindings ++= [
+    { name: fzf_jj_bookmark, modifier: alt, keycode: char_j, mode: [emacs vi_insert vi_normal], event: { send: executehostcommand, cmd: fzf-jj-bookmark } }
+    { name: fzf_jj_bookmark_all, modifier: alt_shift, keycode: char_j, mode: [emacs vi_insert vi_normal], event: { send: executehostcommand, cmd: fzf-jj-bookmark-all } }
+    { name: fzf_jj_commit, modifier: control, keycode: char_j, mode: [emacs vi_insert vi_normal], event: { send: executehostcommand, cmd: fzf-jj-commit } }
+]
 
 
 # ============================================================================
