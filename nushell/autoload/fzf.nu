@@ -13,6 +13,6 @@ $env.config.keybindings ++= [{
     mode: [emacs, vi_insert, vi_normal]
     event: {
         send: executehostcommand
-        cmd: "commandline edit --insert (fzf | decode utf-8 | str trim)"
+        cmd: "let line = (commandline); let query = ($line | split row ' ' | last | default ''); let prefix = ($line | str replace -r '\\S*$' ''); let r = (fzf --query $query | decode utf-8 | str trim); if ($r | is-not-empty) { commandline edit --replace $\"($prefix)($r)\" }"
     }
 }]
