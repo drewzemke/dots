@@ -71,7 +71,6 @@ in {
     feh
     firefox
     fish
-    flatpak
     fzf
     gcc
     gh
@@ -125,6 +124,12 @@ in {
 
   # enable the OpenSSH daemon.
   services.openssh.enable = true;
+
+  # flatpak for games
+  services.flatpak.enable = true;
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  xdg.portal.config.common.default = "gtk";
 
   # cron
   services.cron = {
