@@ -98,6 +98,7 @@ in {
 
   environment.variables = {
     PKG_CONFIG_PATH="${pkgs.openssl.dev}/lib/pkgconfig";
+    BROWSER="firefox";
   };
 
   programs.steam.enable = true; 
