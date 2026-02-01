@@ -71,13 +71,14 @@ in {
     feh
     firefox
     fish
+    flatpak
     fzf
     gcc
     gh
     git
     gnumake
-    jj
-  #  unstable.jjui
+    # jujutsu
+    # jjui
     just
     lazydocker
     mongosh
