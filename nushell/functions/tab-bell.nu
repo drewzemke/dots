@@ -3,7 +3,8 @@
 # tracks pending tabs in a shared file so multiple instances work together
 # corner shows all pending tabs, e.g. "✨ dots, forms"
 
-const BELL = "✨"
+use corner-update.nu
+
 const PENDING_FILE = "/tmp/claude-pending-tabs"
 
 # per-instance file to remember which tab this claude is in
@@ -41,16 +42,6 @@ def write-pending [tabs: list<string>] {
   }
 }
 
-def update-corner [] {
-  let tabs = read-pending
-  if ($tabs | is-empty) {
-    # clear by sending a space (empty string doesn't work)
-    zellij pipe zjstatus::pipe::pipe_corner::' '
-  } else {
-    let msg = $"($BELL) ($tabs | str join ', ')"
-    zellij pipe zjstatus::pipe::pipe_corner::($msg)
-  }
-}
 
 # save current tab name to temp file (call on session start)
 export def init [] {
@@ -67,7 +58,7 @@ export def main [] {
       if not ($name in $pending) {
         write-pending ($pending | append $name)
       }
-      update-corner
+      corner-update
     }
   }
 }
@@ -80,7 +71,7 @@ export def clear [] {
     if ($name | is-not-empty) {
       let pending = read-pending | where {|t| $t != $name }
       write-pending $pending
-      update-corner
+      corner-update
     }
   }
 }

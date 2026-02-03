@@ -2,7 +2,8 @@
 #
 # useful when claude is closed before taking an action that would clear it
 
-const BELL = "✨"
+use corner-update.nu
+
 const PENDING_FILE = "/tmp/claude-pending-tabs"
 
 def current-tab-name [] {
@@ -28,17 +29,5 @@ export def main [] {
     }
   }
 
-  # update corner
-  let tabs = if ($PENDING_FILE | path exists) {
-    open $PENDING_FILE | lines | where {|l| $l | is-not-empty }
-  } else {
-    []
-  }
-
-  if ($tabs | is-empty) {
-    zellij pipe zjstatus::pipe::pipe_corner::' '
-  } else {
-    let msg = $"($BELL) ($tabs | str join ', ')"
-    zellij pipe zjstatus::pipe::pipe_corner::($msg)
-  }
+  corner-update
 }
