@@ -13,16 +13,20 @@ def find-jj-root [] {
 }
 
 def check-empty [] {
-  if (do -i { jj diff } | is-empty) {
+  let changed = (do -i { jj diff --stat } | lines | length)
+  if $changed == 1 {
     $"(ansi green)󱗜"
   } else {
-    $"(ansi yellow)󱗜"
+    # stat output includes a summary line at the end
+    let count = ($changed - 1)
+    $"(ansi yellow)󱗜 ($count)"
   }
 }
 
 def check-fresh [] {
-  if (do -i { jj log --no-graph -r 'fresh()' --limit 1 } | is-not-empty) {
-    $"(ansi cyan)󰩳"
+  let count = (do -i { jj log --no-graph -r 'fresh()' -T '"\n"' } | lines | length)
+  if $count > 0 {
+    $"(ansi cyan)󰩳 ($count)"
   } else {
     ""
   }
