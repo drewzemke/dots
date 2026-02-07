@@ -27,6 +27,7 @@ in {
     windowManager.leftwm.enable = true;
   };
   services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
   services.desktopManager.plasma6.enable = true;
 
   # disable auto-login so you can choose session at login screen
@@ -103,6 +104,11 @@ in {
   environment.variables = {
     PKG_CONFIG_PATH="${pkgs.openssl.dev}/lib/pkgconfig";
     BROWSER="firefox";
+    NIXOS_OZONE_WL = "1";  # electron/chromium apps use wayland
+  };
+
+  environment.sessionVariables = {
+    WLR_NO_HARDWARE_CURSORS = "1";  # fixes cursor issues on nvidia
   };
 
   programs.steam.enable = true; 
