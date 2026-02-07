@@ -132,7 +132,7 @@ in {
   services.openssh.enable = true;
 
   # flatpak for games
-  # services.flatpak.enable = true;
+  services.flatpak.enable = true;
 
   # cron
   services.cron = {
@@ -162,7 +162,7 @@ in {
     powerManagement.finegrained = false;
     open = false;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.latest;
   };
 
   # don't change this or whatever
