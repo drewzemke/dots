@@ -22,10 +22,8 @@ in {
   time.timeZone = "America/Los_Angeles";
 
   # display / desktop
-  services.xserver = {
-    enable = true;
-    windowManager.leftwm.enable = true;
-  };
+  services.xserver.enable = true;
+  services.xserver.videoDrivers = ["nvidia"];
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
   services.desktopManager.plasma6.enable = true;
@@ -74,7 +72,6 @@ in {
     darktable
     unstable.deno
     discord
-    feh
     firefox
     fish
     fzf
@@ -89,15 +86,12 @@ in {
     mongosh
     unstable.nushell
     openssl
-    picom
     pkg-config
-    polybar
-    rofi
     rustup
+    wl-clipboard
     vim
     wezterm
     wget
-    xclip
     yq-go
   ];
 
@@ -160,7 +154,6 @@ in {
   };
 
   # nvidia
-  services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = false;
