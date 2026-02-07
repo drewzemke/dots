@@ -154,6 +154,11 @@ in {
     driSupport32Bit = true;
   };
 
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
   # nvidia
   services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia = {
