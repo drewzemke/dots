@@ -50,9 +50,11 @@ in {
   };
 
   # sound
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-  nixpkgs.config.pulseaudio = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    pulse.enable = true;
+  };
 
   # user
   users.users.drew = {
@@ -83,7 +85,6 @@ in {
     mongosh
     unstable.nushell
     openssl
-    pavucontrol
     picom
     pkg-config
     polybar
@@ -106,6 +107,7 @@ in {
     "discord"
     "steam"
     "steam-original"
+    "steam-unwrapped"
     "steam-run"
     "nvidia-x11"
     "nvidia-settings"
@@ -127,11 +129,7 @@ in {
   services.openssh.enable = true;
 
   # flatpak for games
-  services.flatpak.enable = true;
-  xdg.portal = {
-    enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-kde ];
-  };
+  # services.flatpak.enable = true;
 
   # cron
   services.cron = {
@@ -142,14 +140,14 @@ in {
   };
 
   # font things
-  fonts.packages = with pkgs; [
-    nerdfonts 
+  fonts.packages = with pkgs.nerd-fonts; [
+    jetbrains-mono
+    sauce-code-pro
   ];
 
   # Enable OpenGL
   hardware.opengl = {
     enable = true;
-    driSupport = true;
     driSupport32Bit = true;
   };
 
