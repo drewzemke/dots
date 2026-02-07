@@ -21,16 +21,19 @@ in {
 
   time.timeZone = "America/Los_Angeles";
 
-  # x11
+  # display / desktop
   services.xserver = {
-    enable = true; 
+    enable = true;
     displayManager.lightdm.enable = true;
     windowManager.leftwm.enable = true;
   };
-  services.displayManager.autoLogin = {
-    enable = true;
-    user = "drew";
-  };
+  services.desktopManager.plasma6.enable = true;
+
+  # disable auto-login so you can choose session at login screen
+  # services.displayManager.autoLogin = {
+  #   enable = true;
+  #   user = "drew";
+  # };
 
   # kanata
   systemd.services.kanata = {
