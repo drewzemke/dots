@@ -1,47 +1,38 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 30,
+    "margin-top": 8,
+    "margin-left": 10,
+    "margin-right": 10,
+
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "network", "cpu", "memory", "tray"],
+    "modules-right": ["pulseaudio", "tray"],
 
     "hyprland/workspaces": {
-        "format": "{name}",
+        "format": "{icon}",
+        "format-icons": {
+            "active": "",
+            "default": ""
+        },
         "on-click": "activate"
     },
 
     "clock": {
-        "format": "{:%a %b %d  %I:%M %p}",
-        "tooltip-format": "{:%Y-%m-%d}"
-    },
-
-    "cpu": {
-        "format": " {usage}%",
-        "interval": 2
-    },
-
-    "memory": {
-        "format": " {}%",
-        "interval": 2
+        "format": "{:%a %d %b   %H:%M}",
+        "tooltip-format": "{:%A, %B %d %Y}"
     },
 
     "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-muted": " muted",
+        "format": "{icon}  {volume}%",
+        "format-muted": "  muted",
         "format-icons": {
             "default": ["", "", ""]
         },
         "on-click": "pavucontrol"
     },
 
-    "network": {
-        "format-wifi": " {essid}",
-        "format-ethernet": " {ifname}",
-        "format-disconnected": "⚠ disconnected"
-    },
-
     "tray": {
-        "spacing": 10
+        "spacing": 12
     }
 }
