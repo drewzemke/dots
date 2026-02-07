@@ -104,6 +104,7 @@ config.disable_default_key_bindings = true
 -- {{#if dotter.packages.linux}}
 -- transparent bg 
 config.window_background_opacity = 0.92
+config.kde_window_background_blur = true
 -- {{/if}}
 config.macos_window_background_blur = 15
 
