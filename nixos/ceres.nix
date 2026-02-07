@@ -27,6 +27,7 @@ in {
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
   services.desktopManager.plasma6.enable = true;
+  programs.hyprland.enable = true;
 
   # disable auto-login so you can choose session at login screen
   # services.displayManager.autoLogin = {
@@ -79,19 +80,26 @@ in {
     gh
     git
     gnumake
+    grim
+    slurp
+    hyprpaper
     # jujutsu
     # jjui
     just
+    mako
     lazydocker
     mongosh
     unstable.nushell
     openssl
+    pavucontrol
     pkg-config
     rustup
     wl-clipboard
     vim
+    waybar
     wezterm
     wget
+    wofi
     yq-go
   ];
 

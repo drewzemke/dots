@@ -26,12 +26,9 @@ zellij = "~/.config/zellij"
 
 # linux only
 [linux.files]
-leftwm = "~/.config/leftwm"
-"leftwm/themes/drewcula/background.jpg" = { target = "~/.config/leftwm/themes/drewcula/background.jpg", type = "symbolic" }
-picom = "~/.config/picom"
-polybar = "~/.config/polybar"
-rofi = "~/.config/rofi"
-xorg = "~"
+hypr = "~/.config/hypr"
+waybar = "~/.config/waybar"
+wofi = "~/.config/wofi"
 
 # work only 
 [work.files]

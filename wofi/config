@@ -1,0 +1,7 @@
+width=500
+height=300
+prompt=run
+allow_images=true
+image_size=24
+matching=fuzzy
+insensitive=true
