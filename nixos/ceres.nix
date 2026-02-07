@@ -83,8 +83,8 @@ in {
     grim
     slurp
     hyprpaper
-    # jujutsu
-    # jjui
+    jujutsu
+    jjui
     just
     mako
     lazydocker
