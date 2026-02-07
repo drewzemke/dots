@@ -24,9 +24,9 @@ in {
   # display / desktop
   services.xserver = {
     enable = true;
-    displayManager.lightdm.enable = true;
     windowManager.leftwm.enable = true;
   };
+  services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
   # disable auto-login so you can choose session at login screen
@@ -147,12 +147,6 @@ in {
     jetbrains-mono
     sauce-code-pro
   ];
-
-  # Enable OpenGL
-  hardware.opengl = {
-    enable = true;
-    driSupport32Bit = true;
-  };
 
   hardware.graphics = {
     enable = true;
