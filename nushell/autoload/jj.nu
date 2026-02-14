@@ -78,9 +78,9 @@ def run-jj [command: closure, description: string, no_out: bool = false] {
   }
 }
 
-# get the default branch for the current repo
+# get the default branch name for the current repo
 def get-default-branch [] {
-  gh repo view --json defaultBranchRef --jq .defaultBranchRef.name | str trim
+  jj log -r "trunk()" --no-graph -T 'remote_bookmarks.filter(|b| (b.name() == "main" || b.name() == "master" || b.name() == "trunk") && (b.remote() == "origin" || b.remote() == "upstream")).map(|b| b.name()).join("")' | str trim
 }
 
 # print a colored step header
@@ -138,7 +138,7 @@ export def jrb [
   target?: string@revsets            # the target commit to rebase onto (defaults to head of default branch)
   --push(-p)                         # push changes after rebasing
 ] {
-   let target_commit = if ($target | is-empty) { get-default-branch } else { $target }
+   let target_commit = if ($target | is-empty) { "trunk()" } else { $target }
 
    print-step $"Duplicating commits from (ansi cyan)($branch)(ansi reset) onto (ansi cyan)($target_commit)(ansi reset)..."
 
