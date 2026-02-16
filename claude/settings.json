@@ -80,6 +80,7 @@
 			"WebFetch(domain:raw.githubusercontent.com)",
 			"WebSearch",
 			"Write(/tmp)",
+			"Read(~/notes)",
 			"Write(~/notes)",
 			"mcp__plugin_atlassian_atlassian__fetch",
 			"mcp__plugin_atlassian_atlassian__getJiraIssue",
