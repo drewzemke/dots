@@ -21,10 +21,12 @@ inherits = "dracula_at_night"
 "markup.link.text"          = { fg = "yellow",      modifiers = ["bold"]                                 }
 "markup.link.url"           = { fg = "cyan"                                                              }
 "special"                   = { fg = "pink"                                                              }
+"ui.cursorline.primary"     = { bg = "background_light"                                                  }
 "ui.linenr.selected"        = { fg = "foreground",  modifiers = ["bold"]                                 }
 "ui.picker.header.column"   = { underline = { style = "line", color = "comment" } }
 "ui.picker.header.column.active" = { fg = "purple", underline = { style = "line", color = "comment" }, modifiers = ["bold"] }
 "ui.selection"              = { bg = "selection"                                                         }
+"ui.statusline"             = { bg = "background_light"                                                  }
 "ui.selection.primary"      = { bg = "selection"                                                         }
 "ui.virtual.fold-decoration" = { fg = "comment",     bg = "background"                                   }
 "ui.virtual.indent-guide"   = { fg = "comment"                                                           }
@@ -45,6 +47,7 @@ inherits = "dracula_at_night"
 
 [palette]
 # background = "#0e1419"
+background_light = "#282A36"
 selection = "#44475A"
 # foreground = "#f8f8f2"
 # comment = "#6272a4"
@@ -56,7 +59,3 @@ selection = "#44475A"
 # cyan = "#8be9fd"
 # pink = "#ff79c6"
 
-## old error/warning highlight colors
-# background_dark = "#282a36"
-# background_red = "#6E2E31"
-# background_orange = "#6E563A"
