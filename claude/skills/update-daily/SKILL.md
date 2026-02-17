@@ -7,7 +7,7 @@ allowed-tools: Read, Edit, Write
 
 # update daily note
 
-update today's daily note at `~/notes/daily/$(date +%Y-%m-%d).md` based on: $ARGUMENTS
+update today's daily note at `~/notes/daily/YYYY-MM-DD.md` (using today's date) based on: $ARGUMENTS
 
 ## rules
 
