@@ -82,6 +82,8 @@
 			"Write(/tmp)",
 			"Read(~/notes)",
 			"Write(~/notes)",
+			"Skill(read-daily)",
+			"Skill(update-daily)",
 			"mcp__plugin_atlassian_atlassian__fetch",
 			"mcp__plugin_atlassian_atlassian__getJiraIssue",
 			"mcp__plugin_atlassian_atlassian__search",
