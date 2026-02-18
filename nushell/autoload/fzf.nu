@@ -30,7 +30,7 @@ export def fzf-insert [
 }
 
 # file picker (ctrl+t)
-def fzf-file [] { fzf-insert }
+def fzf-file [] { fzf-insert --preview 'bat --color=always --style=numbers --line-range=:500 {}' }
 
 # directory picker (ctrl+alt+t)
 def fzf-dir [] {
