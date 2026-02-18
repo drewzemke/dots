@@ -32,6 +32,13 @@ export def fzf-insert [
 # file picker (ctrl+t)
 def fzf-file [] { fzf-insert }
 
+# directory picker (ctrl+alt+t)
+def fzf-dir [] {
+    fzf-insert --source {
+        fd --type d --hidden --follow --no-ignore --ignore-file ($env.HOME | path join .config helix ignore) --ignore-file ./.ignore
+    } --preview 'eza --color=always {}'
+}
+
 export-env {
     $env.config.keybindings ++= [{
         name: fzf_file_widget
@@ -39,5 +46,11 @@ export-env {
         keycode: char_t
         mode: [emacs, vi_insert, vi_normal]
         event: { send: executehostcommand, cmd: fzf-file }
+    } {
+        name: fzf_dir_widget
+        modifier: control_alt
+        keycode: char_t
+        mode: [emacs, vi_insert, vi_normal]
+        event: { send: executehostcommand, cmd: fzf-dir }
     }]
 }
