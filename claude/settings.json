@@ -1,184 +1,185 @@
 {
-  "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "permissions": {
-    "allow": [
-      "Bash(cargo add:*)",
-      "Bash(cargo build:*)",
-      "Bash(cargo check:*)",
-      "Bash(cargo clippy:*)",
-      "Bash(cargo doc:*)",
-      "Bash(cargo fmt:*)",
-      "Bash(cargo run:*)",
-      "Bash(cargo test:*)",
-      "Bash(cat:*)",
-      "Bash(cut:*)",
-      "Bash(docker build:*)",
-      "Bash(docker compose logs:*)",
-      "Bash(docker compose ps:*)",
-      "Bash(docker compose restart:*)",
-      "Bash(docker exec:*)",
-      "Bash(docker inspect:*)",
-      "Bash(docker logs:*)",
-      "Bash(docker run:*)",
-      "Bash(docker stop:*)",
-      "Bash(docker system:*)",
-      "Bash(echo:*)",
-      "Bash(find:*)",
-      "Bash(gh api:*)",
-      "Bash(gh issue list:*)",
-      "Bash(gh pr diff:*)",
-      "Bash(gh pr view:*)",
-      "Bash(gh run list:*)",
-      "Bash(gh run view:*)",
-      "Bash(git config:*)",
-      "Bash(git for-each-ref:*)",
-      "Bash(git help:*)",
-      "Bash(git hooks:*)",
-      "Bash(git log:*)",
-      "Bash(git rev-list:*)",
-      "Bash(git show:*)",
-      "Bash(grep:*)",
-      "Bash(head:*)",
-      "Bash(jj:*)",
-      "Bash(jq:*)",
-      "Bash(kubectl config get-contexts:*)",
-      "Bash(kubectl describe:*)",
-      "Bash(kubectl get:*)",
-      "Bash(kubectl logs:*)",
-      "Bash(kubectl top:*)",
-      "Bash(ls:*)",
-      "Bash(mkdir:*)",
-      "Bash(mongosh:*)",
-      "Bash(npm search:*)",
-      "Bash(npm view:*)",
-      "Bash(npm why:*)",
-      "Bash(npx tsc:*)",
-      "Bash(pnpm add:*)",
-      "Bash(pnpm biome:*)",
-      "Bash(pnpm build:*)",
-      "Bash(pnpm check:*)",
-      "Bash(pnpm compile:*)",
-      "Bash(pnpm dedupe:*)",
-      "Bash(pnpm install:*)",
-      "Bash(pnpm jest:*)",
-      "Bash(pnpm lint:*)",
-      "Bash(pnpm list:*)",
-      "Bash(pnpm start)",
-      "Bash(pnpm test:*)",
-      "Bash(pnpm tsc:*)",
-      "Bash(pnpm update:*)",
-      "Bash(pnpm verify:*)",
-      "Bash(pnpm vitest:*)",
-      "Bash(pnpm why:*)",
-      "Bash(sh:*)",
-      "Bash(test:*)",
-      "Bash(tree:*)",
-      "Bash(tsc:*)",
-      "Bash(wc:*)",
-      "WebFetch(domain:*)",
-      "WebFetch(domain:github.com)",
-      "WebFetch(domain:raw.githubusercontent.com)",
-      "WebSearch",
-      "Write(/tmp)",
-      "Read(~/notes)",
-      "Write(~/notes)",
-      "Skill(read-daily)",
-      "Skill(update-daily)",
-      "mcp__plugin_atlassian_atlassian__fetch",
-      "mcp__plugin_atlassian_atlassian__getJiraIssue",
-      "mcp__plugin_atlassian_atlassian__search",
-      "mcp__plugin_context7_context7__get-library-docs",
-      "mcp__plugin_context7_context7__query-docs",
-      "mcp__plugin_context7_context7__resolve-library-id",
-      "mcp__plugin_figma_figma__get_design_context",
-      "mcp__plugin_figma_figma__get_metadata",
-      "mcp__plugin_figma_figma__get_screenshot"
-    ],
-    "deny": [],
-    "ask": [],
-    "defaultMode": "default"
-  },
-  "hooks": {
-    "SessionStart": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "nu -c 'use ~/dots/nushell/functions; functions tab-bell init'"
-          }
-        ]
-      }
-    ],
-    "Notification": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "nu -c 'use ~/dots/nushell/functions; functions tab-bell'"
-          },
-          {
-            "type": "command",
-            "command": "nu -c 'use ~/dots/nushell/functions; functions notify \"Claude is ready!\"'"
-          }
-        ]
-      }
-    ],
-    "UserPromptSubmit": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "nu -c 'use ~/dots/nushell/functions; functions tab-bell clear'"
-          }
-        ]
-      }
-    ],
-    "PostToolUse": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "nu -c 'use ~/dots/nushell/functions; functions tab-bell clear'"
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "sh -c 'test -d .jj && jj status || exit 0'"
-          }
-        ]
-      }
-    ],
-    "SessionEnd": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "nu -c 'use ~/dots/nushell/functions; functions tab-bell clear'"
-          }
-        ]
-      }
-    ]
-  },
-  "enabledPlugins": {
-    "playwright@claude-plugins-official": true,
-    "context7@claude-plugins-official": true
-  },
-  "spinnerTipsEnabled": false,
-  "syntaxHighlightingDisabled": false,
-  "alwaysThinkingEnabled": true,
-  "autoUpdatesChannel": "stable",
-  "feedbackSurveyState": {
-    "lastShownTime": 1754080118645
-  }
+	"$schema": "https://json.schemastore.org/claude-code-settings.json",
+	"permissions": {
+		"allow": [
+			"Bash(cargo add:*)",
+			"Bash(cargo build:*)",
+			"Bash(cargo check:*)",
+			"Bash(cargo clippy:*)",
+			"Bash(cargo doc:*)",
+			"Bash(cargo fmt:*)",
+			"Bash(cargo run:*)",
+			"Bash(cargo test:*)",
+			"Bash(cat:*)",
+			"Bash(cut:*)",
+			"Bash(docker build:*)",
+			"Bash(docker compose logs:*)",
+			"Bash(docker compose ps:*)",
+			"Bash(docker compose restart:*)",
+			"Bash(docker exec:*)",
+			"Bash(docker inspect:*)",
+			"Bash(docker logs:*)",
+			"Bash(docker run:*)",
+			"Bash(docker stop:*)",
+			"Bash(docker system:*)",
+			"Bash(echo:*)",
+			"Bash(find:*)",
+			"Bash(gh api:*)",
+			"Bash(gh issue list:*)",
+			"Bash(gh pr diff:*)",
+			"Bash(gh pr view:*)",
+			"Bash(gh run list:*)",
+			"Bash(gh run view:*)",
+			"Bash(git config:*)",
+			"Bash(git for-each-ref:*)",
+			"Bash(git help:*)",
+			"Bash(git hooks:*)",
+			"Bash(git log:*)",
+			"Bash(git rev-list:*)",
+			"Bash(git show:*)",
+			"Bash(grep:*)",
+			"Bash(head:*)",
+			"Bash(jj:*)",
+			"Bash(jq:*)",
+			"Bash(kubectl config get-contexts:*)",
+			"Bash(kubectl describe:*)",
+			"Bash(kubectl get:*)",
+			"Bash(kubectl logs:*)",
+			"Bash(kubectl top:*)",
+			"Bash(ls:*)",
+			"Bash(lsof:*)",
+			"Bash(mkdir:*)",
+			"Bash(mongosh:*)",
+			"Bash(npm search:*)",
+			"Bash(npm view:*)",
+			"Bash(npm why:*)",
+			"Bash(npx tsc:*)",
+			"Bash(pnpm add:*)",
+			"Bash(pnpm biome:*)",
+			"Bash(pnpm build:*)",
+			"Bash(pnpm check:*)",
+			"Bash(pnpm compile:*)",
+			"Bash(pnpm dedupe:*)",
+			"Bash(pnpm install:*)",
+			"Bash(pnpm jest:*)",
+			"Bash(pnpm lint:*)",
+			"Bash(pnpm list:*)",
+			"Bash(pnpm start)",
+			"Bash(pnpm test:*)",
+			"Bash(pnpm tsc:*)",
+			"Bash(pnpm update:*)",
+			"Bash(pnpm verify:*)",
+			"Bash(pnpm vitest:*)",
+			"Bash(pnpm why:*)",
+			"Bash(sh:*)",
+			"Bash(test:*)",
+			"Bash(tree:*)",
+			"Bash(tsc:*)",
+			"Bash(wc:*)",
+			"WebFetch(domain:*)",
+			"WebFetch(domain:github.com)",
+			"WebFetch(domain:raw.githubusercontent.com)",
+			"WebSearch",
+			"Write(/tmp)",
+			"Read(~/notes)",
+			"Write(~/notes)",
+			"Skill(read-daily)",
+			"Skill(update-daily)",
+			"mcp__plugin_atlassian_atlassian__fetch",
+			"mcp__plugin_atlassian_atlassian__getJiraIssue",
+			"mcp__plugin_atlassian_atlassian__search",
+			"mcp__plugin_context7_context7__get-library-docs",
+			"mcp__plugin_context7_context7__query-docs",
+			"mcp__plugin_context7_context7__resolve-library-id",
+			"mcp__plugin_figma_figma__get_design_context",
+			"mcp__plugin_figma_figma__get_metadata",
+			"mcp__plugin_figma_figma__get_screenshot"
+		],
+		"deny": [],
+		"ask": [],
+		"defaultMode": "default"
+	},
+	"hooks": {
+		"SessionStart": [
+			{
+				"matcher": "",
+				"hooks": [
+					{
+						"type": "command",
+						"command": "nu -c 'use ~/dots/nushell/functions; functions tab-bell init'"
+					}
+				]
+			}
+		],
+		"Notification": [
+			{
+				"matcher": "",
+				"hooks": [
+					{
+						"type": "command",
+						"command": "nu -c 'use ~/dots/nushell/functions; functions tab-bell'"
+					},
+					{
+						"type": "command",
+						"command": "nu -c 'use ~/dots/nushell/functions; functions notify \"Claude is ready!\"'"
+					}
+				]
+			}
+		],
+		"UserPromptSubmit": [
+			{
+				"matcher": "",
+				"hooks": [
+					{
+						"type": "command",
+						"command": "nu -c 'use ~/dots/nushell/functions; functions tab-bell clear'"
+					}
+				]
+			}
+		],
+		"PostToolUse": [
+			{
+				"matcher": "",
+				"hooks": [
+					{
+						"type": "command",
+						"command": "nu -c 'use ~/dots/nushell/functions; functions tab-bell clear'"
+					}
+				]
+			}
+		],
+		"Stop": [
+			{
+				"matcher": "",
+				"hooks": [
+					{
+						"type": "command",
+						"command": "sh -c 'test -d .jj && jj status || exit 0'"
+					}
+				]
+			}
+		],
+		"SessionEnd": [
+			{
+				"matcher": "",
+				"hooks": [
+					{
+						"type": "command",
+						"command": "nu -c 'use ~/dots/nushell/functions; functions tab-bell clear'"
+					}
+				]
+			}
+		]
+	},
+	"enabledPlugins": {
+		"playwright@claude-plugins-official": true,
+		"context7@claude-plugins-official": true
+	},
+	"spinnerTipsEnabled": false,
+	"syntaxHighlightingDisabled": false,
+	"alwaysThinkingEnabled": true,
+	"autoUpdatesChannel": "stable",
+	"feedbackSurveyState": {
+		"lastShownTime": 1754080118645
+	}
 }
