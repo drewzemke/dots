@@ -7,13 +7,13 @@
 
     <key>ProgramArguments</key>
     <array>
-        <string>{{home}}/Library/LaunchAgents/start-atuin-daemon</string>
+        <string>/Users/drew/Library/LaunchAgents/start-atuin-daemon</string>
     </array>
 
     <key>EnvironmentVariables</key>
     <dict>
         <key>XDG_RUNTIME_DIR</key>
-        <string>{{home}}/.local/run</string>
+        <string>/Users/drew/.local/run</string>
     </dict>
 
     <key>RunAtLoad</key>
