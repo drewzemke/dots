@@ -37,7 +37,7 @@ Address alerts in this order:
 
 After each individual fix:
 1. Run the project's build, lint, and type-check commands to verify correctness
-2. Commit with message format: `fix(deps): <brief description of fix>` or `fix(security): <description>` for code issues
+2. Commit with message format: `fix(deps): <brief description of fix> (<vuln-code>)`  where `vuln-code` is the CVE or similar identifier of the vulnerability or vulnerabilities that were addressed
 3. Move to the next alert
 
 ## Notes
