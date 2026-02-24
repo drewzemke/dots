@@ -32,6 +32,8 @@ inherits = "dracula_at_night"
 "ui.virtual.indent-guide"   = { fg = "comment"                                                           }
 "ui.virtual.inlay-hint"     = { fg = "comment",     bg = "background"                                    }
 "ui.virtual.jump-label"     = {                     underline = { style = "line", color = "comment" }, modifiers = ["bold"] }
+"ui.bufferline"             = { fg = "comment",        bg = "background_light"                            }
+"ui.bufferline.active"      = { fg = "foreground",     bg = "background_light"                            }
 "ui.virtual.wrap"           = { fg = "comment"                                                           }
 "variable"                  = { fg = "purple"                                                            }
 "variable.other"            = { fg = "orange"                                                            }
