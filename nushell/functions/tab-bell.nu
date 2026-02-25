@@ -1,11 +1,11 @@
 # show a notification in zjstatus corner when claude needs attention
 #
-# tracks pending tabs in a shared file so multiple instances work together
-# corner shows all pending tabs, e.g. "✨ dots, forms"
+# tracks pending tabs using per-tab files so multiple instances can't
+# clobber each other. corner shows all pending tabs, e.g. "✨ dots, forms"
 
 use corner-update.nu
 
-const PENDING_FILE = "/tmp/claude-pending-tabs"
+const PENDING_DIR = "/tmp/claude-pending"
 
 # per-instance file to remember which tab this claude is in
 def tab-file [] {
@@ -13,32 +13,61 @@ def tab-file [] {
 }
 
 def current-tab-name [] {
-  # dump-layout outputs KDL with tab info like:
-  #   tab name="dots" focus=true hide_floating_panes=true {
-  # the focused tab has focus=true, so we grep for that line
-  # then parse out just the name between quotes
-  zellij action dump-layout
-    | lines
-    | find 'focus=true'
-    | first
-    | parse --regex 'tab name="(?<name>[^"]+)"'
-    | get name
-    | first
+  # find our tab by matching cwd + "claude" in the layout dump.
+  # using focus=true would return whichever tab the user is looking at,
+  # which may differ from ours if they switched tabs during startup.
+  let lines = zellij action dump-layout | lines | enumerate
+
+  try {
+    let root = ($lines
+      | where {|r| $r.item =~ '^\s+cwd '}
+      | get 0.item
+      | parse --regex 'cwd "(?<p>[^"]+)"'
+      | get 0.p)
+
+    let rel = ($env.PWD | str replace $"($root)/" "")
+    let cwd_pattern = $'cwd="($rel)"'
+
+    let pane_idx = ($lines
+      | where {|r| ($r.item | str contains "claude") and ($r.item | str contains $cwd_pattern)}
+      | get 0.index)
+
+    $lines
+      | where {|r| ($r.index < $pane_idx) and ($r.item =~ 'tab name=')}
+      | last
+      | get item
+      | parse --regex 'tab name="(?<n>[^"]+)"'
+      | get 0.n
+  } catch {
+    # fallback: focused tab
+    $lines
+      | get item
+      | find 'focus=true'
+      | first
+      | parse --regex 'tab name="(?<name>[^"]+)"'
+      | get name
+      | first
+  }
 }
 
 def read-pending [] {
-  if ($PENDING_FILE | path exists) {
-    open $PENDING_FILE | lines | where {|l| $l | is-not-empty }
+  if ($PENDING_DIR | path exists) {
+    ls $PENDING_DIR | get name | each { path basename }
   } else {
     []
   }
 }
 
-def write-pending [tabs: list<string>] {
-  if ($tabs | is-empty) {
-    rm -f $PENDING_FILE
-  } else {
-    $tabs | str join "\n" | save --force $PENDING_FILE
+def add-pending [name: string] {
+  mkdir $PENDING_DIR
+  "" | save --force ($PENDING_DIR | path join $name)
+}
+
+def remove-pending [name: string] {
+  let f = ($PENDING_DIR | path join $name)
+  if ($f | path exists) { rm -f $f }
+  if ($PENDING_DIR | path exists) and (ls $PENDING_DIR | is-empty) {
+    rm -rf $PENDING_DIR
   }
 }
 
@@ -54,10 +83,7 @@ export def main [] {
   if ($file | path exists) {
     let name = open $file | str trim
     if ($name | is-not-empty) {
-      let pending = read-pending
-      if not ($name in $pending) {
-        write-pending ($pending | append $name)
-      }
+      add-pending $name
       corner-update
     }
   }
@@ -69,8 +95,7 @@ export def clear [] {
   if ($file | path exists) {
     let name = open $file | str trim
     if ($name | is-not-empty) {
-      let pending = read-pending | where {|t| $t != $name }
-      write-pending $pending
+      remove-pending $name
       corner-update
     }
   }

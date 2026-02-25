@@ -1,18 +1,18 @@
 # shared corner renderer - combines all notification sources
 #
 # reads state from:
-#   /tmp/claude-pending-tabs     - newline-separated tab names
+#   /tmp/claude-pending/           - one file per pending tab name
 #   /tmp/github-notifications.nuon - { fetched_at, counts: { pr, ci, ... } }
 
 const CLAUDE_SYMBOL = $"(ansi yellow) (ansi reset)"
 const GH_SYMBOL = $"(ansi yellow) (ansi reset)"
 
-const CLAUDE_FILE = "/tmp/claude-pending-tabs"
+const CLAUDE_DIR = "/tmp/claude-pending"
 const GITHUB_FILE = "/tmp/github-notifications.nuon"
 
 def read-claude [] {
-  if ($CLAUDE_FILE | path exists) {
-    open $CLAUDE_FILE | lines | where { $in | is-not-empty }
+  if ($CLAUDE_DIR | path exists) {
+    ls $CLAUDE_DIR | get name | each { path basename }
   } else {
     []
   }
