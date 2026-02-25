@@ -5,6 +5,7 @@
 		{
 			"context": "Global",
 			"bindings": {
+				"ctrl+o": "chat:externalEditor",
 				"ctrl+shift+t": "app:toggleTodos",
 				"ctrl+t": "app:toggleTranscript",
 				"ctrl+shift+o": "app:toggleTeammatePreview",
@@ -23,7 +24,6 @@
 				"down": "history:next",
 				"ctrl+_": "chat:undo",
 				"ctrl+shift+-": "chat:undo",
-				"ctrl+o": "chat:externalEditor",
 				"ctrl+s": "chat:stash",
 				"ctrl+v": "chat:imagePaste"
 			}
