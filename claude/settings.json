@@ -169,7 +169,7 @@
           },
           {
             "type": "command",
-            "command": "sh -c 'f=~/.claude/settings.json; tmp=$(mktemp); jq --indent 2 . \"$f\" > \"$tmp\" && mv \"$tmp\" \"$f\"'",
+            "command": "sh -c 'f=~/.claude/settings.json; tmp=$(mktemp); jq --indent 2 . \"$f\" > \"$tmp\" && cp \"$tmp\" \"$f\" && rm \"$tmp\"'",
             "statusMessage": "normalizing settings.json indentation"
           }
         ]
