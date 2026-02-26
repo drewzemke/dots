@@ -177,8 +177,9 @@
     ]
   },
   "enabledPlugins": {
-    "playwright@claude-plugins-official": true,
-    "context7@claude-plugins-official": true
+    "context7@claude-plugins-official": true,
+    "code-review@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true
   },
   "spinnerTipsEnabled": false,
   "syntaxHighlightingDisabled": false,
