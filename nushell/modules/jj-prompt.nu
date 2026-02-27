@@ -13,7 +13,7 @@ def find-jj-root [] {
 }
 
 def check-empty [] {
-  let changed = (do -i { jj diff --stat } | lines | length)
+  let changed = (try { jj diff --stat } catch { "" } | lines | length)
   if $changed == 1 {
     $"(ansi green)󱗜"
   } else {
@@ -24,7 +24,7 @@ def check-empty [] {
 }
 
 def check-fresh [] {
-  let count = (do -i { jj log --no-graph -r 'fresh()' -T '"\n"' } | lines | length)
+  let count = (try { jj log --no-graph -r 'fresh()' -T '"\n"' } catch { "" } | lines | length)
   if $count > 0 {
     $"(ansi cyan)󰩳 ($count)"
   } else {
@@ -33,7 +33,7 @@ def check-fresh [] {
 }
 
 def check-out [] {
-  if (do -i { jj log --no-graph -r 'out()' --limit 1 } | is-not-empty) {
+  if (try { jj log --no-graph -r 'out()' --limit 1 } catch { "" } | is-not-empty) {
     $"(ansi magenta)󰛃"
   } else {
     ""
@@ -41,7 +41,7 @@ def check-out [] {
 }
 
 def check-inc [] {
-  if (do -i { jj log --no-graph -r 'inc()' --limit 1 } | is-not-empty) {
+  if (try { jj log --no-graph -r 'inc()' --limit 1 } catch { "" } | is-not-empty) {
     $"(ansi magenta)󰛀"
   } else {
     ""
