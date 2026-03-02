@@ -5,4 +5,5 @@ export use ./notify.nu
 export use ./corner.nu
 export use ./corner-clear.nu
 export use ./start-daemons.nu
+export use ./jj-worktree.nu
 export use ./tab-bell.nu

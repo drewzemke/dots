@@ -160,6 +160,28 @@
         ]
       }
     ],
+    "WorktreeCreate": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "nu -c 'use ~/dots/nushell/functions; functions jj-worktree create'"
+          }
+        ]
+      }
+    ],
+    "WorktreeRemove": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "nu -c 'use ~/dots/nushell/functions; functions jj-worktree remove'"
+          }
+        ]
+      }
+    ],
     "SessionEnd": [
       {
         "matcher": "",
