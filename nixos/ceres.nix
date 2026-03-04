@@ -137,7 +137,6 @@ in {
     "nvidia-persistenced"
   ]; 
   
-  # programs.fish.enable = true;
   users.defaultUserShell = pkgs.nushell;
 
   # docker

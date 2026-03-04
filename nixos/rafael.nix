@@ -41,9 +41,22 @@ in {
     ];
   };
 
+  # atuin daemon
+  systemd.user.services.atuin = {
+    enable = true;
+    description = "atuin daemon";
+    serviceConfig = {
+      ExecStart = "${pkgs.atuin}/bin/atuin daemon";
+      Restart = "always";
+      RestartSec = 3;
+    };
+    wantedBy = [ "default.target" ];
+  };
+
   # Basic system packages
   environment.systemPackages = with pkgs; [
-    unstable.deno
+    atuin
+    deno
     docker-compose
     fish
     fzf
@@ -51,8 +64,11 @@ in {
     gh
     git
     gnumake
+    jjui
     jq
+    jujutsu
     lazydocker
+    unstable.nushell
     openssl
     openssl.dev
     pkg-config
@@ -61,6 +77,8 @@ in {
     rustup
     vim
   ];
+
+  programs.nix-ld.enable = true;
 
   # FIXME: this doesn't work the way it's supposed to. 
   environment.variables = {
@@ -76,9 +94,8 @@ in {
   #
   # then try installing again
 
-  # Fish!
-  programs.fish.enable = true;
-  users.defaultUserShell = pkgs.fish;
+  # shell
+  users.defaultUserShell = pkgs.nushell;
 
   # Set your time zone
   time.timeZone = "America/Los_Angeles";
@@ -151,39 +168,6 @@ in {
       "*/5 * * * *  drew  cd /home/drew/notes && /home/drew/notes/scripts/update.sh"
     ];
   };
-
-  # # ssl
-  # security.acme = {
-  #   acceptTerms = true;
-  #   defaults.email = "drew.zemke@gmail.com";
-  # };
-
-  # security.acme.certs."rafael.local" = {
-  #   webroot = "/var/lib/acme/acme-challenge";
-  #   extraDomainNames = [ "rafael.local" ];
-  #   postRun = "systemctl reload nginx.service";
-  # };
-
-  # nginx
-  # services.nginx = {
-  #   enable = true;
-  #   virtualHosts."rafael.local" = {
-  #     # forceSSL = true;
-  #     # sslCertificate = "/var/lib/acme/rafael.local/fullchain.pem";
-  #     # sslCertificateKey = "/var/lib/acme/rafael.local/key.pem";
-
-  #     locations."/baby" = {
-  #       proxyPass = "http://localhost:3000/";
-  #       extraConfig = ''
-  #           rewrite ^/baby$ / break;
-  #           rewrite ^/baby(.*)$ $1 break;
-  #         '';     
-  #     };
-  #   };
-
-  #   # recommendedTlsSettings = true;
-  #   recommendedProxySettings = true;
-  # };
 
   # Enable automatic system upgrades
   system.autoUpgrade.enable = true;
