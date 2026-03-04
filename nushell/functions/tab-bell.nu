@@ -8,6 +8,10 @@ use corner-update.nu
 const PENDING_DIR = "/tmp/claude-pending"
 
 # per-instance file to remember which tab this claude is in
+def in-zellij [] {
+  "ZELLIJ_PANE_ID" in $env
+}
+
 def tab-file [] {
   $"/tmp/claude-tab-($env.ZELLIJ_PANE_ID)"
 }
@@ -74,11 +78,13 @@ def remove-pending [name: string] {
 
 # save current tab name to temp file (call on session start)
 export def init [] {
+  if not (in-zellij) { return }
   current-tab-name | save --force (tab-file)
 }
 
 # add this tab to pending list and update corner (call on notification)
 export def main [] {
+  if not (in-zellij) { return }
   let file = tab-file
   if ($file | path exists) {
     let name = open $file | str trim
@@ -91,6 +97,7 @@ export def main [] {
 
 # remove this tab from pending list and update corner (call on user interaction)
 export def clear [] {
+  if not (in-zellij) { return }
   let file = tab-file
   if ($file | path exists) {
     let name = open $file | str trim
