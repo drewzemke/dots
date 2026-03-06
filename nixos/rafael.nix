@@ -30,6 +30,7 @@ in {
   # Create a user account
   users.users.drew = {
     isNormalUser = true;
+    linger = true;
     extraGroups = [ "wheel" "docker" ]; 
     openssh.authorizedKeys.keys = [
       # personal mac
@@ -50,6 +51,37 @@ in {
       Restart = "always";
       RestartSec = 3;
     };
+    wantedBy = [ "default.target" ];
+  };
+
+  # rafael-agent telegram bot
+  systemd.user.services.rafael-agent = {
+    enable = true;
+    description = "rafael-agent";
+    serviceConfig = {
+      ExecStart = "${pkgs.deno}/bin/deno run --allow-net --allow-env --allow-read --allow-write --allow-run --allow-import src/main.ts";
+      WorkingDirectory = "/home/drew/dev/rafael-agent";
+      Restart = "always";
+      RestartSec = 3;
+      EnvironmentFile = "/home/drew/dev/rafael-agent/.env";
+    };
+    environment.PATH = lib.mkForce "/run/current-system/sw/bin:/home/drew/.local/bin:/run/wrappers/bin";
+    wantedBy = [ "default.target" ];
+  };
+
+  # dashboard adapter: tails rafael-agent journal and ships events to the collector
+  systemd.user.services.rafael-agent-adapter = {
+    enable = true;
+    description = "rafael-agent dashboard adapter";
+    serviceConfig = {
+      ExecStart = "${pkgs.deno}/bin/deno run --allow-net --allow-env --allow-run main.ts";
+      WorkingDirectory = "/home/drew/dev/dashboard/adapters/rafael-agent";
+      Restart = "always";
+      RestartSec = 5;
+      Environment = "DASHBOARD_URL=http://127.0.0.1:8081";
+    };
+    environment.PATH = lib.mkForce "/run/current-system/sw/bin:/home/drew/.local/bin:/run/wrappers/bin";
+    after = [ "rafael-agent.service" ];
     wantedBy = [ "default.target" ];
   };
 
