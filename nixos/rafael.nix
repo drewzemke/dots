@@ -201,6 +201,15 @@ in {
     ];
   };
 
+  # passwordless nixos-rebuild
+  security.sudo.extraRules = [{
+    users = [ "drew" ];
+    commands = [{
+      command = "/run/current-system/sw/bin/nixos-rebuild";
+      options = [ "NOPASSWD" ];
+    }];
+  }];
+
   # Enable automatic system upgrades
   system.autoUpgrade.enable = true;
 
