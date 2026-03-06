@@ -207,5 +207,6 @@
   "autoUpdatesChannel": "latest",
   "feedbackSurveyState": {
     "lastShownTime": 1754080118645
-  }
+  },
+  "skipDangerousModePermissionPrompt": true
 }
