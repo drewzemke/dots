@@ -2,6 +2,7 @@ use ../modules/abbrevs.nu *
 use ./fzf.nu fzf-insert
 
 # jj-related abbreviations
+add-abbrev jA  'jj absorb'
 add-abbrev jab 'jj abandon'
 add-abbrev jb  'jj bookmark'
 add-abbrev jc  'jj commit'
