@@ -59,7 +59,7 @@ in {
     enable = true;
     description = "rafael-agent";
     serviceConfig = {
-      ExecStart = "${pkgs.deno}/bin/deno run --allow-net --allow-env --allow-read --allow-write --allow-run --allow-import src/main.ts";
+      ExecStart = "${pkgs.deno}/bin/deno task start";
       WorkingDirectory = "/home/drew/dev/rafael-agent";
       Restart = "always";
       RestartSec = 3;
