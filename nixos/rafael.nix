@@ -78,7 +78,7 @@ in {
       WorkingDirectory = "/home/drew/dev/dashboard/adapters/rafael-agent";
       Restart = "always";
       RestartSec = 5;
-      Environment = "DASHBOARD_URL=http://127.0.0.1:8081";
+      Environment = "DASHBOARD_URL=http://127.0.0.1:8082";
     };
     environment.PATH = lib.mkForce "/run/current-system/sw/bin:/home/drew/.local/bin:/run/wrappers/bin";
     after = [ "rafael-agent.service" ];
