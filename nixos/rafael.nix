@@ -69,22 +69,6 @@ in {
     wantedBy = [ "default.target" ];
   };
 
-  # dashboard adapter: tails rafael-agent journal and ships events to the collector
-  systemd.user.services.rafael-agent-adapter = {
-    enable = true;
-    description = "rafael-agent dashboard adapter";
-    serviceConfig = {
-      ExecStart = "${pkgs.deno}/bin/deno run --allow-net --allow-env --allow-run main.ts";
-      WorkingDirectory = "/home/drew/dev/dashboard/adapters/rafael-agent";
-      Restart = "always";
-      RestartSec = 5;
-      Environment = "DASHBOARD_URL=http://127.0.0.1:8082";
-    };
-    environment.PATH = lib.mkForce "/run/current-system/sw/bin:/home/drew/.local/bin:/run/wrappers/bin";
-    after = [ "rafael-agent.service" ];
-    wantedBy = [ "default.target" ];
-  };
-
   # Basic system packages
   environment.systemPackages = with pkgs; [
     atuin
