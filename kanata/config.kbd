@@ -66,7 +66,7 @@
   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX    bspc
   tab  q    w    e    r    t    y    u    i    o    p    bspc XX    XX
   @nve a    s    d    f    g    h    j    k    l    ;    '    ret
-  @min z    x    c    v    b    n    m    ,    .    /    @eq
+  lsft z    x    c    v    b    n    m    ,    .    /    @eq
   lctl lmet spc            spc                 ret  rmet lctl
 )
 
