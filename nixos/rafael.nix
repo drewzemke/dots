@@ -129,8 +129,8 @@ in {
         8123  # hass
       ];
       allowedUDPPorts = [ 53 ];
-      extraInputRules = ''
-        ip saddr 45.87.249.170 counter drop comment "Block SSH brute-force attempts from 45.87.249.170"
+      extraCommands = ''
+        iptables -I nixos-fw -s 45.87.249.170 -j DROP
       '';
 
     };
