@@ -233,7 +233,7 @@ F = "file_picker"
 f = "file_picker_in_current_directory"
 H = ["search_selection", "select_all", "select_regex"]
 L = ":lsp-restart"
-# l = "@:lsp-workspace-command "
+A-l = "@:lsp-workspace-command "
 C-f = ["search_selection", "global_search"]
 
 [keys.normal.space.t]
