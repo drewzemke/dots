@@ -4,8 +4,10 @@ auto_refresh_interval = 3
 [ui.colors]
 selected = { bg = "#44475A" }
 
-[keys.inline_describe]
-accept = ["ctrl+d"]
+[[bindings]]
+action = "revisions.inline_describe.accept"
+scope = "revisions.inline_describe"
+key = "ctrl+d"
 
 [preview]
 oplog_command = [
@@ -25,6 +27,7 @@ revision_command = [
   "-c",
   """jj diff -r $change_id --color=always | delta --pager 'less -R' --line-numbers""",
 ]
+
 file_command = [
   "util",
   "exec",
@@ -33,13 +36,3 @@ file_command = [
   "-c",
   """jj diff -r $change_id $file --color=always | delta --pager 'less -R' --line-numbers""",
 ]
-
-[custom_commands]
-"delta" = { args = [
-  "util",
-  "exec",
-  "--",
-  "bash",
-  "-c",
-  """jj show -r $change_id --summary --git --color=always | delta --pager 'less -R' --side-by-side""",
-], show = "interactive" }
