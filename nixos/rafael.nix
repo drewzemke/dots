@@ -102,6 +102,7 @@ in {
     jujutsu
     lazydocker
     unstable.nushell
+    nodejs
     openssl
     openssl.dev
     pkg-config
@@ -200,7 +201,6 @@ in {
   services.cron = {
     enable = true;
     systemCronJobs = [
-      "*/5 * * * *  drew  /home/drew/dev/librero/scripts/deploy.fish >> /home/drew/dev/librero/scripts/deploy.log 2>&1"
       "*/5 * * * *  drew  cd /home/drew/notes && /home/drew/notes/scripts/update.sh"
     ];
   };
