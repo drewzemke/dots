@@ -17,8 +17,25 @@ in {
 
   services.openssh = {
     enable = true;
-    settings.PermitRootLogin = "no";
-    settings.PasswordAuthentication = false;
+    settings = {
+      PermitRootLogin = "no";
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      X11Forwarding = false;
+      MaxAuthTries = 3;
+      LoginGraceTime = 20;
+      AuthenticationMethods = "publickey";
+    };
+  };
+
+  services.fail2ban = {
+    enable = true;
+    maxretry = 3;
+    bantime = "1h";
+    bantime-increment = {
+      enable = true;
+      maxtime = "48h";
+    };
   };
 
   # Enable Docker
