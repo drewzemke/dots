@@ -56,14 +56,18 @@ export def main [] {
 
   # run all checks in parallel
   let symbols = (["empty" "fresh" "out" "inc"]
-    | par-each { |check|
-        match $check {
+    | enumerate
+    | par-each { |e|
+        let result = match $e.item {
           "empty" => (check-empty)
           "fresh" => (check-fresh)
           "out" => (check-out)
           "inc" => (check-inc)
         }
+        { index: $e.index, value: $result }
       }
+    | sort-by index
+    | get value
     | where { |s| $s != "" }
     | str join " ")
 
