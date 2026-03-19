@@ -19,6 +19,7 @@
 
 - write tests before implementation
 - after writing or updating tests, check in with me before moving on to the implementation
+- all test/lint/check failures are your responsibility to fix, even if they do not appear to be related to your changes
 
 ## language
 
