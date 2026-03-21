@@ -23,6 +23,7 @@ zellij = "~/.config/zellij"
 
 # macos only
 [mac.files]
+raycast = "~/.config/raycast/script-commands"
 
 # linux only
 [linux.files]
