@@ -1,4 +1,3 @@
-export use ./corner-clear.nu
 export use ./corner.nu
 export use ./dots.nu
 export use ./nixedit.nu

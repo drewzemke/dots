@@ -1,109 +1,28 @@
-# show a notification in zjstatus corner when claude needs attention
-#
-# tracks pending tabs using per-tab files so multiple instances can't
-# clobber each other. corner shows all pending tabs, e.g. "✨ dots, forms"
+# mark/unmark zellij tabs when claude needs attention
 
-use corner-update.nu
+const MARKER = "⚡"
 
-const PENDING_DIR = "/tmp/claude-pending"
-
-# per-instance file to remember which tab this claude is in
-def in-zellij [] {
-  "ZELLIJ_PANE_ID" in $env
+def get-pane [] {
+  zellij action list-panes --tab --json
+    | from json
+    | where id == ($env.ZELLIJ_PANE_ID | into int)
+    | first
 }
 
-def tab-file [] {
-  $"/tmp/claude-tab-($env.ZELLIJ_PANE_ID)"
-}
-
-def current-tab-name [] {
-  # find our tab by matching cwd + "claude" in the layout dump.
-  # using focus=true would return whichever tab the user is looking at,
-  # which may differ from ours if they switched tabs during startup.
-  let lines = zellij action dump-layout | lines | enumerate
-
-  try {
-    let root = ($lines
-      | where {|r| $r.item =~ '^\s+cwd '}
-      | get 0.item
-      | parse --regex 'cwd "(?<p>[^"]+)"'
-      | get 0.p)
-
-    let rel = ($env.PWD | str replace $"($root)/" "")
-    let cwd_pattern = $'cwd="($rel)"'
-
-    let pane_idx = ($lines
-      | where {|r| ($r.item | str contains "claude") and ($r.item | str contains $cwd_pattern)}
-      | get 0.index)
-
-    $lines
-      | where {|r| ($r.index < $pane_idx) and ($r.item =~ 'tab name=')}
-      | last
-      | get item
-      | parse --regex 'tab name="(?<n>[^"]+)"'
-      | get 0.n
-  } catch {
-    # fallback: focused tab
-    $lines
-      | get item
-      | find 'focus=true'
-      | first
-      | parse --regex 'tab name="(?<name>[^"]+)"'
-      | get name
-      | first
-  }
-}
-
-def read-pending [] {
-  if ($PENDING_DIR | path exists) {
-    ls $PENDING_DIR | get name | each { path basename }
-  } else {
-    []
-  }
-}
-
-def add-pending [name: string] {
-  mkdir $PENDING_DIR
-  "" | save --force ($PENDING_DIR | path join $name)
-}
-
-def remove-pending [name: string] {
-  let f = ($PENDING_DIR | path join $name)
-  if ($f | path exists) { rm -f $f }
-  if ($PENDING_DIR | path exists) and (ls $PENDING_DIR | is-empty) {
-    rm -rf $PENDING_DIR
-  }
-}
-
-
-# save current tab name to temp file (call on session start)
-export def init [] {
-  if not (in-zellij) { return }
-  current-tab-name | save --force (tab-file)
-}
-
-# add this tab to pending list and update corner (call on notification)
+# add marker to tab name
 export def main [] {
-  if not (in-zellij) { return }
-  let file = tab-file
-  if ($file | path exists) {
-    let name = open $file | str trim
-    if ($name | is-not-empty) {
-      add-pending $name
-      corner-update
-    }
+  if "ZELLIJ_PANE_ID" not-in $env { return }
+  let pane = get-pane
+  if not ($pane.tab_name | str starts-with $MARKER) {
+    zellij action rename-tab --tab-id $pane.tab_id $"($MARKER)($pane.tab_name)"
   }
 }
 
-# remove this tab from pending list and update corner (call on user interaction)
+# remove marker from tab name
 export def clear [] {
-  if not (in-zellij) { return }
-  let file = tab-file
-  if ($file | path exists) {
-    let name = open $file | str trim
-    if ($name | is-not-empty) {
-      remove-pending $name
-      corner-update
-    }
+  if "ZELLIJ_PANE_ID" not-in $env { return }
+  let pane = get-pane
+  if ($pane.tab_name | str starts-with $MARKER) {
+    zellij action rename-tab --tab-id $pane.tab_id ($pane.tab_name | str replace $MARKER "")
   }
 }

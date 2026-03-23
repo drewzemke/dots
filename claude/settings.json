@@ -26,17 +26,6 @@
     "defaultMode": "default"
   },
   "hooks": {
-    "SessionStart": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "nu -c 'use ~/dots/nushell/functions; functions tab-bell init'"
-          }
-        ]
-      }
-    ],
     "Notification": [
       {
         "matcher": "",
