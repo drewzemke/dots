@@ -1,2 +1,2 @@
 # completions
-use ../completions/zellij-completions.nu *
+# use ../completions/zellij-completions.nu *
