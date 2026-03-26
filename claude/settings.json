@@ -7,8 +7,9 @@
       "WebSearch",
       "Write(/tmp)",
       "Read(/tmp)",
-      "Read(~/notes)",
+      "Read(~)",
       "Write(~/notes)",
+      "Write(~/RSS)",
       "Skill(read-daily)",
       "Skill(update-daily)",
       "mcp__plugin_atlassian_atlassian__fetch",
@@ -19,9 +20,12 @@
       "mcp__plugin_context7_context7__resolve-library-id",
       "mcp__plugin_figma_figma__get_design_context",
       "mcp__plugin_figma_figma__get_metadata",
-      "mcp__plugin_figma_figma__get_screenshot"
+      "mcp__plugin_figma_figma__get_screenshot",
+      "Skill(atlassian:search-company-knowledge)",
+      "mcp__plugin_atlassian_atlassian__getAccessibleAtlassianResources",
+      "mcp__plugin_atlassian_atlassian__searchJiraIssuesUsingJql"
     ],
-    "deny": [],
+    "deny": ["Read(.env)"],
     "ask": [],
     "defaultMode": "default"
   },
