@@ -1,3 +1,8 @@
+---
+name: fix-security
+description: Look up and address security alerts in this repo. Create one atomic commit per fix.
+---
+
 Look up and address security alerts in this repo. Create one atomic commit per fix.
 
 ## Step 1: Check for Alerts

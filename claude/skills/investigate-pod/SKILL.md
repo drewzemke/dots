@@ -1,3 +1,8 @@
+---
+name: investigate-pod
+description: Investigate a Kubernetes pod error in production using kubectl. Use when the user mentions pod issues, k8s errors, crashloops, or production service problems.
+---
+
 Investigate a Kubernetes pod error in production using kubectl.
 
 The user has provided the following description of the issue: $ARGUMENTS

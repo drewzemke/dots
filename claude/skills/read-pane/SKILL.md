@@ -4,7 +4,7 @@ description: This session runs inside zellij with multiple panes open. Other pan
 user-invocable: false
 ---
 
-Read the screen output of another zellij pane to help debug the current issue.
+Read the screen output of another zellij pane to help with the current task.
 
 1. Run `zellij action list-panes --tab --command --json` to find panes with servers/watchers.
 2. Pick the pane whose command/title is most relevant to the error at hand.
