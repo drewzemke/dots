@@ -4,7 +4,7 @@ description: Spin up an agent to perform an adversarial code review of recent wo
 user-invocable: true
 ---
 
-Perform an adversarial code review of recent work in this conversation.
+Perform an adversarial code review of recent work in this conversation, focusing on: $ARGUMENTS
 
 1. Gather context from the conversation: what task was being worked on, what decisions were made and why, and which commits contain the changes.
 2. Launch an Agent to perform the review. Provide it with:
