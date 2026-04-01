@@ -253,7 +253,8 @@ Y = ":run-shell-command zellij run -fc -- yazi %{current_working_directory}"
 y = ":run-shell-command zellij run -fc -- yazi (dirname %{current_working_directory}/%{buffer_name})"
 g = ":run-shell-command zellij run -fc -- gitui"
 j = ":run-shell-command zellij run -fc -- jjui"
-s = [
+s = ":open %sh{nu -c \"use ~/.config/nushell/functions/map_spec_name.nu; map_spec_name '%{buffer_name}'\"}"
+S = [
   "wonly",
   "vsplit",
   ":open %sh{nu -c \"use ~/.config/nushell/functions/map_spec_name.nu; map_spec_name '%{buffer_name}'\"}",
