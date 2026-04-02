@@ -1,6 +1,7 @@
 use ../modules/jj-prompt.nu
 use ../modules/git-prompt.nu
 use ../functions/github-notify.nu
+use ../functions/media-notify.nu
 
 def vcs-prompt [] {
   # try jj first (returns empty string if not in a jj repo)
@@ -61,6 +62,7 @@ def color-segment [seg: string, is_last: bool] {
 
 $env.PROMPT_COMMAND = { ||
   github-notify maybe-refresh
+  media-notify maybe-refresh
 
   let path_segments = (pwd | str replace $env.HOME ~ | split row '/')
   let total = ($path_segments | length)
