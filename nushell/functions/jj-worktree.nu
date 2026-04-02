@@ -4,9 +4,9 @@
 export def create [] {
   let input = open --raw /dev/stdin | from json
   let name = $input.name
-  let dir = $input.cwd | path join ".claude" "worktrees" $name
+  let repo = $input.cwd | path basename
+  let dir = $"/tmp/jj-worktrees/($repo)/($name)"
 
-  mkdir ($dir | path dirname)
   jj workspace add $dir --name $name
   print $dir
 }
@@ -17,7 +17,8 @@ export def remove [] {
   let worktree_path = $input.worktree_path
   let name = $worktree_path | path basename
 
-  # forget from jj first, then remove the directory
+  # forget from jj (run from original repo), then remove the directory
+  cd $input.cwd
   jj workspace forget $name
   rm -rf $worktree_path
 }
