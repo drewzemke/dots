@@ -40,7 +40,7 @@ the relevant project note in `~/notes/`. check existing files to match the namin
 
 ### format for project note entries
 
-project notes use dated `## YYYY-MM-DD` headers in reverse chronological order (newest first).
+project notes use dated `## [[YYYY-MM-DD]]` headers in reverse chronological order (newest first).
 entries go under today's date header, creating one if it doesn't exist yet.
 
 ```
