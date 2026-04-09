@@ -9,6 +9,7 @@ const MEDIA_PLAYING = $"(ansi yellow)  (ansi reset)"
 const MEDIA_PAUSED = $"(ansi yellow)󰏦  (ansi reset)"
 const GITHUB_FILE = "/tmp/github-notifications.nuon"
 const MEDIA_FILE = "/tmp/now-playing.nuon"
+const ARMY_FILE = "/tmp/army-status.nuon"
 
 def read-github [] {
   if ($GITHUB_FILE | path exists) {
@@ -51,12 +52,26 @@ def format-media [] {
   }
 }
 
+def read-army [] {
+  if ($ARMY_FILE | path exists) {
+    try {
+      (open $ARMY_FILE).status? | default ""
+    } catch {
+      ""
+    }
+  } else {
+    ""
+  }
+}
+
 export def main [] {
   let github_part = format-github (read-github)
   let media_part = format-media
+  let army_part = read-army
 
   let parts = [
     (if ($media_part | is-not-empty) { $media_part })
+    (if ($army_part | is-not-empty) and ($army_part != "✅") { $army_part })
     (if ($github_part | is-not-empty) { $"($GH_SYMBOL)($github_part)" })
   ] | where { $in != null }
 

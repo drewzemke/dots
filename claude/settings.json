@@ -24,7 +24,8 @@
       "mcp__plugin_figma_figma__get_screenshot",
       "Skill(atlassian:search-company-knowledge)",
       "mcp__plugin_atlassian_atlassian__getAccessibleAtlassianResources",
-      "mcp__plugin_atlassian_atlassian__searchJiraIssuesUsingJql"
+      "mcp__plugin_atlassian_atlassian__searchJiraIssuesUsingJql",
+      "mcp__claude_buddy__*"
     ],
     "deny": [
       "Read(.env)",
@@ -121,10 +122,6 @@
       }
     ]
   },
-  "statusLine": {
-    "type": "command",
-    "command": "nu -c \"use ~/dots/nushell/modules/claude-statusline.nu; claude-statusline\""
-  },
   "enabledPlugins": {
     "context7@claude-plugins-official": true,
     "code-review@claude-plugins-official": false,
@@ -138,5 +135,6 @@
   "skipDangerousModePermissionPrompt": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754080118645
-  }
+  },
+  "effortLevel": "medium"
 }

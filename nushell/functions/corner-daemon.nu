@@ -24,9 +24,10 @@ export def ensure [] {
   let loop = $"($env.HOME)/dots/macos/scripts/corner-loop.sh"
   let media_mod = $"($env.HOME)/dots/nushell/functions/media-notify.nu"
   let gh_mod = $"($env.HOME)/dots/nushell/functions/github-notify.nu"
+  let army_mod = $"($env.HOME)/dots/nushell/functions/army-notify.nu"
   let pf = pid-file
 
-  sh -c $"'($loop)' '($pf)' '($media_mod)' '($gh_mod)' >/dev/null 2>&1 &"
+  sh -c $"'($loop)' '($pf)' '($media_mod)' '($gh_mod)' '($army_mod)' >/dev/null 2>&1 &"
 }
 
 # stop the daemon for this session
