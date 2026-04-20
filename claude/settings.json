@@ -35,6 +35,18 @@
     "defaultMode": "default"
   },
   "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "if": "Bash(git:*)",
+            "command": "echo 'I use jj (jujutsu) for local version control, not git. Use the jj equivalent — jj log, jj status, jj commit, jj describe, etc.' >&2; exit 2"
+          }
+        ]
+      }
+    ],
     "Notification": [
       {
         "matcher": "",
@@ -130,11 +142,12 @@
   "spinnerTipsEnabled": false,
   "syntaxHighlightingDisabled": false,
   "alwaysThinkingEnabled": true,
+  "effortLevel": "xhigh",
   "autoUpdatesChannel": "latest",
-  "voiceEnabled": true,
   "skipDangerousModePermissionPrompt": true,
+  "skipAutoPermissionPrompt": true,
+  "voiceEnabled": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754080118645
-  },
-  "effortLevel": "medium"
+  }
 }
