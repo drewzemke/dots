@@ -29,7 +29,9 @@
     ],
     "deny": [
       "Read(.env)",
-      "Bash(git:*)"
+      "Bash(git:*)",
+      "Bash(jj push)",
+      "Bash(jj git push)"
     ],
     "ask": [],
     "defaultMode": "default"
