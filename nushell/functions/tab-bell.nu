@@ -60,3 +60,4 @@ export def clear [] {
     zellij action rename-tab --tab-id $pane.tab_id $clean
   }
 }
+

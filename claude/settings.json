@@ -63,6 +63,15 @@
             "command": "nu -c 'use ~/dots/nushell/functions; functions notify \"Claude needs approval\"'"
           }
         ]
+      },
+      {
+        "matcher": "idle_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "nu -c 'use ~/dots/nushell/functions; functions tab-bell done'"
+          }
+        ]
       }
     ],
     "UserPromptSubmit": [
