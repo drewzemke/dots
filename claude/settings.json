@@ -52,7 +52,7 @@
     ],
     "Notification": [
       {
-        "matcher": "",
+        "matcher": "permission_prompt",
         "hooks": [
           {
             "type": "command",
@@ -60,7 +60,7 @@
           },
           {
             "type": "command",
-            "command": "nu -c 'use ~/dots/nushell/functions; functions notify \"Claude is ready!\"'"
+            "command": "nu -c 'use ~/dots/nushell/functions; functions notify \"Claude needs approval\"'"
           }
         ]
       }
@@ -71,7 +71,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "nu -c 'use ~/dots/nushell/functions; functions tab-bell clear'"
+            "command": "nu -c 'use ~/dots/nushell/functions; functions tab-bell working'"
           }
         ]
       }
@@ -82,7 +82,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "nu -c 'use ~/dots/nushell/functions; functions tab-bell clear'"
+            "command": "nu -c 'use ~/dots/nushell/functions; functions tab-bell working'"
           }
         ]
       }
@@ -93,7 +93,26 @@
         "hooks": [
           {
             "type": "command",
+            "command": "nu -c 'use ~/dots/nushell/functions; functions tab-bell done'"
+          },
+          {
+            "type": "command",
             "command": "sh -c 'test -d .jj && jj status || exit 0'"
+          }
+        ]
+      }
+    ],
+    "StopFailure": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "nu -c 'use ~/dots/nushell/functions; functions tab-bell error'"
+          },
+          {
+            "type": "command",
+            "command": "nu -c 'use ~/dots/nushell/functions; functions notify \"Claude hit an error\"'"
           }
         ]
       }
