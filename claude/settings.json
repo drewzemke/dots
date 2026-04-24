@@ -175,9 +175,11 @@
   "effortLevel": "xhigh",
   "autoUpdatesChannel": "latest",
   "skipDangerousModePermissionPrompt": true,
-  "skipAutoPermissionPrompt": true,
+  "theme": "dark-ansi",
+  "fileCheckpointingEnabled": false,
   "voiceEnabled": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754080118645
-  }
+  },
+  "skipAutoPermissionPrompt": true
 }
