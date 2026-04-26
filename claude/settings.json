@@ -40,12 +40,11 @@
   "hooks": {
     "PreToolUse": [
       {
-        "matcher": "Bash",
+        "matcher": "Bash(git:*)",
         "hooks": [
           {
             "type": "command",
-            "command": "echo 'I use jj (jujutsu) for local version control, not git. Use the jj equivalent — jj log, jj status, jj commit, jj describe, etc.' >&2; exit 2",
-            "if": "Bash(git:*)"
+            "command": "echo 'I use jj (jujutsu) for local version control, not git. Use the jj equivalent — jj log, jj status, jj commit, jj describe, etc.' >&2; exit 2"
           }
         ]
       }
