@@ -3,6 +3,5 @@ export use ./dots.nu
 export use ./nixedit.nu
 export use ./notes.nu
 export use ./notify.nu
-export use ./start-daemons.nu
 export use ./jj-worktree.nu
 export use ./tab-bell.nu
