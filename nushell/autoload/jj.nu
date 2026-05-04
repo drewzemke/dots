@@ -104,8 +104,13 @@ export def jpr [
    # get the commit ID before pushing (so we can look it up after @ moves)
    let commit_id = (jj log -r $revision -T 'self.commit_id().short()' --no-graph | str trim)
 
-   # push the commit
-   if not (run-jj {jj push -c $revision --color=always} "jj push") { return }
+   # push the commit (run directly so party animation gets the real TTY)
+   try {
+     jj push -c $revision --color=always
+   } catch {
+     print $"(ansi red)Error:(ansi reset) jj push failed"
+     return
+   }
 
    # get the branch name that was created for this commit
    let branch = (jj bookmark list -r $commit_id -T 'self.name()' | str trim)
@@ -182,8 +187,14 @@ export def jbp [
    print-step $"Moving bookmark (ansi cyan)($branch)(ansi reset) to (ansi yellow)($dest)(ansi reset)..."
    if not (run-jj {jj bookmark set $branch -r $dest --color=always --allow-backwards} "jj bookmark set") { return }
 
+   # push (run directly so party animation gets the real TTY)
    print-step $"Pushing changes for (ansi cyan)($branch)(ansi reset)..."
-   if not (run-jj {jj push -b $branch --color=always} "jj push") { return }
+   try {
+     jj push -b $branch --color=always
+   } catch {
+     print $"(ansi red)Error:(ansi reset) jj push failed"
+     return
+   }
 
    print-step "Abandoning old commits..."
    if not (run-jj {jj abandon -r $"($old_commits | str join ' | ')" --color=always} "jj abandon") { return }
@@ -200,8 +211,14 @@ export def jpm [
    print-step $"Moving (ansi cyan)($main_branch)(ansi reset) to (ansi yellow)($bookmark)(ansi reset)..."
    if not (run-jj {jj bookmark set $main_branch -r $bookmark --color=always} "jj bookmark set") { return }
 
+   # push (run directly so party animation gets the real TTY)
    print-step $"Pushing (ansi cyan)($main_branch)(ansi reset)..."
-   if not (run-jj {jj push -b $main_branch --color=always} "jj push") { return }
+   try {
+     jj push -b $main_branch --color=always
+   } catch {
+     print $"(ansi red)Error:(ansi reset) jj push failed"
+     return
+   }
 
    print $"(ansi green)✓(ansi reset) Successfully pushed (ansi cyan)($main_branch)(ansi reset) to (ansi yellow)($bookmark)(ansi reset)"
 }
