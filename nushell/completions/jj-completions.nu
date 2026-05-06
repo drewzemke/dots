@@ -45,7 +45,7 @@ def remotes [] {
 }
 
 def workspaces [] {
-  ^jj --ignore-working-copy workspace list -T 'self.name()' | lines
+  ^jj --ignore-working-copy workspace list -T 'self.name() ++ "\n"' | lines | where $it != ''
 }
 
 def modes [] {
