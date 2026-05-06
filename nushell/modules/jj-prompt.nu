@@ -33,16 +33,18 @@ def check-fresh [] {
 }
 
 def check-out [] {
-  if (try { jj log --no-graph -r 'out()' --limit 1 } catch { "" } | is-not-empty) {
-    $"(ansi magenta)󰛃"
+  let count = (try { jj log --no-graph -r 'out()' -T '"\n"' } catch { "" } | lines | length)
+  if $count > 0 {
+    $"(ansi magenta)󰛃 ($count)"
   } else {
     ""
   }
 }
 
 def check-inc [] {
-  if (try { jj log --no-graph -r 'inc()' --limit 1 } catch { "" } | is-not-empty) {
-    $"(ansi magenta)󰛀"
+  let count = (try { jj log --no-graph -r 'inc()' -T '"\n"' } catch { "" } | lines | length)
+  if $count > 0 {
+    $"(ansi magenta)󰛀 ($count)"
   } else {
     ""
   }
