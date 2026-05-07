@@ -11,5 +11,8 @@ coverage
 # Rust
 target
 
+# Python
+.venv
+
 # generic
 .DS_Store
