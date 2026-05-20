@@ -8,6 +8,17 @@ GH_MOD="$3"
 ARMY_MOD="$4"
 
 mkdir -p "$(dirname "$PID_FILE")"
+
+# kill any previous loop for this session
+if [ -f "$PID_FILE" ]; then
+  old_pid=$(cat "$PID_FILE" 2>/dev/null)
+  if [ -n "$old_pid" ] && kill -0 "$old_pid" 2>/dev/null; then
+    kill "$old_pid" 2>/dev/null
+    # wait briefly so the old process cleans up
+    sleep 0.5
+  fi
+fi
+
 echo $$ > "$PID_FILE"
 trap 'rm -f "$PID_FILE"; exit' INT TERM
 
