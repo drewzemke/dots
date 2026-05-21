@@ -35,6 +35,8 @@ log = 'connected(@ | ancestors(trunk()..(visible_heads() & mine()), 2) | trunk()
 'inc()' = "first_parent(@)..my_branches()"
 
 [aliases]
+ws = ["workspace"]
+
 # move any bookmarks in ancestors forward to the previous commit
 prep = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
 
