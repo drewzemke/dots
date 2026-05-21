@@ -174,12 +174,13 @@
   "alwaysThinkingEnabled": true,
   "effortLevel": "xhigh",
   "autoUpdatesChannel": "latest",
+  "tui": "default",
   "skipDangerousModePermissionPrompt": true,
   "theme": "dark-ansi",
   "fileCheckpointingEnabled": false,
+  "skipAutoPermissionPrompt": true,
   "voiceEnabled": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754080118645
-  },
-  "skipAutoPermissionPrompt": true
+  }
 }
