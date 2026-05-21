@@ -333,4 +333,6 @@ pane_frames false
 
 mouse_hover_effects false
 
+advanced_mouse_actions false
+
 show_startup_tips false
