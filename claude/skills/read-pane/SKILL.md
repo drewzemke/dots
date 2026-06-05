@@ -6,8 +6,13 @@ user-invocable: false
 
 Read the screen output of another zellij pane to help with the current task.
 
-1. Run `zellij action list-panes --tab --command --json` to find panes with servers/watchers.
-2. Pick the pane whose command/title is most relevant to the error at hand.
-3. Run `zellij action dump-screen --pane-id <ID>` to read its recent viewport output. Optionally pass `--path /file/path` to send the output to a file.
-4. If the viewport doesn't have enough context, retry with `--full` and focus on the last ~100 lines.
-5. Analyze the output for errors, stack traces, or relevant log lines, and use them to inform your debugging.
+## Available panes
+
+!`zellij action list-panes --tab --command --json | jq '.[] | { id, title, pane_command, pane_cwd }'`
+
+## Steps
+
+1. Pick the pane from above whose command/title is most relevant to the current task.
+2. Run `zellij action dump-screen --pane-id <ID>` to read its recent viewport output. Optionally pass `--path /file/path` to send the output to a file.
+3. If the viewport doesn't have enough context, retry with `--full` and focus on the last ~100 lines.
+4. Analyze the output for errors, stack traces, or relevant log lines, and use them to inform your debugging.
