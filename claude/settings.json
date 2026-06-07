@@ -176,7 +176,7 @@
   "autoUpdatesChannel": "latest",
   "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
-  "theme": "dark-ansi",
+  "theme": "custom:drewcula",
   "fileCheckpointingEnabled": false,
   "skipAutoPermissionPrompt": true,
   "voiceEnabled": true,

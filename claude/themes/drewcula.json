@@ -1,0 +1,7 @@
+{
+	"name": "drewcula",
+	"base": "dark-ansi",
+	"overrides": {
+		"userMessageBackgroundHover": "ansi:blackBright"
+	}
+}
