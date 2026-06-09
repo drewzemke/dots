@@ -174,6 +174,13 @@ def commands [] {
     'workspace rename'
     'workspace root'
     'workspace update-stale'
+    'ws'
+    'ws add'
+    'ws forget'
+    'ws list'
+    'ws rename'
+    'ws root'
+    'ws update-stale'
   ]
 }
 
@@ -2165,3 +2172,11 @@ export extern "jj workspace update-stale" [
   --config: string                          # additional configuration options
   --config-file: path                       # additional configuration file
 ]
+
+# bookmark command aliases (jj b -> jj bookmark)
+export alias "jj ws add" = jj workspace add
+export alias "jj ws forget" = jj workspace forget
+export alias "jj ws list" = jj workspace list
+export alias "jj ws rename" = jj workspace rename
+export alias "jj ws root" = jj workspace root
+export alias "jj ws update-stale" = jj workspace update-stale
