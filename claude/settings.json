@@ -55,7 +55,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "nu -c 'use ~/dots/nushell/functions; functions tab-bell'"
+            "command": "nu -c 'use ~/dots/nushell/functions; for i in [⚡ ⏳ ✅ ❌] { functions tab-mark rm $i }; functions tab-mark add ⚡'"
           },
           {
             "type": "command",
@@ -68,7 +68,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "nu -c 'use ~/dots/nushell/functions; functions tab-bell done'"
+            "command": "nu -c 'use ~/dots/nushell/functions; for i in [⚡ ⏳ ✅ ❌] { functions tab-mark rm $i }; functions tab-mark add ✅'"
           }
         ]
       }
@@ -79,7 +79,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "nu -c 'use ~/dots/nushell/functions; functions tab-bell working'"
+            "command": "nu -c 'use ~/dots/nushell/functions; for i in [⚡ ⏳ ✅ ❌] { functions tab-mark rm $i }; functions tab-mark add ⏳'"
           }
         ]
       }
@@ -90,7 +90,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "nu -c 'use ~/dots/nushell/functions; functions tab-bell working'"
+            "command": "nu -c 'use ~/dots/nushell/functions; for i in [⚡ ⏳ ✅ ❌] { functions tab-mark rm $i }; functions tab-mark add ⏳'"
           }
         ]
       }
@@ -101,7 +101,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "nu -c 'use ~/dots/nushell/functions; functions tab-bell done'"
+            "command": "nu -c 'use ~/dots/nushell/functions; for i in [⚡ ⏳ ✅ ❌] { functions tab-mark rm $i }; functions tab-mark add ✅'"
           },
           {
             "type": "command",
@@ -116,7 +116,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "nu -c 'use ~/dots/nushell/functions; functions tab-bell error'"
+            "command": "nu -c 'use ~/dots/nushell/functions; for i in [⚡ ⏳ ✅ ❌] { functions tab-mark rm $i }; functions tab-mark add ❌'"
           },
           {
             "type": "command",
@@ -153,7 +153,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "nu -c 'use ~/dots/nushell/functions; functions tab-bell clear'"
+            "command": "nu -c 'use ~/dots/nushell/functions; functions tab-mark clear'"
           },
           {
             "type": "command",
