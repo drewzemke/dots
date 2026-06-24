@@ -55,7 +55,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "nu -c 'use ~/dots/nushell/functions; for i in [⚡ ⏳ ✅ ❌] { functions tab-mark rm $i }; functions tab-mark add ⚡'"
+            "command": "nu -c 'use ~/dots/nushell/functions; functions tab-mark \"rm working, rm done, rm error, add action\"'"
           },
           {
             "type": "command",
@@ -68,7 +68,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "nu -c 'use ~/dots/nushell/functions; for i in [⚡ ⏳ ✅ ❌] { functions tab-mark rm $i }; functions tab-mark add ✅'"
+            "command": "nu -c 'use ~/dots/nushell/functions; functions tab-mark \"rm working, rm action, rm error, add done\"'"
           }
         ]
       }
@@ -79,7 +79,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "nu -c 'use ~/dots/nushell/functions; for i in [⚡ ⏳ ✅ ❌] { functions tab-mark rm $i }; functions tab-mark add ⏳'"
+            "command": "nu -c 'use ~/dots/nushell/functions; functions tab-mark \"rm action, rm done, rm error, add working\"'"
           }
         ]
       }
@@ -90,7 +90,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "nu -c 'use ~/dots/nushell/functions; for i in [⚡ ⏳ ✅ ❌] { functions tab-mark rm $i }; functions tab-mark add ⏳'"
+            "command": "nu -c 'use ~/dots/nushell/functions; functions tab-mark \"rm action, rm done, rm error, add working\"'"
           }
         ]
       }
@@ -101,7 +101,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "nu -c 'use ~/dots/nushell/functions; for i in [⚡ ⏳ ✅ ❌] { functions tab-mark rm $i }; functions tab-mark add ✅'"
+            "command": "nu -c 'use ~/dots/nushell/functions; functions tab-mark \"rm action, rm working, rm error, add done\"'"
           },
           {
             "type": "command",
@@ -116,7 +116,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "nu -c 'use ~/dots/nushell/functions; for i in [⚡ ⏳ ✅ ❌] { functions tab-mark rm $i }; functions tab-mark add ❌'"
+            "command": "nu -c 'use ~/dots/nushell/functions; functions tab-mark \"rm action, rm working, rm done, add error\"'"
           },
           {
             "type": "command",
@@ -153,7 +153,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "nu -c 'use ~/dots/nushell/functions; functions tab-mark clear'"
+            "command": "nu -c 'use ~/dots/nushell/functions; functions tab-mark \"clear\"'"
           },
           {
             "type": "command",

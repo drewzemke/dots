@@ -1,5 +1,13 @@
 # manage icons on zellij tab names
 
+const ICONS = {
+  action: "⚡"
+  working: "⏳"
+  done: "✅"
+  error: "❌"
+  server: "🌐"
+}
+
 def get-pane [] {
   zellij action list-panes --tab --json
     | from json
@@ -7,29 +15,38 @@ def get-pane [] {
     | first
 }
 
-# add an icon to the tab name (idempotent)
-export def add [icon: string] {
-  if "ZELLIJ_PANE_ID" not-in $env { return }
-  let pane = get-pane
-  if ($pane.tab_name | str contains $icon) { return }
-  zellij action rename-tab --tab-id $pane.tab_id $"($icon)($pane.tab_name)"
+def resolve [name: string] {
+  $ICONS | get $name
 }
 
-# remove an icon from the tab name
-export def rm [icon: string] {
+# apply a batch of icon operations as a single tab rename
+# usage: tab-mark "rm action, rm working, add done"
+export def main [ops: string] {
   if "ZELLIJ_PANE_ID" not-in $env { return }
   let pane = get-pane
-  if not ($pane.tab_name | str contains $icon) { return }
-  zellij action rename-tab --tab-id $pane.tab_id ($pane.tab_name | str replace --all $icon "")
-}
+  mut name = $pane.tab_name
 
-# remove all icons from the tab name
-export def clear [] {
-  if "ZELLIJ_PANE_ID" not-in $env { return }
-  let pane = get-pane
-  # strip leading emoji/non-ascii characters
-  let clean = $pane.tab_name | str replace --regex '^[^\x00-\x7F]+' ''
-  if $clean != $pane.tab_name {
-    zellij action rename-tab --tab-id $pane.tab_id $clean
+  for op in ($ops | split row "," | each { str trim }) {
+    let parts = ($op | split row " ")
+    let action = $parts.0
+
+    if $action == "clear" {
+      $name = ($name | str replace --regex '^[^\x00-\x7F]+' '')
+      continue
+    }
+
+    let icon = resolve $parts.1
+
+    if $action == "add" {
+      if not ($name | str contains $icon) {
+        $name = $"($icon)($name)"
+      }
+    } else if $action == "rm" {
+      $name = ($name | str replace --all $icon "")
+    }
+  }
+
+  if $name != $pane.tab_name {
+    zellij action rename-tab --tab-id $pane.tab_id $name
   }
 }
