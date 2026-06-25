@@ -50,3 +50,16 @@ export def main [ops: string] {
     zellij action rename-tab --tab-id $pane.tab_id $name
   }
 }
+
+# run a command with a server icon, cleaned up on exit/interrupt
+export def serve [...cmd: string] {
+  let cmd_str = ($cmd | str join " ")
+  if "ZELLIJ_PANE_ID" not-in $env {
+    ^sh -c $cmd_str
+    return
+  }
+  main "add server"
+  let cleanup = (mktemp)
+  "nu -c 'use ~/dots/nushell/functions/tab-mark.nu; tab-mark \"rm server\"'" | save -f $cleanup
+  ^sh -c $'trap "sh ($cleanup); rm -f ($cleanup)" EXIT; ($cmd_str)'
+}
