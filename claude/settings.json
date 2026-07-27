@@ -36,7 +36,7 @@
     "ask": [],
     "defaultMode": "default"
   },
-  "model": "claude-opus-4-6[1m]",
+  "model": "opus",
   "hooks": {
     "PreToolUse": [
       {
