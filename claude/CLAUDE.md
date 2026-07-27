@@ -7,8 +7,10 @@
   - use `jj describe` to update commit messages of already-existing commits without changing the working copy
 - as you work, make commits using `jj` at end of each major step of work
 - commits should be "atomic," meaning that they are as small as possible while still being consistent and correct
-- commit messages must be short and simple, and always follow the commit message pattern from other commits in the same repo
-  - you can run `jj all --limit 10` to see a sample of the commit history
+- commit messages must be short and simple
+  - follow the commit message pattern from other commits in the same repo (run `jj all --limit 10` to see a sample of the commit history)
+  - add multiline descriptions to commits only when asked
+  - do NOT put "co-authored by claude" in any commit message
 
 ## code comments
 
