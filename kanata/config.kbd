@@ -46,7 +46,7 @@
   tab  q    w    e    r    t    y    u    i    o    p    bspc XX    XX
   @nve @hrA @hrS @hrD @hrF g    h    @hrJ @hrK @hrL @hr; '    ret
   @min z    x    c    v    b    n    m    ,    .    /    @eq
-  lctl lmet @lsf           spc                 @rsf rmet lctl
+  lctl @acc @lsf           spc                 @rsf rmet lctl
 )
 
 ;; layer with homerow mods disabled for gaming
@@ -101,6 +101,31 @@
   _    @tld [    @lcb @lp  _    _    @rp  @rcb ]    @bar bksl _    
   _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _              _                   _    _    _
+)
+
+;; diacritics, held on lalt. mnemonic positions except ü, which sits on y
+;; because u is taken by ú. output chords (A-e) to drive the macOS US Extended
+;; dead keys do nothing here, so these inject unicode directly
+(deflayer accents
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    @xe  _    _    @xd  @xu  @xi  @xo  _    _    _    _
+  _    @xa  _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    @xn  _    _    _    @xq  _
+  _    _    _              _                   _    _    _
+)
+
+(defalias acc (layer-toggle accents))
+
+;; shift held => uppercase (or the bang, for inverted punctuation)
+(defalias
+  xa (fork (unicode á) (unicode Á) (lsft rsft))
+  xe (fork (unicode é) (unicode É) (lsft rsft))
+  xi (fork (unicode í) (unicode Í) (lsft rsft))
+  xo (fork (unicode ó) (unicode Ó) (lsft rsft))
+  xu (fork (unicode ú) (unicode Ú) (lsft rsft))
+  xd (fork (unicode ü) (unicode Ü) (lsft rsft))
+  xn (fork (unicode ñ) (unicode Ñ) (lsft rsft))
+  xq (fork (unicode ¿) (unicode ¡) (lsft rsft))
 )
 
 ;; left shift => enable numbers and HR braces
