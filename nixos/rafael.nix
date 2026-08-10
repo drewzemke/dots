@@ -140,7 +140,7 @@ in {
         8080  # pihole web interface
         8123  # hass
       ];
-      allowedUDPPorts = [ 53 ];
+      allowedUDPPorts = [ 53 67 ];
       extraCommands = ''
         iptables -I nixos-fw -s 45.87.249.170 -j DROP
       '';
