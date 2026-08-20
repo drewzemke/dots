@@ -244,13 +244,12 @@ i = ":toggle lsp.display-inlay-hints"
 w = ":toggle soft-wrap.enable"
 
 [keys.normal.backspace]
-b = ":run-shell-command zellij run -f -- just build"
-r = ":run-shell-command zellij run -f -- just run"
-t = ":run-shell-command zellij run -f -- just test"
-Y = ":run-shell-command zellij run -fc -- yazi %{current_working_directory}"
-y = ":run-shell-command zellij run -fc -- yazi (dirname %{current_working_directory}/%{buffer_name})"
-g = ":run-shell-command zellij run -fc -- gitui"
-j = ":run-shell-command zellij run -fc -- jjui"
+b = ":run-shell-command zellij run -f -- just build | ignore"
+r = ":run-shell-command zellij run -f -- just run | ignore"
+t = ":run-shell-command zellij run -f -- just test | ignore"
+Y = ":run-shell-command zellij run -fc -- yazi %{current_working_directory} | ignore"
+y = ":run-shell-command zellij run -fc -- yazi (dirname %{current_working_directory}/%{buffer_name}) | ignore"
+j = ":run-shell-command zellij run -fc -- jjui | ignore"
 s = ":open %sh{nu -c \"use ~/.config/nushell/functions/map_spec_name.nu; map_spec_name '%{buffer_name}'\"}"
 S = [
   "wonly",
