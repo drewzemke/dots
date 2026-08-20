@@ -141,21 +141,22 @@ keybinds clear-defaults=true {
     renamepane {
         bind "esc" { UndoRenamePane; SwitchToMode "pane"; }
     }
+    session {
+        bind "i" { FocusGuestSession; }
+        bind "o" { FocusHostSession; }
+    }
     tmux {
         bind "," { SwitchToMode "renametab"; }
         bind "/" { SwitchToMode "entersearch"; }
         bind "[" { PreviousSwapLayout; }
         bind "]" { NextSwapLayout; }
         bind "Ctrl g" { Write 2; SwitchToMode "normal"; }
-        bind "h" { MoveFocus "left"; }
-        bind "j" { MoveFocus "down"; }
-        bind "k" { MoveFocus "up"; }
-        bind "l" { MoveFocus "right"; }
         bind "m" { SwitchToMode "move"; }
         bind "p" { SwitchToMode "pane"; }
         bind "q" { Detach; }
         bind "s" { SwitchToMode "scroll"; }
         bind "t" { SwitchToMode "tab"; }
+        bind "h" { SwitchToMode "session"; }
         bind "Ctrl t" {
             LaunchOrFocusPlugin "https://github.com/AlexZasorin/zellij-newtab-plus/releases/download/v0.5.0/zellij-newtab-plus.wasm" {
                 floating true
@@ -336,3 +337,9 @@ mouse_hover_effects false
 advanced_mouse_actions false
 
 show_startup_tips false
+
+support_kitty_graphics_protocol true
+
+pane_frame_style "none"
+
+stacked_pane_list false

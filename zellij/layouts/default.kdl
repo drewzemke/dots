@@ -20,6 +20,7 @@ layout {
             mode_scroll  "#[bg=cyan] "
             mode_search  "#[bg=cyan] "
             mode_move    "#[bg=green] "
+            mode_session "#[bg=white] "
 
             // NOTE: have to manually specify colors here because they look weird otherwise
             tab_normal   "#[fg=#6272a4] {name} "
