@@ -3,7 +3,6 @@
 # all platforms
 [base.files]
 atuin = "~/.config/atuin"
-broot = "~/.config/broot"
 claude = "~/.claude"
 gitui = "~/.config/gitui"
 "git/.gitconfig" = "~/.gitconfig"
