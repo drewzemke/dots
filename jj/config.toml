@@ -11,6 +11,9 @@ default-command = "log"
 pager = ["delta", "--pager", "less -FRX", "--side-by-side"]
 diff-formatter = ":git"
 
+[ui.movement]
+edit = true
+
 [remotes.origin]
 # matches the `git_push_bookmark` template below
 auto-track-bookmarks = "drew/*"
