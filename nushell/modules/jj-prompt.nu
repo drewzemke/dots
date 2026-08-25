@@ -24,7 +24,7 @@ def check-empty [] {
 }
 
 def check-fresh [] {
-  let count = (try { jj log --no-graph -r 'fresh()' -T '"\n"' } catch { "" } | lines | length)
+  let count = (try { jj log --no-graph -r 'fresh()' -T '"x\n"' } catch { "" } | lines | length)
   if $count > 0 {
     $"(ansi cyan)󰩳 ($count)"
   } else {
@@ -33,7 +33,7 @@ def check-fresh [] {
 }
 
 def check-out [] {
-  let count = (try { jj log --no-graph -r 'out()' -T '"\n"' } catch { "" } | lines | length)
+  let count = (try { jj log --no-graph -r 'out()' -T '"x\n"' } catch { "" } | lines | length)
   if $count > 0 {
     $"(ansi magenta)󰛃 ($count)"
   } else {
@@ -42,7 +42,7 @@ def check-out [] {
 }
 
 def check-inc [] {
-  let count = (try { jj log --no-graph -r 'inc()' -T '"\n"' } catch { "" } | lines | length)
+  let count = (try { jj log --no-graph -r 'inc()' -T '"x\n"' } catch { "" } | lines | length)
   if $count > 0 {
     $"(ansi magenta)󰛀 ($count)"
   } else {
