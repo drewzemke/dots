@@ -24,3 +24,40 @@ $env.config.edit_mode = 'helix'
 $env.config.cursor_shape.helix_normal = 'block'
 $env.config.cursor_shape.helix_select = 'underscore'
 $env.config.cursor_shape.helix_insert = 'line'
+
+# helix insert mode inherits ctrl+backspace and ctrl+w but not these emacs
+# defaults, so add them back
+$env.config.keybindings ++= [
+  {
+    name: backspace_word
+    modifier: alt
+    keycode: backspace
+    mode: [helix_insert]
+    event: { edit: backspaceword }
+  }
+  {
+    name: history_hint_complete
+    modifier: control
+    keycode: char_f
+    mode: [helix_insert]
+    event: {
+      until: [
+        { send: historyhintcomplete }
+        { send: menuright }
+        { send: right }
+      ]
+    }
+  }
+  {
+    name: history_hint_word_complete
+    modifier: alt
+    keycode: char_f
+    mode: [helix_insert]
+    event: {
+      until: [
+        { send: historyhintwordcomplete }
+        { edit: movewordright }
+      ]
+    }
+  }
+]
