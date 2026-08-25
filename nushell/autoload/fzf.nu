@@ -44,13 +44,13 @@ export-env {
         name: fzf_file_widget
         modifier: control
         keycode: char_t
-        mode: [emacs, vi_insert, vi_normal]
+        mode: [emacs, vi_insert, vi_normal, helix_insert, helix_normal, helix_select]
         event: { send: executehostcommand, cmd: fzf-file }
     } {
         name: fzf_dir_widget
         modifier: control_alt
         keycode: char_t
-        mode: [emacs, vi_insert, vi_normal]
+        mode: [emacs, vi_insert, vi_normal, helix_insert, helix_normal, helix_select]
         event: { send: executehostcommand, cmd: fzf-dir }
     }]
 }

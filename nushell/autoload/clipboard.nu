@@ -7,7 +7,7 @@ $env.config.keybindings ++= [{
     name: yank_to_clipboard
     modifier: control
     keycode: char_y
-    mode: [emacs, vi_insert, vi_normal]
+    mode: [emacs, vi_insert, vi_normal, helix_insert, helix_normal, helix_select]
     event: {
         send: executehostcommand
         cmd: $"commandline | ($clipboard_cmd)"

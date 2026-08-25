@@ -54,9 +54,9 @@ def fzf-jj-commit [] {
 }
 
 $env.config.keybindings ++= [
-    { name: fzf_jj_bookmark, modifier: alt, keycode: char_j, mode: [emacs vi_insert vi_normal], event: { send: executehostcommand, cmd: fzf-jj-bookmark } }
-    { name: fzf_jj_bookmark_all, modifier: alt_shift, keycode: char_j, mode: [emacs vi_insert vi_normal], event: { send: executehostcommand, cmd: fzf-jj-bookmark-all } }
-    { name: fzf_jj_commit, modifier: control_shift, keycode: char_j, mode: [emacs vi_insert vi_normal], event: { send: executehostcommand, cmd: fzf-jj-commit } }
+    { name: fzf_jj_bookmark, modifier: alt, keycode: char_j, mode: [emacs vi_insert vi_normal helix_insert helix_normal helix_select], event: { send: executehostcommand, cmd: fzf-jj-bookmark } }
+    { name: fzf_jj_bookmark_all, modifier: alt_shift, keycode: char_j, mode: [emacs vi_insert vi_normal helix_insert helix_normal helix_select], event: { send: executehostcommand, cmd: fzf-jj-bookmark-all } }
+    { name: fzf_jj_commit, modifier: control_shift, keycode: char_j, mode: [emacs vi_insert vi_normal helix_insert helix_normal helix_select], event: { send: executehostcommand, cmd: fzf-jj-commit } }
 ]
 
 

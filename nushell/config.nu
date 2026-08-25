@@ -20,3 +20,7 @@ use ./functions *
 # config
 $env.config.show_banner = false
 $env.config.completions.algorithm = 'fuzzy'
+$env.config.edit_mode = 'helix'
+$env.config.cursor_shape.helix_normal = 'block'
+$env.config.cursor_shape.helix_select = 'underscore'
+$env.config.cursor_shape.helix_insert = 'line'

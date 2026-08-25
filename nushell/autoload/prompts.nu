@@ -75,3 +75,9 @@ $env.PROMPT_COMMAND = { ||
 }
 
 $env.PROMPT_INDICATOR = ""
+
+# helix mode reuses the vi indicators (normal and select share vi_normal), and
+# ignores PROMPT_INDICATOR entirely -- blank them so the mode shows up only in
+# the cursor shape
+$env.PROMPT_INDICATOR_VI_INSERT = ""
+$env.PROMPT_INDICATOR_VI_NORMAL = ""

@@ -9,12 +9,14 @@ export def --env setup-abbrevs [] {
   let abbreviations = $env.NUSHELL_ABBREVS
 
   # add keybindings for abbrev expansion
+  # helix_insert only: in helix normal mode space and enter are helix's own
+  # bindings, and expanding an abbrev there makes no sense anyway
   $env.config.keybindings ++= [
     {
       name: abbr_menu_enter
       modifier: none
       keycode: enter
-      mode: [emacs, vi_normal, vi_insert]
+      mode: [emacs, vi_normal, vi_insert, helix_insert]
       event: [
         { send: menu name: abbr_menu }
         { send: enter }
@@ -24,7 +26,7 @@ export def --env setup-abbrevs [] {
       name: abbr_menu_space
       modifier: none
       keycode: space
-      mode: [emacs, vi_normal, vi_insert]
+      mode: [emacs, vi_normal, vi_insert, helix_insert]
       event: [
         { send: menu name: abbr_menu }
         { edit: insertchar value: ' '}
