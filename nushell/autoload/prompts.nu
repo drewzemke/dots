@@ -70,14 +70,17 @@ $env.PROMPT_COMMAND = { ||
     | each { |seg| color-segment $seg.item ($seg.index == ($total - 1)) }
     | str join $"(ansi blue)/(ansi reset)")
 
-  # add deco after path
-  [$colored_path " " (ansi red)❯ (ansi yellow)❯ (ansi green)❯ " "] | str join
+  [$colored_path " "] | str join
 }
 
-$env.PROMPT_INDICATOR = ""
+# the deco lives in the indicator, not PROMPT_COMMAND: the indicator is the only
+# prompt piece reedline re-renders on a mode change, so recoloring it is what
+# makes the mode visible. helix reuses the vi indicators, and normal and select
+# share vi_normal
+def arrows [...colors: string] {
+  $colors | each { |c| $"(ansi $c)❯" } | append $"(ansi reset) " | str join
+}
 
-# helix mode reuses the vi indicators (normal and select share vi_normal), and
-# ignores PROMPT_INDICATOR entirely -- blank them so the mode shows up only in
-# the cursor shape
-$env.PROMPT_INDICATOR_VI_INSERT = ""
-$env.PROMPT_INDICATOR_VI_NORMAL = ""
+$env.PROMPT_INDICATOR = (arrows red yellow green)
+$env.PROMPT_INDICATOR_VI_INSERT = (arrows red yellow green)
+$env.PROMPT_INDICATOR_VI_NORMAL = (arrows magenta blue cyan)
