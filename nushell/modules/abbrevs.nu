@@ -11,7 +11,7 @@ export def --env setup-abbrevs [] {
   # add keybindings for abbrev expansion
   $env.config.keybindings ++= [
     {
-      name: abbr_menu
+      name: abbr_menu_enter
       modifier: none
       keycode: enter
       mode: [emacs, vi_normal, vi_insert]
@@ -21,7 +21,7 @@ export def --env setup-abbrevs [] {
       ]
     }
     {
-      name: abbr_menu
+      name: abbr_menu_space
       modifier: none
       keycode: space
       mode: [emacs, vi_normal, vi_insert]
