@@ -38,6 +38,9 @@ export def main [] {
     row_index: { fg: $dracula_green attr: b }
     hints: $dracula_comment
     search_result: { fg: $dracula_background bg: $dracula_yellow }
+    # helix mode: muted bg for the selection so the inverted cursor stands out
+    selection: { fg: $dracula_foreground bg: $dracula_comment }
+    selection_cursor: { fg: $dracula_background bg: $dracula_foreground }
 
     # Shapes (syntax highlighting)
     shape_and: { fg: $dracula_purple attr: b }
