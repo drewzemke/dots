@@ -263,6 +263,21 @@ D = ["wonly", "vsplit", "goto_definition"]
 # git commands
 [keys.normal.G]
 r = ":reset-diff-change"
+
+# open jj diffs of the current file as a scratch buffer
+d = [
+  ":open %sh{nu -c \"use ~/.config/nushell/functions/hx-diff.nu; hx-diff parent '%{buffer_name}'\"}",
+  ":reload",
+]
+t = [
+  ":open %sh{nu -c \"use ~/.config/nushell/functions/hx-diff.nu; hx-diff trunk '%{buffer_name}'\"}",
+  ":reload",
+]
+# diff of the commit that last touched the current line
+l = [
+  ":open %sh{nu -c \"use ~/.config/nushell/functions/hx-diff.nu; hx-diff line '%{buffer_name}' %{cursor_line}\"}",
+  ":reload",
+]
 b = ":sh git line-info %{cursor_line} %{buffer_name}"
 u = ":sh git url %{buffer_name} %{cursor_line} | pbcopy"
 
