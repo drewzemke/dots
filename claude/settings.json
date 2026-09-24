@@ -169,10 +169,16 @@
     "code-review@claude-plugins-official": false,
     "code-simplifier@claude-plugins-official": false
   },
+  "outputStyle": "Concise",
   "spinnerTipsEnabled": false,
   "syntaxHighlightingDisabled": false,
   "alwaysThinkingEnabled": true,
   "effortLevel": "high",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "low"
+    }
+  },
   "autoUpdatesChannel": "latest",
   "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
@@ -182,6 +188,5 @@
   "voiceEnabled": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754080118645
-  },
-  "outputStyle": "Concise"
+  }
 }
