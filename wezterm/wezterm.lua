@@ -114,6 +114,9 @@ config.max_fps = 144
 -- yes I just want to quit, thank you
 config.window_close_confirmation = "NeverPrompt"
 
+-- send distinct keys like ctrl-shift-j
+config.enable_kitty_keyboard = true
+
 -- and finally, return the configuration to wezterm
 return config
 
