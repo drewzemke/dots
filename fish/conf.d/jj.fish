@@ -25,3 +25,23 @@ abbr -a jsp 'jj split'
 abbr -a jS 'jj squash'
 abbr -a ju 'jj undo'
 abbr -a J 'jjui'
+
+set -l jj_log_preview 'jj log --color=always -r "ancestors({1},4)"'
+
+function __fzf_jj_bookmark -V jj_log_preview
+    jj bookmark list -T 'name ++ "\n"' | __fzf_insert --preview $jj_log_preview
+end
+
+function __fzf_jj_bookmark_all -V jj_log_preview
+    jj bookmark list --all-remotes -T 'if(self.remote() != "git", self.name() ++ if(self.remote(), "@" ++ self.remote()) ++ "\n")' \
+        | __fzf_insert --preview $jj_log_preview
+end
+
+function __fzf_jj_commit -V jj_log_preview
+    jj log --no-graph -r 'all()' -T 'change_id.shortest() ++ " " ++ description.first_line() ++ "\n"' \
+        | __fzf_insert --preview $jj_log_preview --accept-nth 1
+end
+
+bind alt-j __fzf_jj_bookmark
+bind alt-J __fzf_jj_bookmark_all
+bind ctrl-J __fzf_jj_commit
