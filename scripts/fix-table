@@ -1,5 +1,6 @@
-export def main [input: string] {
-  let lines = $input | str trim | lines
+#!/usr/bin/env nu
+def main [] {
+  let lines = open --raw /dev/stdin | str trim | lines
 
   # find all of the bars that we need to align
   let bars: list<list<int>> = $lines

@@ -1,6 +1,6 @@
+#!/usr/bin/env nu
 # toggle between .spec.{ext} and .{ext} filenames
-export def main [input?: string]: [string -> string, nothing -> string] {
-  let filename = $input | default $in
+def main [filename: string] {
 
   if ($filename | str contains '.spec.') {
     # remove .spec from the filename

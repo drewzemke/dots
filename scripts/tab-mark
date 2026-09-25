@@ -1,3 +1,4 @@
+#!/usr/bin/env nu
 # manage icons on zellij tab names
 
 const ICONS = {
@@ -21,7 +22,7 @@ def resolve [name: string] {
 
 # apply a batch of icon operations as a single tab rename
 # usage: tab-mark "rm action, rm working, add done"
-export def main [ops: string] {
+def main [ops: string] {
   if "ZELLIJ_PANE_ID" not-in $env { return }
   let pane = get-pane
   mut name = $pane.tab_name
@@ -52,7 +53,7 @@ export def main [ops: string] {
 }
 
 # run a command with a server icon, cleaned up on exit/interrupt
-export def serve [...cmd: string] {
+def "main serve" [...cmd: string] {
   let cmd_str = ($cmd | str join " ")
   if "ZELLIJ_PANE_ID" not-in $env {
     ^sh -c $cmd_str
@@ -60,6 +61,6 @@ export def serve [...cmd: string] {
   }
   main "add server"
   let cleanup = (mktemp)
-  "nu -c 'use ~/dots/nushell/functions/tab-mark.nu; tab-mark \"rm server\"'" | save -f $cleanup
+  $"'($env.FILE_PWD | path join tab-mark)' 'rm server'" | save -f $cleanup
   ^sh -c $'trap "sh ($cleanup); rm -f ($cleanup)" EXIT; ($cmd_str)'
 }

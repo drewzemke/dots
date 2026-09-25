@@ -1,6 +1,6 @@
 use ../modules/jj-prompt.nu
 use ../modules/git-prompt.nu
-use ../functions/corner-daemon.nu
+
 
 def vcs-prompt [] {
   # try jj first (returns empty string if not in a jj repo)
@@ -60,7 +60,7 @@ def color-segment [seg: string, is_last: bool] {
 }
 
 $env.PROMPT_COMMAND = { ||
-  corner-daemon ensure
+  ~/dots/scripts/corner-daemon ensure
 
   let path_segments = (pwd | str replace $env.HOME ~ | split row '/')
   let total = ($path_segments | length)

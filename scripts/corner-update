@@ -1,3 +1,4 @@
+#!/usr/bin/env nu
 # corner renderer for github notifications + now playing
 #
 # reads state from:
@@ -64,7 +65,7 @@ def read-army [] {
   }
 }
 
-export def main [] {
+def main [] {
   let github_part = format-github (read-github)
   let media_part = format-media
   let army_part = read-army

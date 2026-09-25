@@ -1,7 +1,8 @@
+#!/usr/bin/env nu
 # jj workspace hooks for claude code worktree support
 
 # create a jj workspace for claude (prints path to stdout)
-export def create [] {
+def "main create" [] {
   let input = open --raw /dev/stdin | from json
   let name = $input.name
   let repo = $input.cwd | path basename
@@ -12,7 +13,7 @@ export def create [] {
 }
 
 # clean up a jj workspace
-export def remove [] {
+def "main remove" [] {
   let input = open --raw /dev/stdin | from json
   let worktree_path = $input.worktree_path
   let name = $worktree_path | path basename
@@ -22,3 +23,5 @@ export def remove [] {
   jj workspace forget $name
   rm -rf $worktree_path
 }
+
+def main [] { help main }

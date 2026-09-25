@@ -1,3 +1,4 @@
+#!/usr/bin/env nu
 # write a jj diff to a temp file and print its path, for `:open` in helix
 #
 # each mode prefixes the diff with a `# ` commented header describing the
@@ -76,7 +77,7 @@ def slug [file: string]: nothing -> string {
 }
 
 # mode is one of: parent, trunk, line
-export def main [mode: string, file: string, line?: int]: nothing -> string {
+def main [mode: string, file: string, line?: int]: nothing -> string {
   match $mode {
     "parent" => (emit $"(slug $file)@parent"
       $"# ($file)\n#\n(endpoints '@-' '@')"

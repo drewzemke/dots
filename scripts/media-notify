@@ -1,0 +1,43 @@
+#!/usr/bin/env nu
+# now playing for zjstatus corner
+#
+# uses media.swift to query macOS MediaRemote, caches to avoid slow polls
+
+const STATE_FILE = "/tmp/now-playing.nuon"
+
+def media-script [] { $"($env.HOME)/dots/macos/scripts/media.swift" }
+
+# fetch now playing state and update cache
+def "main fetch" [] {
+  let raw = try {
+    ^(media-script) state | str trim
+  } catch {
+    "idle"
+  }
+
+  let state = if $raw == "idle" {
+    { playing: false, title: "", artist: "" }
+  } else {
+    let parts = $raw | split row "\t"
+    {
+      playing: ($parts.0 == "true")
+      title: ($parts | get 1? | default "")
+      artist: ($parts | get 2? | default "")
+    }
+  }
+
+  {
+    fetched_at: (date now | format date "%+")
+    ...$state
+  } | save --force $STATE_FILE
+
+  ^($env.FILE_PWD | path join corner-update)
+}
+
+# clear now playing state
+def "main clear" [] {
+  rm -f $STATE_FILE
+  ^($env.FILE_PWD | path join corner-update)
+}
+
+def main [] { help main }

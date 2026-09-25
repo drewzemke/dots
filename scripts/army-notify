@@ -1,0 +1,30 @@
+#!/usr/bin/env nu
+# army-of-daemons status for zjstatus corner
+#
+# runs `army status` and caches the result
+
+const STATE_FILE = "/tmp/army-status.nuon"
+
+# fetch army status and update cache
+def "main fetch" [] {
+  let status = if (which army | is-not-empty) {
+    try { ^army status | str trim } catch { "" }
+  } else {
+    ""
+  }
+
+  {
+    fetched_at: (date now | format date "%+")
+    status: $status
+  } | save --force $STATE_FILE
+
+  ^($env.FILE_PWD | path join corner-update)
+}
+
+# clear state
+def "main clear" [] {
+  rm -f $STATE_FILE
+  ^($env.FILE_PWD | path join corner-update)
+}
+
+def main [] { help main }

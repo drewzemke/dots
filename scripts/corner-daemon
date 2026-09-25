@@ -1,3 +1,4 @@
+#!/usr/bin/env nu
 # background daemon that periodically updates the zjstatus corner
 #
 # spawns a detached sh process that loops, calling media-notify and
@@ -18,20 +19,20 @@ def already-running [] {
 }
 
 # start the daemon if not already running for this session
-export def ensure [] {
+def "main ensure" [] {
   if (already-running) { return }
 
   let loop = $"($env.HOME)/dots/macos/scripts/corner-loop.sh"
-  let media_mod = $"($env.HOME)/dots/nushell/functions/media-notify.nu"
-  let gh_mod = $"($env.HOME)/dots/nushell/functions/github-notify.nu"
-  let army_mod = $"($env.HOME)/dots/nushell/functions/army-notify.nu"
+  let media = $env.FILE_PWD | path join media-notify
+  let gh = $env.FILE_PWD | path join github-notify
+  let army = $env.FILE_PWD | path join army-notify
   let pf = pid-file
 
-  sh -c $"'($loop)' '($pf)' '($media_mod)' '($gh_mod)' '($army_mod)' >/dev/null 2>&1 &"
+  sh -c $"'($loop)' '($pf)' '($media)' '($gh)' '($army)' >/dev/null 2>&1 &"
 }
 
 # stop the daemon for this session
-export def stop [] {
+def "main stop" [] {
   let pf = pid-file
   if ($pf | path exists) {
     let pid = try { open $pf | str trim | into int } catch { return }
@@ -39,3 +40,5 @@ export def stop [] {
     rm -f $pf
   }
 }
+
+def main [] { help main }
