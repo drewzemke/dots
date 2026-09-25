@@ -44,4 +44,4 @@ end
 
 bind alt-j __fzf_jj_bookmark
 bind alt-J __fzf_jj_bookmark_all
-bind ctrl-J __fzf_jj_commit
+bind ctrl-shift-j __fzf_jj_commit

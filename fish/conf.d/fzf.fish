@@ -8,8 +8,9 @@ function __fzf_file
 end
 
 function __fzf_dir
-    fd --type d --hidden --follow --no-ignore --ignore-file ~/.config/helix/ignore --ignore-file ./.ignore \
-        | __fzf_insert --preview 'eza --color=always {}'
+    set -l ignores --ignore-file ~/.config/helix/ignore
+    test -f .ignore; and set -a ignores --ignore-file ./.ignore
+    fd --type d --hidden --follow --no-ignore $ignores | __fzf_insert --preview 'eza --color=always {}'
 end
 
 bind ctrl-t __fzf_file
