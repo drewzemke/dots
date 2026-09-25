@@ -1,0 +1,38 @@
+#!/usr/bin/env nu
+
+use ./lib/jj.nu *
+
+# rebase a branch onto a target commit
+def main [
+  branch: string                      # the branch to rebase
+  target?: string                     # the target commit to rebase onto (defaults to head of default branch)
+  --push(-p)                          # push changes after rebasing
+] {
+   let target_commit = if ($target | is-empty) { "trunk()" } else { $target }
+
+   print-step $"Duplicating commits from (ansi cyan)($branch)(ansi reset) onto (ansi cyan)($target_commit)(ansi reset)..."
+
+   # duplicate all commits in the branch onto the target
+   # using revset: all ancestors of branch that aren't ancestors of target
+   if not (run-jj {jj duplicate -d $target_commit -r $"ancestors\(($branch)\) & ~ancestors\(($target_commit)\)" --color=always} "jj duplicate") { return }
+
+   # extract the new head commit ID from the duplicate output
+   # get the head of the newly duplicated commits (descendants of target that aren't reachable from the original branch)
+   let new_head = (jj log -r $"heads\(descendants\(($target_commit)\) & ~ancestors\(($branch)\)\)" -n 1 --no-graph -T 'self.change_id().short()' | str trim)
+   let new_head_shortest = (jj log -r $"heads\(descendants\(($target_commit)\) & ~ancestors\(($branch)\)\)" -n 1 --no-graph -T 'self.change_id().shortest()' | str trim)
+   let new_head_rest = ($new_head | str substring ($new_head_shortest | str length)..)
+
+   print $"(ansi green)✓(ansi reset) Duplicated commits from (ansi cyan)($branch)(ansi reset) onto (ansi cyan)($target_commit)(ansi reset)"
+   print $"  New head: (ansi magenta)($new_head_shortest)(ansi dark_gray)($new_head_rest)(ansi reset)"
+
+   if $push {
+     # call jbp to move bookmark, push, and cleanup
+     ^($env.FILE_PWD | path join jbp) $branch -d $new_head
+   } else {
+     # move working copy to a fresh commit on top of the new head
+     run-jj { jj new $new_head } 'jj new' true
+     print $"\n(ansi blue)ℹ(ansi reset) Working copy is now on top of duplicated commits."
+     print $"    Bookmark (ansi cyan)($branch)(ansi reset) still points to old commits."
+     print $"    Run (ansi yellow)jbp ($branch)(ansi reset) when ready to push."
+   }
+}

@@ -1,0 +1,48 @@
+#!/usr/bin/env nu
+
+use ./lib/jj.nu *
+
+# push a JJ commit and create a PR
+def main [
+  commit?: string                     # the commit to push and create a PR for (defaults to @)
+  --target(-t): string                # target branch for the PR (defaults to repo's default branch)
+] {
+   let revision = if ($commit | is-empty) { "@" } else { $commit }
+   let target_branch = if ($target | is-empty) { get-default-branch } else { $target }
+
+   # get the commit ID before pushing (so we can look it up after @ moves)
+   let commit_id = (jj log -r $revision -T 'self.commit_id().short()' --no-graph | str trim)
+
+   # push the commit (run directly so party animation gets the real TTY)
+   try {
+     jj push -c $revision --color=always
+   } catch {
+     print $"(ansi red)Error:(ansi reset) jj push failed"
+     return
+   }
+
+   # get the branch name that was created for this commit
+   let branch = (jj bookmark list -r $commit_id -T 'self.name()' | str trim)
+   print $"(ansi green)✓(ansi reset) Pushed branch: (ansi cyan)($branch)(ansi reset)"
+
+   # count commits between target and our revision
+   let commit_count = (jj log -r $"ancestors\(($commit_id)\) & ~ancestors\(($target_branch)\)" --no-graph -T '"x"' | str length)
+
+   # create PR with the branch
+   let gh_args = if $commit_count > 1 {
+     # multiple commits - prompt for title since gh would use branch name
+     let title = (input --reedline  $"    (ansi blue)PR title: (ansi reset)")
+     [-B $target_branch --head $branch --fill-verbose --title $title]
+   } else {
+     [-B $target_branch --head $branch --fill-verbose]
+   }
+   if not (run-jj {gh pr create ...$gh_args} "gh pr create" true) { return }
+
+   # get the PR URL and title, copy URL to clipboard
+   let pr_info = (gh pr view $branch --json url,title | from json)
+   $pr_info.url | pbcopy
+
+   print $"(ansi green)✓(ansi reset) Created PR: (ansi yellow)($pr_info.title)(ansi reset)"
+   print $"    (ansi blue)($pr_info.url)(ansi reset)"
+   print $"(ansi green)✓(ansi reset) URL copied to clipboard"
+}

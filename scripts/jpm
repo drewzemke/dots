@@ -1,0 +1,24 @@
+#!/usr/bin/env nu
+
+use ./lib/jj.nu *
+
+# push main branch forward to a bookmark
+def main [
+  bookmark: string                    # the bookmark to move main to
+] {
+   let main_branch = get-default-branch
+
+   print-step $"Moving (ansi cyan)($main_branch)(ansi reset) to (ansi yellow)($bookmark)(ansi reset)..."
+   if not (run-jj {jj bookmark set $main_branch -r $bookmark --color=always} "jj bookmark set") { return }
+
+   # push (run directly so party animation gets the real TTY)
+   print-step $"Pushing (ansi cyan)($main_branch)(ansi reset)..."
+   try {
+     jj push -b $main_branch --color=always
+   } catch {
+     print $"(ansi red)Error:(ansi reset) jj push failed"
+     return
+   }
+
+   print $"(ansi green)✓(ansi reset) Successfully pushed (ansi cyan)($main_branch)(ansi reset) to (ansi yellow)($bookmark)(ansi reset)"
+}

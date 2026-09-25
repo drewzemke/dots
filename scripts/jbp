@@ -1,0 +1,32 @@
+#!/usr/bin/env nu
+
+use ./lib/jj.nu *
+
+# push a branch (move bookmark, push, and cleanup old commits)
+def main [
+  branch: string                      # the branch to push
+  --destination(-d): string # where to move the bookmark (defaults to @-)
+] {
+   let dest = if ($destination | is-empty) { "@-" } else { $destination }
+
+   # capture the old commits at the bookmark location (for cleanup later)
+   # get all ancestors of the current bookmark that aren't ancestors of the destination
+   let old_commits = (jj log -r $"ancestors\(($branch)\) & ~ancestors\(($dest)\)" --no-graph -T 'self.change_id().short() ++ "\n"' | lines | str trim)
+
+   print-step $"Moving bookmark (ansi cyan)($branch)(ansi reset) to (ansi yellow)($dest)(ansi reset)..."
+   if not (run-jj {jj bookmark set $branch -r $dest --color=always --allow-backwards} "jj bookmark set") { return }
+
+   # push (run directly so party animation gets the real TTY)
+   print-step $"Pushing changes for (ansi cyan)($branch)(ansi reset)..."
+   try {
+     jj push -b $branch --color=always
+   } catch {
+     print $"(ansi red)Error:(ansi reset) jj push failed"
+     return
+   }
+
+   print-step "Abandoning old commits..."
+   if not (run-jj {jj abandon -r $"($old_commits | str join ' | ')" --color=always} "jj abandon") { return }
+
+   print $"(ansi green)✓(ansi reset) Successfully pushed (ansi cyan)($branch)(ansi reset)"
+}
