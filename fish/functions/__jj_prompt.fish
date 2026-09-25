@@ -1,32 +1,28 @@
 function __jj_prompt
-    jj root --ignore-working-copy &>/dev/null; or return
+    # one call so the working copy is snapshotted and the repo loaded only once.
+    # each commit prints its tags: w<n> (working copy, n changed files), f, o, i
+    set -l tags (jj log --no-graph -r '@ | fresh() | out() | inc()' -T '
+        if(current_working_copy, "w" ++ self.diff().files().len() ++ " ")
+        ++ if(self.contained_in("fresh()"), "f ")
+        ++ if(self.contained_in("out()"), "o ")
+        ++ if(self.contained_in("inc()"), "i ")
+    ' 2>/dev/null); or return
+    set tags (string split -n ' ' -- $tags)
 
     set -l symbols
-
-    # stat output includes a summary line at the end
-    set -l changed (math (jj diff --stat 2>/dev/null | count) - 1)
-    if test $changed -le 0
-        set -a symbols (set_color green)󱗜
-    else
+    set -l changed (string replace -rf '^w' '' -- $tags)
+    if test "$changed" -gt 0
         set -a symbols (set_color yellow)"󱗜 $changed"
+    else
+        set -a symbols (set_color green)󱗜
     end
 
-    for check in cyan:fresh magenta:out magenta:inc
-        set -l color (string split : $check)
-        set -l n (jj log --no-graph -r "$color[2]()" -T '"x\n"' 2>/dev/null | count)
-        test $n -gt 0; and set -a symbols (set_color $color[1])(__jj_prompt_icon $color[2])" $n"
-    end
+    set -l n (count (string match f -- $tags))
+    test $n -gt 0; and set -a symbols (set_color cyan)"󰩳 $n"
+    set n (count (string match o -- $tags))
+    test $n -gt 0; and set -a symbols (set_color magenta)"󰛃 $n"
+    set n (count (string match i -- $tags))
+    test $n -gt 0; and set -a symbols (set_color magenta)"󰛀 $n"
 
     echo -n (string join ' ' $symbols)(set_color normal)
-end
-
-function __jj_prompt_icon
-    switch $argv[1]
-        case fresh
-            echo 󰩳
-        case out
-            echo 󰛃
-        case inc
-            echo 󰛀
-    end
 end
