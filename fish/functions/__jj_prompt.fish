@@ -24,5 +24,6 @@ function __jj_prompt
     set n (count (string match i -- $tags))
     test $n -gt 0; and set -a symbols (set_color magenta)"󰛀 $n"
 
-    echo -n (string join ' ' $symbols)(set_color normal)
+    # the space must come before the color reset or wezterm squeezes the wide icons
+    echo -n (string join ' ' $symbols)' '(set_color normal)
 end
