@@ -1,0 +1,1 @@
+ut completions fish | source
