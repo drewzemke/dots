@@ -2,7 +2,6 @@
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "permissions": {
     "allow": [
-      "Bash",
       "WebFetch",
       "WebSearch",
       "Read(/tmp)",
@@ -188,5 +187,9 @@
   "voiceEnabled": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754080118645
+  },
+  "attribution": {
+    "commit": "",
+    "pr": ""
   }
 }
