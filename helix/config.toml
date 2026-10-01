@@ -133,22 +133,6 @@ C-space = "code_action"
 "C-u" = "kill_to_line_start"
 "C-k" = "kill_to_line_end"
 
-# spanish characters
-"A-a" = "@á"
-"A-e" = "@é"
-"A-i" = "@í"
-"A-o" = "@ó"
-"A-g" = "@ö"
-"A-u" = "@ú"
-"A-n" = "@ñ"
-"A-A" = "@Á"
-"A-E" = "@É"
-"A-I" = "@Í"
-"A-O" = "@Ó"
-"A-G" = "@Ö"
-"A-U" = "@Ú"
-"A-N" = "@Ñ"
-
 [keys.normal]
 # move lines up/down
 A-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]
@@ -265,14 +249,8 @@ D = ["wonly", "vsplit", "goto_definition"]
 r = ":reset-diff-change"
 
 # open jj diffs of the current file as a scratch buffer
-d = [
-  ":open %sh{~/dots/scripts/hx-diff parent '%{buffer_name}'}",
-  ":reload",
-]
-t = [
-  ":open %sh{~/dots/scripts/hx-diff trunk '%{buffer_name}'}",
-  ":reload",
-]
+d = [":open %sh{~/dots/scripts/hx-diff parent '%{buffer_name}'}", ":reload"]
+t = [":open %sh{~/dots/scripts/hx-diff trunk '%{buffer_name}'}", ":reload"]
 # diff of the commit that last touched the current line
 l = [
   ":open %sh{~/dots/scripts/hx-diff line '%{buffer_name}' %{cursor_line}}",
