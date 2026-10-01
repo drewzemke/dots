@@ -1,5 +1,7 @@
 status is-interactive; or return
 
-alias ls 'eza -1 --color=auto --icons --group-directories-first'
-alias lsa 'eza -1 --color=auto --icons --group-directories-first -la'
-alias lst 'eza -1 --color=auto --icons --group-directories-first -T --git-ignore'
+set -l base --icons --group-directories-first
+alias ls "eza $base"
+alias ll "eza $base -l --git --time-style=relative --header"
+alias lsa "eza $base -la --git --time-style=relative --header"
+alias lst "eza $base -T --git-ignore --level=2"
