@@ -87,7 +87,6 @@ in {
     jq
     jujutsu
     lazydocker
-    unstable.nushell
     nodejs
     openssl
     openssl.dev
@@ -100,10 +99,10 @@ in {
 
   programs.nix-ld.enable = true;
 
-  # FIXME: this doesn't work the way it's supposed to. 
-  environment.variables = {
-    PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
+  environment.sessionVariables = {
+    KUBECONFIG = /home/drew/.kube/config;
   };
+
   # stuck with OpenSSL beefing a cargo install? try this:
   # 
   # # change directory to the install of openssl
@@ -115,7 +114,8 @@ in {
   # then try installing again
 
   # shell
-  users.defaultUserShell = pkgs.nushell;
+  users.defaultUserShell = pkgs.fish;
+  programs.fish.enable = true;
 
   # Set your time zone
   time.timeZone = "America/Los_Angeles";
@@ -137,16 +137,22 @@ in {
         53    # dns
         80    # http
         443   # https 
+        6443  # k3s API server
         8080  # pihole web interface
         8123  # hass
       ];
-      allowedUDPPorts = [ 53 67 ];
+      allowedUDPPorts = [
+        53    # dns
+        67
+        8472  # k3s
+      ];
       extraCommands = ''
         iptables -I nixos-fw -s 45.87.249.170 -j DROP
       '';
 
     };
-    nameservers = [ "8.8.8.8" ];
+    # pihole first; fallback so rafael can still resolve if the container is down
+    nameservers = [ "127.0.0.1" "8.8.8.8" ];
   };
 
   services.avahi = {
@@ -194,6 +200,27 @@ in {
       options = [ "NOPASSWD" ];
     }];
   }];
+
+  # mount SSD for k3s
+  fileSystems."/var/lib/rancher/k3s" = {
+    device = "/dev/disk/by-uuid/a2843146-ec37-4b8c-a824-00d2942dd718";
+    fsType = "ext4";
+    options = [ "nofail" ];
+  };
+
+  # k3s
+  services.k3s = {
+    enable = true;
+    role = "server";
+    extraFlags = toString [
+      "--disable=servicelb"
+      "--disable=traefik"
+    ];
+  };
+
+  systemd.services.k3s.unitConfig = {
+    RequiresMountsFor = "/var/lib/rancher/k3s";
+  };
 
   # Enable automatic system upgrades
   system.autoUpgrade.enable = true;
