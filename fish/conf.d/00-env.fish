@@ -1,3 +1,4 @@
+set -gx XDG_CONFIG_HOME ~/.config
 set -gx EDITOR hx
 set -gx VISUAL $EDITOR
 set -gx CARGO_HOME ~/.cargo
