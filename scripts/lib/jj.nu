@@ -17,7 +17,7 @@ export def run-jj [command: closure, description: string, no_out: bool = false] 
 
 # get the default branch name for the current repo
 export def get-default-branch [] {
-  jj log -r "trunk()" --no-graph -T 'remote_bookmarks.filter(|b| (b.name() == "main" || b.name() == "master" || b.name() == "trunk") && (b.remote() == "origin" || b.remote() == "upstream")).map(|b| b.name()).join("")' | str trim
+  jj log -r "trunk()" --no-graph -T 'remote_bookmarks.filter(|b| b.remote() == "origin" || b.remote() == "upstream").map(|b| b.name() ++ "\n").join("")' | lines | first
 }
 
 # print a colored step header
