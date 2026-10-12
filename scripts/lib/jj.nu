@@ -17,7 +17,12 @@ export def run-jj [command: closure, description: string, no_out: bool = false] 
 
 # get the default branch name for the current repo
 export def get-default-branch [] {
-  jj log -r "trunk()" --no-graph -T 'remote_bookmarks.filter(|b| b.remote() == "origin" || b.remote() == "upstream").map(|b| b.name() ++ "\n").join("")' | lines | first
+  let branches = jj log -r "trunk()" --no-graph -T 'remote_bookmarks.filter(|b| b.remote() == "origin" || b.remote() == "upstream").map(|b| b.name() ++ "\n").join("")' | lines
+  if ($branches | length) != 1 {
+    let found = if ($branches | is-empty) { "none" } else { $branches | str join ", " }
+    error make --unspanned {msg: $"expected exactly one remote bookmark on trunk\(\), found: ($found). pass the target branch with --target"}
+  }
+  $branches | first
 }
 
 # print a colored step header
