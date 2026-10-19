@@ -34,7 +34,12 @@
       "Read(.env)",
       "Bash(git:*)",
       "Bash(jj push)",
-      "Bash(jj git push)"
+      "Bash(jj git push)",
+      "Bash(security find-generic-password*)",
+      "Bash(security find-internet-password*)",
+      "Bash(security dump-keychain*)",
+      "Bash(env)",
+      "Bash(printenv*)"
     ],
     "ask": [],
     "defaultMode": "auto"
