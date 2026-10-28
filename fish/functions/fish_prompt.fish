@@ -10,6 +10,8 @@ function fish_prompt
     end
     set -a path (set_color -o blue)$last(set_color normal)
 
+    # clear fish's ⏎ so zellij keeps the osc 133 prompt marker (CopyLastCommandOutput)
+    echo -n \e\[K
     echo -n (string join (set_color blue)/ $path)' '
     echo -n (set_color red)❯(set_color yellow)❯(set_color green)❯(set_color normal)' '
 end
