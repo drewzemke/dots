@@ -8,7 +8,14 @@ email = "{{email}}"
 
 [ui]
 default-command = "log"
-pager = ["delta", "--pager", "less -FRX", "--side-by-side"]
+# side-by-side only in wide terminals
+pager = ["sh", "-c", '''
+  cols=$(stty size </dev/tty 2>/dev/null | cut -d' ' -f2)
+  if [ "${cols:-0}" -ge 180 ]; then
+    export DELTA_FEATURES=+side-by-side
+  fi
+  exec delta --pager "less -FRX"
+''']
 diff-formatter = ":git"
 
 [ui.movement]
