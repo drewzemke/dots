@@ -172,6 +172,9 @@
       }
     ]
   },
+  "worktree": {
+    "baseRef": "fresh"
+  },
   "enabledPlugins": {
     "context7@claude-plugins-official": true,
     "code-review@claude-plugins-official": false,
@@ -189,8 +192,10 @@
   },
   "autoUpdatesChannel": "latest",
   "tui": "fullscreen",
+  "timeFormat": "24-hour",
   "skipDangerousModePermissionPrompt": true,
   "theme": "custom:drewcula",
+  "idleCompaction": false,
   "fileCheckpointingEnabled": false,
   "skipAutoPermissionPrompt": true,
   "voiceEnabled": true,
