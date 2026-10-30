@@ -234,9 +234,3 @@ autostart = true
 
 [threads]
 capture = true
-
-[pty_proxy]
-enabled = true
-
-[output]
-enabled = true
