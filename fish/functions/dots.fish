@@ -1,5 +1,5 @@
 function dots
-    cd ~/dots
+    set orig_dir (pwd)
     $EDITOR .
-    cd -
+    cd $orig_dir
 end
