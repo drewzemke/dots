@@ -25,9 +25,10 @@ trap 'rm -f "$PID_FILE"; exit' INT TERM
 i=0
 while true; do
   "$MEDIA_SCRIPT" fetch 2>/dev/null
-  if [ $((i % 6)) -eq 0 ]; then
-    "$GH_SCRIPT" fetch 2>/dev/null
-  fi
+  # disabled while trying out the gh-notifs army daemon
+  # if [ $((i % 6)) -eq 0 ]; then
+  #   "$GH_SCRIPT" fetch 2>/dev/null
+  # fi
   if [ $((i % 3)) -eq 0 ]; then
     "$ARMY_SCRIPT" fetch 2>/dev/null
   fi
