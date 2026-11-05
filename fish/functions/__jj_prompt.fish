@@ -1,4 +1,11 @@
 function __jj_prompt
+    # skip spawning jj outside jj repos
+    set -l dir $PWD
+    while not test -d $dir/.jj
+        test "$dir" = /; and return 1
+        set dir (path dirname $dir)
+    end
+
     # one call so the working copy is snapshotted and the repo loaded only once.
     # each commit prints its tags: w<n> (working copy, n changed files), f, o, i
     set -l tags (jj log --no-graph -r '@ | fresh() | out() | inc()' -T '
