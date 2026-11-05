@@ -9,6 +9,8 @@
 	editor = {{editor}}
 	excludesFile = .git/.user_gitignore
 	pager = delta
+	fsmonitor = true
+	untrackedCache = true
 
 [delta]
     dark = true
