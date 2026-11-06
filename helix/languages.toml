@@ -224,8 +224,12 @@ auto-format = true
 ### YAML ###
 ############
 
+[[language]]
+name = "yaml"
+formatter = { command = 'npx', args = ["prettier", "--parser", "yaml", "--single-quote"] }
+
 [language-server.yaml-language-server.config.yaml]
-format = { enable = true, singleQuote = true }
+format = { enable = false }
 validation = true
 
 [language-server.yaml-language-server.config.yaml.schemas]
