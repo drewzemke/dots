@@ -144,6 +144,16 @@ procMacro = { ignored = { leptos_macro = [
   "server",
 ] } }
 
+#################
+### Terraform ###
+#################
+[language-server.tofu-ls]
+command = "tofu-ls"
+args = ["serve"]
+
+[[language]]
+name = "hcl"
+language-servers = ["tofu-ls"]
 
 ############
 ### TOML ###
@@ -226,7 +236,12 @@ auto-format = true
 
 [[language]]
 name = "yaml"
-formatter = { command = 'npx', args = ["prettier", "--parser", "yaml", "--single-quote"] }
+formatter = { command = 'npx', args = [
+  "prettier",
+  "--parser",
+  "yaml",
+  "--single-quote",
+] }
 
 [language-server.yaml-language-server.config.yaml]
 format = { enable = false }
