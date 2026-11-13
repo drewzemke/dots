@@ -216,6 +216,7 @@ in {
       "--disable=servicelb"
       "--disable=traefik"
     ];
+    package = unstable.k3s_1_35;
   };
 
   systemd.services.k3s.unitConfig = {
