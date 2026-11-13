@@ -8,7 +8,7 @@ function __nix_staleness_check -a lock max_days
 
     set -l days (math --scale=0 "($(date +%s) - $oldest) / 86400")
     if test $days -gt $max_days
-        echo "nix inputs are $days days old, time for `nix flake update`"
+        echo (set_color yellow)"nix inputs are $days days old, time for `nix flake update`"
     end
     return 0
 end
