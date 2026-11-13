@@ -10,6 +10,7 @@
     ../../modules/base/nix-maintenance.nix
     ../../modules/base/notes-sync.nix
     ../../modules/base/nushell.nix
+    ../../modules/base/swap.nix
     ../../modules/base/timezone.nix
     ../../modules/base/unfree.nix
     ../../modules/base/user-drew.nix

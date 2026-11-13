@@ -35,6 +35,7 @@ keep it to an import list plus host-specific values:
     ../../modules/base/dev-toolchain.nix
     ../../modules/base/fish.nix
     ../../modules/base/nushell.nix
+    ../../modules/base/swap.nix
     ../../modules/base/atuin.nix
     ../../modules/base/notes-sync.nix
     ../../modules/base/nix-maintenance.nix
