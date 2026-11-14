@@ -78,5 +78,15 @@ def main [] {
 
   let msg = if ($parts | is-empty) { " " } else { $parts | str join "  " }
 
-  zellij pipe $"zjstatus::pipe::pipe_corner::($msg)"
+  pipe-with-timeout $"zjstatus::pipe::pipe_corner::($msg)"
+}
+
+# zellij pipe can hang forever and spin a core, so cap it
+def pipe-with-timeout [payload: string, limit: duration = 2sec] {
+  let id = job spawn { ^zellij pipe $payload }
+  let deadline = (date now) + $limit
+  while ((job list | where id == $id | is-not-empty) and ((date now) < $deadline)) {
+    sleep 50ms
+  }
+  try { job kill $id }
 }
