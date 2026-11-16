@@ -12,6 +12,12 @@ function fish_prompt
 
     # clear fish's ⏎ so zellij keeps the osc 133 prompt marker (CopyLastCommandOutput)
     echo -n \e\[K
+    if test -n "$SSH_TTY"
+        echo -n (set_color green)"$USER"(set_color white)'@'(set_color cyan)(prompt_hostname)' '
+    end
+    if test -n "$IN_NIX_SHELL"
+        echo -n (set_color white)'  '
+    end
     echo -n (string join (set_color blue)/ $path)' '
     echo -n (set_color red)❯(set_color yellow)❯(set_color green)❯(set_color normal)' '
 end
