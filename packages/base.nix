@@ -5,6 +5,7 @@ with pkgs; [
   atuin
   fish
   unstable.nushell
+  unstable.steel # forge + steel-language-server
   unstable.steelix
   yazi
   zellij
