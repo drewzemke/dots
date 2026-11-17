@@ -31,10 +31,9 @@ keep it to an import list plus host-specific values:
     ../../modules/base/timezone.nix
     ../../modules/base/boot-grub.nix
     ../../modules/base/unfree.nix
-    ../../modules/base/cli-tools.nix
+    ../../modules/base/packages.nix
     ../../modules/base/dev-toolchain.nix
     ../../modules/base/fish.nix
-    ../../modules/base/nushell.nix
     ../../modules/base/swap.nix
     ../../modules/base/atuin.nix
     ../../modules/base/notes-sync.nix
@@ -53,6 +52,7 @@ keep it to an import list plus host-specific values:
     ../../modules/desktop/removable-drives.nix
     ../../modules/desktop/dual-boot.nix
     ../../modules/desktop/apps.nix
+    ../../modules/desktop/packages.nix
   ];
 
   networking.hostName = "ceres";

@@ -1,8 +1,6 @@
 { pkgs, ... }:
 
 {
-  environment.systemPackages = [ pkgs.atuin ];
-
   systemd.user.services.atuin = {
     enable = true;
     description = "atuin daemon";

@@ -4,12 +4,11 @@
 
     ../../modules/base/atuin.nix
     ../../modules/base/boot-grub.nix
-    ../../modules/base/cli-tools.nix
     ../../modules/base/dev-toolchain.nix
     ../../modules/base/fish.nix
     ../../modules/base/nix-maintenance.nix
     ../../modules/base/notes-sync.nix
-    ../../modules/base/nushell.nix
+    ../../modules/base/packages.nix
     ../../modules/base/swap.nix
     ../../modules/base/timezone.nix
     ../../modules/base/unfree.nix

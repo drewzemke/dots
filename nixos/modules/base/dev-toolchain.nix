@@ -1,17 +1,13 @@
 { pkgs, ... }:
 
 {
+  # c toolchain for cargo builds; mac gets these from xcode clt
   environment.systemPackages = with pkgs; [
-    deno
     gcc
     gnumake
-    nodejs
     openssl
     openssl.dev
     pkg-config
-    pnpm
-    protobuf
-    rustup
   ];
 
   # lets cargo builds find openssl
