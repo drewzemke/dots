@@ -67,7 +67,7 @@ compare against the old `nixos/ceres.nix` to make sure nothing got dropped, then
 
 ## 4. add ceres to the flake
 
-in `nixos/flake.nix`, next to rafael:
+in `flake.nix`, next to rafael:
 
 ```nix
 nixosConfigurations.ceres = mkHost "ceres";
@@ -78,7 +78,7 @@ nixosConfigurations.ceres = mkHost "ceres";
 the old system doesn't have flakes enabled yet, so pass the flag for this first build only:
 
 ```sh
-cd ~/dots/nixos
+cd ~/dots
 nixos-rebuild build --flake .#ceres --option experimental-features 'nix-command flakes'
 nvd diff /run/current-system result   # skim what's changing
 nixos-rebuild switch --flake .#ceres --sudo --option experimental-features 'nix-command flakes'
@@ -87,7 +87,7 @@ nixos-rebuild switch --flake .#ceres --sudo --option experimental-features 'nix-
 after this, `nix-maintenance.nix` turns flakes on permanently and the normal command works:
 
 ```sh
-nixos-rebuild switch --flake ~/dots/nixos --sudo
+nixos-rebuild switch --flake ~/dots --sudo
 ```
 
 ## 6. if it breaks

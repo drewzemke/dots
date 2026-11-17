@@ -14,7 +14,7 @@
             config.allowUnfree = true;
           };
         };
-        modules = [ ./hosts/${name}/configuration.nix ];
+        modules = [ ./nixos/hosts/${name}/configuration.nix ];
       };
     in {
       nixosConfigurations.rafael = mkHost "rafael";
