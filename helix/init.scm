@@ -6,3 +6,7 @@
 ;; steel LSP for scheme files
 (define-lsp "steel-language-server" (command "steel-language-server") (args '()))
 (define-language "scheme" (language-servers '("steel-language-server")))
+
+;; file watcher
+(require "helix-file-watcher/file-watcher.scm")
+(spawn-watcher 1000)
