@@ -48,6 +48,7 @@ with pkgs; [
   bacon
   cargo-update
   deno
+  nodejs
   pnpm
   rustup
 
