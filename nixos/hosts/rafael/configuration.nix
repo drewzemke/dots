@@ -54,7 +54,7 @@
       '';
     };
     # pihole first; fallback so rafael can still resolve if the container is down
-    nameservers = [ "127.0.0.1" "8.8.8.8" ];
+    nameservers = [ "192.168.1.2" "1.1.1.1" ];
   };
 
   # do NOT bump this. it's the release rafael was installed with, not the one it runs
