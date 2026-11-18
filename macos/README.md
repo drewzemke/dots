@@ -1,10 +1,12 @@
 # macOS Launch Configuration
 
 ## LaunchAgents
-Manual installation:
+`bootstrap.sh` installs the atuin agent. To reinstall it by hand:
 
 ```bash
-cp LaunchAgents/* ~/Library/LaunchAgents/
+sed "s|{{home}}|$HOME|g" LaunchAgents/sh.atuin.daemon.plist > ~/Library/LaunchAgents/sh.atuin.daemon.plist
+launchctl bootout gui/$(id -u) ~/Library/LaunchAgents/sh.atuin.daemon.plist
+launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/sh.atuin.daemon.plist
 ```
 
 ## LaunchDaemons
