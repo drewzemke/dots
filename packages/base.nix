@@ -51,7 +51,9 @@ with pkgs; [
   deno
   nodejs
   pnpm
+  python3
   rustup
+  uv
 
   # language servers
   markdown-oxide
