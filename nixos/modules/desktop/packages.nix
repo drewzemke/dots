@@ -1,5 +1,5 @@
-{ pkgs, unstable, ... }:
+{ pkgs, unstable, own, ... }:
 
 {
-  environment.systemPackages = import ../../../packages/desktop.nix { inherit pkgs unstable; };
+  environment.systemPackages = import ../../../packages/desktop.nix { inherit pkgs unstable own; };
 }

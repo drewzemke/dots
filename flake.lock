@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "army": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1795021758,
+        "narHash": "sha256-wMy7kn024yVG6Mo8GKTDLHoXLDdiILbvJHw7bQthTF4=",
+        "owner": "drewzemke",
+        "repo": "army-of-daemons",
+        "rev": "ea3ed8174baaf62e143dfc8a4183dac76d633c0a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "drewzemke",
+        "repo": "army-of-daemons",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1794165970,
@@ -32,10 +52,32 @@
         "type": "github"
       }
     },
+    "party": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1795022676,
+        "narHash": "sha256-FPD4jZTQdGLhEWOc+l0CoeLqR9VnSNoQrQpcqd4Gj5g=",
+        "owner": "drewzemke",
+        "repo": "post-push-party",
+        "rev": "c4aa159cb60feb1bcabc87a48bc5f6677379373e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "drewzemke",
+        "repo": "post-push-party",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
+        "army": "army",
         "nixpkgs": "nixpkgs",
         "nixpkgs-darwin": "nixpkgs-darwin",
+        "party": "party",
         "unstable": "unstable"
       }
     },

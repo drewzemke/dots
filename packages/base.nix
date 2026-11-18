@@ -1,4 +1,4 @@
-{ pkgs, unstable }:
+{ pkgs, unstable, own }:
 
 with pkgs; [
   # shell & editor
@@ -59,6 +59,10 @@ with pkgs; [
   tofu-ls
   vscode-langservers-extracted
   yaml-language-server
+
+  # my projects
+  own.army
+  own.party
 
   # misc
   unstable.claude-code
