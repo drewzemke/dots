@@ -30,7 +30,7 @@ if ! command -v nix >/dev/null; then
     . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
 fi
 
-nix profile install ".#$profile"
+nix profile add ".#$profile"
 export PATH="$HOME/.nix-profile/bin:$PATH"
 
 just bootstrap
