@@ -33,4 +33,17 @@ fi
 nix profile add ".#$profile"
 export PATH="$HOME/.nix-profile/bin:$PATH"
 
+fish="$HOME/.nix-profile/bin/fish"
+if ! grep -qx "$fish" /etc/shells; then
+    echo "$fish" | sudo tee -a /etc/shells >/dev/null
+fi
+chsh -s "$fish"
+
+agent=~/Library/LaunchAgents/sh.atuin.daemon.plist
+sed "s|{{home}}|$HOME|g" macos/LaunchAgents/sh.atuin.daemon.plist > "$agent"
+launchctl bootout "gui/$(id -u)" "$agent" 2>/dev/null || true
+launchctl bootstrap "gui/$(id -u)" "$agent"
+
 just bootstrap
+
+echo "done. kanata still needs manual setup, see macos/README.md"
