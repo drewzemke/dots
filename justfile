@@ -51,3 +51,4 @@ steel-plugins:
 # crates not (yet) in nix
 cargo-packages:
     cargo install climer tongo
+    {{ if os() == "macos" { "cargo install kanata" } else { "" } }}
