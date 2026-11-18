@@ -1,7 +1,28 @@
+# machine role comes from the dotter packages in .dotter/local.toml
+work := `grep -q '"work"' .dotter/local.toml 2>/dev/null && echo true || echo false`
+profile := if work == "true" { "mac-work" } else { "mac-personal" }
+
 sync:
     jj fetch
     jj evolve
-    dotter
+    dotter deploy
+    {{ if os() == "macos" { "nix profile upgrade " + profile } else { "" } }}
+
+# first-time setup after bootstrap.sh has installed nix and the profile
+bootstrap:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    dotter deploy
+    if [ "{{ os() }}" = macos ]; then
+        brew bundle --file=Brewfile
+        if {{ work }}; then brew bundle --file=Brewfile.work; fi
+    fi
+    just steel-plugins
+    just cargo-packages
+
+# nixos only
+rebuild:
+    nixos-rebuild switch --flake . --sudo
 
 steel_plugins := "https://github.com/drewzemke/helix-file-watcher"
 
