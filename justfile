@@ -26,3 +26,7 @@ steel-plugins:
         fi
     done
     exit $status
+
+# crates not (yet) in nix
+cargo-packages:
+    cargo install climer tongo
