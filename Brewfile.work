@@ -1,0 +1,5 @@
+tap "launchdarkly/tap"
+tap "openfga/tap"
+
+brew "launchdarkly/tap/ldcli"
+brew "openfga/tap/fga"
