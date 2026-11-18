@@ -1,6 +1,7 @@
 theme = "drewcula"
 
 [editor]
+bufferline = "multiple"
 color-modes = true
 cursorline = true
 end-of-line-diagnostics = "hint"
@@ -8,9 +9,9 @@ idle-timeout = 200
 jump-label-alphabet = "jfkdlsahgmvznbyturieowpq"
 line-number = "relative"
 popup-border = "all"
+rainbow-brackets = true
 shell = ["sh", "-c"]
 true-color = true
-rainbow-brackets = true
 
 [editor.cursor-shape]
 insert = "bar"
