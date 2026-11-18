@@ -2,7 +2,7 @@
 
 with pkgs; [
   # shell & editor
-  atuin
+  unstable.atuin
   fish
   unstable.nushell
   unstable.steel # forge + steel-language-server
