@@ -22,6 +22,7 @@ with pkgs; [
   jq
   just
   less
+  restic
   ripgrep
   rm-improved
   sops
@@ -41,7 +42,9 @@ with pkgs; [
   # k8s / cloud
   awscli2
   flyctl
+  fluxcd
   k9s
+  kubernetes-helm
   kubectl
   lazydocker
 
