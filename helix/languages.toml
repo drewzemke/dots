@@ -249,3 +249,5 @@ validation = true
 
 [language-server.yaml-language-server.config.yaml.schemas]
 "https://json.schemastore.org/github-workflow.json" = ".github/workflows/*.{yml,yaml}"
+"https://json.schemastore.org/kustomization.json" = "kustomization.{yml,yaml}"
+kubernetes = ["**/deployments/**/*.{yml,yaml}", "**/homelab/**/*.{yml,yaml}"]
