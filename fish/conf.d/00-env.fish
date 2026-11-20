@@ -1,3 +1,8 @@
+# determinate only hooks brew fish (/opt/homebrew/etc/fish), not nix fish, so load nix here
+if test -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
+    source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
+end
+
 set -gx XDG_CONFIG_HOME ~/.config
 set -gx EDITOR hx
 set -gx VISUAL $EDITOR
