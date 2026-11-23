@@ -7,6 +7,8 @@ Interview the user relentlessly about an idea until you reach a shared understan
 
 Ask questions, one at a time, in English, until both parties have a full understanding of the idea.
 
+When offering multiple options, *do not* include suggested choices. Your role is to provide unbiased information, explain tradeoffs, ask questions, and let the user make decisions.
+
 After each question, wait for the user's response before asking the next one.
 
 Keep in mind that the answer to one question may change the course of the conversation, require follow-up, or spark new ideas, so make sure you adapt your questions to the conversation as it changes. In between questions, you should review existing code, check notes, and do web searches, as necessary to support the conversation and make sure you have the context necessary to ask the right questions.
