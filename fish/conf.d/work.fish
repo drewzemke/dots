@@ -8,10 +8,10 @@ load_token COPILOT_API_KEY .copilot
 
 abbr -a kstage  'kubectl --context=aws-staging'
 abbr -a kprod   'kubectl --context=aws-prod'
-abbr -a kS      'kubectl --context=aws-staging'
-abbr -a kP      'kubectl --context=aws-prod'
+abbr -a ks      'kubectl --context=aws-staging'
+abbr -a kp      'kubectl --context=aws-prod'
 
-abbr -a k9stage 'k9s --context=aws-staging'
-abbr -a k9prod  'k9s --context=aws-prod'
-abbr -a k9S     'k9s --context=aws-staging'
-abbr -a k9P     'k9s --context=aws-prod'
+abbr -a Kstage 'k9s --context=aws-staging'
+abbr -a Kprod  'k9s --context=aws-prod'
+abbr -a Ks     'k9s --context=aws-staging'
+abbr -a Kp     'k9s --context=aws-prod'
