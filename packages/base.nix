@@ -44,7 +44,7 @@ with pkgs; [
   # k8s / cloud
   awscli2
   flyctl
-  fluxcd
+  unstable.fluxcd
   k9s
   kubernetes-helm
   kubectl
