@@ -50,6 +50,7 @@ with pkgs; [
 
   # languages & toolchains
   bacon
+  cargo-bump
   cargo-update
   deno
   nodejs
