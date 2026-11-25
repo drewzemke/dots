@@ -8,6 +8,10 @@ sync:
     dotter deploy
     {{ if os() == "macos" { "nix profile upgrade " + profile } else { "" } }}
 
+# bump flake inputs, then sync
+update: && sync
+    nix flake update
+
 # first-time setup after bootstrap.sh has installed nix and the profile
 bootstrap:
     #!/usr/bin/env bash
