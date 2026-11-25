@@ -17,8 +17,10 @@ with pkgs; [
   bottom
   delta
   eza
+  f3
   fd
   fzf
+  imagemagick
   jq
   just
   less
@@ -46,11 +48,14 @@ with pkgs; [
   k9s
   kubernetes-helm
   kubectl
+  kubectl-cnpg
   lazydocker
 
   # languages & toolchains
   bacon
   cargo-bump
+  cargo-edit
+  cargo-expand
   cargo-update
   deno
   nodejs
