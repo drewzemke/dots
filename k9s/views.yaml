@@ -1,21 +1,20 @@
 views:
   v1/pods:
+    sortColumn: NAME:asc
     columns:
       - NAME
-      - PF
-      - READY
+      - AGE
       - STATUS
+      - READY
+      - PF
+      - IP
       - CPU
       - MEM
-      - IP
-      - AGE
-  po:
+  v1/events:
+    sortColumn: LAST SEEN:asc
     columns:
-      - NAME
-      - PF
-      - READY
-      - STATUS
-      - CPU
-      - MEM
-      - IP
-      - AGE
+      - LAST SEEN
+      - TYPE
+      - REASON
+      - OBJECT
+      - MESSAGE
