@@ -53,6 +53,19 @@
     in {
       nixosConfigurations.rafael = mkHost "rafael";
 
+      # build on an x86_64 linux box: nix build .#nixosConfigurations.nas-live.config.system.build.isoImage
+      nixosConfigurations.nas-live = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          unstable = importPkgs unstable "x86_64-linux";
+          own = own "x86_64-linux";
+        };
+        modules = [
+          "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
+          ./nixos/hosts/nas-live/configuration.nix
+        ];
+      };
+
       packages.${darwin.system} = {
         mac-personal = darwin.env "mac-personal" [ "base" "desktop" ];
         mac-work = darwin.env "mac-work" [ "base" "desktop" "work" ];
