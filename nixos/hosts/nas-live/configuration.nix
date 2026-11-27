@@ -24,6 +24,7 @@
   security.sudo.wheelNeedsPassword = false;
 
   environment.systemPackages = with pkgs; [
+    dmidecode
     hdparm
     lshw
     nvme-cli
