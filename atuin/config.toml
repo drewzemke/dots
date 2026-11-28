@@ -234,3 +234,6 @@ autostart = true
 
 [threads]
 capture = true
+
+[ai]
+enabled = true
